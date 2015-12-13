@@ -9,6 +9,10 @@ public class Marqueur
         this.filiere=filiere;
     }
 
+    public Marqueur(Marqueur m){
+        this.filiere = m.filiere;
+    }
+
     public Filiere getFiliere(){
         return filiere;
     }
