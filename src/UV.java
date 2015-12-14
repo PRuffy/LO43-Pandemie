@@ -34,6 +34,20 @@ public class UV
         return position;
     }
 
+    public ArrayList<UV> getVoisins(){
+        return  this.voisins;
+    }
+
+    public ArrayList<Personnage> getPersonnages(){return personnages;}
+
+    public void addPersonnage(Personnage nouveauPersonnage){
+        this.personnages.add(nouveauPersonnage);
+    }
+
+    public Personnage removePersonnage(){
+        //enelver le personnage qui appel la fonction
+    }
+
     public Filiere getFiliere(int i){
         if (filiere[i] == null){
             return null;
@@ -59,7 +73,7 @@ public class UV
     public void addMarqueur (Marqueur m){
 
         if (marqueur[2] != null){
-            Graph.Eclosion(this);
+            Graph.eclosion(this);
         }else{
             if(marqueur[0] == null){
                 marqueur[0] = m;
