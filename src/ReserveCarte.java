@@ -8,6 +8,7 @@ public interface ReserveCarte
     Carte piocherCarte();
     /*
      * Ne pas oublier d'implémenter defausserCarte et melangerCarte dans les classes implémentant ReserveCarte
+     * 
      */
 
 }
