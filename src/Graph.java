@@ -1,11 +1,9 @@
 import java.util.ArrayList;
 
-/**
- * Created by stay on 14/12/15.
- */
 public class Graph {
     private ArrayList<UV> listUV;
     private boolean eclosionLancer;
+
     public Graph(){}
 
     /*Fonction appelé par la classe Jeu quand le joueur veux travailler.
@@ -29,14 +27,16 @@ public class Graph {
      *Place le boolean eclosion a 1 pour éviter de repasser plusieurs fois par la même UV
      * Enfin, une fois l'eclosion terminé remet tout les booleen a 0
      */
-    public void eclosion(UV departEclosion, Filiere f){
+    public void eclosion(UV departEclosion, Filiere f, CollectionMarqueur reserveMarqueur){
         if(!eclosionLancer){
             eclosionLancer=true;
-            Jeu.augmenterEclosion();
         }
+
+        Marqueur m = new Marqueur();
         for(UV uv : departEclosion.getVoisins()){
             if(!uv.getEclosion()){
-                uv.addMarqueur(f);
+                m = reserveMarqueur.getMarqueur(f);
+                uv.addMarqueur(m);
                 uv.setEclosion(true);
             }
         }

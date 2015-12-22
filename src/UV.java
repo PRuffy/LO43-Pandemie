@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 
-/**
- * Created by Guillaume on 12/12/2015.
- */
 public class UV
 {
 
@@ -44,8 +41,8 @@ public class UV
         this.personnages.add(nouveauPersonnage);
     }
 
-    public Personnage removePersonnage(){
-        //enelver le personnage qui appel la fonction
+    public void removePersonnage(Personnage personnageToRemove){
+        personnages.remove(personnageToRemove);
     }
 
     public Filiere getFiliere(int i){
@@ -72,39 +69,40 @@ public class UV
     }
 
 
-    /*Recupere un marqueur de la collection correspondante a la filiere passer en parametre*/
-    public void addMarqueur (Filiere f){
+    /*Recupere un marqueur de la collection correspondante*/
+    public void addMarqueur (Marqueur m){
 
         if (marqueur[2] != null){
             setEclosion(true);
-            Graph.eclosion(this, f);
         }else{
             if(marqueur[0] == null){
-                marqueur[0] = CollectionMarqueur.getMarqueur(f);
+                marqueur[0] = m;
             }else if (marqueur[1] == null){
-                marqueur[1] = CollectionMarqueur.getMarqueur(f);
+                marqueur[1] = m;
             }else{
-                marqueur[2] = CollectionMarqueur.getMarqueur(f);
+                marqueur[2] =m;
             }
         }
     }
 
     /*Enlève un marqueur et le replace dans la collection ou il appartient*/
-    public void removeMarqueur(){
-
+    public Marqueur removeMarqueur(){
+        Marqueur m = new Marqueur();
         if(marqueur[2] != null){
-            Marqueur m = new Marqueur(marqueur[2]);
+            m = marqueur[2];
             marqueur[2]=null;
-            CollectionMarqueur.setMarqueur(m);
+
         }else if(marqueur[1] != null){
-            Marqueur m = new Marqueur(marqueur[1]);
+            m = marqueur[1];
             marqueur[1] = null;
-            CollectionMarqueur.setMarqueur(m);
+
         }else if (marqueur[0] != null) {
-            Marqueur m = new Marqueur(marqueur[0]);
+            m = marqueur[0];
             marqueur[0] = null;
-            CollectionMarqueur.setMarqueur(m);
+
         }
+
+        return m;
 
 
     }

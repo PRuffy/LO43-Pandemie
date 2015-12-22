@@ -29,11 +29,28 @@ public class Jeu {
         reserveMarqueur = new CollectionMarqueur();
     }
 
+    public void augmenterChargeTravail(CarteInfection carte){
+        Filiere carteFilière = carte.getFiliere();
+        UV cible = carte.getCible();
+        Marqueur m = new Marqueur(reserveMarqueur.getMarqueur(carteFilière));
+        cible.addMarqueur(m);
+
+        if (cible.getEclosion()){
+            augmenterEclosion();
+            graph.eclosion(cible, carteFilière, reserveMarqueur);
+        }
+    }
+
+
+
     public void augmenterEclosion(){
         if(compteurSurchargeTravail != MAX_ECLOSION) {
             compteurSurchargeTravail++;
         }
     }
+
+
+
     public void travailler(Personnage p, Role rolePersonnage){
         int positionPersonnage = p.getPosition();
         graph.travail(positionPersonnage, rolePersonnage);

@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 
-/**
- * Created by Guillaume on 12/12/2015.
- */
 public class CollectionMarqueur {
 
     private ArrayList<Marqueur> marqueursI2RV;
@@ -82,5 +79,6 @@ public class CollectionMarqueur {
 
         return m;
     }
+
 }
 
