@@ -4,14 +4,16 @@ import java.util.ArrayList;
  * Created by stay on 21/12/15.
  */
 public class Jeu {
-    private ReserveCarteSemestre carteSemestre;
+
+    private ArrayList<CarteSemestre> cartesBénéfiques;
     private Graph graph;
     private CollectionMarqueur reserveMarqueur;
+    private ReserveCarteSemestre carteSemestre;
     private ReserveCarteInfection carteInfections;
     private ArrayList<Personnage> pionPersonnage;
     private ArrayList<Professeur> pionProfesseur;
     private int chargeTravail;
-    private int compteurEclosion;
+    private int compteurSurchargeTravail;
     private int carteCC;
 
     private static final int MAX_ECLOSION = 8;
@@ -19,7 +21,9 @@ public class Jeu {
 
     public Jeu(){
         chargeTravail = 0;
-        compteurEclosion = 0;
+        compteurSurchargeTravail = 0;
+        carteCC = 0;
+
         carteSemestre = new ReserveCarteSemestre();
         carteInfections = new ReserveCarteInfection();
         graph = new Graph();
@@ -29,8 +33,8 @@ public class Jeu {
     }
 
     public void augmenterEclosion(){
-        if(compteurEclosion != MAX_ECLOSION) {
-            compteurEclosion++;
+        if(compteurSurchargeTravail != MAX_ECLOSION) {
+            compteurSurchargeTravail++;
         }
     }
     public void travailler(Personnage p, Role rolePersonnage){
