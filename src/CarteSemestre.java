@@ -22,5 +22,12 @@ public class CarteSemestre implements Carte
         this.filiere=clone.filiere;
     }
 
-
+    // getter des attributs private dde la classe
+    public TypeCarteSemestre getType(){
+        return type;
+    }
+    public UV getCible(){
+        return cible;
+    }
+    public Filiere getFiliere(){return filiere;}
 }
