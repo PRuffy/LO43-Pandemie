@@ -5,7 +5,7 @@ import java.util.ArrayList;
  */
 public class Graph {
     private ArrayList<UV> listUV;
-
+    private boolean eclosionLancer;
     public Graph(){}
 
     /*Fonction appelé par la classe Jeu quand le joueur veux travailler.
@@ -30,6 +30,10 @@ public class Graph {
      * Enfin, une fois l'eclosion terminé remet tout les booleen a 0
      */
     public void eclosion(UV departEclosion, Filiere f){
+        if(!eclosionLancer){
+            eclosionLancer=true;
+            Jeu.augmenterEclosion();
+        }
         for(UV uv : departEclosion.getVoisins()){
             if(!uv.getEclosion()){
                 uv.addMarqueur(f);
@@ -41,5 +45,7 @@ public class Graph {
         for(UV uv : listUV){
             uv.setEclosion(false);
         }
+
+        eclosionLancer = false;
     }
 }

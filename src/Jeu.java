@@ -28,6 +28,11 @@ public class Jeu {
         reserveMarqueur = new CollectionMarqueur();
     }
 
+    public void augmenterEclosion(){
+        if(compteurEclosion != MAX_ECLOSION) {
+            compteurEclosion++;
+        }
+    }
     public void travailler(Personnage p, Role rolePersonnage){
         int positionPersonnage = p.getPosition();
         graph.travail(positionPersonnage, rolePersonnage);

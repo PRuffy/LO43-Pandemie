@@ -71,6 +71,8 @@ public class UV
         return professeur;
     }
 
+
+    /*Recupere un marqueur de la collection correspondante a la filiere passer en parametre*/
     public void addMarqueur (Filiere f){
 
         if (marqueur[2] != null){
@@ -87,6 +89,7 @@ public class UV
         }
     }
 
+    /*Enlève un marqueur et le replace dans la collection ou il appartient*/
     public void removeMarqueur(){
 
         if(marqueur[2] != null){
@@ -106,6 +109,9 @@ public class UV
 
     }
 
+    /*Est appelé si le joueur est médecin.
+     *Appel la fonction removeMarqueur de base tant que la case n'est pas vide
+     */
     public void removeMarqueur(int i){
         while(marqueur[0]!=null){
             removeMarqueur();
