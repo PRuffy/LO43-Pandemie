@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 
-/**
- * Created by stay on 21/12/15.
- */
 public class Jeu {
     private ReserveCarteSemestre carteSemestre;
     private Graph graph;
@@ -41,4 +38,13 @@ public class Jeu {
     public void donnerCarte(Joueur secondJoueur, Carte carteTransferer){
 
     }
+
+    public void deplacer(){}
+
+    public void appelerProf(){}
+
+    public void rendreProjet(){}
+
+    public void passer(){}
+
 }
