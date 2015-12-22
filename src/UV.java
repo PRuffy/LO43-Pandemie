@@ -21,7 +21,7 @@ public class UV
         this.filiere[0]=filiere[0];
         this.filiere[1]=filiere[1];
 
-        testEclosion = true;
+        testEclosion = false;
         marqueur=new Marqueur[3];
         voisins=new ArrayList<UV>();
         professeur=null;
@@ -63,6 +63,7 @@ public class UV
     public void setEclosion(boolean eclosion){
         this.testEclosion = eclosion;
     }
+    public boolean getEclosion(){return this.testEclosion;}
     public void setProfesseur(Professeur p){
         this.professeur=p;
     }
@@ -70,36 +71,44 @@ public class UV
         return professeur;
     }
 
-    public void addMarqueur (Marqueur m){
+    public void addMarqueur (Filiere f){
 
         if (marqueur[2] != null){
-            Graph.eclosion(this);
+            setEclosion(true);
+            Graph.eclosion(this, f);
         }else{
             if(marqueur[0] == null){
-                marqueur[0] = m;
+                marqueur[0] = CollectionMarqueur.getMarqueur(f);
             }else if (marqueur[1] == null){
-                marqueur[1] = m;
+                marqueur[1] = CollectionMarqueur.getMarqueur(f);
             }else{
-                marqueur[2] = m;
+                marqueur[2] = CollectionMarqueur.getMarqueur(f);
             }
         }
     }
 
-    public Marqueur removeMarqueur(){
-        Marqueur m = new Marqueur();
+    public void removeMarqueur(){
 
         if(marqueur[2] != null){
-            m = marqueur[2];
+            Marqueur m = new Marqueur(marqueur[2]);
             marqueur[2]=null;
+            CollectionMarqueur.setMarqueur(m);
         }else if(marqueur[1] != null){
-            m = marqueur[1];
+            Marqueur m = new Marqueur(marqueur[1]);
             marqueur[1] = null;
+            CollectionMarqueur.setMarqueur(m);
         }else if (marqueur[0] != null) {
-            m = marqueur[0];
+            Marqueur m = new Marqueur(marqueur[0]);
             marqueur[0] = null;
+            CollectionMarqueur.setMarqueur(m);
         }
 
 
-        return m;
+    }
+
+    public void removeMarqueur(int i){
+        while(marqueur[0]!=null){
+            removeMarqueur();
+        }
     }
 }

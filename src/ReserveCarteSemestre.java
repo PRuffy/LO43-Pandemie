@@ -21,10 +21,5 @@ public class ReserveCarteSemestre implements ReserveCarte
     public void defausserCarte(CarteSemestre carte){
         defausse.add(carte);
     }
-    public void melangerCarte(ArrayList<CarteSemestre> list){
-        /*
-         * A FINIR
-         * Cette méthode doit prendre la liste en paramètre et changer de manière pseudo-aléatoire l'ordre de ses éléments
-         */
-    }
+
 }

@@ -21,4 +21,6 @@ public class CarteSemestre implements Carte
         this.cible=clone.cible;
         this.filiere=clone.filiere;
     }
+
+
 }

@@ -28,9 +28,12 @@ public class Jeu {
         reserveMarqueur = new CollectionMarqueur();
     }
 
-    public void travailler(Personnage p){
+    public void travailler(Personnage p, Role rolePersonnage){
         int positionPersonnage = p.getPosition();
-        graph.travail(positionPersonnage);
+        graph.travail(positionPersonnage, rolePersonnage);
     }
 
+    public void donnerCarte(Joueur secondJoueur, Carte carteTransferer){
+
+    }
 }

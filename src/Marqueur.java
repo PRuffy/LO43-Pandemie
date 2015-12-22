@@ -5,6 +5,7 @@ public class Marqueur
 {
     private Filiere filiere;
 
+    public Marqueur(){}
     public Marqueur(Filiere filiere){
         this.filiere=filiere;
     }

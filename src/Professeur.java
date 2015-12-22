@@ -18,7 +18,7 @@ public class Professeur {
     public Professeur(Filiere f, int position){
         filiere=f;
         this.position=position;
-        deplacementEffectue=false
+        deplacementEffectue=false;
     }
 
     public Filiere getFiliere(){
