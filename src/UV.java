@@ -5,7 +5,7 @@ public class UV
 
     private int position;
     private String nom;
-    private Filiere filiere[];
+    private Filiere filiere;
     private Marqueur marqueur[];
     private ArrayList<UV> voisins;
     private Professeur professeur;
@@ -17,12 +17,10 @@ public class UV
 
     }
 
-    public UV(int position, String nom, Filiere filiere[]){
+    public UV(int position, String nom, Filiere filiere){
         this.position=position;
         this.nom=nom;
-        this.filiere[0]=filiere[0];
-        this.filiere[1]=filiere[1];
-
+        this.filiere=filiere;
         testEclosion = false;
         marqueur=new Marqueur[3];
         voisins=new ArrayList<UV>();
@@ -31,7 +29,6 @@ public class UV
     }
 
     /*Accesseurs aux différents variable de UV*/
-
     public int getPosition(){
         return position;
     }
@@ -62,12 +59,8 @@ public class UV
         }
     }
 
-    public Filiere getFiliere(int i){
-        if (filiere[i] == null){
-            return null;
-        }else{
-            return filiere[i];
-        }
+    public Filiere getFiliere(){
+            return filiere;
     }
 
     public String getNom(){

@@ -4,7 +4,10 @@ public class Graph {
     private ArrayList<UV> listUV;
     private boolean eclosionLancer;
 
-    public Graph(){}
+    public Graph(){
+        listUV = new ArrayList<UV>();
+        eclosionLancer = false;
+    }
 
 
 
@@ -16,6 +19,16 @@ public class Graph {
             }
         }
         return uvPos;
+    }
+
+    public Filiere getUVFiliere(int position){
+        Filiere f = null;
+        for(UV uv : listUV){
+            if (uv.getPosition()==position){
+                f = uv.getFiliere();
+            }
+        }
+        return f;
     }
     /*Fonction appelé par la classe Jeu quand le joueur veux travailler.
      *Appel alors la fonction removeMarqueur de la classe UV.

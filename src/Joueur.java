@@ -27,6 +27,9 @@ public class Joueur {
         this.carteEnMain= new CarteSemestre[6];
     }
 
+    public int getNombreAction(){
+        return nombreAction;
+    }
     public void setNombreAction(int i){
         nombreAction = i;
     }
