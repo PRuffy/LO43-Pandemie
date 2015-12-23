@@ -6,21 +6,30 @@ public class Graph {
 
     public Graph(){}
 
+
+
+    public UV getUV(int position){
+        UV uvPos = new UV();
+        for (UV uv: listUV){
+            if (uv.getPosition()==position){
+                uvPos = uv;
+            }
+        }
+        return uvPos;
+    }
     /*Fonction appelé par la classe Jeu quand le joueur veux travailler.
      *Appel alors la fonction removeMarqueur de la classe UV.
      * Si un argument est envoyé alors il s'agit d'une méthode qui enlève tout les marqueurs d'une UV.
      * Sinon enlève seulement un marqueur
      */
-    public void travail(int position, Role rolePersonnage){
-        for(UV uv : listUV){
-            if (position == uv.getPosition()){
-                if(rolePersonnage == Role.surdoue) {
-                    uv.removeMarqueur(1);
-                }else{
-                    uv.removeMarqueur();
-                }
+    public Marqueur travail(int position){
+        Marqueur m = new Marqueur();
+        for(UV uv:listUV){
+            if(uv.getPosition()==position){
+                m = uv.removeMarqueur();
             }
         }
+        return m;
     }
 
     /*Reçois l'uv de départ et appel la fonction addMarqueur pour ses voisins

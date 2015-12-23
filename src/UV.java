@@ -12,6 +12,11 @@ public class UV
     private ArrayList<Personnage> personnages;
     private boolean testEclosion; // Permet de ne pas repasser plusieurs par la même UV en cas d'éclosion
 
+
+    public UV(){
+
+    }
+
     public UV(int position, String nom, Filiere filiere[]){
         this.position=position;
         this.nom=nom;
@@ -43,6 +48,18 @@ public class UV
 
     public void removePersonnage(Personnage personnageToRemove){
         personnages.remove(personnageToRemove);
+    }
+
+    public int getNombreMarqueur(){
+        if (marqueur[2]!=null){
+            return 3;
+        }else if(marqueur[1]!= null){
+            return 2;
+        }else if(marqueur[0]!=null){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 
     public Filiere getFiliere(int i){
@@ -105,14 +122,5 @@ public class UV
         return m;
 
 
-    }
-
-    /*Est appelé si le joueur est médecin.
-     *Appel la fonction removeMarqueur de base tant que la case n'est pas vide
-     */
-    public void removeMarqueur(int i){
-        while(marqueur[0]!=null){
-            removeMarqueur();
-        }
     }
 }

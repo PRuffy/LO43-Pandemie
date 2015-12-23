@@ -8,6 +8,7 @@ public class CarteInfection implements Carte
     private UV cible;
     private Filiere filiere;
 
+    public CarteInfection(){}
     public CarteInfection(UV cible, Filiere filiere){
         this.cible=cible;
         this.filiere=filiere;

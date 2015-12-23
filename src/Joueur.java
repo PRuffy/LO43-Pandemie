@@ -2,8 +2,8 @@
  * Created by stay on 22/12/15.
  */
 public class Joueur {
+    private int nombreAction;
     private Role role;
-    private Jeu jeu;
     private Personnage position;
     private CarteSemestre carteEnMain[];
 
@@ -14,7 +14,7 @@ public class Joueur {
     }
 
     public Joueur(Jeu jeu, Role role, Personnage position){
-        this.jeu=jeu;
+
         this.role=role;
         this.position=position;
         this.carteEnMain= new CarteSemestre[6];
@@ -22,13 +22,32 @@ public class Joueur {
 
     //constructeur par recopie
     public Joueur(Joueur clone){
-        this.jeu=clone.jeu;
         this.role=clone.role;
         this.position=clone.position;
         this.carteEnMain= new CarteSemestre[6];
     }
 
+    public void setNombreAction(int i){
+        nombreAction = i;
+    }
+    /*Accesseur*/
+    public void setPosition(int i){
+        position.setPosition(i);
+    }
 
+    public int getPosition(){
+        return position.getPosition();
+    }
+    public boolean getMainComplete(){
+        if (carteEnMain[5]!=null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public Role getRole(){
+        return this.role;
+    }
     /*
      ajoutCarte sert à rajouter une carte tp dans la main du joueur. deux exceptions peuvent etre renvoyées :
         - NotEnoughSlotsException si le joueur n'a pas assez de place dans sa main
@@ -76,18 +95,18 @@ public class Joueur {
 
 
             int index = 0;
-            CarteSemestre temp = null;
+            CarteSemestre tempCarte = null;
 
             // on parcours le tableau à la recherche de la carte
-            while (index < 6 && temp==null) {
+            while (index < 6 && tempCarte==null) {
                 if (carteEnMain[index].equals(carte)) {
-                    temp = new CarteSemestre(carte);
+                    tempCarte = new CarteSemestre(carte);
                 }
                 ++index;
             }
             // Si la carte n'a pas été trouvé dans la main (ou si la main est vide)
-            if (temp!=null) {
-                return temp;
+            if (tempCarte!=null) {
+                return tempCarte;
             }else{
                 throw new NoSuchCardException("Cette carte ne se trouve pas dans la main de ce joueur");
             }

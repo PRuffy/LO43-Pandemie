@@ -9,6 +9,7 @@ public class CarteSemestre implements Carte
     private UV cible;
     private Filiere filiere;
 
+    public CarteSemestre(){}
     public CarteSemestre(TypeCarteSemestre type, UV cible, Filiere filiere){
         this.type=type;
         if(type==TypeCarteSemestre.TP) {

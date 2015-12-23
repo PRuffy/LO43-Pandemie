@@ -13,7 +13,7 @@ public class ReserveCarteSemestre implements ReserveCarte
         defausse=new ArrayList<CarteSemestre>();
     }
 
-    public Carte piocherCarte(){
+    public CarteSemestre piocherCarte(){
         CarteSemestre temp = new CarteSemestre(pioche.get(0));
         pioche.remove(0);
         return temp;

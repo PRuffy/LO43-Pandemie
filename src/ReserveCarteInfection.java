@@ -16,7 +16,7 @@ public class ReserveCarteInfection implements ReserveCarte
 
     }
 
-    public Carte piocherCarte(){
+    public CarteInfection piocherCarte(){
         CarteInfection temp = new CarteInfection(pioche.get(0));
         pioche.remove(0);
         return temp;

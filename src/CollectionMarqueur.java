@@ -27,7 +27,7 @@ public class CollectionMarqueur {
     }
 
     /*Cette fonction remet des marqueur qui sont sur des UV dans leur collection respective*/
-    public void setMarqueur(Marqueur m) throws WrongTypeException{
+    public void setMarqueur(Marqueur m){
         switch (m.getFiliere()){
             case I2RV:
                 marqueursI2RV.add(m);
@@ -42,8 +42,6 @@ public class CollectionMarqueur {
                 marqueursRT.add(m);
                 break;
             default:
-                throw new WrongTypeException("Type Marqueur Inconnu");
-
         }
     }
     /*Cette fonction enlève 1 marqueur de la collection pour aller le déposé sur l'UV appelante
