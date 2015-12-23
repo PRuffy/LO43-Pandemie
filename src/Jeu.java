@@ -80,12 +80,19 @@ public class Jeu {
                 }else{
                     joueurActif.ajoutCarte(tempCarte);
                 }
+            }else if(tempCarte.getType() == TypeCarteSemestre.CC){
+                carteSemestre.defausserCarte(tempCarte);
+                eclosion();
             }else{
                 cartesBénéfiques.add(tempCarte);
             }
         }
     }
 
+    public void eclosion(){
+
+    }
+    
     public void piocheInfection(){
         int tempCompteur = 0;
         CarteInfection tempCarte = new CarteInfection();
