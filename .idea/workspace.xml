@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ad3bc665-ae06-4daf-adab-596fdddaa505" name="Default" comment="">
+    <list default="true" id="ad3bc665-ae06-4daf-adab-596fdddaa505" name="Default" comment="Rajoute de méthode dans les réserveCartes pour checker dans les conditions de défaite si les joueurs ont perdu.&#10;&#10;Dans jeu ajouts des méthodes qui se déclanche lors des fins de partie (a complété)&#10;&#10;&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CarteSemestre.java" afterPath="$PROJECT_DIR$/src/CarteSemestre.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CollectionMarqueur.java" afterPath="$PROJECT_DIR$/src/CollectionMarqueur.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Graph.java" afterPath="$PROJECT_DIR$/src/Graph.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Jeu.java" afterPath="$PROJECT_DIR$/src/Jeu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Marqueur.java" afterPath="$PROJECT_DIR$/src/Marqueur.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Professeur.java" afterPath="$PROJECT_DIR$/src/Professeur.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ReserveCarte.java" afterPath="$PROJECT_DIR$/src/ReserveCarte.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ReserveCarteInfection.java" afterPath="$PROJECT_DIR$/src/ReserveCarteInfection.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ReserveCarteSemestre.java" afterPath="$PROJECT_DIR$/src/ReserveCarteSemestre.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UV.java" afterPath="$PROJECT_DIR$/src/UV.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.java" afterPath="$PROJECT_DIR$/src/main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/sample.fxml" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" />
     </list>
     <ignored path="LO43_Pandemie.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,11 +29,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Graph.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Jeu.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Jeu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.11777302">
+              <caret line="137" column="4" selection-start-line="137" selection-start-column="4" selection-end-line="137" selection-end-column="4" />
+              <folding>
+                <element signature="e#5080#5081#0" expanded="true" />
+                <element signature="e#5135#5136#0" expanded="true" />
+                <element signature="e#6742#6751#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Graph.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Graph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6745182">
-              <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="74" column="101" selection-start-line="74" selection-start-column="101" selection-end-line="74" selection-end-column="101" />
               <folding />
             </state>
           </provider>
@@ -49,24 +57,27 @@
         <entry file="file://$PROJECT_DIR$/src/UV.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Professeur.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Professeur.java">
+      <file leaf-file-name="ReserveCarteSemestre.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ReserveCarteSemestre.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-              <folding />
+              <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+              <folding>
+                <element signature="e#675#676#0" expanded="true" />
+                <element signature="e#711#712#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TypeCarteSemestre.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TypeCarteSemestre.java">
+      <file leaf-file-name="Role.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Role.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
@@ -75,11 +86,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Jeu.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Jeu.java">
+      <file leaf-file-name="ReserveCarte.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ReserveCarte.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReserveCarteInfection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ReserveCarteInfection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CarteSemestre.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CarteSemestre.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CarteInfection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CarteInfection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -90,49 +133,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Filiere.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Filiere.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Personnage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Personnage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-              <folding>
-                <element signature="e#124#125#0" expanded="true" />
-                <element signature="e#155#156#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Marqueur.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Marqueur.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -169,7 +169,6 @@
         <option value="$PROJECT_DIR$/src/CarteEvenement.java" />
         <option value="$PROJECT_DIR$/src/CarteTP.java" />
         <option value="$PROJECT_DIR$/src/TypeCarteSemestre.java" />
-        <option value="$PROJECT_DIR$/src/ReserveCarte.java" />
         <option value="$PROJECT_DIR$/src/Professeur.java" />
         <option value="$PROJECT_DIR$/src/game.java" />
         <option value="$PROJECT_DIR$/src/main.java" />
@@ -177,15 +176,16 @@
         <option value="$PROJECT_DIR$/src/Carte.java" />
         <option value="$PROJECT_DIR$/src/CarteSemestre.java" />
         <option value="$PROJECT_DIR$/src/jeu.java" />
-        <option value="$PROJECT_DIR$/src/Jeu.java" />
         <option value="$PROJECT_DIR$/src/NoSuchMarqueurException.java" />
         <option value="$PROJECT_DIR$/src/Joueur.java" />
         <option value="$PROJECT_DIR$/src/Marqueur.java" />
         <option value="$PROJECT_DIR$/src/CollectionMarqueur.java" />
-        <option value="$PROJECT_DIR$/src/ReserveCarteSemestre.java" />
-        <option value="$PROJECT_DIR$/src/ReserveCarteInfection.java" />
-        <option value="$PROJECT_DIR$/src/Graph.java" />
         <option value="$PROJECT_DIR$/src/UV.java" />
+        <option value="$PROJECT_DIR$/src/ReserveCarte.java" />
+        <option value="$PROJECT_DIR$/src/ReserveCarteSemestre.java" />
+        <option value="$PROJECT_DIR$/src/Graph.java" />
+        <option value="$PROJECT_DIR$/src/ReserveCarteInfection.java" />
+        <option value="$PROJECT_DIR$/src/Jeu.java" />
       </list>
     </option>
   </component>
@@ -220,8 +220,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -256,6 +254,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -561,7 +561,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1600" y="0" width="1920" height="1080" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -634,13 +634,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/CarteSemestre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/WrongTypeException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -870,30 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CarteInfection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CarteSemestre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Role.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/WrongTypeException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -905,40 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReserveCarteSemestre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReserveCarteInfection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReserveCarte.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CollectionMarqueur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TypeCarteSemestre.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -947,10 +882,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Professeur.java">
+    <entry file="file://$PROJECT_DIR$/src/NoSuchCardException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -974,10 +909,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.java">
+    <entry file="file://$PROJECT_DIR$/src/Filiere.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CollectionMarqueur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NotEnoughSlotsException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Professeur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Role.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -990,35 +965,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Jeu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UV.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Filiere.java">
+    <entry file="file://$PROJECT_DIR$/src/ReserveCarte.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CarteSemestre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CarteInfection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ReserveCarteSemestre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <folding>
+            <element signature="e#675#676#0" expanded="true" />
+            <element signature="e#711#712#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ReserveCarteInfection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6745182">
-          <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="74" column="101" selection-start-line="74" selection-start-column="101" selection-end-line="74" selection-end-column="101" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Jeu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.11777302">
+          <caret line="137" column="4" selection-start-line="137" selection-start-column="4" selection-end-line="137" selection-end-column="4" />
+          <folding>
+            <element signature="e#5080#5081#0" expanded="true" />
+            <element signature="e#5135#5136#0" expanded="true" />
+            <element signature="e#6742#6751#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -15,6 +15,7 @@ public class Jeu {
     private boolean projetRT;
     private int chargeTravail;
     private int compteurEclosion;
+    private int nombreProjetRendu;
 
     private static final int MAX_ECLOSION = 8;
     private static final int [] CHARGE_TRAVAIL = new int[]{2,2,3,3,4};
@@ -29,6 +30,7 @@ public class Jeu {
     public Jeu(int nombreDeJoueurs){
         chargeTravail = CHARGE_TRAVAIL[0];
         compteurEclosion = 0;
+        nombreProjetRendu = 0;
 
         projetI2RV = false;
         projetILC = false;
@@ -63,6 +65,8 @@ public class Jeu {
         if(compteurEclosion != MAX_ECLOSION) {
             compteurEclosion++;
             chargeTravail = CHARGE_TRAVAIL[compteurEclosion];
+        }else{
+            defaitePartie();
         }
     }
 
@@ -74,12 +78,16 @@ public class Jeu {
         int positionPersonnage = joueurActif.getPosition();
         UV uvTravail = graph.getUV(positionPersonnage);
         Marqueur m = new Marqueur();
+
+        //Test du role du joueur si surdoué alors tout les marqueurs sont enlevé
         if (joueurActif.getRole()==Role.surdoue){
             while(uvTravail.getNombreMarqueur()!=0){
                 m = graph.travail(positionPersonnage);
                 reserveMarqueur.setMarqueur(m);
             }
         }else{
+            //Sinon on enlève un marqueur.
+            //Partie a potentiellement modifié pour géré le cas ou le projet a été rendu
             m = graph.travail(positionPersonnage);
             reserveMarqueur.setMarqueur(m);
         }
@@ -95,28 +103,33 @@ public class Jeu {
      */
     public void piocheSemestre(){
         CarteSemestre tempCarte = new CarteSemestre();
+        //On pioche deux cartes par tour
         for(int i = 0; i<2;i++){
-            tempCarte = carteSemestre.piocherCarte();
-            if(tempCarte.getType()==TypeCarteSemestre.TP){
-                if(joueurActif.getMainComplete()){
-                    carteSemestre.defausserCarte(tempCarte);
-                }else{
-                    try{
+            //Si la pioche tombe a 0 carte on déclanche la défaite sinon on pioche une carte
+            if (carteSemestre.getSizePioche() != 0) {
+                tempCarte = carteSemestre.piocherCarte();
+                //Si on a une carte TP alors on test si la main du joueur actif est complète
+                //Si ce n'est pas le cas on met la carte dans la main du joueur
+                //sinon on la défausse
+                if (tempCarte.getType() == TypeCarteSemestre.TP) {
+                    if (joueurActif.getMainComplete()) {
+                        carteSemestre.defausserCarte(tempCarte);
+                    } else {
                         joueurActif.ajoutCarte(tempCarte);
                     }
-                    /*
-                    On catch les exceptions correspondant au manque de place dans la main du joueur et
-                    aux erreurs de type de cartes possibles venant de la pioche
-                    */
-                    catch(NotEnoughSlotsException e){System.out.println("Le joueur n'a pas assez de place dans sa main");}
-                    catch(WrongTypeException e){System.out.println("Les joueurs ne peuvent avoir que des cartes TP en main");}
 
+
+                //Si la carte est une carte CC alors on déclanche une éclosion
+                    // Sinon on rajoute la carte dans la liste des carte bénéfique
+                } else if (tempCarte.getType() == TypeCarteSemestre.CC) {
+                    carteSemestre.defausserCarte(tempCarte);
+                    eclosion();
+
+                } else {
+                    cartesBénéfiques.add(tempCarte);
                 }
-            }else if(tempCarte.getType() == TypeCarteSemestre.CC){
-                carteSemestre.defausserCarte(tempCarte);
-                eclosion();
             }else{
-                cartesBénéfiques.add(tempCarte);
+                defaitePartie();
             }
         }
     }
@@ -124,7 +137,7 @@ public class Jeu {
     /*Méthode gérant les éclosions lors d'une pioche de carte CC
      */
     public void eclosion(){
-
+        carteInfections.melangeDefaussePioche();
     }
 
     /*Méthode piochant les cartes Infectionn en fin de tour*/
@@ -142,8 +155,15 @@ public class Jeu {
         }
 
     }
-    public void donnerCarte(Joueur secondJoueur, Carte carteTransferer){
 
+    /*Prend la carte que le premier joueur veux donner et l'envoi dans la main du second joueur
+     *Si celui-ci n'a pas une main complète. Sinon ne fait rien.
+     */
+    public void donnerCarte(Joueur secondJoueur, CarteSemestre carteTransferer){
+        if(!secondJoueur.getMainComplete()){
+            secondJoueur.ajoutCarte(carteTransferer);
+            joueurActif.retraitCarte(carteTransferer);
+        }
     }
 
     /*
@@ -156,19 +176,60 @@ public class Jeu {
         reduireAction();
     }
 
+    //Fonction vérfiant la liste des déplacement possible pour un joueur donné
+    public ArrayList<Integer> deplacementPossible(Joueur joueurCible){
+        ArrayList<Integer> ciblePossible = new ArrayList<Integer>();
+        //Si le joueur a la carte de sa position actuelle il pourra aller partout.
+
+        //Sinon vérifier sa position, ajouter les voisin, ajouter les carte présente en main et les autre proffesseur si présence de l'un d'eux
+
+        return ciblePossible;
+    }
+
     /*Fonction ammenant le prof de la filière sur l'UV où se trouve l'élève*/
     public void appelerProf(){
         int temPositionJoueur = joueurActif.getPosition();
         Filiere f = graph.getUVFiliere(temPositionJoueur);
+        //Parcours des professeur pour trouver celui ayant la bonne filière
+        for (Professeur p : pionProfesseur){
+            if(p.getFiliere() == f){
+                p.setPosition(temPositionJoueur);
+            }
+        }
         reduireAction();
     }
 
     /*Fonction permettant de rendre un projet. Dépense des cartes.
-     *Ne fonctionne que si un professeur se trouve sur la même case que le joueurActif*/
+     *Ne fonctionne que si un professeur se trouve sur la même case que le joueurActif
+     *Vas tenter de rendre le projet correspondant a la filière ou se trouve le proffesseur*/
     public void rendreProjet(){
+        /*On test si un prof est sur la même case que le joueur actif*/
+        if(presenceProf()){
 
-        reduireAction();
+            nombreProjetRendu++;
+            if(nombreProjetRendu == 4){
+                victoirePartie();
+            }
+            reduireAction();
+        }
+
     }
+
+
+    /*Fonction comparant la coordonée du joueur actif avec celle des différents professeur*/
+    public boolean presenceProf(){
+        boolean test;
+        for(Professeur p : pionProfesseur){
+            if(p.getPosition()==joueurActif.getPosition()){
+                test = true;
+            }
+        }
+        test = false;
+
+        return test;
+    }
+
+
 
     /*Set le nombre d'actions restantes du joueur actif a 0 pour ensuite lancer la fin du tour*/
     public void passer(){
@@ -199,6 +260,41 @@ public class Jeu {
     }
     /*Fonction qui remet toutes les valeurs comme a leur état initial et change le joueur Actif*/
     public void finDeTour() {
+
+        //On fait piocher le joueur actif
+        piocheSemestre();
+
+        //On pioche les cartes infection
+        piocheInfection();
+
+        //appel de la méthode finTour de graph qui s'occupe de reset les valeurs de base des UV (par ex: eclosion)
+        graph.finTour();
+
+        //On remet le nombre d'action a 4 en prévision du prochain tour du joueur.
+        joueurActif.setNombreAction(4);
+
+        //On change le joueur actif.
+        //Si joueur actif est le dernier joueur du tableau alors on reprend le premier
+        //Sinon on prend le suivant
+        if(joueurActif == joueurs[joueurs.length-1]){
+            joueurActif = joueurs[0];
+        }else{
+            int parcoursJoueur = 0;
+            while(joueurActif != joueurs[parcoursJoueur]){
+                parcoursJoueur++;
+            }
+            joueurActif = joueurs[parcoursJoueur+1];
+        }
+    }
+
+    /*Méthode déclanchant la fin du jeu lors d'une défaite*/
+    public void defaitePartie(){
+
+    }
+
+    /*Méthode déclanchant la fin de la partie lors d'une victoire*/
+    public void victoirePartie(){
+
     }
 
 }

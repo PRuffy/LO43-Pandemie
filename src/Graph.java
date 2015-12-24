@@ -70,4 +70,13 @@ public class Graph {
 
         eclosionLancer = false;
     }
+
+
+    //Méthode parcourant le graph et remettant les valeurs d'éclosion a false avant le prochain tour.
+    public void finTour(){
+        eclosionLancer = false;
+        for (UV uv : listUV){
+            uv.setEclosion(false);
+        }
+    }
 }

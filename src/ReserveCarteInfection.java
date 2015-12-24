@@ -26,10 +26,18 @@ public class ReserveCarteInfection implements ReserveCarte
 
     }
 
-    public void melangerCarte()
-    {
-        Collections.shuffle(pioche);
+    //Méthode appelé lors d'une éclosion par CC
+    //Vas mélanger la défausse puis replacer toute les carte ainsi mélanger au dessus de la pioche
+    public void melangeDefaussePioche(){
+        if(!defausse.isEmpty()){
+            CarteInfection tempCarte = new CarteInfection();
+            Collections.shuffle(defausse);
+            while(!defausse.isEmpty()){
+                tempCarte = defausse.get(0);
+                defausse.remove(0);
+                pioche.add(0,tempCarte);
+            }
+        }
     }
-
 
 }
