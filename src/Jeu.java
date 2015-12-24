@@ -93,23 +93,34 @@ public class Jeu {
      *Sinon si carte Bénéfique stocker dans l'arrayliste des carte bénéfique jusqu'à utilisation
      *Sinon déclenche une éclosion = Appel de la méthode éclosion
      */
-    public void piocheSemestre(){
+    public void piocheSemestre() {
         CarteSemestre tempCarte = new CarteSemestre();
-        for(int i = 0; i<2;i++){
-            tempCarte = carteSemestre.piocherCarte();
-            if(tempCarte.getType()==TypeCarteSemestre.TP){
-                if(joueurActif.getMainComplete()){
+
+        try {
+            for (int i = 0; i < 2; i++) {
+                tempCarte = carteSemestre.piocherCarte();
+                if (tempCarte.getType() == TypeCarteSemestre.TP) {
+                    if (joueurActif.getMainComplete()) {
+                        carteSemestre.defausserCarte(tempCarte);
+                    } else {
+                        joueurActif.ajoutCarte(tempCarte);
+                    }
+                } else if (tempCarte.getType() == TypeCarteSemestre.CC) {
                     carteSemestre.defausserCarte(tempCarte);
-                }else{
-                    joueurActif.ajoutCarte(tempCarte);
+                    eclosion();
+                } else {
+                    cartesBénéfiques.add(tempCarte);
                 }
-            }else if(tempCarte.getType() == TypeCarteSemestre.CC){
-                carteSemestre.defausserCarte(tempCarte);
-                eclosion();
-            }else{
-                cartesBénéfiques.add(tempCarte);
             }
         }
+        //Gestion exception reserve Carte semestre vide
+        catch(EmptyReserveCarteSemestreException e){}
+        //Gestion exception : main du joueur complète
+        catch(NotEnoughSlotsException e){}
+        //Gestion exception : incompatibilité de type
+        catch(WrongTypeException e){}
+        //Gestion de toutes autres exceptions
+        catch(Exception e){}
     }
 
     /*Méthode gérant les éclosions lors d'une pioche de carte CC

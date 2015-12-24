@@ -26,5 +26,10 @@ public class ReserveCarteInfection implements ReserveCarte
 
     }
 
+    public void melangerCarte()
+    {
+        Collections.shuffle(pioche);
+    }
+
 
 }
