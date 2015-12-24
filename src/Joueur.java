@@ -25,19 +25,22 @@ public class Joueur {
         this.role=clone.role;
         this.position=clone.position;
         this.carteEnMain= new CarteSemestre[6];
+        for(int index=0; index<6; index++){
+            this.carteEnMain[index]=clone.carteEnMain[index];
+        }
     }
 
+
+    //Accesseurs
     public int getNombreAction(){
         return nombreAction;
     }
     public void setNombreAction(int i){
         nombreAction = i;
     }
-    /*Accesseur*/
     public void setPosition(int i){
         position.setPosition(i);
     }
-
     public int getPosition(){
         return position.getPosition();
     }
@@ -51,12 +54,12 @@ public class Joueur {
     public Role getRole(){
         return this.role;
     }
+
     /*
      ajoutCarte sert à rajouter une carte tp dans la main du joueur. deux exceptions peuvent etre renvoyées :
         - NotEnoughSlotsException si le joueur n'a pas assez de place dans sa main
         - WrongTypeException si la carte n'est pas une carte TP
      */
-
     public void ajoutCarte(CarteSemestre carte) throws NotEnoughSlotsException, WrongTypeException{
         try {
             //On vérifie le type de la carte passée en paramètre
@@ -90,7 +93,6 @@ public class Joueur {
         - NotSuchCardException si le joueur n'a pas cette carte en main
         - WrongTypeException si la carte n'est pas une carte TP
      */
-
     public CarteSemestre retraitCarte(CarteSemestre carte) throws NoSuchCardException, WrongTypeException{
         try{
             if (carte.getType() != TypeCarteSemestre.TP)
