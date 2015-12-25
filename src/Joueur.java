@@ -55,6 +55,26 @@ public class Joueur {
         return this.role;
     }
 
+
+    public boolean verifierCarte(Filiere f){
+        int nombreCarteFiliere = 0;
+        for (CarteSemestre c : carteEnMain){
+            if(c.getFiliere()==f){
+                nombreCarteFiliere++;
+            }
+        }
+
+        if(nombreCarteFiliere > 3 ){
+            return true;
+        }else{
+            if(role == Role.surdoue){
+                if(nombreCarteFiliere > 2){
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
     /*
      ajoutCarte sert à rajouter une carte tp dans la main du joueur. deux exceptions peuvent etre renvoyées :
         - NotEnoughSlotsException si le joueur n'a pas assez de place dans sa main
@@ -106,6 +126,11 @@ public class Joueur {
             while (index < 6 && tempCarte==null) {
                 if (carteEnMain[index].equals(carte)) {
                     tempCarte = new CarteSemestre(carte);
+
+                    for(int i = index; i < 5; i++){
+                        carteEnMain[i]=carteEnMain[i+1];
+                    }
+                    carteEnMain[5]=null;
                 }
                 ++index;
             }
@@ -118,5 +143,26 @@ public class Joueur {
         }
         catch(NoSuchCardException e){return null;}
         catch(Exception e){return null;}
+    }
+
+    //Effectue une opération similaire a la fonction précédente. Cependant enlève une carte queconque de la main du joueur
+    //Ayant la filière voulu
+    public CarteSemestre retraitCarte(Filiere f){
+        int index = 0;
+        CarteSemestre tempCarte = null;
+
+        while(index < 6 && tempCarte == null){
+            if(carteEnMain[index].getFiliere()==f){
+                tempCarte = carteEnMain[index];
+                //On avance les cartes dans le tableau pour ne garder que les derniere case null
+                for(int i = index; i < 5; i++){
+                    carteEnMain[i]=carteEnMain[i+1];
+                }
+                carteEnMain[5]=null;
+            }
+            index++;
+        }
+
+        return tempCarte;
     }
 }

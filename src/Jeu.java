@@ -235,12 +235,33 @@ public class Jeu {
     public void rendreProjet(){
         /*On test si un prof est sur la même case que le joueur actif*/
         if(presenceProf()){
-
-            nombreProjetRendu++;
-            if(nombreProjetRendu == 4){
-                victoirePartie();
+            Filiere f = null;
+            for(Professeur p : pionProfesseur){
+                if(p.getPosition() == joueurActif.getPosition()){
+                    f = p.getFiliere();
+                }
             }
-            reduireAction();
+            if(!testRenduProjet(f)){
+                if(joueurActif.verifierCarte(f)){
+
+                    if(joueurActif.getRole()==Role.surdoue){
+                        for(int i =0; i < 3 ; i++){
+                            carteSemestre.defausserCarte(joueurActif.retraitCarte(f));
+                        }
+                    }else{
+                        for(int i =0; i < 4 ; i++){
+                            carteSemestre.defausserCarte(joueurActif.retraitCarte(f));
+                        }
+                    }
+
+                    nombreProjetRendu++;
+                    if(nombreProjetRendu == 4){
+                        victoirePartie();
+                    }
+                    reduireAction();
+                }
+
+            }
         }
 
     }
@@ -345,6 +366,7 @@ public class Jeu {
                 UV uvDest = graph.getUV(uvCible);
                 uv.setProfesseur(null);
                 uvDest.setProfesseur(p);
+                p.setPosition(uvCible);
 
 
             }

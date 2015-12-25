@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad3bc665-ae06-4daf-adab-596fdddaa505" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LO43_Pandemie/WrongTypeException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LO43_Pandemie/sample/Controller.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LO43_Pandemie/sample/Main.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Jeu.java" afterPath="$PROJECT_DIR$/src/Jeu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UV.java" afterPath="$PROJECT_DIR$/src/UV.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Joueur.java" afterPath="$PROJECT_DIR$/src/Joueur.java" />
     </list>
     <ignored path="LO43_Pandemie.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,12 +29,11 @@
       <file leaf-file-name="Jeu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Jeu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.8351178">
-              <caret line="99" column="8" selection-start-line="99" selection-start-column="8" selection-end-line="99" selection-end-column="8" />
+            <state vertical-scroll-proportion="4.6392317">
+              <caret line="263" column="13" selection-start-line="263" selection-start-column="13" selection-end-line="263" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7443#7453#0" expanded="true" />
-                <element signature="e#7997#8006#0" expanded="true" />
+                <element signature="e#7989#7998#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,40 +44,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="109" column="29" selection-start-line="109" selection-start-column="29" selection-end-line="109" selection-end-column="29" />
-              <folding>
-                <element signature="e#1957#1958#0" expanded="true" />
-                <element signature="e#1994#1995#0" expanded="true" />
-                <element signature="e#2497#2507#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Professeur.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Professeur.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EmptyReserveCarteSemestreException.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/EmptyReserveCarteSemestreException.java">
+      <file leaf-file-name="Joueur.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Joueur.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="156" column="96" selection-start-line="156" selection-start-column="96" selection-end-line="156" selection-end-column="96" />
               <folding />
             </state>
           </provider>
@@ -181,7 +153,6 @@
         <option value="$PROJECT_DIR$/src/CarteSemestre.java" />
         <option value="$PROJECT_DIR$/src/jeu.java" />
         <option value="$PROJECT_DIR$/src/NoSuchMarqueurException.java" />
-        <option value="$PROJECT_DIR$/src/Joueur.java" />
         <option value="$PROJECT_DIR$/src/Marqueur.java" />
         <option value="$PROJECT_DIR$/src/CollectionMarqueur.java" />
         <option value="$PROJECT_DIR$/src/ReserveCarte.java" />
@@ -189,14 +160,15 @@
         <option value="$PROJECT_DIR$/src/Graph.java" />
         <option value="$PROJECT_DIR$/src/ReserveCarteInfection.java" />
         <option value="$PROJECT_DIR$/src/UV.java" />
+        <option value="$PROJECT_DIR$/src/Joueur.java" />
         <option value="$PROJECT_DIR$/src/Jeu.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1600" />
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="y" value="25" />
+    <option name="width" value="1600" />
+    <option name="height" value="875" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -223,7 +195,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -258,8 +231,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -567,11 +539,17 @@
       <option name="project" value="LOCAL" />
       <updated>1450962295862</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="25 Décembre :&#10;&#10;J'ai rajouté quelques méthode dans jeu pour gérer le cas ou le surdouée arrive sur une uv et que des marqueur d'un projet rendu sont présent.&#10;Je la complète dans l'après midi.&#10;J'ai du rajouter des méthode dans UV pour gérer les cas&#10;&#10;&#10;Dans la méthode fin de tour j'ai aussi rajouté la partie déplacement de prof&#10;&#10;&#10;Je pense que pour le Jeu j'ai bientôt fait le tour de tout ce qui doit être fait. Du coup vous pourriez commecer a regarder un peu ce que j'ai écrit pour vérifier que c'est cohérent ?">
+      <created>1451044258097</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1451044258097</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1600" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="0" y="25" width="1600" height="875" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -582,7 +560,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288948" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.115625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -636,7 +614,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="false" />
     <MESSAGE value="Ajout:&#10;-ReserveCarteInfection:&#10;  -Méthode pour remettre la défausse au dessus de la pioche&#10;  &#10;-Jeu:&#10;  - Mise en place d'une méthode de fin de tour&#10;  - Mise en place des méthode pour les fin de partie&#10;  - Complétions méthode appelerProf&#10;  - Rajout d'une methode pour verifier les déplacement possible (Je compléterais dans la journée)&#10;  - Modification des piocheSemestre et piocheInfection pour gérer les cas de fin de partie.&#10;  &#10;  &#10;Surement d'autre petit truc que j'ai oublié.&#10;&#10;Du coup pour revenir sur les événement du dernier commit, j'ai légèrement pété un cable car quand j'ai tenté de pull j'ai fini par devoir supprimé mon dépot local et le recloner afin de récupéré les mise a jour.&#10;&#10;Quand j'ai fait ça j'ai vu que Jeu ne ressemblait plus du tout a ce que j'avais fait et j'ai eu l'impression de perdre mes trois dernière journée de taf dessus. Surtout que y'avait des check d'exceptions déjà vérifier dans d'autre classe ainsi que des exceptions pas voulu. &#10;&#10;Petit rappel, une exception est la pour gérer un cas innatendu tel que une carte no TP envoyé au joueur comme défini par celle dans la classe Joueur que Cess a écrit. C'est censé ne pas arriver car dans la méthode de piocheSemestre j'ai fait attention a n'envoyer que les carteTP mais autant vérifier quand même. &#10;Or de mémoire y'avais un exception pour le cas de la pioche vide. La elle n'est pas utile car le cas de la pioche vide n'est pas un événement innatendu c'est un cas prévu dans les règle qui mène a la défaite des joueurs. Donc l'exception n'est pas nécessaire.&#10;&#10;Essayez de faire attention a ce genre de détail par la suite.&#10;&#10;Du coup pour le moment j'aimerais bien finir la classe jeu sans que vous y touchiez (ça déconne sévère a chaque fois sinon)&#10;&#10;Et thibault j'ai pas encore pu voir ce que tu avais fait pour l'interface graphique. Tu pourra modifier la classe Main pour lancer les fenêtre qu'on voit le résultat ? ;)&#10;&#10;&#10;En passant j'ai fait une liste d'uv dans un fichier texte et je travail un peu sur la matrice d'adjacence afin de faire trouver un graphe sympa et pas trop compliquer. &#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout:&#10;-ReserveCarteInfection:&#10;  -Méthode pour remettre la défausse au dessus de la pioche&#10;  &#10;-Jeu:&#10;  - Mise en place d'une méthode de fin de tour&#10;  - Mise en place des méthode pour les fin de partie&#10;  - Complétions méthode appelerProf&#10;  - Rajout d'une methode pour verifier les déplacement possible (Je compléterais dans la journée)&#10;  - Modification des piocheSemestre et piocheInfection pour gérer les cas de fin de partie.&#10;  &#10;  &#10;Surement d'autre petit truc que j'ai oublié.&#10;&#10;Du coup pour revenir sur les événement du dernier commit, j'ai légèrement pété un cable car quand j'ai tenté de pull j'ai fini par devoir supprimé mon dépot local et le recloner afin de récupéré les mise a jour.&#10;&#10;Quand j'ai fait ça j'ai vu que Jeu ne ressemblait plus du tout a ce que j'avais fait et j'ai eu l'impression de perdre mes trois dernière journée de taf dessus. Surtout que y'avait des check d'exceptions déjà vérifier dans d'autre classe ainsi que des exceptions pas voulu. &#10;&#10;Petit rappel, une exception est la pour gérer un cas innatendu tel que une carte no TP envoyé au joueur comme défini par celle dans la classe Joueur que Cess a écrit. C'est censé ne pas arriver car dans la méthode de piocheSemestre j'ai fait attention a n'envoyer que les carteTP mais autant vérifier quand même. &#10;Or de mémoire y'avais un exception pour le cas de la pioche vide. La elle n'est pas utile car le cas de la pioche vide n'est pas un événement innatendu c'est un cas prévu dans les règle qui mène a la défaite des joueurs. Donc l'exception n'est pas nécessaire.&#10;&#10;Essayez de faire attention a ce genre de détail par la suite.&#10;&#10;Du coup pour le moment j'aimerais bien finir la classe jeu sans que vous y touchiez (ça déconne sévère a chaque fois sinon)&#10;&#10;Et thibault j'ai pas encore pu voir ce que tu avais fait pour l'interface graphique. Tu pourra modifier la classe Main pour lancer les fenêtre qu'on voit le résultat ? ;)&#10;&#10;&#10;En passant j'ai fait une liste d'uv dans un fichier texte et je travail un peu sur la matrice d'adjacence afin de faire trouver un graphe sympa et pas trop compliquer. &#10;&#10;" />
+    <MESSAGE value="25 Décembre :&#10;&#10;J'ai rajouté quelques méthode dans jeu pour gérer le cas ou le surdouée arrive sur une uv et que des marqueur d'un projet rendu sont présent.&#10;Je la complète dans l'après midi.&#10;J'ai du rajouter des méthode dans UV pour gérer les cas&#10;&#10;&#10;Dans la méthode fin de tour j'ai aussi rajouté la partie déplacement de prof&#10;&#10;&#10;Je pense que pour le Jeu j'ai bientôt fait le tour de tout ce qui doit être fait. Du coup vous pourriez commecer a regarder un peu ce que j'ai écrit pour vérifier que c'est cohérent ?" />
+    <option name="LAST_COMMIT_MESSAGE" value="25 Décembre :&#10;&#10;J'ai rajouté quelques méthode dans jeu pour gérer le cas ou le surdouée arrive sur une uv et que des marqueur d'un projet rendu sont présent.&#10;Je la complète dans l'après midi.&#10;J'ai du rajouter des méthode dans UV pour gérer les cas&#10;&#10;&#10;Dans la méthode fin de tour j'ai aussi rajouté la partie déplacement de prof&#10;&#10;&#10;Je pense que pour le Jeu j'ai bientôt fait le tour de tout ce qui doit être fait. Du coup vous pourriez commecer a regarder un peu ce que j'ai écrit pour vérifier que c'est cohérent ?" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -926,34 +905,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Joueur.java">
+    <entry file="file://$PROJECT_DIR$/vcs.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReserveCarte.java">
+    <entry file="file://$PROJECT_DIR$/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CarteSemestre.java">
+    <entry file="file://$PROJECT_DIR$/Fenetre V1/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state vertical-scroll-proportion="1.9250535">
+          <caret line="145" column="43" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CarteInfection.java">
+    <entry file="file://$PROJECT_DIR$/src/Professeur.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EmptyReserveCarteSemestreException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Graph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="74" column="101" selection-start-line="74" selection-start-column="101" selection-end-line="74" selection-end-column="101" />
           <folding />
         </state>
       </provider>
@@ -979,58 +982,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Graph.java">
+    <entry file="file://$PROJECT_DIR$/src/CarteInfection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="74" column="101" selection-start-line="74" selection-start-column="101" selection-end-line="74" selection-end-column="101" />
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EmptyReserveCarteSemestreException.java">
+    <entry file="file://$PROJECT_DIR$/src/CarteSemestre.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vcs.xml">
+    <entry file="file://$PROJECT_DIR$/src/ReserveCarte.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Fenetre V1/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.9250535">
-          <caret line="145" column="43" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Professeur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1039,22 +1010,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="109" column="29" selection-start-line="109" selection-start-column="29" selection-end-line="109" selection-end-column="29" />
-          <folding>
-            <element signature="e#1957#1958#0" expanded="true" />
-            <element signature="e#1994#1995#0" expanded="true" />
-            <element signature="e#2497#2507#0" expanded="true" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Joueur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="156" column="96" selection-start-line="156" selection-start-column="96" selection-end-line="156" selection-end-column="96" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Jeu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.8351178">
-          <caret line="99" column="8" selection-start-line="99" selection-start-column="8" selection-end-line="99" selection-end-column="8" />
+        <state vertical-scroll-proportion="4.6392317">
+          <caret line="263" column="13" selection-start-line="263" selection-start-column="13" selection-end-line="263" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7443#7453#0" expanded="true" />
-            <element signature="e#7997#8006#0" expanded="true" />
+            <element signature="e#7989#7998#0" expanded="true" />
           </folding>
         </state>
       </provider>
