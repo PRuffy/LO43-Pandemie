@@ -78,7 +78,37 @@ public class UV
         return professeur;
     }
 
+    public int getNombreVoisins(){
+        return voisins.size();
+    }
 
+    public boolean correctDestinationProf(Filiere f, int uvCible){
+        UV uvDest = voisins.get(uvCible);
+        if(uvDest.getFiliere()==f){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+    public boolean hasMarqueur(){
+        if(marqueur[0]!=null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public ArrayList<Marqueur> getMarqueurs(){
+        int i = 0;
+        ArrayList<Marqueur> marqueursList = new ArrayList<Marqueur>();
+        while (marqueur[i]!=null || i < marqueur.length){
+            marqueursList.add(marqueur[i]);
+        }
+
+        return marqueursList;
+    }
     /*Recupere un marqueur de la collection correspondante*/
     public void addMarqueur (Marqueur m){
 

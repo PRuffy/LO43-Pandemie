@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Jeu {
     private Joueur[] joueurs;
@@ -94,6 +95,10 @@ public class Jeu {
 
     }
 
+    //Methode de travail par défaut lorsque le surdoué arrive sur une case et que des marqueur d'un type précis sont sur la case
+    public void travailler(int position, Filiere f){
+
+    }
 
     /*Fonction exécutant la pioche des cartes semestre en fin de tour de joueur.
      *Si la carte est une carte TP elle est envoyé en main du joueur
@@ -173,9 +178,34 @@ public class Jeu {
      */
     public void deplacer(Joueur joueurCible,int positionArriver){
         joueurCible.setPosition(positionArriver);
+        if(joueurCible.getRole()==Role.surdoue){
+            verifierMarqueurDest(joueurCible, positionArriver);
+        }
         reduireAction();
     }
 
+    //Cette fonction vérifie que le contenu de la case ou le joueur arrive
+    //Si la case est vide ne fait rien
+    //Si elle contient des marqueur mais que le projet n'est pas rendu ne fait rien
+    //Si elle contient des marqueur et que le projet est rendu lance un travail
+    //Ne fonctionne que avec le surdoue
+    //Appel une fonction travail secondaire
+    public void verifierMarqueurDest (Joueur joueurCile, int position){
+        UV uv = graph.getUV(position);
+        if(uv.hasMarqueur()){
+            ArrayList<Marqueur> marqueursUV = new ArrayList<Marqueur>();
+            marqueursUV = uv.getMarqueurs();
+
+            Filiere f;
+            for(Marqueur m : marqueursUV){
+                f = m.getFiliere();
+                if(testRenduProjet(f)){
+                    travailler(position, f);
+                    marqueursUV = uv.getMarqueurs();
+                }
+            }
+        }
+    }
     //Fonction vérfiant la liste des déplacement possible pour un joueur donné
     public ArrayList<Integer> deplacementPossible(Joueur joueurCible){
         ArrayList<Integer> ciblePossible = new ArrayList<Integer>();
@@ -258,6 +288,11 @@ public class Jeu {
             finDeTour();
         }
     }
+
+
+
+
+    //Bloc de fin de tour
     /*Fonction qui remet toutes les valeurs comme a leur état initial et change le joueur Actif*/
     public void finDeTour() {
 
@@ -285,8 +320,39 @@ public class Jeu {
             }
             joueurActif = joueurs[parcoursJoueur+1];
         }
+
+        //On déplace tout les prof aléatoirement si ils n'ont pas bouger.
+        //On s'assure aussi de ne pas les faire changer ed filière
+        Random r = new Random();
+
+        for(Professeur p : pionProfesseur){
+            if(p.isDeplace()){
+                p.setDeplace(false);
+            }else{
+                Filiere filiereProf = p.getFiliere();
+                int positionProf = p.getPosition();
+
+                //on récupère l'uv ou se trouve le prof
+                UV uv = graph.getUV(positionProf);
+                //On récupère le nombre de voisin
+                int nombreVoisin = uv.getNombreVoisins();
+                int uvCible;
+
+                do{
+                    // On choisis la case cible aléatoirement dans le tableau des voisins
+                    uvCible = r.nextInt(nombreVoisin);
+                }while(!uv.correctDestinationProf(filiereProf, uvCible));
+                UV uvDest = graph.getUV(uvCible);
+                uv.setProfesseur(null);
+                uvDest.setProfesseur(p);
+
+
+            }
+        }
     }
 
+
+    //Bloc de fin de partie
     /*Méthode déclanchant la fin du jeu lors d'une défaite*/
     public void defaitePartie(){
 
