@@ -124,7 +124,10 @@ public class Jeu {
                     if (joueurActif.getMainComplete()) {
                         carteSemestre.defausserCarte(tempCarte);
                     } else {
-                        joueurActif.ajoutCarte(tempCarte);
+                        try{
+                            joueurActif.ajoutCarte(tempCarte);
+                        }catch(WrongTypeException e){}
+                        catch(NotEnoughSlotsException e){}
                     }
 
 
@@ -173,10 +176,9 @@ public class Jeu {
             try{
                 secondJoueur.ajoutCarte(carteTransferer);
                 joueurActif.retraitCarte(carteTransferer);
-            }
-            catch(WrongTypeException e){}
-            catch(NoSuchCardException e){}
+            }catch(WrongTypeException e){}
             catch(NotEnoughSlotsException e){}
+            catch(NoSuchCardException e){}
         }
     }
 
