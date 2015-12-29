@@ -75,6 +75,15 @@ public class Joueur {
             return false;
         }
     }
+
+    public boolean hasCarte(UV uv){
+        for(CarteSemestre carte : carteEnMain){
+            if(carte.getCible()==uv){
+                return  true;
+            }
+        }
+        return false;
+    }
     /*
      ajoutCarte sert à rajouter une carte tp dans la main du joueur. deux exceptions peuvent etre renvoyées :
         - NotEnoughSlotsException si le joueur n'a pas assez de place dans sa main

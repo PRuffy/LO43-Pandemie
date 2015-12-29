@@ -97,7 +97,11 @@ public class Jeu {
 
     //Methode de travail par défaut lorsque le surdoué arrive sur une case et que des marqueur d'un type précis sont sur la case
     public void travailler(int position, Filiere f){
+        if(testRenduProjet(f)){
+            Marqueur m = null;
 
+
+        }
     }
 
     /*Fonction exécutant la pioche des cartes semestre en fin de tour de joueur.
@@ -209,7 +213,20 @@ public class Jeu {
     //Fonction vérfiant la liste des déplacement possible pour un joueur donné
     public ArrayList<Integer> deplacementPossible(Joueur joueurCible){
         ArrayList<Integer> ciblePossible = new ArrayList<Integer>();
+
         //Si le joueur a la carte de sa position actuelle il pourra aller partout.
+        int posJoueur = joueurCible.getPosition();
+        UV uvJoueur = null;
+        uvJoueur = graph.getUV(posJoueur);
+
+        //Le joueur a la carte de la position ou il se trouve et peux se déplacer n'importe ou
+        if(joueurCible.hasCarte(uvJoueur)){
+            for(int i = 0; i<graph.getListSize();i++){
+                if(i!=posJoueur){
+                    ciblePossible.add(i);
+                }
+            }
+        }
 
         //Sinon vérifier sa position, ajouter les voisin, ajouter les carte présente en main et les autre proffesseur si présence de l'un d'eux
 
@@ -376,11 +393,13 @@ public class Jeu {
 
     //Bloc de fin de partie
     /*Méthode déclanchant la fin du jeu lors d'une défaite*/
+    //Doit bloquer les éléments graphique ainsi qu'annoncer la défaite
     public void defaitePartie(){
 
     }
 
     /*Méthode déclanchant la fin de la partie lors d'une victoire*/
+    //Doit bloquer les éléments graphique ainsi qu'annoncer la victoire
     public void victoirePartie(){
 
     }

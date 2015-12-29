@@ -10,7 +10,9 @@ public class Graph {
     }
 
 
-
+    public int getListSize(){
+        return listUV.size();
+    }
     public UV getUV(int position){
         UV uvPos = new UV();
         for (UV uv: listUV){
