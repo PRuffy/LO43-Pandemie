@@ -46,7 +46,7 @@ public class CollectionMarqueur {
     }
     /*Cette fonction enlève 1 marqueur de la collection pour aller le déposé sur l'UV appelante
      *Si la collection est vide alors on appele une fonction qui met fin à la partie (Défaite) */
-    public Marqueur getMarqueur(Filiere f) {
+    public Marqueur getMarqueur(Filiere f) throws GameOverException{
         Marqueur m = new Marqueur();
 
         if (f == Filiere.I2RV){
@@ -71,7 +71,7 @@ public class CollectionMarqueur {
             if (!marqueursRT.isEmpty()){
                 m = marqueursRT.remove(0);
             }else{
-                System.out.println("Perdu");
+                throw new GameOverException("Game Over");
             }
         }
 

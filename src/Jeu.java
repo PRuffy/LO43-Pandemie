@@ -47,27 +47,28 @@ public class Jeu {
 
 
 
-    /*Augmente le nombre de marqueur sur une UV donnée*/
+    //Augmente le nombre de marqueur sur une UV donnée
     public void augmenterChargeTravail(CarteInfection carte){
-        Filiere carteFilière = carte.getFiliere();
+        Filiere filiere = carte.getFiliere();
         UV cible = carte.getCible();
-        Marqueur m = new Marqueur(reserveMarqueur.getMarqueur(carteFilière));
-        cible.addMarqueur(m);
+        try{
+            cible.addMarqueur(reserveMarqueur.getMarqueur(filiere));
+        }catch(GameOverException e){defaitePartie();}
 
         if (cible.getEclosion()){
-            augmenterEclosion();
-            graph.eclosion(cible, carteFilière, reserveMarqueur);
+            makeEclosion(cible, filiere, new ArrayList<>());
         }
     }
 
 
+
     /*Lors d'une éclosion la charge de travail augmente*/
-    public void augmenterEclosion(){
+    public void augmenterEclosion()throws GameOverException{
         if(compteurEclosion != MAX_ECLOSION) {
             compteurEclosion++;
             chargeTravail = CHARGE_TRAVAIL[compteurEclosion];
         }else{
-            defaitePartie();
+            throw new GameOverException("You loose!");
         }
     }
 
@@ -135,7 +136,7 @@ public class Jeu {
                     // Sinon on rajoute la carte dans la liste des carte bénéfique
                 } else if (tempCarte.getType() == TypeCarteSemestre.CC) {
                     carteSemestre.defausserCarte(tempCarte);
-                    eclosion();
+                    eclosion(tempCarte);
 
                 } else {
                     cartesBénéfiques.add(tempCarte);
@@ -146,13 +147,53 @@ public class Jeu {
         }
     }
 
-    /*Méthode gérant les éclosions lors d'une pioche de carte CC
+    /*
+        Méthode gérant les éclosions lors d'une pioche de carte CC
      */
-    public void eclosion(){
+    public void eclosion(CarteSemestre carteCC){
+        // on créé une liste des UV touchées par l'éclosion, qui sera remplie par les appels multiples de makeEclosion
+        ArrayList<UV> dejaVisite = new ArrayList<>();
+
+        //on fait un appel de makeEclosion, càd on lance les ajouts de marqueurs
+        makeEclosion(carteCC.getCible(), carteCC.getFiliere(), dejaVisite);
+
+        // On reprends la liste des UV touchées et on remet leurs booléen d'éclosion à false
+        for(UV cible : dejaVisite){
+            cible.setEclosion(false);
+        }
+
+        //On mélange les cartes de la défausse Infection dans la pioche correspondante.
         carteInfections.melangeDefaussePioche();
     }
 
-    /*Méthode piochant les cartes Infectionn en fin de tour*/
+    /*
+        Méthode récursive gérant l'ajout de marqueurs du aux éclosions sur les UV et leurs voisins (en cas de chaine d'éclosion);7
+        makeEclosion prend, en paramètre, une UV cible, la filière du marqueur à ajouter et la liste des UV déjà touchées par cette chaine d'éclosion
+     */
+    private void makeEclosion(UV cible, Filiere filiere, ArrayList<UV> dejaVisite){
+        //Si l'UV cible n'a pas encore été touchée dans cette chaine
+        if(!dejaVisite.contains(cible)){
+            try{
+                //On ajoute le marqueur, qui est en même temps retiré de la réserve.
+                //Cette méthode (CollectionMarqueur.getMarqueur()) peut throw une GameOverException.
+                cible.addMarqueur(reserveMarqueur.getMarqueur(filiere));
+
+                // On marque ensuite la cible comme visité
+                dejaVisite.add(cible);
+                if(cible.getEclosion()){
+                    //Si cette UV provoque une éclosion, on ajoute 1 au compteur (peut throw une GameOverException)
+                    augmenterEclosion();
+
+                    // Pour chaque voisin de cette UV, on appelle makeEclosion
+                    for(UV voisin : cible.getVoisins()){
+                        makeEclosion(voisin, filiere, dejaVisite);
+                    }
+                }
+            }catch(GameOverException e){System.out.println("You loose!");}
+        }
+    }
+
+    /*Méthode piochant les cartes Infection en fin de tour*/
     public void piocheInfection(){
         int tempCompteur = 0;
         CarteInfection tempCarte = new CarteInfection();
