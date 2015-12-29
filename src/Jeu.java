@@ -170,8 +170,13 @@ public class Jeu {
      */
     public void donnerCarte(Joueur secondJoueur, CarteSemestre carteTransferer){
         if(!secondJoueur.getMainComplete()){
-            secondJoueur.ajoutCarte(carteTransferer);
-            joueurActif.retraitCarte(carteTransferer);
+            try{
+                secondJoueur.ajoutCarte(carteTransferer);
+                joueurActif.retraitCarte(carteTransferer);
+            }
+            catch(WrongTypeException e){}
+            catch(NoSuchCardException e){}
+            catch(NotEnoughSlotsException e){}
         }
     }
 
