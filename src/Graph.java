@@ -47,6 +47,30 @@ public class Graph {
         return m;
     }
 
+    //Méthode enlevant les marqueur d'une filière donné sur une case donnée.
+    //Enlève tout les maruque de la filière.
+    public void travail(int position, Filiere f, CollectionMarqueur reserve){
+        for(UV uv: listUV){
+            if(uv.getPosition()==position){
+
+                while(uv.marqueurFiliere(f)){
+                    reserve.setMarqueur(uv.removeMarqueur(f));
+                }
+
+            }
+        }
+    }
+
+    public boolean uvHasMarqueur(int p){
+        boolean test = false;
+        for(UV uv : listUV){
+            if(uv.getPosition()==p){
+                test =  uv.hasMarqueur();
+            }
+        }
+        return test;
+    }
+
     //Méthode parcourant le graph et remettant les valeurs d'éclosion a false avant le prochain tour.
     public void finTour(){
         eclosionLancer = false;

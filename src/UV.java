@@ -91,6 +91,16 @@ public class UV
         }
     }
 
+    public boolean marqueurFiliere(Filiere f){
+        boolean test = false;
+        for(Marqueur m : marqueur){
+            if(m.getFiliere()==f){
+                test = true;
+            }
+        }
+
+        return test;
+    }
 
     public boolean hasMarqueur(){
         if(marqueur[0]!=null){
@@ -145,5 +155,32 @@ public class UV
         return m;
 
 
+    }
+
+    public Marqueur removeMarqueur(Filiere f){
+        Marqueur m =null;
+        //On parcours la liste de marqueur
+        for(int i = 0; i<3;i++){
+            //On s'assure que la liste n'est pas vide
+            if(marqueur[i] != null){
+                //Si le marqueur de la case I correspond a la filiere voulu on rentre dans le if
+                if(marqueur[i].getFiliere()==f){
+                    //m prend la valeur de marqueur[i]
+                    m = marqueur[i];
+                    //On modifie le tableau en conséquence (on avance les marqueur d'une case et on met les dernière a null)
+                    for(int j = i; j<2;j++){
+                        if(marqueur[j+1]!=null){
+                            marqueur[j] = marqueur[j+1];
+                        }else{
+                            marqueur[j]=null;
+                        }
+                    }
+                    //on renvoit alors m
+                    return m;
+                }
+            }
+        }
+        //On renvoit null si aucun marqueur ayant la filière ne correspond
+        return m;
     }
 }

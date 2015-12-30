@@ -99,8 +99,9 @@ public class Jeu {
     //Methode de travail par défaut lorsque le surdoué arrive sur une case et que des marqueur d'un type précis sont sur la case
     public void travailler(int position, Filiere f){
         if(testRenduProjet(f)){
-            Marqueur m = null;
-
+            if(graph.uvHasMarqueur(position)){
+                graph.travail(position, f, reserveMarqueur);
+            }
 
         }
     }
