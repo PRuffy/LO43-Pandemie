@@ -15,6 +15,9 @@ public class CarteSemestre implements Carte
         if(type==TypeCarteSemestre.TP) {
             this.cible = cible;
             this.filiere = filiere;
+        }else{
+            this.cible = null;
+            this.filiere = null;
         }
     }
     public CarteSemestre(CarteSemestre clone){

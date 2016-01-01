@@ -9,10 +9,15 @@ public class ReserveCarteInfection implements ReserveCarte
     private ArrayList<CarteInfection> pioche;
     private ArrayList<CarteInfection> defausse;
 
-    public ReserveCarteInfection(){
+    public ReserveCarteInfection(Graph graph){
         pioche=new ArrayList<CarteInfection>();
         defausse=new ArrayList<CarteInfection>();
 
+        for(int i = 0; i < 24; i++){
+            pioche.add(new CarteInfection(graph.getUV(i+1), graph.getUVFiliere(i+1)));
+        }
+
+        Collections.shuffle(pioche);
 
     }
 
@@ -26,6 +31,13 @@ public class ReserveCarteInfection implements ReserveCarte
 
     }
 
+    public int getDefausseSize(){
+        return defausse.size();
+    }
+
+    public void removeCarte(int i){
+        defausse.remove(i);
+    }
     //Méthode appelé lors d'une éclosion par CC
     //Vas mélanger la défausse puis replacer toute les carte ainsi mélanger au dessus de la pioche
     public void melangeDefaussePioche(){

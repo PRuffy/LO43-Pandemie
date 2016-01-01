@@ -10,9 +10,24 @@ public class ReserveCarteSemestre implements ReserveCarte
     private ArrayList<CarteSemestre> pioche;
     private ArrayList<CarteSemestre> defausse;
 
-    public ReserveCarteSemestre(){
+    public ReserveCarteSemestre(Graph graph){
         pioche=new ArrayList<CarteSemestre>();
         defausse=new ArrayList<CarteSemestre>();
+
+        for(int i = 0; i < 24; i++){
+            pioche.add(new CarteSemestre(TypeCarteSemestre.TP, graph.getUV(i+1), graph.getUVFiliere(i+1)));
+        }
+
+        pioche.add(new CarteSemestre(TypeCarteSemestre.AntiPop, null,null));
+        pioche.add(new CarteSemestre(TypeCarteSemestre.Fermeture, null,null));
+        pioche.add(new CarteSemestre(TypeCarteSemestre.Transfert, null,null));
+        pioche.add(new CarteSemestre(TypeCarteSemestre.Prevision, null,null));
+
+        for(int i = 0; i <4; i++){
+            pioche.add(new CarteSemestre(TypeCarteSemestre.CC, null,null));
+        }
+
+        Collections.shuffle(pioche);
     }
 
     public CarteSemestre piocherCarte(){

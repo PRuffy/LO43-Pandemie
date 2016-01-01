@@ -19,6 +19,8 @@ public class CarteInfection implements Carte
         this.filiere=clone.filiere;
     }
 
+
+
     public UV getCible(){
         return cible;
     }

@@ -4,7 +4,7 @@ import java.util.Random;
 public class Jeu {
     private Joueur[] joueurs;
     private Joueur joueurActif;
-    private ArrayList<CarteSemestre> cartesBénéfiques;
+    private ArrayList<CarteSemestre> cartesBenefiques;
     private Graph graph;
     private CollectionMarqueur reserveMarqueur;
     private ReserveCarteSemestre carteSemestre;
@@ -14,9 +14,11 @@ public class Jeu {
     private boolean projetILC;
     private boolean projetLEIM;
     private boolean projetRT;
+    private boolean antipioche;
     private int chargeTravail;
     private int compteurEclosion;
     private int nombreProjetRendu;
+
 
     private static final int MAX_ECLOSION = 8;
     private static final int [] CHARGE_TRAVAIL = new int[]{2,2,3,3,4};
@@ -28,7 +30,7 @@ public class Jeu {
      * int[][] adjacence : permet d'obtenir la liste des voisins
      * 
      */
-    public Jeu(int nombreDeJoueurs){
+    public Jeu(int nombreDeJoueurs, String[] nomUV, Filiere[] filiereUV, int [][] adjacenceUV){
         chargeTravail = CHARGE_TRAVAIL[0];
         compteurEclosion = 0;
         nombreProjetRendu = 0;
@@ -37,10 +39,13 @@ public class Jeu {
         projetILC = false;
         projetLEIM = false;
         projetRT = false;
+        antipioche = false;
 
-        carteSemestre = new ReserveCarteSemestre();
-        carteInfections = new ReserveCarteInfection();
-        graph = new Graph();
+        graph = new Graph(nomUV,filiereUV, adjacenceUV);
+        carteSemestre = new ReserveCarteSemestre(graph);
+        carteInfections = new ReserveCarteInfection(graph);
+
+
         pionProfesseur = new ArrayList<Professeur>();
         reserveMarqueur = new CollectionMarqueur();
     }
@@ -64,7 +69,7 @@ public class Jeu {
 
     /*Lors d'une éclosion la charge de travail augmente*/
     public void augmenterEclosion()throws GameOverException{
-        if(compteurEclosion != MAX_ECLOSION) {
+        if(compteurEclosion < MAX_ECLOSION) {
             compteurEclosion++;
             chargeTravail = CHARGE_TRAVAIL[compteurEclosion];
         }else{
@@ -140,12 +145,51 @@ public class Jeu {
                     eclosion(tempCarte);
 
                 } else {
-                    cartesBénéfiques.add(tempCarte);
+                    cartesBenefiques.add(tempCarte);
                 }
             }else{
                 defaitePartie();
             }
         }
+    }
+
+
+    //Methode qui se déclenche quand un joueur utilise une carte spécial
+    public void utiliserCarteBenefique(CarteSemestre c){
+        for(CarteSemestre carte : cartesBenefiques){
+            if(carte.getType() == c.getType()){
+                cartesBenefiques.remove(carte);
+                switch (carte.getType()){
+                    case AntiPop:
+                        //Passe un booléen a vrai qui bloque la pioche infection en fin de tour
+                        antipioche = true;
+                        break;
+                    case Fermeture:
+                        //Déclenche une methode pour retirer une carte de la défausse dans les carte infection
+                        fermetureUV();
+                        break;
+                    case Transfert:
+                        break;
+                    case Prevision:
+                        break;
+                    default: break;
+                }
+
+                carteSemestre.defausserCarte(carte);
+            }
+        }
+    }
+
+    //Enleve une carte infection de la defausse
+    public void fermetureUV(){
+        //On vérifie que la defause n'est pas vide.
+        if(carteInfections.getDefausseSize()>0){
+            //Si la defausse contient effectivement une carte on en enlève une aléatoirement
+            Random rand = new Random();
+            int numeroCarte = rand.nextInt(carteInfections.getDefausseSize());
+            carteInfections.removeCarte(numeroCarte);
+        }
+
     }
 
     /*
@@ -386,8 +430,13 @@ public class Jeu {
         //On fait piocher le joueur actif
         piocheSemestre();
 
-        //On pioche les cartes infection
-        piocheInfection();
+        //On pioche les cartes infection si la carte bénéfique n'est pas utilisé
+        if(antipioche){
+            antipioche = false;
+        }else{
+            piocheInfection();
+        }
+
 
         //appel de la méthode finTour de graph qui s'occupe de reset les valeurs de base des UV (par ex: eclosion)
         graph.finTour();

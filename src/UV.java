@@ -67,6 +67,10 @@ public class UV
         return this.nom;
     }
 
+    public void addVoisins(UV uv){
+        voisins.add(uv);
+    }
+
     public void setEclosion(boolean eclosion){
         this.testEclosion = eclosion;
     }
@@ -156,7 +160,6 @@ public class UV
 
 
     }
-
     public Marqueur removeMarqueur(Filiere f){
         Marqueur m =null;
         //On parcours la liste de marqueur
@@ -172,7 +175,7 @@ public class UV
                         if(marqueur[j+1]!=null){
                             marqueur[j] = marqueur[j+1];
                         }else{
-                            marqueur[j]=null;
+                           marqueur[j]=null;
                         }
                     }
                     //on renvoit alors m
@@ -183,4 +186,6 @@ public class UV
         //On renvoit null si aucun marqueur ayant la filière ne correspond
         return m;
     }
+
+
 }
