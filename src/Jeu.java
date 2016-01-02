@@ -41,13 +41,100 @@ public class Jeu {
         projetRT = false;
         antipioche = false;
 
+        //Creation du graph puis des cartes
         graph = new Graph(nomUV,filiereUV, adjacenceUV);
         carteSemestre = new ReserveCarteSemestre(graph);
         carteInfections = new ReserveCarteInfection(graph);
+        cartesBenefiques = new ArrayList<CarteSemestre>();
 
-
+        //Creation des professeur
         pionProfesseur = new ArrayList<Professeur>();
+        pionProfesseur.add(new Professeur(Filiere.ILC, 1));
+        pionProfesseur.add(new Professeur(Filiere.I2RV, 9));
+        pionProfesseur.add(new Professeur(Filiere.LEIM, 17));
+        pionProfesseur.add(new Professeur(Filiere.RT, 24));
+
+        joueurActif = null;
+        joueurs = new Joueur[nombreDeJoueurs];
+
+        //Utilisation d'un random pour sélectionner les roles
+        Random rand = new Random();
+
+        //Creation d'une arrayListe qui contient tout les roles possible
+        ArrayList<Role> roleDisp = new ArrayList<Role>();
+        roleDisp.add(Role.chefProjet);
+        roleDisp.add(Role.decale);
+        roleDisp.add(Role.etudiantEtranger);
+        roleDisp.add(Role.lecheBotte);
+        roleDisp.add(Role.surdoue);
+
+        int random=0;
+        Role roleJoueur;
+        CarteSemestre carte = null;
+        for(int i = 0; i < nombreDeJoueurs; i++){
+            //On prend un role aléatoirement dans l'arrayListe
+            //Le role est enlever de l'arrayliste
+            random = rand.nextInt(roleDisp.size());
+            roleJoueur = roleDisp.remove(random);
+            joueurs[i] = new Joueur(roleJoueur);
+            joueurActif = joueurs[i];
+
+            //On pioche des cartes qu'on met dans la main des joueurs
+            switch(nombreDeJoueurs){
+                //2 Cartes par joueurs
+                case 4:
+                    for(int j = 0; j < 2 ;j++){
+                        carte = carteSemestre.piocherCarte();
+                        try {
+                            joueurActif.ajoutCarte(carte);
+                        } catch (NotEnoughSlotsException e) {
+                            e.printStackTrace();
+                        } catch (WrongTypeException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    break;
+                //3 cartes par joueurs
+                case 3:
+                    for(int j = 0; j < 3 ;j++){
+                        carte = carteSemestre.piocherCarte();
+                        try {
+                            joueurActif.ajoutCarte(carte);
+                        } catch (NotEnoughSlotsException e) {
+                            e.printStackTrace();
+                        } catch (WrongTypeException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    break;
+                //4 cartes par joueurs
+                case 2:
+                    for(int j = 0; j < 4 ;j++){
+                        carte = carteSemestre.piocherCarte();
+                        try {
+                            joueurActif.ajoutCarte(carte);
+                        } catch (NotEnoughSlotsException e) {
+                            e.printStackTrace();
+                        } catch (WrongTypeException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
+            joueurActif.setNombreAction(4);
+        }
+
+        //On créer la réserve de marqueur
         reserveMarqueur = new CollectionMarqueur();
+
+        //On complete la pioche avec les carte benefique et les carteCC
+        carteSemestre.completerPioche();
+        joueurActif = joueurs[0];
+
     }
 
 

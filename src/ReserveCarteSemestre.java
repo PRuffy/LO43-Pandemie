@@ -1,15 +1,12 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-
-/**
- * Created by Guillaume on 12/12/2015.
- */
 public class ReserveCarteSemestre implements ReserveCarte
 {
     private ArrayList<CarteSemestre> pioche;
     private ArrayList<CarteSemestre> defausse;
 
+    //Cette méthode construit les objet pioche et defausse et ajoute les carte TP a la pioche
     public ReserveCarteSemestre(Graph graph){
         pioche=new ArrayList<CarteSemestre>();
         defausse=new ArrayList<CarteSemestre>();
@@ -18,6 +15,11 @@ public class ReserveCarteSemestre implements ReserveCarte
             pioche.add(new CarteSemestre(TypeCarteSemestre.TP, graph.getUV(i+1), graph.getUVFiliere(i+1)));
         }
 
+        Collections.shuffle(pioche);
+    }
+
+    //Cette methode est utiliser en fin de constructeur de jeu pour rajouter les carte spécials afin qu'elle ne soit pas piocher par les joueurs
+    public void completerPioche(){
         pioche.add(new CarteSemestre(TypeCarteSemestre.AntiPop, null,null));
         pioche.add(new CarteSemestre(TypeCarteSemestre.Fermeture, null,null));
         pioche.add(new CarteSemestre(TypeCarteSemestre.Transfert, null,null));

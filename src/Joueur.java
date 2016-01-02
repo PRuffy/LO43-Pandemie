@@ -13,12 +13,6 @@ public class Joueur {
         this.carteEnMain = new CarteSemestre [6];
     }
 
-    public Joueur(Jeu jeu, Role role, Personnage position){
-
-        this.role=role;
-        this.position=position;
-        this.carteEnMain= new CarteSemestre[6];
-    }
 
     //constructeur par recopie
     public Joueur(Joueur clone){
