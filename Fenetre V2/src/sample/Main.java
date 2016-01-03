@@ -651,6 +651,171 @@ public class Main extends Application {
         root.getChildren().add(VI51);
 
 
+        //if pas de marqueur :: setvisible false
+        Label IN55= new Label("1");
+        IN55.setFont(Font.font("Arial",18));
+        IN55.setTranslateX(325);
+        IN55.setTranslateY(252);
+        root.getChildren().add(IN55);
+
+        //if pas de marqueur :: setvisible false
+        Label BD51= new Label("1");
+        BD51.setFont(Font.font("Arial",18));
+        BD51.setTranslateX(345);
+        BD51.setTranslateY(372);
+        root.getChildren().add(BD51);
+
+        //if pas de marqueur :: setvisible false
+        Label GL51= new Label("1");
+        GL51.setFont(Font.font("Arial",18));
+        GL51.setTranslateX(390);
+        GL51.setTranslateY(325);
+        root.getChildren().add(GL51);
+
+        //if pas de marqueur :: setvisible false
+        Label GL52= new Label("1");
+        GL52.setFont(Font.font("Arial",18));
+        GL52.setTranslateX(443);
+        GL52.setTranslateY(343);
+        root.getChildren().add(GL52);
+
+        //if pas de marqueur :: setvisible false
+        Label IA54= new Label("1");
+        IA54.setFont(Font.font("Arial",18));
+        IA54.setTranslateX(409);
+        IA54.setTranslateY(380);
+        root.getChildren().add(IA54);
+
+        //if pas de marqueur :: setvisible false
+        Label BD50= new Label("1");
+        BD50.setFont(Font.font("Arial",18));
+        BD50.setTranslateX(459);
+        BD50.setTranslateY(380);
+        root.getChildren().add(BD50);
+
+        Label LO51= new Label("1");
+        LO51.setFont(Font.font("Arial",18));
+        LO51.setTranslateX(434);
+        LO51.setTranslateY(442);
+        root.getChildren().add(LO51);
+
+        Label RE51= new Label("1");
+        RE51.setFont(Font.font("Arial",18));
+        RE51.setTranslateX(600);
+        RE51.setTranslateY(135);
+        root.getChildren().add(RE51);
+
+        Label RE53= new Label("1");
+        RE53.setFont(Font.font("Arial",18));
+        RE53.setTranslateX(666);
+        RE53.setTranslateY(110);
+        root.getChildren().add(RE53);
+
+        Label RE55= new Label("1");
+        RE55.setFont(Font.font("Arial",18));
+        RE55.setTranslateX(711);
+        RE55.setTranslateY(126);
+        root.getChildren().add(RE55);
+
+        Label TL53= new Label("1");
+        TL53.setFont(Font.font("Arial",18));
+        TL53.setTranslateX(739);
+        TL53.setTranslateY(175);
+        root.getChildren().add(TL53);
+
+        Label RE52= new Label("1");
+        RE52.setFont(Font.font("Arial",18));
+        RE52.setTranslateX(675);
+        RE52.setTranslateY(165);
+        root.getChildren().add(RE52);
+
+        Label RE56= new Label("1");
+        RE56.setFont(Font.font("Arial",18));
+        RE56.setTranslateX(625);
+        RE56.setTranslateY(192);
+        root.getChildren().add(RE56);
+
+        Label SM57= new Label("1");
+        SM57.setFont(Font.font("Arial",18));
+        SM57.setTextFill(Color.WHITE);
+        SM57.setTranslateX(612);
+        SM57.setTranslateY(278);
+        root.getChildren().add(SM57);
+
+        Label LO52= new Label("1");
+        LO52.setFont(Font.font("Arial",18));
+        LO52.setTextFill(Color.WHITE);
+        LO52.setTranslateX(727);
+        LO52.setTranslateY(270);
+        root.getChildren().add(LO52);
+
+        Label LO53= new Label("1");
+        LO53.setFont(Font.font("Arial",18));
+        LO53.setTextFill(Color.WHITE);
+        LO53.setTranslateX(669);
+        LO53.setTranslateY(300);
+        root.getChildren().add(LO53);
+
+        Label TR53= new Label("1");
+        TR53.setFont(Font.font("Arial",18));
+        TR53.setTextFill(Color.WHITE);
+        TR53.setTranslateX(565);
+        TR53.setTranslateY(319);
+        root.getChildren().add(TR53);
+
+        Label TR54= new Label("1");
+        TR54.setFont(Font.font("Arial",18));
+        TR54.setTextFill(Color.WHITE);
+        TR54.setTranslateX(619);
+        TR54.setTranslateY(360);
+        root.getChildren().add(TR54);
+
+        Label MI52= new Label("1");
+        MI52.setFont(Font.font("Arial",18));
+        MI52.setTextFill(Color.WHITE);
+        MI52.setTranslateX(682);
+        MI52.setTranslateY(375);
+        root.getChildren().add(MI52);
+
+        Rectangle Marqueur1 = new Rectangle();
+        Marqueur1.setWidth(10);
+        Marqueur1.setHeight(10);
+        Marqueur1.setFill(Color.GOLD);
+        //if 1
+        /*Marqueur1.setTranslateX(543);
+        Marqueur1.setTranslateY(60);*/
+        //if 2
+        /*Marqueur1.setTranslateX(603);
+        Marqueur1.setTranslateY(28);*/
+        //if 3
+        /*Marqueur1.setTranslateX(663);
+        Marqueur1.setTranslateY(60);*/
+        //if 4
+        Marqueur1.setTranslateX(723);
+        Marqueur1.setTranslateY(28);
+        root.getChildren().add(Marqueur1);
+
+        Rectangle Marqueur2 = new Rectangle();
+        Marqueur2.setWidth(10);
+        Marqueur2.setHeight(10);
+        Marqueur2.setFill(Color.GOLD);
+        //if 1
+        /*Marqueur2.setTranslateX(237);
+        Marqueur2.setTranslateY(393);*/
+        //if 2
+        /*Marqueur2.setTranslateX(288);
+        Marqueur2.setTranslateY(436);*/
+        //if 3
+        /*Marqueur2.setTranslateX(237);
+        Marqueur2.setTranslateY(479);*/
+        //if 4
+        /*Marqueur2.setTranslateX(288);
+        Marqueur2.setTranslateY(522);*/
+        //if 5
+        Marqueur2.setTranslateX(237);
+        Marqueur2.setTranslateY(565);
+        root.getChildren().add(Marqueur2);
+
         Text scenetitle = new Text("Veuillez selectionner le nombre de joueurs"); //Ajouter un titre
         grid.add(scenetitle, 0, 0, 2, 1);
         scenetitle.setId("welcome-text");
@@ -659,6 +824,11 @@ public class Main extends Application {
         Label userName = new Label("Nombre de joueurs :");
         userName.setId("Label1");
         grid.add(userName, 0, 1);
+		
+		Button choix0 = new Button("2") ;
+        HBox hbChoix0 = new HBox(10);
+        hbChoix0.getChildren().add(choix0);
+        grid.add(choix0, 1,1);
 
         Button choix1 = new Button("3") ;
         HBox hbChoix1 = new HBox(10);
@@ -735,6 +905,25 @@ public class Main extends Application {
         final Text actiontarget = new Text("");
         grid.add(actiontarget, 1, 7);
 
+       choix0.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                actiontarget.setText("Entrez le nom des joueurs");
+                actiontarget.setId("actiontarget");
+                seti(3);
+                nom1.setVisible(true);
+                labelnom1.setVisible(true);
+                nom2.setVisible(true);
+                labelnom2.setVisible(true);
+                choix2.setVisible(false);
+                choix1.setVisible(false);
+                goToGame.setVisible(true);
+                monimage.setVisible(false);
+                //A ajouter : le setter du nombre de joueur ./
+            }
+        });
+
         choix1.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -750,6 +939,7 @@ public class Main extends Application {
                 labelnom3.setVisible(true);
                 choix2.setVisible(false);
                 goToGame.setVisible(true);
+                choix0.setVisible(false);
                 monimage.setVisible(false);
                 //A ajouter : le setter du nombre de joueur ./
             }
@@ -772,11 +962,12 @@ public class Main extends Application {
                 labelnom4.setVisible(true);
                 goToGame.setVisible(true);
                 choix1.setVisible(false);
+                choix0.setVisible(false);
                 monimage.setVisible(false);
+                choix2.setTranslateY(-50);
                 //A ajouter : le setter du nombre de joueur ./
             }
         });
-
         goToGame.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
