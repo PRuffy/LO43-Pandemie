@@ -448,9 +448,34 @@ public class Jeu {
                     ciblePossible.add(i);
                 }
             }
+        }else{
+            //Sinon vérifier sa position, ajouter les voisin, ajouter les carte présente en main et les autre proffesseur si présence de l'un d'eux
+            //On check la position d'un prof
+            for(Professeur p : pionProfesseur){
+                if(p.getPosition()==posJoueur){
+                    for(Professeur p1 : pionProfesseur){
+                        if(p1.getPosition()!=p.getPosition()){
+                            ciblePossible.add(p1.getPosition());
+                        }
+                    }
+                }
+            }
+
+            for(UV uv : uvJoueur.getVoisins()){
+                if(!ciblePossible.contains(uv.getPosition())){
+                    ciblePossible.add(uv.getPosition());
+                }
+            }
+
+            CarteSemestre [] carteJoueur = joueurCible.getHand();
+            for(CarteSemestre carte : carteJoueur){
+                if(!ciblePossible.contains(carte.getCible().getPosition())){
+                    ciblePossible.add(carte.getCible().getPosition());
+                }
+            }
         }
 
-        //Sinon vérifier sa position, ajouter les voisin, ajouter les carte présente en main et les autre proffesseur si présence de l'un d'eux
+
 
         return ciblePossible;
     }
