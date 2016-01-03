@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ad3bc665-ae06-4daf-adab-596fdddaa505" name="Default" comment="">
+    <list default="true" id="ad3bc665-ae06-4daf-adab-596fdddaa505" name="Default" comment="Modif UV:&#10;&#10;J'ai changer UV pour avoir une arrayliste de marqueur plutôt qu'un tableau. Ca rend les traitement beaucoup plus simple.&#10;Et du coup j'ai modifier en conséquence la classe jeu.&#10;&#10;De plus avec Cess on c'est dit que certaine carte bénéfique aller être bien trop compliquer a implémenter dans le peu de temps qu'il nous reste. Donc on a enlever les carte Transfert et Prevision.&#10;&#10;La carte Fermeture a été rendu moins efficace car n'enlève qu'une carte aléatoire dans la défausse mais existe en  fois dans la pioche">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Jeu.java" afterPath="$PROJECT_DIR$/src/Jeu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ReserveCarteSemestre.java" afterPath="$PROJECT_DIR$/src/ReserveCarteSemestre.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TypeCarteSemestre.java" afterPath="$PROJECT_DIR$/src/TypeCarteSemestre.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UV.java" afterPath="$PROJECT_DIR$/src/UV.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ReserveCarteInfection.java" afterPath="$PROJECT_DIR$/src/ReserveCarteInfection.java" />
     </list>
     <ignored path="LO43_Pandemie.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,11 +32,21 @@
       <file leaf-file-name="Jeu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Jeu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.614561">
-              <caret line="155" column="8" selection-start-line="155" selection-start-column="8" selection-end-line="155" selection-end-column="8" />
+            <state vertical-scroll-proportion="-3.0471091">
+              <caret line="430" column="0" selection-start-line="430" selection-start-column="0" selection-end-line="430" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReserveCarteInfection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ReserveCarteInfection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,16 +86,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CollectionMarqueur.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CollectionMarqueur.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -182,15 +179,15 @@
         <option value="$PROJECT_DIR$/src/ReserveCarte.java" />
         <option value="$PROJECT_DIR$/src/CarteInfection.java" />
         <option value="$PROJECT_DIR$/src/Graph.java" />
-        <option value="$PROJECT_DIR$/src/ReserveCarteInfection.java" />
         <option value="$PROJECT_DIR$/src/CarteSemestre.java" />
         <option value="$PROJECT_DIR$/src/Professeur.java" />
         <option value="$PROJECT_DIR$/src/Joueur.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/UV.java" />
-        <option value="$PROJECT_DIR$/src/Jeu.java" />
         <option value="$PROJECT_DIR$/src/TypeCarteSemestre.java" />
         <option value="$PROJECT_DIR$/src/ReserveCarteSemestre.java" />
+        <option value="$PROJECT_DIR$/src/ReserveCarteInfection.java" />
+        <option value="$PROJECT_DIR$/src/Jeu.java" />
       </list>
     </option>
   </component>
@@ -642,7 +639,13 @@
       <option name="project" value="LOCAL" />
       <updated>1451729047675</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Modif UV:&#10;&#10;J'ai changer UV pour avoir une arrayliste de marqueur plutôt qu'un tableau. Ca rend les traitement beaucoup plus simple.&#10;Et du coup j'ai modifier en conséquence la classe jeu.&#10;&#10;De plus avec Cess on c'est dit que certaine carte bénéfique aller être bien trop compliquer a implémenter dans le peu de temps qu'il nous reste. Donc on a enlever les carte Transfert et Prevision.&#10;&#10;La carte Fermeture a été rendu moins efficace car n'enlève qu'une carte aléatoire dans la défausse mais existe en  fois dans la pioche">
+      <created>1451817051401</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1451817051401</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -651,10 +654,11 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32778355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936507" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288948" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882413" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15208334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -663,7 +667,6 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32778355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39854318" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -693,7 +696,8 @@
     <MESSAGE value="Petite modif :&#10;&#10;J'ai rajouté de quoi gerer le travail automatique du surdoué lorsqu'il arrive sur une uv." />
     <MESSAGE value="1 Janvier :&#10;&#10;Ajout/Modification des constructeur pour avoir enfin des classe qui ressemble a quelques chose&#10;&#10;Ajout d'une matrice d'adjacence et liste d'uv en .txt&#10;Il faut que je fasse le code pour les lire (dans l'après midi)" />
     <MESSAGE value="2 Janvier Matin :&#10;&#10;Finition du constructeur de jeu&#10;Quelques légère modification reservecartesemestre pour la création.&#10;&#10;J'ai juste fait en sorte qu'on ajoute les carte spécials après avoir distribuer les mains aux joueurs" />
-    <option name="LAST_COMMIT_MESSAGE" value="2 Janvier Matin :&#10;&#10;Finition du constructeur de jeu&#10;Quelques légère modification reservecartesemestre pour la création.&#10;&#10;J'ai juste fait en sorte qu'on ajoute les carte spécials après avoir distribuer les mains aux joueurs" />
+    <MESSAGE value="Modif UV:&#10;&#10;J'ai changer UV pour avoir une arrayliste de marqueur plutôt qu'un tableau. Ca rend les traitement beaucoup plus simple.&#10;Et du coup j'ai modifier en conséquence la classe jeu.&#10;&#10;De plus avec Cess on c'est dit que certaine carte bénéfique aller être bien trop compliquer a implémenter dans le peu de temps qu'il nous reste. Donc on a enlever les carte Transfert et Prevision.&#10;&#10;La carte Fermeture a été rendu moins efficace car n'enlève qu'une carte aléatoire dans la défausse mais existe en  fois dans la pioche" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modif UV:&#10;&#10;J'ai changer UV pour avoir une arrayliste de marqueur plutôt qu'un tableau. Ca rend les traitement beaucoup plus simple.&#10;Et du coup j'ai modifier en conséquence la classe jeu.&#10;&#10;De plus avec Cess on c'est dit que certaine carte bénéfique aller être bien trop compliquer a implémenter dans le peu de temps qu'il nous reste. Donc on a enlever les carte Transfert et Prevision.&#10;&#10;La carte Fermeture a été rendu moins efficace car n'enlève qu'une carte aléatoire dans la défausse mais existe en  fois dans la pioche" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -706,13 +710,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ReserveCarteInfection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="122" selection-start-line="27" selection-start-column="122" selection-end-line="27" selection-end-column="122" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ReserveCarteSemestre.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -956,13 +953,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReserveCarteInfection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="17" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GameOverException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1079,10 +1069,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Fenetre V2/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ReserveCarteInfection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Jeu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.614561">
-          <caret line="155" column="8" selection-start-line="155" selection-start-column="8" selection-end-line="155" selection-end-column="8" />
+        <state vertical-scroll-proportion="-3.0471091">
+          <caret line="430" column="0" selection-start-line="430" selection-start-column="0" selection-end-line="430" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
