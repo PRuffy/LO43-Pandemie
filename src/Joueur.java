@@ -26,6 +26,9 @@ public class Joueur {
 
 
     //Accesseurs
+    public CarteSemestre[] getHand(){
+        return carteEnMain;
+    }
     public int getNombreAction(){
         return nombreAction;
     }

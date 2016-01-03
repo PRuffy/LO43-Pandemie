@@ -3,9 +3,7 @@
  */
 public enum TypeCarteSemestre
 {
-    Transfert,
     AntiPop,
-    Prevision,
     Fermeture,
     CC,
     TP;

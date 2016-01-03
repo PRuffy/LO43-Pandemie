@@ -143,9 +143,17 @@ public class Jeu {
     public void augmenterChargeTravail(CarteInfection carte){
         Filiere filiere = carte.getFiliere();
         UV cible = carte.getCible();
-        try{
-            cible.addMarqueur(reserveMarqueur.getMarqueur(filiere));
-        }catch(GameOverException e){defaitePartie();}
+
+        if(cible.getNombreMarqueur()<3){
+            Marqueur m = null;
+            try{
+                m=reserveMarqueur.getMarqueur(filiere);
+            }catch(GameOverException e){defaitePartie();}
+            cible.addMarqueur(m);
+        }else{
+            cible.setEclosion(true);
+        }
+
 
         if (cible.getEclosion()){
             makeEclosion(cible, filiere, new ArrayList<>());
@@ -255,10 +263,6 @@ public class Jeu {
                         //Déclenche une methode pour retirer une carte de la défausse dans les carte infection
                         fermetureUV();
                         break;
-                    case Transfert:
-                        break;
-                    case Prevision:
-                        break;
                     default: break;
                 }
 
@@ -283,19 +287,49 @@ public class Jeu {
         Méthode gérant les éclosions lors d'une pioche de carte CC
      */
     public void eclosion(CarteSemestre carteCC){
-        // on créé une liste des UV touchées par l'éclosion, qui sera remplie par les appels multiples de makeEclosion
-        ArrayList<UV> dejaVisite = new ArrayList<>();
+        //On récupère la dernière carte de la pioche Infection
+        CarteInfection carte = carteInfections.getLast();
 
-        //on fait un appel de makeEclosion, càd on lance les ajouts de marqueurs
-        makeEclosion(carteCC.getCible(), carteCC.getFiliere(), dejaVisite);
 
-        // On reprends la liste des UV touchées et on remet leurs booléen d'éclosion à false
-        for(UV cible : dejaVisite){
-            cible.setEclosion(false);
-        }
+            int i = 0;
+            boolean eclos = false;
+            Marqueur m = null;
+            while(i<3 || carte.getCible().getNombreMarqueur() <3){
+                i++;
+                try{
+                    m = reserveMarqueur.getMarqueur(carte.getFiliere());
+                }catch (GameOverException e){defaitePartie();}
+                carte.getCible().addMarqueur(m);
+                if (carte.getCible().getNombreMarqueur()==3){
+                    eclos =true;
+                }
 
-        //On mélange les cartes de la défausse Infection dans la pioche correspondante.
-        carteInfections.melangeDefaussePioche();
+            }
+
+            if(eclos){
+                // on créé une liste des UV touchées par l'éclosion, qui sera remplie par les appels multiples de makeEclosion
+                ArrayList<UV> dejaVisite = new ArrayList<>();
+
+                try {
+                    augmenterEclosion();
+                } catch (GameOverException e) {defaitePartie();}
+
+                //on fait un appel de makeEclosion, càd on lance les ajouts de marqueurs
+                makeEclosion(carte.getCible(), carte.getFiliere(), dejaVisite);
+
+                // On reprends la liste des UV touchées et on remet leurs booléen d'éclosion à false
+                for(UV cible : dejaVisite){
+                    cible.setEclosion(false);
+                }
+
+                //On mélange les cartes de la défausse Infection dans la pioche correspondante.
+                carteInfections.defausserCarte(carte);
+                carteInfections.melangeDefaussePioche();
+            }
+
+
+
+
     }
 
     /*
@@ -306,20 +340,25 @@ public class Jeu {
         //Si l'UV cible n'a pas encore été touchée dans cette chaine
         if(!dejaVisite.contains(cible)){
             try{
-                //On ajoute le marqueur, qui est en même temps retiré de la réserve.
-                //Cette méthode (CollectionMarqueur.getMarqueur()) peut throw une GameOverException.
-                cible.addMarqueur(reserveMarqueur.getMarqueur(filiere));
-
-                // On marque ensuite la cible comme visité
+                //On ajoute l'uv a la liste déjà visiter
                 dejaVisite.add(cible);
-                if(cible.getEclosion()){
-                    //Si cette UV provoque une éclosion, on ajoute 1 au compteur (peut throw une GameOverException)
-                    augmenterEclosion();
 
-                    // Pour chaque voisin de cette UV, on appelle makeEclosion
-                    for(UV voisin : cible.getVoisins()){
-                        makeEclosion(voisin, filiere, dejaVisite);
+                //Si l'uv n'a pas encore eu d'éclosion
+                if(!cible.getEclosion()){
+                    //Si l'uv a déjà trois marqueur alors on appel la fonction pour ses voisins
+                    if(cible.getNombreMarqueur() == 3){
+                        cible.setEclosion(true);
+                        for(UV uv : cible.getVoisins()){
+                            makeEclosion(uv, filiere, dejaVisite);
+                        }
+
+                    }else{
+                        //Sinon on ajoute un marqueur
+                        Marqueur m = reserveMarqueur.getMarqueur(filiere);
+                        cible.addMarqueur(m);
+                        cible.setEclosion(true);
                     }
+
                 }
             }catch(GameOverException e){System.out.println("You loose!");}
         }
@@ -328,7 +367,7 @@ public class Jeu {
     /*Méthode piochant les cartes Infection en fin de tour*/
     public void piocheInfection(){
         int tempCompteur = 0;
-        CarteInfection tempCarte = new CarteInfection();
+        CarteInfection tempCarte;
         while(tempCompteur<chargeTravail){
             tempCarte = carteInfections.piocherCarte();
             //Si le projet est rendu alors la charge de travail n'augmente pas
@@ -343,16 +382,21 @@ public class Jeu {
 
     /*Prend la carte que le premier joueur veux donner et l'envoi dans la main du second joueur
      *Si celui-ci n'a pas une main complète. Sinon ne fait rien.
+     * Fonctionne tout le temps si l'étudiant étranger donne la carte. Sinon doivent être sur la même case
      */
     public void donnerCarte(Joueur secondJoueur, CarteSemestre carteTransferer){
-        if(!secondJoueur.getMainComplete()){
-            try{
-                secondJoueur.ajoutCarte(carteTransferer);
-                joueurActif.retraitCarte(carteTransferer);
-            }catch(WrongTypeException e){}
-            catch(NotEnoughSlotsException e){}
-            catch(NoSuchCardException e){}
+        if(joueurActif.getRole()==Role.etudiantEtranger || joueurActif.getPosition() == secondJoueur.getPosition()){
+            if(!secondJoueur.getMainComplete()){
+                try{
+                    secondJoueur.ajoutCarte(carteTransferer);
+                    joueurActif.retraitCarte(carteTransferer);
+                    reduireAction();
+                }catch(WrongTypeException e){}
+                catch(NotEnoughSlotsException e){}
+                catch(NoSuchCardException e){}
+            }
         }
+
     }
 
     /*
@@ -375,24 +419,27 @@ public class Jeu {
     //Ne fonctionne que avec le surdoue
     //Appel une fonction travail secondaire
     public void verifierMarqueurDest (Joueur joueurCile, int position){
-        UV uv = graph.getUV(position);
-        if(uv.hasMarqueur()){
-            ArrayList<Marqueur> marqueursUV = new ArrayList<Marqueur>();
-            marqueursUV = uv.getMarqueurs();
+        if(joueurCile.getRole()==Role.surdoue){
+            UV uv = graph.getUV(position);
+            if(uv.hasMarqueur()){
+                ArrayList<Marqueur> marqueursUV;
+                marqueursUV = uv.getMarqueurs();
 
-            Filiere f;
-            for(Marqueur m : marqueursUV){
-                f = m.getFiliere();
-                if(testRenduProjet(f)){
-                    travailler(position, f);
-                    marqueursUV = uv.getMarqueurs();
+                Filiere f;
+                for(Marqueur m : marqueursUV){
+                    f = m.getFiliere();
+                    if(testRenduProjet(f)){
+                        travailler(position, f);
+                        marqueursUV = uv.getMarqueurs();
+                    }
                 }
             }
         }
+
     }
     //Fonction vérfiant la liste des déplacement possible pour un joueur donné
     public ArrayList<Integer> deplacementPossible(Joueur joueurCible){
-        ArrayList<Integer> ciblePossible = new ArrayList<Integer>();
+        ArrayList<Integer> ciblePossible = new ArrayList<>();
 
         //Si le joueur a la carte de sa position actuelle il pourra aller partout.
         int posJoueur = joueurCible.getPosition();
@@ -406,12 +453,55 @@ public class Jeu {
                     ciblePossible.add(i);
                 }
             }
+        }else{
+            //Sinon vérifier sa position, ajouter les voisin, ajouter les carte présente en main et les autre proffesseur si présence de l'un d'eux
+            //On check la position d'un prof
+            for(Professeur p : pionProfesseur){
+                if(p.getPosition()==posJoueur){
+                    for(Professeur p1 : pionProfesseur){
+                        if(p1.getPosition()!=p.getPosition()){
+                            ciblePossible.add(p1.getPosition());
+                        }
+                    }
+                }
+            }
+
+            for(UV uv : uvJoueur.getVoisins()){
+                if(!ciblePossible.contains(uv.getPosition())){
+                    ciblePossible.add(uv.getPosition());
+                }
+            }
+
+            CarteSemestre [] carteJoueur = joueurCible.getHand();
+            for(CarteSemestre carte : carteJoueur){
+                if(!ciblePossible.contains(carte.getCible().getPosition())){
+                    ciblePossible.add(carte.getCible().getPosition());
+                }
+            }
         }
 
-        //Sinon vérifier sa position, ajouter les voisin, ajouter les carte présente en main et les autre proffesseur si présence de l'un d'eux
+
 
         return ciblePossible;
     }
+
+    //Retourne une liste des joueurs déplaçable
+    public ArrayList<Joueur> joueurDeplacable(){
+        ArrayList<Joueur> joueurPossible = new ArrayList<>();
+
+        if(joueurActif.getRole()==Role.chefProjet){
+            for(Joueur joueur : joueurs){
+                joueurPossible.add(joueur);
+            }
+        }else{
+            joueurPossible.add(joueurActif);
+        }
+
+        return joueurPossible;
+    }
+
+
+
 
     /*Fonction ammenant le prof de la filière sur l'UV où se trouve l'élève*/
     public void appelerProf(){
@@ -426,6 +516,19 @@ public class Jeu {
         reduireAction();
     }
 
+    public void deplacerProf(Professeur p, int position){
+        if(joueurActif.getRole()==Role.lecheBotte){
+            ArrayList<UV> listUV = graph.getListUV();
+            for(UV uv : listUV){
+                if(uv.getPosition()==position && uv.getFiliere() == p.getFiliere()){
+                    p.setPosition(position);
+                    p.setDeplace(true);
+                    reduireAction();
+                }
+            }
+        }
+
+    }
     /*Fonction permettant de rendre un projet. Dépense des cartes.
      *Ne fonctionne que si un professeur se trouve sur la même case que le joueurActif
      *Vas tenter de rendre le projet correspondant a la filière ou se trouve le proffesseur*/
@@ -441,7 +544,7 @@ public class Jeu {
             if(!testRenduProjet(f)){
                 if(joueurActif.verifierCarte(f)){
 
-                    if(joueurActif.getRole()==Role.surdoue){
+                    if(joueurActif.getRole()==Role.decale){
                         for(int i =0; i < 3 ; i++){
                             carteSemestre.defausserCarte(joueurActif.retraitCarte(f));
                         }

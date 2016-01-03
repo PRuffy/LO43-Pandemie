@@ -35,6 +35,12 @@ public class ReserveCarteInfection implements ReserveCarte
         return defausse.size();
     }
 
+
+    public CarteInfection getLast(){
+        CarteInfection temp = new CarteInfection(pioche.get(pioche.size()-1));
+        pioche.remove(pioche.size()-1);
+        return temp;
+    }
     public void removeCarte(int i){
         defausse.remove(i);
     }
