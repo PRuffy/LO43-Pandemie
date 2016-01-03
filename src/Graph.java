@@ -97,6 +97,10 @@ public class Graph {
         return test;
     }
 
+    public ArrayList<UV> getListUV(){
+        return listUV;
+    }
+
     //Méthode parcourant le graph et remettant les valeurs d'éclosion a false avant le prochain tour.
     public void finTour(){
         eclosionLancer = false;

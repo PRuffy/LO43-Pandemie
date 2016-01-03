@@ -382,16 +382,21 @@ public class Jeu {
 
     /*Prend la carte que le premier joueur veux donner et l'envoi dans la main du second joueur
      *Si celui-ci n'a pas une main complète. Sinon ne fait rien.
+     * Fonctionne tout le temps si l'étudiant étranger donne la carte. Sinon doivent être sur la même case
      */
     public void donnerCarte(Joueur secondJoueur, CarteSemestre carteTransferer){
-        if(!secondJoueur.getMainComplete()){
-            try{
-                secondJoueur.ajoutCarte(carteTransferer);
-                joueurActif.retraitCarte(carteTransferer);
-            }catch(WrongTypeException e){}
-            catch(NotEnoughSlotsException e){}
-            catch(NoSuchCardException e){}
+        if(joueurActif.getRole()==Role.etudiantEtranger || joueurActif.getPosition() == secondJoueur.getPosition()){
+            if(!secondJoueur.getMainComplete()){
+                try{
+                    secondJoueur.ajoutCarte(carteTransferer);
+                    joueurActif.retraitCarte(carteTransferer);
+                    reduireAction();
+                }catch(WrongTypeException e){}
+                catch(NotEnoughSlotsException e){}
+                catch(NoSuchCardException e){}
+            }
         }
+
     }
 
     /*
@@ -480,6 +485,24 @@ public class Jeu {
         return ciblePossible;
     }
 
+    //Retourne une liste des joueurs déplaçable
+    public ArrayList<Joueur> joueurDeplacable(){
+        ArrayList<Joueur> joueurPossible = new ArrayList<>();
+
+        if(joueurActif.getRole()==Role.chefProjet){
+            for(Joueur joueur : joueurs){
+                joueurPossible.add(joueur);
+            }
+        }else{
+            joueurPossible.add(joueurActif);
+        }
+
+        return joueurPossible;
+    }
+
+
+
+
     /*Fonction ammenant le prof de la filière sur l'UV où se trouve l'élève*/
     public void appelerProf(){
         int temPositionJoueur = joueurActif.getPosition();
@@ -493,6 +516,19 @@ public class Jeu {
         reduireAction();
     }
 
+    public void deplacerProf(Professeur p, int position){
+        if(joueurActif.getRole()==Role.lecheBotte){
+            ArrayList<UV> listUV = graph.getListUV();
+            for(UV uv : listUV){
+                if(uv.getPosition()==position && uv.getFiliere() == p.getFiliere()){
+                    p.setPosition(position);
+                    p.setDeplace(true);
+                    reduireAction();
+                }
+            }
+        }
+
+    }
     /*Fonction permettant de rendre un projet. Dépense des cartes.
      *Ne fonctionne que si un professeur se trouve sur la même case que le joueurActif
      *Vas tenter de rendre le projet correspondant a la filière ou se trouve le proffesseur*/
@@ -508,7 +544,7 @@ public class Jeu {
             if(!testRenduProjet(f)){
                 if(joueurActif.verifierCarte(f)){
 
-                    if(joueurActif.getRole()==Role.surdoue){
+                    if(joueurActif.getRole()==Role.decale){
                         for(int i =0; i < 3 ; i++){
                             carteSemestre.defausserCarte(joueurActif.retraitCarte(f));
                         }
