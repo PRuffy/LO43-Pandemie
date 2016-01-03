@@ -6,7 +6,7 @@ public class UV
     private int position;
     private String nom;
     private Filiere filiere;
-    private Marqueur marqueur[];
+    private ArrayList<Marqueur> marqueur;
     private ArrayList<UV> voisins;
     private Professeur professeur;
     private ArrayList<Personnage> personnages;
@@ -22,10 +22,10 @@ public class UV
         this.nom=nom;
         this.filiere=filiere;
         testEclosion = false;
-        marqueur=new Marqueur[3];
-        voisins=new ArrayList<UV>();
+        marqueur=new ArrayList<>();
+        voisins=new ArrayList<>();
         professeur=null;
-        personnages=new ArrayList<Personnage>();
+        personnages=new ArrayList<>();
     }
 
     /*Accesseurs aux différents variable de UV*/
@@ -48,15 +48,7 @@ public class UV
     }
 
     public int getNombreMarqueur(){
-        if (marqueur[2]!=null){
-            return 3;
-        }else if(marqueur[1]!= null){
-            return 2;
-        }else if(marqueur[0]!=null){
-            return 1;
-        }else{
-            return 0;
-        }
+        return marqueur.size();
     }
 
     public Filiere getFiliere(){
@@ -107,54 +99,25 @@ public class UV
     }
 
     public boolean hasMarqueur(){
-        if(marqueur[0]!=null){
-            return true;
-        }else{
-            return false;
-        }
+        return !marqueur.isEmpty();
     }
 
     public ArrayList<Marqueur> getMarqueurs(){
-        int i = 0;
-        ArrayList<Marqueur> marqueursList = new ArrayList<Marqueur>();
-        while (marqueur[i]!=null || i < marqueur.length){
-            marqueursList.add(marqueur[i]);
-        }
-
-        return marqueursList;
+        return marqueur;
     }
     /*Recupere un marqueur de la collection correspondante*/
     public void addMarqueur (Marqueur m){
-
-        if (marqueur[2] != null){
-            setEclosion(true);
+        if(marqueur.size() < 3 ){
+            marqueur.add(m);
         }else{
-            if(marqueur[0] == null){
-                marqueur[0] = m;
-            }else if (marqueur[1] == null){
-                marqueur[1] = m;
-            }else{
-                marqueur[2] =m;
-            }
+            testEclosion = true;
         }
     }
 
     /*Enlève un marqueur et le replace dans la collection ou il appartient*/
     public Marqueur removeMarqueur(){
-        Marqueur m = new Marqueur();
-        if(marqueur[2] != null){
-            m = marqueur[2];
-            marqueur[2]=null;
-
-        }else if(marqueur[1] != null){
-            m = marqueur[1];
-            marqueur[1] = null;
-
-        }else if (marqueur[0] != null) {
-            m = marqueur[0];
-            marqueur[0] = null;
-
-        }
+        Marqueur m;
+        m = marqueur.remove(0);
 
         return m;
 
@@ -162,24 +125,10 @@ public class UV
     }
     public Marqueur removeMarqueur(Filiere f){
         Marqueur m =null;
-        //On parcours la liste de marqueur
-        for(int i = 0; i<3;i++){
-            //On s'assure que la liste n'est pas vide
-            if(marqueur[i] != null){
-                //Si le marqueur de la case I correspond a la filiere voulu on rentre dans le if
-                if(marqueur[i].getFiliere()==f){
-                    //m prend la valeur de marqueur[i]
-                    m = marqueur[i];
-                    //On modifie le tableau en conséquence (on avance les marqueur d'une case et on met les dernière a null)
-                    for(int j = i; j<2;j++){
-                        if(marqueur[j+1]!=null){
-                            marqueur[j] = marqueur[j+1];
-                        }else{
-                           marqueur[j]=null;
-                        }
-                    }
-                    //on renvoit alors m
-                    return m;
+        if(marqueur.size()!=0){
+            for(Marqueur m1 : marqueur){
+                if(m1.getFiliere()==f){
+                    m=m1;
                 }
             }
         }

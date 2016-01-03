@@ -143,9 +143,17 @@ public class Jeu {
     public void augmenterChargeTravail(CarteInfection carte){
         Filiere filiere = carte.getFiliere();
         UV cible = carte.getCible();
-        try{
-            cible.addMarqueur(reserveMarqueur.getMarqueur(filiere));
-        }catch(GameOverException e){defaitePartie();}
+
+        if(cible.getNombreMarqueur()<3){
+            Marqueur m = null;
+            try{
+                m=reserveMarqueur.getMarqueur(filiere);
+            }catch(GameOverException e){defaitePartie();}
+            cible.addMarqueur(m);
+        }else{
+            cible.setEclosion(true);
+        }
+
 
         if (cible.getEclosion()){
             makeEclosion(cible, filiere, new ArrayList<>());
@@ -254,10 +262,6 @@ public class Jeu {
                     case Fermeture:
                         //Déclenche une methode pour retirer une carte de la défausse dans les carte infection
                         fermetureUV();
-                        break;
-                    case Transfert:
-                        break;
-                    case Prevision:
                         break;
                     default: break;
                 }
@@ -377,7 +381,7 @@ public class Jeu {
     public void verifierMarqueurDest (Joueur joueurCile, int position){
         UV uv = graph.getUV(position);
         if(uv.hasMarqueur()){
-            ArrayList<Marqueur> marqueursUV = new ArrayList<Marqueur>();
+            ArrayList<Marqueur> marqueursUV;
             marqueursUV = uv.getMarqueurs();
 
             Filiere f;
@@ -392,7 +396,7 @@ public class Jeu {
     }
     //Fonction vérfiant la liste des déplacement possible pour un joueur donné
     public ArrayList<Integer> deplacementPossible(Joueur joueurCible){
-        ArrayList<Integer> ciblePossible = new ArrayList<Integer>();
+        ArrayList<Integer> ciblePossible = new ArrayList<>();
 
         //Si le joueur a la carte de sa position actuelle il pourra aller partout.
         int posJoueur = joueurCible.getPosition();
