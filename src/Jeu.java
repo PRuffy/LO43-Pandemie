@@ -30,7 +30,7 @@ public class Jeu {
      * int[][] adjacence : permet d'obtenir la liste des voisins
      * 
      */
-    public Jeu(int nombreDeJoueurs, String[] nomUV, Filiere[] filiereUV, int [][] adjacenceUV){
+    public Jeu(int nombreDeJoueurs, DataReader dat){
         chargeTravail = CHARGE_TRAVAIL[0];
         compteurEclosion = 0;
         nombreProjetRendu = 0;
@@ -42,7 +42,7 @@ public class Jeu {
         antipioche = false;
 
         //Creation du graph puis des cartes
-        graph = new Graph(nomUV,filiereUV, adjacenceUV);
+        graph = new Graph(dat);
         carteSemestre = new ReserveCarteSemestre(graph);
         carteInfections = new ReserveCarteInfection(graph);
         cartesBenefiques = new ArrayList<CarteSemestre>();

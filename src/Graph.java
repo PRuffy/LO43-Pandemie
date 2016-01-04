@@ -4,19 +4,16 @@ public class Graph {
     private ArrayList<UV> listUV;
     private boolean eclosionLancer;
 
-    public Graph(String[] nomUV, Filiere[] filiereUV, int[][] adjacenceUV){
-        listUV = new ArrayList<UV>();
-        //Creation des UV
-        for(int i = 0; i < 24; i++){
-            listUV.add(new UV(i+1, nomUV[i],filiereUV[i]));
-        }
+    //public Graph(String[] nomUV, Filiere[] filiereUV, int[][] adjacenceUV){
+    public Graph(DataReader dat){
+        listUV = new ArrayList<UV>(dat.getUv());
 
         //Mise a jour des liste des voisins
         UV tempUV1 = null;
         UV tempUV2 = null;
         for(int i = 0; i<24;i++){
             for(int j = i; j<24;j++){
-                if(adjacenceUV[i][j]==1){
+                if(dat.getAdjacence()[i][j]==1){
                     for(UV uv:listUV){
                         if(uv.getPosition()==i){
                             tempUV1 = uv;
