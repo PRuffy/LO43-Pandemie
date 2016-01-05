@@ -1648,7 +1648,7 @@ public class Main extends Application {
 
     public void circleReachableUV(ArrayList<Integer> reachableUVPositions){
         for(Integer currentUVPosition : reachableUVPositions){
-            UVSprite correspondingSprite = uvSprites.get(currentUVPosition);
+            UVSprite correspondingSprite = uvSprites.get(currentUVPosition-1);
             correspondingSprite.setStrokeWidth(2);
         }
     }

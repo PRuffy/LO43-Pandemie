@@ -225,7 +225,7 @@ public class Jeu {
                 //Si ce n'est pas le cas on met la carte dans la main du joueur
                 //sinon on la défausse
                 if (tempCarte.getType() == TypeCarteSemestre.TP) {
-                    if (joueurActif.getMainComplete()) {
+                    if (joueurActif.isMainComplete()) {
                         carteSemestre.defausserCarte(tempCarte);
                     } else {
                         try{
@@ -388,7 +388,7 @@ public class Jeu {
      */
     public void donnerCarte(Joueur secondJoueur, CarteSemestre carteTransferer){
         if(joueurActif.getRole()==Role.etudiantEtranger || joueurActif.getPosition() == secondJoueur.getPosition()){
-            if(!secondJoueur.getMainComplete()){
+            if(!secondJoueur.isMainComplete()){
                 try{
                     secondJoueur.ajoutCarte(carteTransferer);
                     joueurActif.retraitCarte(carteTransferer);
@@ -446,8 +446,7 @@ public class Jeu {
 
         //Si le joueur a la carte de sa position actuelle il pourra aller partout.
         int posJoueur = joueurCible.getPosition();
-        UV uvJoueur = null;
-        uvJoueur = graph.getUV(posJoueur);
+        UV uvJoueur = graph.getUV(posJoueur);
 
         //Le joueur a la carte de la position ou il se trouve et peux se déplacer n'importe ou
         if(joueurCible.hasCarte(uvJoueur)){
@@ -475,7 +474,7 @@ public class Jeu {
                 }
             }
 
-            CarteSemestre [] carteJoueur = joueurCible.getHand();
+            ArrayList<CarteSemestre> carteJoueur = joueurCible.getHand();
             for(CarteSemestre carte : carteJoueur){
                 if(!ciblePossible.contains(carte.getCible().getPosition())){
                     ciblePossible.add(carte.getCible().getPosition());

@@ -14,7 +14,7 @@ public class ReserveCarteSemestre implements ReserveCarte
         defausse=new ArrayList<CarteSemestre>();
 
         for(int i = 0; i < 24; i++){
-            pioche.add(new CarteSemestre(TypeCarteSemestre.TP, graph.getUV(i+1), graph.getUVFiliere(i+1)));
+            pioche.add(new CarteSemestre(TypeCarteSemestre.TP, graph.getUV(i), graph.getUVFiliere(i)));
         }
 
         Collections.shuffle(pioche);
