@@ -1697,6 +1697,9 @@ public class Main extends Application {
         fondbouton4.setFill(Color.DARKGRAY);
         fondbouton5.setFill(Color.DARKGRAY);
         fondbouton6.setFill(Color.DARKGRAY);
+
+        playerWantToMove=false;
+        uncircleUV();
     }
 
     public void clickPasserButton(){
