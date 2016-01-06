@@ -63,7 +63,6 @@ public class Joueur {
 
     public boolean hasCarte(UV uv){
         for(CarteSemestre carte : carteEnMain){
-            System.out.println("plop");
             if(carte.getCible()==uv){
                 return  true;
             }

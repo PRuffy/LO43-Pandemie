@@ -694,4 +694,64 @@ public class Jeu {
         return graph;
     }
     public Joueur getJoueurActif(){return joueurActif;}
+
+    public ArrayList<Integer> deplacementPossibleByCarteSemestre(Joueur joueurCible){
+        ArrayList<Integer> ciblePossible = new ArrayList<>();
+        ArrayList<CarteSemestre> carteJoueur = joueurCible.getHand();
+        // Pour chaque carte de leur mains, les joueurs peuvent accéder aux UVs correspondantes
+        for(CarteSemestre carte : carteJoueur){
+
+            //Attention, ici encore il y avait un test (voir ci après)
+            //if(!ciblePossible.contains(carte.getCible().getPosition())){
+            ciblePossible.add(carte.getCible().getPosition());
+        }
+        return ciblePossible;
+    }
+
+    public ArrayList<Integer> deplacementPossibleEverywhere(Joueur joueurCible){
+        ArrayList<Integer> ciblePossible = new ArrayList<>();
+
+        //Si le joueur a la carte de sa position actuelle il pourra aller partout.
+        int posJoueur = joueurCible.getPosition();
+        UV uvJoueur =  graph.getUV(posJoueur);
+
+        //Le joueur a la carte de la position ou il se trouve et peux se déplacer n'importe ou
+        if(joueurCible.hasCarte(uvJoueur)){
+            for(UV current : graph.getListUV()){
+                if(current.getPosition()!=posJoueur){
+                    ciblePossible.add(current.getPosition());
+                }
+            }
+        }
+        return ciblePossible;
+    }
+
+    public ArrayList<Integer> deplacementPossibleByProf(Joueur joueurCible){
+        ArrayList<Integer> ciblePossible = new ArrayList<>();
+        int posJoueur = joueurCible.getPosition();
+        for(Professeur p : pionProfesseur){
+            if(p.getPosition()==posJoueur){
+                for(Professeur currentProf : pionProfesseur){
+                    if(currentProf.getPosition()!=p.getPosition()){
+                        ciblePossible.add(currentProf.getPosition());
+                    }
+                }
+            }
+
+        }
+
+        return ciblePossible;
+    }
+
+    public ArrayList<Integer> deplacementPossibleNeighbour(Joueur joueurCible){
+        ArrayList<Integer> ciblePossible = new ArrayList<>();
+        int posJoueur = joueurCible.getPosition();
+        UV uvJoueur = graph.getUV(posJoueur);
+        //On ajoute chaque voisin dans l'ArrayList
+        for(UV uv : uvJoueur.getVoisins()){
+            // if(!ciblePossible.contains(uv.getPosition()))
+            ciblePossible.add(uv.getPosition());
+        }
+        return ciblePossible;
+    }
 }
