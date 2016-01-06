@@ -117,4 +117,10 @@ public class Graph {
             uv.setEclosion(false);
         }
     }
+
+    public void printAllUV(){
+        for(UV current : listUV){
+            System.out.println(current.toString());
+        }
+    }
 }

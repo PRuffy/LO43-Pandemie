@@ -25,6 +25,8 @@ public class Jeu {
     private static final int MAX_ECLOSION = 8;
     private static final int [] CHARGE_TRAVAIL = new int[]{2,2,3,3,4};
 
+    private boolean DEBUG = true;
+
 
     /*constructeur de jeu. Prends les parametre suivant :
      * int nombre de joueur : Permet d'avoir le nombre de joueur désiré. Les différents rôles seront choisis aléatoirement
@@ -47,7 +49,7 @@ public class Jeu {
         graph = new Graph(dat);
         carteSemestre = new ReserveCarteSemestre(graph);
         carteInfections = new ReserveCarteInfection(graph);
-        cartesBenefiques = new ArrayList<CarteSemestre>();
+        cartesBenefiques = new ArrayList<>();
 
         //Creation des professeur
         pionProfesseur = new ArrayList<Professeur>();
@@ -78,7 +80,7 @@ public class Jeu {
             //Le role est enlever de l'arrayliste
             random = rand.nextInt(roleDisp.size());
             roleJoueur = roleDisp.remove(random);
-            joueurs[i] = new Joueur(roleJoueur);
+            joueurs[i] = new Joueur(roleJoueur, i);
             joueurActif = joueurs[i];
 
             //On pioche des cartes qu'on met dans la main des joueurs
@@ -406,10 +408,10 @@ public class Jeu {
      * N'effectue pas de test vis a vis de la position atteignable.
      * Peut déplacer le joueur Actif comme un autre joueur
      */
-    public void deplacer(Joueur joueurCible,int positionArriver){
-        joueurCible.setPosition(positionArriver);
+    public void deplacer(Joueur joueurCible, int positionArrivee){
+        joueurCible.setPosition(positionArrivee);
         if(joueurCible.getRole()==Role.surdoue){
-            verifierMarqueurDest(joueurCible, positionArriver);
+            verifierMarqueurDest(joueurCible, positionArrivee);
         }
         reduireAction();
     }
@@ -439,8 +441,8 @@ public class Jeu {
         }
 
     }
-    //Fonction vérfiant la liste des déplacement possible pour un joueur donné
 
+    //Fonction vérfiant la liste des déplacement possible pour un joueur donné
     public ArrayList<Integer> deplacementPossible(Joueur joueurCible){
         ArrayList<Integer> ciblePossible = new ArrayList<>();
 
@@ -448,39 +450,50 @@ public class Jeu {
         int posJoueur = joueurCible.getPosition();
         UV uvJoueur = graph.getUV(posJoueur);
 
-        //Le joueur a la carte de la position ou il se trouve et peux se déplacer n'importe ou
-        if(joueurCible.hasCarte(uvJoueur)){
-            for(int i = 0; i<graph.getListSize();i++){
-                if(i!=posJoueur){
-                    ciblePossible.add(i);
-                }
-            }
-        }else{
+        if(DEBUG) {
+            System.out.print(posJoueur);
+            System.out.print(uvJoueur);
+        }
+
+
             //Sinon vérifier sa position, ajouter les voisin, ajouter les carte présente en main et les autre proffesseur si présence de l'un d'eux
             //On check la position d'un prof
-            for(Professeur p : pionProfesseur){
-                if(p.getPosition()==posJoueur){
-                    for(Professeur p1 : pionProfesseur){
-                        if(p1.getPosition()!=p.getPosition()){
-                            ciblePossible.add(p1.getPosition());
-                        }
+        for(Professeur p : pionProfesseur){
+            if(p.getPosition()==posJoueur){
+                for(Professeur p1 : pionProfesseur){
+                    if(p1.getPosition()!=p.getPosition()){
+                        if(DEBUG) System.out.println(" because prof : "+p1.getPosition());
+                        ciblePossible.add(p1.getPosition());
                     }
                 }
             }
+        }
 
-            for(UV uv : uvJoueur.getVoisins()){
-                if(!ciblePossible.contains(uv.getPosition())){
-                    ciblePossible.add(uv.getPosition());
-                }
+        for(UV uv : uvJoueur.getVoisins()){
+            if(!ciblePossible.contains(uv.getPosition())){
+                if(DEBUG) System.out.println(" because neighbour : "+uv.getPosition());
+                ciblePossible.add(uv.getPosition());
             }
+        }
 
-            ArrayList<CarteSemestre> carteJoueur = joueurCible.getHand();
-            for(CarteSemestre carte : carteJoueur){
-                if(!ciblePossible.contains(carte.getCible().getPosition())){
-                    ciblePossible.add(carte.getCible().getPosition());
+        //Le joueur a la carte de la position ou il se trouve et peux se déplacer n'importe ou
+        if(joueurCible.hasCarte(uvJoueur)) {
+            for (int i = 0; i < graph.getListSize(); i++) {
+                if (i != posJoueur) {
+                    if (DEBUG) System.out.println(" has carte of his position: " + i);
+                    ciblePossible.add(i + 1);
                 }
             }
         }
+
+        ArrayList<CarteSemestre> carteJoueur = joueurCible.getHand();
+        for(CarteSemestre carte : carteJoueur){
+            if(!ciblePossible.contains(carte.getCible().getPosition())){
+                if(DEBUG) System.out.println(" has carte : "+carte.getCible().getPosition());
+                ciblePossible.add(carte.getCible().getPosition());
+            }
+        }
+
 
 
 
@@ -502,7 +515,7 @@ public class Jeu {
         return joueurPossible;
     }
 
-    /*Fonction ammenant le prof de la filière sur l'model.UV où se trouve l'élève*/
+    /*Fonction ammenant le prof de la filière sur l'UV où se trouve l'élève*/
     public void appelerProf(){
         int temPositionJoueur = joueurActif.getPosition();
         Filiere f = graph.getUVFiliere(temPositionJoueur);
@@ -666,10 +679,10 @@ public class Jeu {
                     // On choisis la case cible aléatoirement dans le tableau des voisins
                     uvCible = r.nextInt(nombreVoisin);
                 }while(!uv.correctDestinationProf(filiereProf, uvCible));
-                UV uvDest = graph.getUV(uvCible);
+                UV uvDest = graph.getUV(uv.getVoisins().get(uvCible).getPosition());
                 uv.setProfesseur(null);
                 uvDest.setProfesseur(p);
-                p.setPosition(uvCible);
+                p.setPosition(uvDest.getPosition());
 
 
             }
@@ -702,8 +715,10 @@ public class Jeu {
         for(CarteSemestre carte : carteJoueur){
 
             //Attention, ici encore il y avait un test (voir ci après)
-            //if(!ciblePossible.contains(carte.getCible().getPosition())){
-            ciblePossible.add(carte.getCible().getPosition());
+            //if(!ciblePossible.contains(carte.getCible().getPosition())) {
+                if (DEBUG) System.out.println(" has carte : " + carte.getCible().getPosition());
+                ciblePossible.add(carte.getCible().getPosition());
+            //}
         }
         return ciblePossible;
     }
@@ -719,6 +734,7 @@ public class Jeu {
         if(joueurCible.hasCarte(uvJoueur)){
             for(UV current : graph.getListUV()){
                 if(current.getPosition()!=posJoueur){
+                    if(DEBUG) System.out.println(" has carte of his position : "+current.getPosition());
                     ciblePossible.add(current.getPosition());
                 }
             }
@@ -733,6 +749,7 @@ public class Jeu {
             if(p.getPosition()==posJoueur){
                 for(Professeur currentProf : pionProfesseur){
                     if(currentProf.getPosition()!=p.getPosition()){
+                        if(DEBUG) System.out.println(" because prof : "+currentProf.getPosition());
                         ciblePossible.add(currentProf.getPosition());
                     }
                 }
@@ -750,8 +767,13 @@ public class Jeu {
         //On ajoute chaque voisin dans l'ArrayList
         for(UV uv : uvJoueur.getVoisins()){
             // if(!ciblePossible.contains(uv.getPosition()))
+            if(DEBUG) System.out.println(" because neighbour : "+ uv.getPosition());
             ciblePossible.add(uv.getPosition());
         }
         return ciblePossible;
+    }
+
+    public Joueur[] getJoueurs(){
+        return joueurs;
     }
 }

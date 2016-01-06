@@ -10,11 +10,13 @@ public class Joueur {
     private Role role;
     private Personnage position;
     private ArrayList<CarteSemestre> carteEnMain;
+    private int numero;
 
-    public Joueur(Role role){
+    public Joueur(Role role, int numero){
         this.role = role;
         this.position = new Personnage(1);
         this.carteEnMain = new ArrayList<>();
+        this.numero = numero;
     }
 
 
@@ -44,6 +46,7 @@ public class Joueur {
     public Role getRole(){
         return this.role;
     }
+    public int getNumero(){return numero;}
 
 
     public boolean verifierCarte(Filiere f){
