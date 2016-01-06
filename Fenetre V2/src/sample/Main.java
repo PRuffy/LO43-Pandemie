@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -34,6 +35,7 @@ public class Main extends Application {
     private boolean playerWantToMove;
     private ArrayList<UVSprite> uvSprites;
     private ArrayList<PlayerSprite> playerSprites;
+    private ArrayList<TeacherSprite> teacherSprites;
     private Joueur activePlayer;
     private int nombreJoueur;
 
@@ -49,6 +51,11 @@ public class Main extends Application {
     private Label lbouton4;
     private Label lbouton5;
     private Label lbouton6;
+
+    private Color ilcColor = Color.WHEAT;
+    private Color i2rvColor = Color.LIGHTBLUE;
+    private Color rtColor = Color.LIGHTGREEN;
+    private Color leimColor = Color.PINK;
 
 
     @Override
@@ -725,7 +732,7 @@ public class Main extends Application {
             labelBD51.setFont(Font.font("Arial", 18));
             labelBD51.setTranslateX(coordonnees[index][0]);
             labelBD51.setTranslateY(coordonnees[index][1]);
-            UVSprite circleBD51 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, Color.WHEAT, index + 1);
+            UVSprite circleBD51 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, ilcColor, index + 1);
             uvSprites.add(circleBD51);
             root.getChildren().addAll(circleBD51, labelBD51);
 
@@ -749,7 +756,7 @@ public class Main extends Application {
             labelGL51.setFont(Font.font("Arial", 18));
             labelGL51.setTranslateX(coordonnees[index][0]);
             labelGL51.setTranslateY(coordonnees[index][1]);
-            UVSprite circleGL51 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 11, 10, Color.WHEAT, index + 1);
+            UVSprite circleGL51 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 11, 10, ilcColor, index + 1);
             uvSprites.add(circleGL51);
             root.getChildren().addAll(circleGL51, labelGL51);
 
@@ -775,7 +782,7 @@ public class Main extends Application {
             labelBD50.setFont(Font.font("Arial", 18));
             labelBD50.setTranslateX(coordonnees[index][0]);
             labelBD50.setTranslateY(coordonnees[index][1]);
-            UVSprite circleBD50 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, Color.WHEAT, index + 1);
+            UVSprite circleBD50 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, ilcColor, index + 1);
             uvSprites.add(circleBD50);
             root.getChildren().addAll(circleBD50, labelBD50);
 
@@ -799,7 +806,7 @@ public class Main extends Application {
             labelGL52.setFont(Font.font("Arial", 18));
             labelGL52.setTranslateX(coordonnees[index][0]);
             labelGL52.setTranslateY(coordonnees[index][1]);
-            UVSprite circleGL52 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 9, 10, Color.WHEAT, index + 1);
+            UVSprite circleGL52 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 9, 10, ilcColor, index + 1);
             uvSprites.add(circleGL52);
             root.getChildren().addAll(circleGL52, labelGL52);
 
@@ -823,7 +830,7 @@ public class Main extends Application {
             labelLO51.setFont(Font.font("Arial", 18));
             labelLO51.setTranslateX(coordonnees[index][0]);
             labelLO51.setTranslateY(coordonnees[index][1]);
-            UVSprite circleLO51 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, Color.WHEAT, index + 1);
+            UVSprite circleLO51 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, ilcColor, index + 1);
             uvSprites.add(circleLO51);
             root.getChildren().addAll(circleLO51, labelLO51);
 
@@ -847,7 +854,7 @@ public class Main extends Application {
             labelIA54.setFont(Font.font("Arial", 18));
             labelIA54.setTranslateX(coordonnees[index][0]);
             labelIA54.setTranslateY(coordonnees[index][1]);
-            UVSprite circleIA54 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, Color.WHEAT, index + 1);
+            UVSprite circleIA54 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, ilcColor, index + 1);
             uvSprites.add(circleIA54);
             root.getChildren().addAll(circleIA54, labelIA54);
 
@@ -871,7 +878,7 @@ public class Main extends Application {
             labelIN52.setFont(Font.font("Arial", 18));
             labelIN52.setTranslateX(coordonnees[index][0]);
             labelIN52.setTranslateY(coordonnees[index][1]);
-            UVSprite circleIN52 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 9, 10, Color.LIGHTBLUE, index + 1);
+            UVSprite circleIN52 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 9, 10, i2rvColor, index + 1);
             uvSprites.add(circleIN52);
             root.getChildren().addAll(circleIN52, labelIN52);
 
@@ -895,7 +902,7 @@ public class Main extends Application {
             labelVI50.setFont(Font.font("Arial", 18));
             labelVI50.setTranslateX(coordonnees[index][0]);
             labelVI50.setTranslateY(coordonnees[index][1]);
-            UVSprite circleVI50 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 10, 10, Color.LIGHTBLUE, index + 1);
+            UVSprite circleVI50 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 10, 10, i2rvColor, index + 1);
             uvSprites.add(circleVI50);
             root.getChildren().addAll(circleVI50, labelVI50);
 
@@ -919,7 +926,7 @@ public class Main extends Application {
             labelIN54.setFont(Font.font("Arial", 18));
             labelIN54.setTranslateX(coordonnees[index][0]);
             labelIN54.setTranslateY(coordonnees[index][1]);
-            UVSprite circleIN54 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 9, 10, Color.LIGHTBLUE, index + 1);
+            UVSprite circleIN54 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 9, 10, i2rvColor, index + 1);
             uvSprites.add(circleIN54);
             root.getChildren().addAll(circleIN54, labelIN54);
 
@@ -943,7 +950,7 @@ public class Main extends Application {
             labelMT51.setFont(Font.font("Arial", 18));
             labelMT51.setTranslateX(coordonnees[index][0]);
             labelMT51.setTranslateY(coordonnees[index][1]);
-            UVSprite circleMT51 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, Color.LIGHTBLUE, index + 1);
+            UVSprite circleMT51 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, i2rvColor, index + 1);
             uvSprites.add(circleMT51);
             root.getChildren().addAll(circleMT51, labelMT51);
 
@@ -967,7 +974,7 @@ public class Main extends Application {
             labelIN55.setFont(Font.font("Arial", 18));
             labelIN55.setTranslateX(coordonnees[index][0]);
             labelIN55.setTranslateY(coordonnees[index][1]);
-            UVSprite circleIN55 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 10, 10, Color.LIGHTBLUE, index + 1);
+            UVSprite circleIN55 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 10, 10, i2rvColor, index + 1);
             uvSprites.add(circleIN55);
             root.getChildren().addAll(circleIN55, labelIN55);
 
@@ -991,7 +998,7 @@ public class Main extends Application {
             labelVI51.setFont(Font.font("Arial", 18));
             labelVI51.setTranslateX(coordonnees[index][0]);
             labelVI51.setTranslateY(coordonnees[index][1]);
-            UVSprite circleVI51 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 10, 10, Color.LIGHTBLUE, index + 1);
+            UVSprite circleVI51 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 10, 10, i2rvColor, index + 1);
             uvSprites.add(circleVI51);
             root.getChildren().addAll(circleVI51, labelVI51);
 
@@ -1015,7 +1022,7 @@ public class Main extends Application {
             labelTR53.setFont(Font.font("Arial", 18));
             labelTR53.setTranslateX(coordonnees[index][0]);
             labelTR53.setTranslateY(coordonnees[index][1]);
-            UVSprite circleTR53 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 9, 10, Color.PINK, index + 1);
+            UVSprite circleTR53 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 9, 10, leimColor, index + 1);
             uvSprites.add(circleTR53);
             root.getChildren().addAll(circleTR53, labelTR53);
 
@@ -1039,7 +1046,7 @@ public class Main extends Application {
             labelMI52.setFont(Font.font("Arial", 18));
             labelMI52.setTranslateX(coordonnees[index][0]);
             labelMI52.setTranslateY(coordonnees[index][1]);
-            UVSprite circleMI52 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 11, 10, Color.PINK, index + 1);
+            UVSprite circleMI52 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 11, 10, leimColor, index + 1);
             uvSprites.add(circleMI52);
             root.getChildren().addAll(circleMI52, labelMI52);
 
@@ -1063,7 +1070,7 @@ public class Main extends Application {
             labelSM57.setFont(Font.font("Arial", 18));
             labelSM57.setTranslateX(coordonnees[index][0]);
             labelSM57.setTranslateY(coordonnees[index][1]);
-            UVSprite circleSM57 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, Color.PINK, index + 1);
+            UVSprite circleSM57 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, leimColor, index + 1);
             uvSprites.add(circleSM57);
             root.getChildren().addAll(circleSM57, labelSM57);
 
@@ -1087,7 +1094,7 @@ public class Main extends Application {
             labelLO52.setFont(Font.font("Arial", 18));
             labelLO52.setTranslateX(coordonnees[index][0]);
             labelLO52.setTranslateY(coordonnees[index][1]);
-            UVSprite circleLO52 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, Color.PINK, index + 1);
+            UVSprite circleLO52 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, leimColor, index + 1);
             uvSprites.add(circleLO52);
             root.getChildren().addAll(circleLO52, labelLO52);
 
@@ -1111,7 +1118,7 @@ public class Main extends Application {
             labelLO53.setFont(Font.font("Arial", 18));
             labelLO53.setTranslateX(coordonnees[index][0]);
             labelLO53.setTranslateY(coordonnees[index][1]);
-            UVSprite circleLO53 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, Color.PINK, index + 1);
+            UVSprite circleLO53 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, leimColor, index + 1);
             uvSprites.add(circleLO53);
             root.getChildren().addAll(circleLO53, labelLO53);
 
@@ -1135,7 +1142,7 @@ public class Main extends Application {
             labelTR54.setFont(Font.font("Arial", 18));
             labelTR54.setTranslateX(coordonnees[index][0]);
             labelTR54.setTranslateY(coordonnees[index][1]);
-            UVSprite circleTR54 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 9, 10, Color.PINK, index + 1);
+            UVSprite circleTR54 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 9, 10, leimColor, index + 1);
             uvSprites.add(circleTR54);
             root.getChildren().addAll(circleTR54, labelTR54);
 
@@ -1159,7 +1166,7 @@ public class Main extends Application {
             labelRE52.setFont(Font.font("Arial", 18));
             labelRE52.setTranslateX(coordonnees[index][0]);
             labelRE52.setTranslateY(coordonnees[index][1]);
-            UVSprite circleRE52 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 11, 10, Color.LIGHTGREEN, index + 1);
+            UVSprite circleRE52 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 11, 10, rtColor, index + 1);
             uvSprites.add(circleRE52);
             root.getChildren().addAll(circleRE52, labelRE52);
 
@@ -1183,7 +1190,7 @@ public class Main extends Application {
             labelRE56.setFont(Font.font("Arial", 18));
             labelRE56.setTranslateX(coordonnees[index][0]);
             labelRE56.setTranslateY(coordonnees[index][1]);
-            UVSprite circleRE56 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, Color.LIGHTGREEN, index + 1);
+            UVSprite circleRE56 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, rtColor, index + 1);
             uvSprites.add(circleRE56);
             root.getChildren().addAll(circleRE56, labelRE56);
 
@@ -1207,7 +1214,7 @@ public class Main extends Application {
             labelRE51.setFont(Font.font("Arial", 18));
             labelRE51.setTranslateX(coordonnees[index][0]);
             labelRE51.setTranslateY(coordonnees[index][1]);
-            UVSprite circleRE51 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, Color.LIGHTGREEN, index + 1);
+            UVSprite circleRE51 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, rtColor, index + 1);
             uvSprites.add(circleRE51);
             root.getChildren().addAll(circleRE51, labelRE51);
 
@@ -1231,7 +1238,7 @@ public class Main extends Application {
             labelTL53.setFont(Font.font("Arial", 18));
             labelTL53.setTranslateX(coordonnees[index][0]);
             labelTL53.setTranslateY(coordonnees[index][1]);
-            UVSprite circleTL53 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, Color.LIGHTGREEN, index + 1);
+            UVSprite circleTL53 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, rtColor, index + 1);
             uvSprites.add(circleTL53);
             root.getChildren().addAll(circleTL53, labelTL53);
 
@@ -1255,7 +1262,7 @@ public class Main extends Application {
             labelRE53.setFont(Font.font("Arial", 18));
             labelRE53.setTranslateX(coordonnees[index][0]);
             labelRE53.setTranslateY(coordonnees[index][1]);
-            UVSprite circleRE53 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, Color.LIGHTGREEN, index + 1);
+            UVSprite circleRE53 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, rtColor, index + 1);
             uvSprites.add(circleRE53);
             root.getChildren().addAll(circleRE53, labelRE53);
 
@@ -1279,7 +1286,7 @@ public class Main extends Application {
             labelRE55.setFont(Font.font("Arial", 18));
             labelRE55.setTranslateX(coordonnees[index][0]);
             labelRE55.setTranslateY(coordonnees[index][1]);
-            UVSprite circleRE55 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 12, 10, Color.LIGHTGREEN, index + 1);
+            UVSprite circleRE55 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 12, 10, rtColor, index + 1);
             uvSprites.add(circleRE55);
             root.getChildren().addAll(circleRE55, labelRE55);
 
@@ -1508,6 +1515,9 @@ public class Main extends Application {
 
                     primaryStage.setScene(scene2);
 
+                    /*
+                    Création des sprites des joueurs
+                     */
                     playerSprites = new ArrayList<>();
                     int tabPion[][] = initCoordPionJoueurs();
                     int tabUV[][] = initCoordUVSprites();
@@ -1515,14 +1525,14 @@ public class Main extends Application {
                     Joueur[] joueurs = model.getJoueurs();
                     int x = tabPion[index][0] + tabUV[joueurs[index].getPosition() - 1][0];
                     int y = tabPion[index][1] + tabUV[joueurs[index].getPosition() - 1][1];
-                    PlayerSprite pionJoueur1 = new PlayerSprite(x, y, 6, 6, index + 1);
+                    PlayerSprite pionJoueur1 = new PlayerSprite(x, y, index + 1);
                     root.getChildren().add(pionJoueur1);
                     playerSprites.add(pionJoueur1);
                     index++;
 
                     x = tabPion[index][0] + tabUV[joueurs[index].getPosition() - 1][0];
                     y = tabPion[index][1] + tabUV[joueurs[index].getPosition() - 1][1];
-                    PlayerSprite pionJoueur2 = new PlayerSprite(x, y, 6, 6, index + 1);
+                    PlayerSprite pionJoueur2 = new PlayerSprite(x, y, index + 1);
                     root.getChildren().add(pionJoueur2);
                     playerSprites.add(pionJoueur2);
                     index++;
@@ -1530,7 +1540,7 @@ public class Main extends Application {
                     if (nombreJoueur >= 3) {
                         x = tabPion[index][0] + tabUV[joueurs[index].getPosition() - 1][0];
                         y = tabPion[index][1] + tabUV[joueurs[index].getPosition() - 1][1];
-                        PlayerSprite pionJoueur3 = new PlayerSprite(x, y, 6, 6, index + 1);
+                        PlayerSprite pionJoueur3 = new PlayerSprite(x, y, index + 1);
                         root.getChildren().add(pionJoueur3);
                         playerSprites.add(pionJoueur3);
                         index++;
@@ -1538,13 +1548,47 @@ public class Main extends Application {
                     if (nombreJoueur == 4) {
                         x = tabPion[index][0] + tabUV[joueurs[index].getPosition() - 1][0];
                         y = tabPion[index][1] + tabUV[joueurs[index].getPosition() - 1][1];
-                        PlayerSprite pionJoueur4 = new PlayerSprite(x, y, 6, 6, index + 1);
+                        PlayerSprite pionJoueur4 = new PlayerSprite(x, y, index + 1);
                         root.getChildren().add(pionJoueur4);
                         playerSprites.add(pionJoueur4);
                         index++;
                     }
 
                     playerSprites.get(activePlayer.getNumero()).setFill(Color.TEAL);
+
+                    /*
+                    Création des sprites des professeurs
+                     */
+                    index = 0;
+                    ArrayList<Professeur> teachers = model.getPionProfesseur();
+                    teacherSprites = new ArrayList<>();
+                    int teacherOffsetX = 16, teacherOffsetY = 6;
+
+                    x = teacherOffsetX + tabUV[teachers.get(index).getPosition() - 1][0];
+                    y = teacherOffsetY + tabUV[teachers.get(index).getPosition() - 1][1];
+                    TeacherSprite spriteProfIlc = new TeacherSprite(x, y, index, Filiere.ILC);
+                    teacherSprites.add(spriteProfIlc);
+                    index++;
+
+                    x = teacherOffsetX + tabUV[teachers.get(index).getPosition() - 1][0];
+                    y = teacherOffsetY + tabUV[teachers.get(index).getPosition() - 1][1];
+                    TeacherSprite spriteProfI2rv = new TeacherSprite(x, y, index, Filiere.I2RV);
+                    teacherSprites.add(spriteProfI2rv);
+                    index++;
+
+                    x = teacherOffsetX + tabUV[teachers.get(index).getPosition() - 1][0];
+                    y = teacherOffsetY + tabUV[teachers.get(index).getPosition() - 1][1];
+                    TeacherSprite spriteProfLeim = new TeacherSprite(x, y, index, Filiere.LEIM);
+                    teacherSprites.add(spriteProfLeim);
+                    index++;
+
+                    x = teacherOffsetX + tabUV[teachers.get(index).getPosition() - 1][0];
+                    y = teacherOffsetY + tabUV[teachers.get(index).getPosition() - 1][1];
+                    TeacherSprite spriteProfRt = new TeacherSprite(x, y, index, Filiere.RT);
+                    teacherSprites.add(spriteProfRt);
+
+                    root.getChildren().addAll(spriteProfI2rv, spriteProfIlc, spriteProfLeim, spriteProfRt);
+
                 }
             });
 
@@ -1659,7 +1703,7 @@ public class Main extends Application {
             fondbouton1.setFill(Color.DARKGRAY);
             uncircleUV();
             playerWantToMove=false;
-            if(model.getJoueurActif() != activePlayer) updatePlayerSpriteColor();
+            if(model.getJoueurActif() != activePlayer) endTurn();
 
         }
     }
@@ -1706,11 +1750,26 @@ public class Main extends Application {
         if(lbouton6.getText()=="Passer"){
             lbouton6.setText("Etes vous \nsur?");
         }else{
-            model.finDeTour();
-            updatePlayerSpriteColor();
-            lbouton6.setText("Passer");
+            endTurn();
         }
     }
 
+    public void updateTeacherSprite(){
+        ArrayList<Professeur> teachers = model.getPionProfesseur();
+        int tabUV[][] = initCoordUVSprites();
+        for(TeacherSprite currentTeacherSprite : teacherSprites){
+            Professeur currentTeacher = teachers.get(currentTeacherSprite.getNumero());
 
+            currentTeacherSprite.setX(17 + tabUV[currentTeacher.getPosition()-1][0]);
+            currentTeacherSprite.setY(6 + tabUV[currentTeacher.getPosition()-1][1]);
+        }
+    }
+
+    public void endTurn(){
+        model.finDeTour();
+        updatePlayerSpriteColor();
+        updateTeacherSprite();
+        lbouton6.setText("Passer");
+        undoAllActionButtonColor();
+    }
 }

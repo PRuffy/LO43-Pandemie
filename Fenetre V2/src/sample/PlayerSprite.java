@@ -10,8 +10,8 @@ import javafx.scene.shape.StrokeType;
 public class PlayerSprite extends Rectangle{
     private int numero;
 
-    public PlayerSprite(double x, double y, double width, double height, int numero){
-        super(x, y, width, height);
+    public PlayerSprite(double x, double y, int numero){
+        super(x, y, 6, 6);
         this.numero=numero;
         setFill(Color.ORANGE);
         setStrokeWidth(1);

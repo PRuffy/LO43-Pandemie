@@ -776,4 +776,8 @@ public class Jeu {
     public Joueur[] getJoueurs(){
         return joueurs;
     }
+
+    public ArrayList<Professeur> getPionProfesseur(){
+        return pionProfesseur;
+    }
 }
