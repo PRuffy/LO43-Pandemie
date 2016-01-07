@@ -34,7 +34,7 @@ public class Jeu {
      * int[][] adjacence : permet d'obtenir la liste des voisins
      * 
      */
-    public Jeu(int nombreDeJoueurs, DataReader dat){
+    public Jeu(int nombreDeJoueurs, DataReader dat) throws GameOverException {
         chargeTravail = CHARGE_TRAVAIL[0];
         compteurEclosion = 0;
         nombreProjetRendu = 0;
@@ -134,6 +134,38 @@ public class Jeu {
 
         //On créer la réserve de marqueur
         reserveMarqueur = new CollectionMarqueur();
+
+        //On pioche des cartes infections
+        //Les deux première ajoute trois marqueur
+        //Les deux suivante deux marqueurs
+        //Les deux dernières 1 marqueurs
+        CarteInfection tempCarteInfection = null;
+        Marqueur m = null;
+        for(int i = 0 ; i<6 ; i++){
+            if(i<2){
+                tempCarteInfection = carteInfections.piocherCarte();
+                for(int j = 0; j < 3; j++){
+                    m = reserveMarqueur.getMarqueur(tempCarteInfection.getFiliere());
+                    tempCarteInfection.getCible().addMarqueur(m);
+
+                }
+                carteInfections.defausserCarte(tempCarteInfection);
+            }else if(i < 4){
+                tempCarteInfection = carteInfections.piocherCarte();
+                for(int j = 0; j < 2; j++){
+                    m = reserveMarqueur.getMarqueur(tempCarteInfection.getFiliere());
+                    tempCarteInfection.getCible().addMarqueur(m);
+
+                }
+                carteInfections.defausserCarte(tempCarteInfection);
+            }else{
+                tempCarteInfection = carteInfections.piocherCarte();
+                m = reserveMarqueur.getMarqueur(tempCarteInfection.getFiliere());
+                tempCarteInfection.getCible().addMarqueur(m);
+                carteInfections.defausserCarte(tempCarteInfection);
+            }
+        }
+
 
         //On complete la pioche avec les carte benefique et les carteCC
         carteSemestre.completerPioche();
