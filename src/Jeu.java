@@ -75,12 +75,16 @@ public class Jeu {
         int random=0;
         Role roleJoueur;
         CarteSemestre carte = null;
+        Joueur temp;
         for(int i = 0; i < nombreDeJoueurs; i++){
             //On prend un role aléatoirement dans l'arrayListe
             //Le role est enlever de l'arrayliste
             random = rand.nextInt(roleDisp.size());
             roleJoueur = roleDisp.remove(random);
-            joueurs[i] = new Joueur(roleJoueur, i, nomsDesJoueurs.get(i));
+            temp = new Joueur(roleJoueur, i, nomsDesJoueurs.get(i));
+            joueurs[i] = temp;
+            getGraph().getUV(1).addPersonnage(temp.getPersonnage());
+
             joueurActif = joueurs[i];
 
             //On pioche des cartes qu'on met dans la main des joueurs
@@ -442,7 +446,9 @@ public class Jeu {
      * Peut déplacer le joueur Actif comme un autre joueur
      */
     public void deplacer(Joueur joueurCible, int positionArrivee){
+        getGraph().getUV(joueurCible.getPosition()).removePersonnage(joueurCible.getPersonnage());
         joueurCible.setPosition(positionArrivee);
+        getGraph().getUV(positionArrivee).addPersonnage(joueurCible.getPersonnage());
         if(joueurCible.getRole()==Role.surdoue){
             verifierMarqueurDest(joueurCible, positionArrivee);
         }

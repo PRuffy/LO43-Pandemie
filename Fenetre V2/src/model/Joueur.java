@@ -153,4 +153,5 @@ public class Joueur {
             default : return "";
         }
     }
+    public Personnage getPersonnage(){ return position; }
 }

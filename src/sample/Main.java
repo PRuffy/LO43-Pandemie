@@ -585,6 +585,14 @@ public class Main extends Application {
         updateActivePlayerInfo();
         updateHandSemesterCardLabel();
 
+        System.out.println(model.getGraph().getUV(model.getJoueurActif().getPosition()).getPersonnages().size());
+
+        if(model.getGraph().getUV(model.getJoueurActif().getPosition()).getPersonnages().size()>1){
+            lbouton5.setTextFill(Color.BLACK);
+        }else{
+            lbouton5.setTextFill(Color.RED);
+        }
+
         playerWantToTrade = false;
         playerSelectedThisCard = null;
         updateHandSemesterCardSprite();
@@ -676,7 +684,7 @@ public class Main extends Application {
     }
 
     private void groupWorkButtonClicked(){
-        if (!playerWantToTrade) {
+        if (!playerWantToTrade && lbouton5.getTextFill()!=Color.RED) {
             fondbouton5.setFill(Color.LIGHTBLUE);
             playerWantToTrade = true;
 
@@ -721,6 +729,7 @@ public class Main extends Application {
         updateLabelMarqueur();
         updateHandSemesterCardLabel();
         updatePlayerIndicator();
+        resetAllActionButtons(false);
     }
 
     public void endTurn(){
