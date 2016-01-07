@@ -578,7 +578,7 @@ public class Jeu {
 
     /*Fonction permettant de rendre un projet. Dépense des cartes.
      *Ne fonctionne que si un professeur se trouve sur la même case que le joueurActif
-     *Vas tenter de rendre le projet correspondant a la filière ou se trouve le proffesseur*/
+     *Vas tenter de rendre le projet correspondant a la filière ou se trouve le professeur*/
     public void rendreProjet(){
         /*On test si un prof est sur la même case que le joueur actif*/
         if(presenceProf()){
@@ -611,6 +611,25 @@ public class Jeu {
             }
         }
 
+    }
+
+    public boolean peutRendreProjet(){
+        if(presenceProf()){
+            Filiere f = null;
+            for(Professeur p : pionProfesseur){
+                if(p.getPosition() == joueurActif.getPosition()){
+                    f = p.getFiliere();
+                }
+            }
+            if(!testRenduProjet(f)){
+                if(joueurActif.verifierCarte(f)){
+                    return true;
+                }
+
+            }
+        }
+
+        return false;
     }
 
 

@@ -665,7 +665,6 @@ public class Main extends Application {
 
         if(lbouton2.getTextFill()!=Color.RED){
             model.travailler();
-            updateLabelMarqueur();
         }
 
         if(model.getJoueurActif() != activePlayer) {
@@ -693,9 +692,21 @@ public class Main extends Application {
 
     private void callTeacherButtonClicked(){
 
-        if(lbouton3.getTextFill()!=Color.RED){
+        if(lbouton3.getTextFill() != Color.RED){
             model.appelerProf();
-            updateTeacherSprite();
+        }
+
+        if(model.getJoueurActif() != activePlayer) {
+            endTurn();
+        }
+        else {
+            resetAllActionButtons(false);
+        }
+    }
+
+    private void giveProjectButtonClicked(){
+        if(lbouton4.getTextFill() != Color.RED){
+            model.rendreProjet();
         }
 
         if(model.getJoueurActif() != activePlayer) {
@@ -783,6 +794,12 @@ public class Main extends Application {
         for(CarteSemestre currentCard : activePlayer.getHand()){
             playerHandCardLabel.get(activePlayer.getHand().indexOf(currentCard)).setText(currentCard.getCible().toString());
             playerHandCardSprites.get(activePlayer.getHand().indexOf(currentCard)).setFill(switchCardColor(currentCard));
+
+            if(model.peutRendreProjet()){
+                lbouton4.setTextFill(Color.BLACK);
+            }else{
+                lbouton4.setTextFill(Color.RED);
+            }
         }
     }
 
@@ -1665,11 +1682,8 @@ public class Main extends Application {
             }
         });
 
-        fondbouton4.setOnMousePressed(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                //if (action==disponible)
-                //mettre l'action correspondant à l'action
-            }
+        fondbouton4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) { giveProjectButtonClicked();}
         });
 
         lbouton4 = new Label("Rendre un \nprojet");
@@ -1678,6 +1692,23 @@ public class Main extends Application {
         lbouton4.setTranslateX(35);
         lbouton4.setTranslateY(325);
         root.getChildren().add(lbouton4);
+
+        lbouton4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) { giveProjectButtonClicked();}
+        });
+
+        lbouton4.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton4.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        lbouton4.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton4.setFill(Color.DARKGRAY);
+            }
+        });
+
 
     }
 
@@ -1784,20 +1815,8 @@ public class Main extends Application {
         playerHandCardSprites.add(carte1);
         root.getChildren().add(carte1);
 
-        carte1.setOnMousePressed(new EventHandler<MouseEvent>() {
+        carte1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {}
-        });
-
-        carte1.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte1.setFill(Color.LIGHTGREY);
-            }
-        });
-
-        carte1.setOnMouseExited(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte1.setFill(Color.DARKGRAY);
-            }
         });
 
         Label lcarte1 = new Label("");
@@ -1809,20 +1828,8 @@ public class Main extends Application {
         playerHandCardLabel.add(lcarte1);
         root.getChildren().add(lcarte1);
 
-        lcarte1.setOnMousePressed(new EventHandler<MouseEvent>() {
+        lcarte1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {}
-        });
-
-        lcarte1.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte1.setFill(Color.LIGHTGREY);
-            }
-        });
-
-        lcarte1.setOnMouseExited(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte1.setFill(Color.DARKGRAY);
-            }
         });
 
         index++;
@@ -1833,20 +1840,8 @@ public class Main extends Application {
         playerHandCardSprites.add(carte2);
         root.getChildren().add(carte2);
 
-        carte2.setOnMousePressed(new EventHandler<MouseEvent>() {
+        carte2.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {}
-        });
-
-        carte2.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte2.setFill(Color.LIGHTGREY);
-            }
-        });
-
-        carte2.setOnMouseExited(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte2.setFill(Color.DARKGRAY);
-            }
         });
 
         Label lcarte2 = new Label("");
@@ -1858,20 +1853,8 @@ public class Main extends Application {
         playerHandCardLabel.add(lcarte2);
         root.getChildren().add(lcarte2);
 
-        lcarte2.setOnMousePressed(new EventHandler<MouseEvent>() {
+        lcarte2.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {}
-        });
-
-        lcarte2.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte1.setFill(Color.LIGHTGREY);
-            }
-        });
-
-        lcarte2.setOnMouseExited(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte1.setFill(Color.DARKGRAY);
-            }
         });
 
         index++;
@@ -1882,20 +1865,9 @@ public class Main extends Application {
         playerHandCardSprites.add(carte3);
         root.getChildren().add(carte3);
 
-        carte3.setOnMouseEntered(new EventHandler<MouseEvent>() {
+        carte3.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                carte3.setFill(Color.LIGHTGREY);
             }
-        });
-
-        carte3.setOnMouseExited(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte3.setFill(Color.DARKGRAY);
-            }
-        });
-
-        carte3.setOnMousePressed(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {}
         });
 
         Label lcarte3 = new Label("");
@@ -1907,20 +1879,8 @@ public class Main extends Application {
         playerHandCardLabel.add(lcarte3);
         root.getChildren().add(lcarte3);
 
-        lcarte3.setOnMousePressed(new EventHandler<MouseEvent>() {
+        lcarte3.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {}
-        });
-
-        lcarte3.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte1.setFill(Color.LIGHTGREY);
-            }
-        });
-
-        lcarte3.setOnMouseExited(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte1.setFill(Color.DARKGRAY);
-            }
         });
 
         index++;
@@ -1931,20 +1891,8 @@ public class Main extends Application {
         playerHandCardSprites.add(carte4);
         root.getChildren().add(carte4);
 
-        carte4.setOnMousePressed(new EventHandler<MouseEvent>() {
+        carte4.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {}
-        });
-
-        carte4.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte4.setFill(Color.LIGHTGREY);
-            }
-        });
-
-        carte4.setOnMouseExited(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte4.setFill(Color.DARKGRAY);
-            }
         });
 
         Label lcarte4 = new Label("");
@@ -1956,20 +1904,8 @@ public class Main extends Application {
         playerHandCardLabel.add(lcarte4);
         root.getChildren().add(lcarte4);
 
-        lcarte4.setOnMousePressed(new EventHandler<MouseEvent>() {
+        lcarte4.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {}
-        });
-
-        lcarte4.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte1.setFill(Color.LIGHTGREY);
-            }
-        });
-
-        lcarte4.setOnMouseExited(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte1.setFill(Color.DARKGRAY);
-            }
         });
 
         index++;
@@ -1980,20 +1916,8 @@ public class Main extends Application {
         playerHandCardSprites.add(carte5);
         root.getChildren().add(carte5);
 
-        carte5.setOnMousePressed(new EventHandler<MouseEvent>() {
+        carte5.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {}
-        });
-
-        carte5.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte5.setFill(Color.LIGHTGREY);
-            }
-        });
-
-        carte5.setOnMouseExited(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte5.setFill(Color.DARKGRAY);
-            }
         });
 
         Label lcarte5 = new Label("");
@@ -2005,20 +1929,8 @@ public class Main extends Application {
         playerHandCardLabel.add(lcarte5);
         root.getChildren().add(lcarte5);
 
-        lcarte5.setOnMousePressed(new EventHandler<MouseEvent>() {
+        lcarte5.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {}
-        });
-
-        lcarte5.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte1.setFill(Color.LIGHTGREY);
-            }
-        });
-
-        lcarte5.setOnMouseExited(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                carte1.setFill(Color.DARKGRAY);
-            }
         });
     }
 
