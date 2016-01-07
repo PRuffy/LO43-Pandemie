@@ -34,6 +34,7 @@ public class Main extends Application {
 
     private boolean playerWantToMove;
     private ArrayList<UVSprite> uvSprites;
+    private ArrayList<Label> uvLabel;
     private ArrayList<PlayerSprite> playerSprites;
     private ArrayList<TeacherSprite> teacherSprites;
     private Joueur activePlayer;
@@ -100,287 +101,6 @@ public class Main extends Application {
             fond_droit.setHeight(600);
             fond_droit.setFill(Color.GREY);
             root.getChildren().add(fond_droit);
-
-            fondbouton1 = new Rectangle();
-            fondbouton1.setWidth(130);
-            fondbouton1.setHeight(50);
-            fondbouton1.setFill(Color.DARKGRAY);
-            fondbouton1.setTranslateX(35);
-            fondbouton1.setTranslateY(100);
-            root.getChildren().add(fondbouton1);
-
-            fondbouton1.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (!playerWantToMove) {
-                        fondbouton1.setFill(Color.LIGHTGREY);
-                    }
-                }
-            });
-
-            fondbouton1.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (!playerWantToMove) {
-                        fondbouton1.setFill(Color.DARKGRAY);
-                    }
-                }
-            });
-
-            fondbouton1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    //if (action==disponible)
-                    if (!playerWantToMove) {
-                        fondbouton1.setFill(Color.LIGHTBLUE);
-                        playerWantToMove = true;
-                        System.out.println("Action déplacement activée!!----------------------------------------------------------");
-                        circleReachableUV(model.deplacementPossible(model.getJoueurActif()));
-
-                    } else {
-                        fondbouton1.setFill(Color.LIGHTGREY);
-                        playerWantToMove = false;
-                        System.out.println("Action déplacement désactivée manuellement!!----------------------------------------------------------");
-                        uncircleUV();
-                    }
-                    //mettre l'action correspondant à l'action
-                }
-            });
-
-            lbouton1 = new Label("Déplacement");
-            lbouton1.setFont(Font.font("Arial", 16));
-            lbouton1.setTranslateX(35);
-            lbouton1.setTranslateY(100);
-            root.getChildren().add(lbouton1);
-
-            lbouton1.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (!playerWantToMove) {
-                        fondbouton1.setFill(Color.LIGHTGREY);
-                    }
-                }
-            });
-
-            lbouton1.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (!playerWantToMove) {
-                        fondbouton1.setFill(Color.DARKGRAY);
-                    }
-                }
-            });
-
-            lbouton1.setOnMousePressed(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    //if (action==disponible)
-                    if (!playerWantToMove) {
-                        fondbouton1.setFill(Color.LIGHTBLUE);
-                        playerWantToMove = true;
-                    } else {
-                        fondbouton1.setFill(Color.LIGHTGREY);
-                        playerWantToMove = false;
-                    }
-                    //mettre l'action correspondant à l'action
-                }
-            });
-
-            fondbouton2 = new Rectangle();
-            fondbouton2.setWidth(130);
-            fondbouton2.setHeight(50);
-            fondbouton2.setFill(Color.DARKGRAY);
-            fondbouton2.setTranslateX(35);
-            fondbouton2.setTranslateY(175);
-            root.getChildren().add(fondbouton2);
-
-            fondbouton2.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    fondbouton2.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            fondbouton2.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    fondbouton2.setFill(Color.DARKGRAY);
-                }
-            });
-
-            fondbouton2.setOnMousePressed(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    //if (action==disponible)
-                    //mettre l'action correspondant à l'action
-                }
-            });
-
-            lbouton2 = new Label("Travail");
-            lbouton2.setFont(Font.font("Arial", 16));
-            lbouton2.setTranslateX(35);
-            lbouton2.setTranslateY(175);
-            root.getChildren().add(lbouton2);
-
-            lbouton2.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    fondbouton2.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            lbouton2.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    fondbouton2.setFill(Color.DARKGRAY);
-                }
-            });
-
-            lbouton2.setOnMousePressed(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    //if (action==disponible)
-                    //mettre l'action correspondant à l'action
-                }
-            });
-
-            fondbouton3 = new Rectangle();
-            fondbouton3.setWidth(130);
-            fondbouton3.setHeight(50);
-            fondbouton3.setFill(Color.DARKGRAY);
-            fondbouton3.setTranslateX(35);
-            fondbouton3.setTranslateY(250);
-            root.getChildren().add(fondbouton3);
-
-            fondbouton3.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    fondbouton3.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            fondbouton3.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    fondbouton3.setFill(Color.DARKGRAY);
-                }
-            });
-
-            fondbouton3.setOnMousePressed(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    //if (action==disponible)
-                    //mettre l'action correspondant à l'action
-                }
-            });
-
-            lbouton3 = new Label("Appeler un \nprofesseur");
-            lbouton3.setFont(Font.font("Arial", 16));
-            lbouton3.setTranslateX(35);
-            lbouton3.setTranslateY(250);
-            root.getChildren().add(lbouton3);
-
-            fondbouton4 = new Rectangle();
-            fondbouton4.setWidth(130);
-            fondbouton4.setHeight(50);
-            fondbouton4.setFill(Color.DARKGRAY);
-            fondbouton4.setTranslateX(35);
-            fondbouton4.setTranslateY(325);
-            root.getChildren().add(fondbouton4);
-
-            fondbouton4.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    fondbouton4.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            fondbouton4.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    fondbouton4.setFill(Color.DARKGRAY);
-                }
-            });
-
-            fondbouton4.setOnMousePressed(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    //if (action==disponible)
-                    //mettre l'action correspondant à l'action
-                }
-            });
-
-            lbouton4 = new Label("Rendre un \nprojet");
-            lbouton4.setFont(Font.font("Arial", 16));
-            lbouton4.setTranslateX(35);
-            lbouton4.setTranslateY(325);
-            root.getChildren().add(lbouton4);
-
-            fondbouton5 = new Rectangle();
-            fondbouton5.setWidth(130);
-            fondbouton5.setHeight(50);
-            fondbouton5.setFill(Color.DARKGRAY);
-            fondbouton5.setTranslateX(35);
-            fondbouton5.setTranslateY(400);
-            root.getChildren().add(fondbouton5);
-
-            fondbouton5.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    fondbouton5.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            fondbouton5.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    fondbouton5.setFill(Color.DARKGRAY);
-                }
-            });
-
-            fondbouton5.setOnMousePressed(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    //if (action==disponible)
-                    //mettre l'action correspondant à l'action
-                }
-            });
-
-            lbouton5 = new Label("Travail de \ngroupe");
-            lbouton5.setFont(Font.font("Arial", 16));
-            lbouton5.setTranslateX(35);
-            lbouton5.setTranslateY(400);
-            root.getChildren().add(lbouton5);
-
-            fondbouton6 = new Rectangle();
-            fondbouton6.setWidth(130);
-            fondbouton6.setHeight(50);
-            fondbouton6.setFill(Color.DARKGRAY);
-            fondbouton6.setTranslateX(35);
-            fondbouton6.setTranslateY(475);
-            root.getChildren().add(fondbouton6);
-
-            lbouton6 = new Label("Passer");
-            lbouton6.setFont(Font.font("Arial", 16));
-            lbouton6.setTranslateX(35);
-            lbouton6.setTranslateY(475);
-            root.getChildren().add(lbouton6);
-
-            fondbouton6.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    fondbouton6.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            fondbouton6.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    fondbouton6.setFill(Color.DARKGRAY);
-                }
-            });
-
-            fondbouton6.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    clickPasserButton();
-                }
-            });
-
-
-            lbouton6.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    fondbouton6.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            lbouton6.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    fondbouton6.setFill(Color.DARKGRAY);
-                }
-            });
-
-            lbouton6.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                   clickPasserButton();
-                }
-            });
 
             Rectangle carte1 = new Rectangle();
             carte1.setWidth(50);
@@ -724,589 +444,6 @@ public class Main extends Application {
             ldefausse2.setTranslateY(450);
             root.getChildren().add(ldefausse2);
 
-            int coordonnees[][] = initCoordUVSprites();
-            int index = 0;
-            uvSprites = new ArrayList<>();
-
-            Label labelBD51 = new Label("0");
-            labelBD51.setFont(Font.font("Arial", 18));
-            labelBD51.setTranslateX(coordonnees[index][0]);
-            labelBD51.setTranslateY(coordonnees[index][1]);
-            UVSprite circleBD51 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, ilcColor, index + 1);
-            uvSprites.add(circleBD51);
-            root.getChildren().addAll(circleBD51, labelBD51);
-
-            circleBD51.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(1);
-                    }
-                }
-            });
-            labelBD51.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(1);
-                    }
-                }
-            });
-            index++;
-
-            Label labelGL51 = new Label("0");
-            labelGL51.setFont(Font.font("Arial", 18));
-            labelGL51.setTranslateX(coordonnees[index][0]);
-            labelGL51.setTranslateY(coordonnees[index][1]);
-            UVSprite circleGL51 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 11, 10, ilcColor, index + 1);
-            uvSprites.add(circleGL51);
-            root.getChildren().addAll(circleGL51, labelGL51);
-
-            circleGL51.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        System.out.println("plop");
-                        movePlayer(2);
-                    }
-                }
-            });
-            labelGL51.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        System.out.println("plop");
-                        movePlayer(2);
-                    }
-                }
-            });
-            index++;
-
-            Label labelBD50 = new Label("0");
-            labelBD50.setFont(Font.font("Arial", 18));
-            labelBD50.setTranslateX(coordonnees[index][0]);
-            labelBD50.setTranslateY(coordonnees[index][1]);
-            UVSprite circleBD50 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, ilcColor, index + 1);
-            uvSprites.add(circleBD50);
-            root.getChildren().addAll(circleBD50, labelBD50);
-
-            circleBD50.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(3);
-                    }
-                }
-            });
-            labelBD50.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(3);
-                    }
-                }
-            });
-            index++;
-
-            Label labelGL52 = new Label("0");
-            labelGL52.setFont(Font.font("Arial", 18));
-            labelGL52.setTranslateX(coordonnees[index][0]);
-            labelGL52.setTranslateY(coordonnees[index][1]);
-            UVSprite circleGL52 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 9, 10, ilcColor, index + 1);
-            uvSprites.add(circleGL52);
-            root.getChildren().addAll(circleGL52, labelGL52);
-
-            circleGL52.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(4);
-                    }
-                }
-            });
-            labelGL52.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(4);
-                    }
-                }
-            });
-            index++;
-
-            Label labelLO51 = new Label("0");
-            labelLO51.setFont(Font.font("Arial", 18));
-            labelLO51.setTranslateX(coordonnees[index][0]);
-            labelLO51.setTranslateY(coordonnees[index][1]);
-            UVSprite circleLO51 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, ilcColor, index + 1);
-            uvSprites.add(circleLO51);
-            root.getChildren().addAll(circleLO51, labelLO51);
-
-            circleLO51.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(5);
-                    }
-                }
-            });
-            labelLO51.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(5);
-                    }
-                }
-            });
-            index++;
-
-            Label labelIA54 = new Label("0");
-            labelIA54.setFont(Font.font("Arial", 18));
-            labelIA54.setTranslateX(coordonnees[index][0]);
-            labelIA54.setTranslateY(coordonnees[index][1]);
-            UVSprite circleIA54 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, ilcColor, index + 1);
-            uvSprites.add(circleIA54);
-            root.getChildren().addAll(circleIA54, labelIA54);
-
-            circleIA54.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(6);
-                    }
-                }
-            });
-            labelIA54.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(6);
-                    }
-                }
-            });
-            index++;
-
-            Label labelIN52 = new Label("0");
-            labelIN52.setFont(Font.font("Arial", 18));
-            labelIN52.setTranslateX(coordonnees[index][0]);
-            labelIN52.setTranslateY(coordonnees[index][1]);
-            UVSprite circleIN52 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 9, 10, i2rvColor, index + 1);
-            uvSprites.add(circleIN52);
-            root.getChildren().addAll(circleIN52, labelIN52);
-
-            circleIN52.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(7);
-                    }
-                }
-            });
-            labelIN52.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(7);
-                    }
-                }
-            });
-            index++;
-
-            Label labelVI50 = new Label("0");
-            labelVI50.setFont(Font.font("Arial", 18));
-            labelVI50.setTranslateX(coordonnees[index][0]);
-            labelVI50.setTranslateY(coordonnees[index][1]);
-            UVSprite circleVI50 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 10, 10, i2rvColor, index + 1);
-            uvSprites.add(circleVI50);
-            root.getChildren().addAll(circleVI50, labelVI50);
-
-            circleVI50.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(8);
-                    }
-                }
-            });
-            labelVI50.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(8);
-                    }
-                }
-            });
-            index++;
-
-            Label labelIN54 = new Label("0");
-            labelIN54.setFont(Font.font("Arial", 18));
-            labelIN54.setTranslateX(coordonnees[index][0]);
-            labelIN54.setTranslateY(coordonnees[index][1]);
-            UVSprite circleIN54 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 9, 10, i2rvColor, index + 1);
-            uvSprites.add(circleIN54);
-            root.getChildren().addAll(circleIN54, labelIN54);
-
-            circleIN54.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(9);
-                    }
-                }
-            });
-            labelIN54.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(9);
-                    }
-                }
-            });
-            index++;
-
-            Label labelMT51 = new Label("0");
-            labelMT51.setFont(Font.font("Arial", 18));
-            labelMT51.setTranslateX(coordonnees[index][0]);
-            labelMT51.setTranslateY(coordonnees[index][1]);
-            UVSprite circleMT51 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, i2rvColor, index + 1);
-            uvSprites.add(circleMT51);
-            root.getChildren().addAll(circleMT51, labelMT51);
-
-            circleMT51.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(10);
-                    }
-                }
-            });
-            labelMT51.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(10);
-                    }
-                }
-            });
-            index++;
-
-            Label labelIN55 = new Label("0");
-            labelIN55.setFont(Font.font("Arial", 18));
-            labelIN55.setTranslateX(coordonnees[index][0]);
-            labelIN55.setTranslateY(coordonnees[index][1]);
-            UVSprite circleIN55 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 10, 10, i2rvColor, index + 1);
-            uvSprites.add(circleIN55);
-            root.getChildren().addAll(circleIN55, labelIN55);
-
-            circleIN55.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(11);
-                    }
-                }
-            });
-            labelIN55.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(11);
-                    }
-                }
-            });
-            index++;
-
-            Label labelVI51 = new Label("0");
-            labelVI51.setFont(Font.font("Arial", 18));
-            labelVI51.setTranslateX(coordonnees[index][0]);
-            labelVI51.setTranslateY(coordonnees[index][1]);
-            UVSprite circleVI51 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 10, 10, i2rvColor, index + 1);
-            uvSprites.add(circleVI51);
-            root.getChildren().addAll(circleVI51, labelVI51);
-
-            circleVI51.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(12);
-                    }
-                }
-            });
-            labelVI51.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(12);
-                    }
-                }
-            });
-            index++;
-
-            Label labelTR53 = new Label("0");
-            labelTR53.setFont(Font.font("Arial", 18));
-            labelTR53.setTranslateX(coordonnees[index][0]);
-            labelTR53.setTranslateY(coordonnees[index][1]);
-            UVSprite circleTR53 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 9, 10, leimColor, index + 1);
-            uvSprites.add(circleTR53);
-            root.getChildren().addAll(circleTR53, labelTR53);
-
-            circleTR53.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(13);
-                    }
-                }
-            });
-            labelTR53.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(13);
-                    }
-                }
-            });
-            index++;
-
-            Label labelMI52 = new Label("0");
-            labelMI52.setFont(Font.font("Arial", 18));
-            labelMI52.setTranslateX(coordonnees[index][0]);
-            labelMI52.setTranslateY(coordonnees[index][1]);
-            UVSprite circleMI52 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 11, 10, leimColor, index + 1);
-            uvSprites.add(circleMI52);
-            root.getChildren().addAll(circleMI52, labelMI52);
-
-            circleMI52.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(14);
-                    }
-                }
-            });
-            labelMI52.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(14);
-                    }
-                }
-            });
-            index++;
-
-            Label labelSM57 = new Label("0");
-            labelSM57.setFont(Font.font("Arial", 18));
-            labelSM57.setTranslateX(coordonnees[index][0]);
-            labelSM57.setTranslateY(coordonnees[index][1]);
-            UVSprite circleSM57 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, leimColor, index + 1);
-            uvSprites.add(circleSM57);
-            root.getChildren().addAll(circleSM57, labelSM57);
-
-            circleSM57.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(15);
-                    }
-                }
-            });
-            labelSM57.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(15);
-                    }
-                }
-            });
-            index++;
-
-            Label labelLO52 = new Label("0");
-            labelLO52.setFont(Font.font("Arial", 18));
-            labelLO52.setTranslateX(coordonnees[index][0]);
-            labelLO52.setTranslateY(coordonnees[index][1]);
-            UVSprite circleLO52 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, leimColor, index + 1);
-            uvSprites.add(circleLO52);
-            root.getChildren().addAll(circleLO52, labelLO52);
-
-            circleLO52.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(16);
-                    }
-                }
-            });
-            labelLO52.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(16);
-                    }
-                }
-            });
-            index++;
-
-            Label labelLO53 = new Label("0");
-            labelLO53.setFont(Font.font("Arial", 18));
-            labelLO53.setTranslateX(coordonnees[index][0]);
-            labelLO53.setTranslateY(coordonnees[index][1]);
-            UVSprite circleLO53 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, leimColor, index + 1);
-            uvSprites.add(circleLO53);
-            root.getChildren().addAll(circleLO53, labelLO53);
-
-            circleLO53.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(17);
-                    }
-                }
-            });
-            labelLO53.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(17);
-                    }
-                }
-            });
-            index++;
-
-            Label labelTR54 = new Label("0");
-            labelTR54.setFont(Font.font("Arial", 18));
-            labelTR54.setTranslateX(coordonnees[index][0]);
-            labelTR54.setTranslateY(coordonnees[index][1]);
-            UVSprite circleTR54 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 9, 10, leimColor, index + 1);
-            uvSprites.add(circleTR54);
-            root.getChildren().addAll(circleTR54, labelTR54);
-
-            circleTR54.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(18);
-                    }
-                }
-            });
-            labelTR54.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(18);
-                    }
-                }
-            });
-            index++;
-
-            Label labelRE52 = new Label("0");
-            labelRE52.setFont(Font.font("Arial", 18));
-            labelRE52.setTranslateX(coordonnees[index][0]);
-            labelRE52.setTranslateY(coordonnees[index][1]);
-            UVSprite circleRE52 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 11, 10, rtColor, index + 1);
-            uvSprites.add(circleRE52);
-            root.getChildren().addAll(circleRE52, labelRE52);
-
-            circleRE52.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(19);
-                    }
-                }
-            });
-            labelRE52.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(19);
-                    }
-                }
-            });
-            index++;
-
-            Label labelRE56 = new Label("0");
-            labelRE56.setFont(Font.font("Arial", 18));
-            labelRE56.setTranslateX(coordonnees[index][0]);
-            labelRE56.setTranslateY(coordonnees[index][1]);
-            UVSprite circleRE56 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, rtColor, index + 1);
-            uvSprites.add(circleRE56);
-            root.getChildren().addAll(circleRE56, labelRE56);
-
-            circleRE56.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(20);
-                    }
-                }
-            });
-            labelRE56.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(20);
-                    }
-                }
-            });
-            index++;
-
-            Label labelRE51 = new Label("0");
-            labelRE51.setFont(Font.font("Arial", 18));
-            labelRE51.setTranslateX(coordonnees[index][0]);
-            labelRE51.setTranslateY(coordonnees[index][1]);
-            UVSprite circleRE51 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, rtColor, index + 1);
-            uvSprites.add(circleRE51);
-            root.getChildren().addAll(circleRE51, labelRE51);
-
-            circleRE51.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(21);
-                    }
-                }
-            });
-            labelRE51.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(21);
-                    }
-                }
-            });
-            index++;
-
-            Label labelTL53 = new Label("0");
-            labelTL53.setFont(Font.font("Arial", 18));
-            labelTL53.setTranslateX(coordonnees[index][0]);
-            labelTL53.setTranslateY(coordonnees[index][1]);
-            UVSprite circleTL53 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, rtColor, index + 1);
-            uvSprites.add(circleTL53);
-            root.getChildren().addAll(circleTL53, labelTL53);
-
-            circleTL53.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(22);
-                    }
-                }
-            });
-            labelTL53.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(22);
-                    }
-                }
-            });
-            index++;
-
-            Label labelRE53 = new Label("0");
-            labelRE53.setFont(Font.font("Arial", 18));
-            labelRE53.setTranslateX(coordonnees[index][0]);
-            labelRE53.setTranslateY(coordonnees[index][1]);
-            UVSprite circleRE53 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, rtColor, index + 1);
-            uvSprites.add(circleRE53);
-            root.getChildren().addAll(circleRE53, labelRE53);
-
-            circleRE53.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(23);
-                    }
-                }
-            });
-            labelRE53.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(23);
-                    }
-                }
-            });
-            index++;
-
-            Label labelRE55 = new Label("0");
-            labelRE55.setFont(Font.font("Arial", 18));
-            labelRE55.setTranslateX(coordonnees[index][0]);
-            labelRE55.setTranslateY(coordonnees[index][1]);
-            UVSprite circleRE55 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 12, 10, rtColor, index + 1);
-            uvSprites.add(circleRE55);
-            root.getChildren().addAll(circleRE55, labelRE55);
-
-            circleRE55.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(24);
-                    }
-                }
-            });
-            labelRE55.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    if (playerWantToMove) {
-                        movePlayer(24);
-                    }
-                }
-            });
-            index++;
-
-
             Rectangle Marqueur1 = new Rectangle();
             Marqueur1.setWidth(10);
             Marqueur1.setHeight(10);
@@ -1442,7 +579,7 @@ public class Main extends Application {
                 public void handle(ActionEvent e) {
                     actiontarget.setText("Entrez le nom des joueurs");
                     actiontarget.setId("actiontarget");
-                    setI(3);
+                    setI(2);
                     nom1.setVisible(true);
                     labelnom1.setVisible(true);
                     nom2.setVisible(true);
@@ -1451,10 +588,7 @@ public class Main extends Application {
                     choix1.setVisible(false);
                     goToGame.setVisible(true);
                     monimage.setVisible(false);
-                    model = new Jeu(2, dat);
-                    activePlayer = model.getJoueurActif();
-                    model.getGraph().printAllUV();
-                    nombreJoueur = 2;
+                    initBoard(2);
                 }
             });
 
@@ -1475,10 +609,7 @@ public class Main extends Application {
                     goToGame.setVisible(true);
                     choix0.setVisible(false);
                     monimage.setVisible(false);
-                    model = new Jeu(3, dat);
-                    activePlayer = model.getJoueurActif();
-                    model.getGraph().printAllUV();
-                    nombreJoueur = 3;
+                    initBoard(3);
                 }
             });
 
@@ -1488,7 +619,7 @@ public class Main extends Application {
                 public void handle(ActionEvent e) {
                     actiontarget.setText("Entrez le nom des joueurs");
                     actiontarget.setId("actiontarget");
-                    setI(3);
+                    setI(4);
                     nom1.setVisible(true);
                     labelnom1.setVisible(true);
                     nom2.setVisible(true);
@@ -1502,93 +633,14 @@ public class Main extends Application {
                     choix0.setVisible(false);
                     monimage.setVisible(false);
                     choix2.setTranslateY(-50);
-                    model = new Jeu(4, dat);
-                    activePlayer = model.getJoueurActif();
-                    model.getGraph().printAllUV();
-                    nombreJoueur = 4;
+                    initBoard(4);
                 }
             });
             goToGame.setOnAction(new EventHandler<ActionEvent>() {
 
                 @Override
                 public void handle(ActionEvent e) {
-
                     primaryStage.setScene(scene2);
-
-                    /*
-                    Création des sprites des joueurs
-                     */
-                    playerSprites = new ArrayList<>();
-                    int tabPion[][] = initCoordPionJoueurs();
-                    int tabUV[][] = initCoordUVSprites();
-                    int index = 0;
-                    Joueur[] joueurs = model.getJoueurs();
-                    int x = tabPion[index][0] + tabUV[joueurs[index].getPosition() - 1][0];
-                    int y = tabPion[index][1] + tabUV[joueurs[index].getPosition() - 1][1];
-                    PlayerSprite pionJoueur1 = new PlayerSprite(x, y, index + 1);
-                    root.getChildren().add(pionJoueur1);
-                    playerSprites.add(pionJoueur1);
-                    index++;
-
-                    x = tabPion[index][0] + tabUV[joueurs[index].getPosition() - 1][0];
-                    y = tabPion[index][1] + tabUV[joueurs[index].getPosition() - 1][1];
-                    PlayerSprite pionJoueur2 = new PlayerSprite(x, y, index + 1);
-                    root.getChildren().add(pionJoueur2);
-                    playerSprites.add(pionJoueur2);
-                    index++;
-
-                    if (nombreJoueur >= 3) {
-                        x = tabPion[index][0] + tabUV[joueurs[index].getPosition() - 1][0];
-                        y = tabPion[index][1] + tabUV[joueurs[index].getPosition() - 1][1];
-                        PlayerSprite pionJoueur3 = new PlayerSprite(x, y, index + 1);
-                        root.getChildren().add(pionJoueur3);
-                        playerSprites.add(pionJoueur3);
-                        index++;
-                    }
-                    if (nombreJoueur == 4) {
-                        x = tabPion[index][0] + tabUV[joueurs[index].getPosition() - 1][0];
-                        y = tabPion[index][1] + tabUV[joueurs[index].getPosition() - 1][1];
-                        PlayerSprite pionJoueur4 = new PlayerSprite(x, y, index + 1);
-                        root.getChildren().add(pionJoueur4);
-                        playerSprites.add(pionJoueur4);
-                        index++;
-                    }
-
-                    playerSprites.get(activePlayer.getNumero()).setFill(Color.TEAL);
-
-                    /*
-                    Création des sprites des professeurs
-                     */
-                    index = 0;
-                    ArrayList<Professeur> teachers = model.getPionProfesseur();
-                    teacherSprites = new ArrayList<>();
-                    int teacherOffsetX = 16, teacherOffsetY = 6;
-
-                    x = teacherOffsetX + tabUV[teachers.get(index).getPosition() - 1][0];
-                    y = teacherOffsetY + tabUV[teachers.get(index).getPosition() - 1][1];
-                    TeacherSprite spriteProfIlc = new TeacherSprite(x, y, index, Filiere.ILC);
-                    teacherSprites.add(spriteProfIlc);
-                    index++;
-
-                    x = teacherOffsetX + tabUV[teachers.get(index).getPosition() - 1][0];
-                    y = teacherOffsetY + tabUV[teachers.get(index).getPosition() - 1][1];
-                    TeacherSprite spriteProfI2rv = new TeacherSprite(x, y, index, Filiere.I2RV);
-                    teacherSprites.add(spriteProfI2rv);
-                    index++;
-
-                    x = teacherOffsetX + tabUV[teachers.get(index).getPosition() - 1][0];
-                    y = teacherOffsetY + tabUV[teachers.get(index).getPosition() - 1][1];
-                    TeacherSprite spriteProfLeim = new TeacherSprite(x, y, index, Filiere.LEIM);
-                    teacherSprites.add(spriteProfLeim);
-                    index++;
-
-                    x = teacherOffsetX + tabUV[teachers.get(index).getPosition() - 1][0];
-                    y = teacherOffsetY + tabUV[teachers.get(index).getPosition() - 1][1];
-                    TeacherSprite spriteProfRt = new TeacherSprite(x, y, index, Filiere.RT);
-                    teacherSprites.add(spriteProfRt);
-
-                    root.getChildren().addAll(spriteProfI2rv, spriteProfIlc, spriteProfLeim, spriteProfRt);
-
                 }
             });
 
@@ -1596,7 +648,6 @@ public class Main extends Application {
 
                 @Override
                 public void handle(ActionEvent e) {
-
                     primaryStage.setScene(scene1);
                 }
             });
@@ -1704,6 +755,7 @@ public class Main extends Application {
             uncircleUV();
             playerWantToMove=false;
             if(model.getJoueurActif() != activePlayer) endTurn();
+            else updateLabelMarqueur();
 
         }
     }
@@ -1765,11 +817,1046 @@ public class Main extends Application {
         }
     }
 
+    public void updateLabelMarqueur(){
+        System.out.println("Mise à jour affichage marqueurs");
+        int index = 0;
+        ArrayList<UV> listUV = model.getGraph().getListUV();
+        for(Label currentUVLabel : uvLabel){
+            currentUVLabel.setText(Integer.toString(listUV.get(index).getMarqueurs().size()));
+            index++;
+        }
+
+        model.getGraph().printAllUV();
+        if(listUV.get(model.getJoueurActif().getPosition()-1).getMarqueurs().size()==0) {lbouton2.setTextFill(Color.RED);}
+        else {lbouton2.setTextFill(Color.BLACK);}
+    }
+
+    public void initBoard(int nombreJoueur){
+
+        this.nombreJoueur = nombreJoueur;
+        model = new Jeu(nombreJoueur, dat);
+        activePlayer = model.getJoueurActif();
+        model.getGraph().printAllUV();
+
+        displayActionButtons();
+        displayUVSprites();
+        displayPlayerSprites();
+        displayTeacherSprites();
+        updateLabelMarqueur();
+    }
+
     public void endTurn(){
         model.finDeTour();
         updatePlayerSpriteColor();
         updateTeacherSprite();
         lbouton6.setText("Passer");
         undoAllActionButtonColor();
+        updateLabelMarqueur();
+    }
+
+    public void displayUVSprites(){
+        int coordonnees[][] = initCoordUVSprites();
+        int index = 0;
+        uvSprites = new ArrayList<>();
+        uvLabel = new ArrayList<>();
+
+        Label labelBD51 = new Label("0");
+        labelBD51.setFont(Font.font("Arial", 18));
+        labelBD51.setTranslateX(coordonnees[index][0]);
+        labelBD51.setTranslateY(coordonnees[index][1]);
+        UVSprite circleBD51 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, ilcColor, index + 1);
+        uvLabel.add(labelBD51);
+        uvSprites.add(circleBD51);
+        root.getChildren().addAll(circleBD51, labelBD51);
+
+        circleBD51.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(1);
+                }
+            }
+        });
+        labelBD51.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(1);
+                }
+            }
+        });
+        index++;
+
+        Label labelGL51 = new Label("0");
+        labelGL51.setFont(Font.font("Arial", 18));
+        labelGL51.setTranslateX(coordonnees[index][0]);
+        labelGL51.setTranslateY(coordonnees[index][1]);
+        UVSprite circleGL51 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 11, 10, ilcColor, index + 1);
+        uvLabel.add(labelGL51);
+        uvSprites.add(circleGL51);
+        root.getChildren().addAll(circleGL51, labelGL51);
+
+        circleGL51.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    System.out.println("plop");
+                    movePlayer(2);
+                }
+            }
+        });
+        labelGL51.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    System.out.println("plop");
+                    movePlayer(2);
+                }
+            }
+        });
+        index++;
+
+        Label labelBD50 = new Label("0");
+        labelBD50.setFont(Font.font("Arial", 18));
+        labelBD50.setTranslateX(coordonnees[index][0]);
+        labelBD50.setTranslateY(coordonnees[index][1]);
+        UVSprite circleBD50 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, ilcColor, index + 1);
+        uvLabel.add(labelBD50);
+        uvSprites.add(circleBD50);
+        root.getChildren().addAll(circleBD50, labelBD50);
+
+        circleBD50.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(3);
+                }
+            }
+        });
+        labelBD50.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(3);
+                }
+            }
+        });
+        index++;
+
+        Label labelGL52 = new Label("0");
+        labelGL52.setFont(Font.font("Arial", 18));
+        labelGL52.setTranslateX(coordonnees[index][0]);
+        labelGL52.setTranslateY(coordonnees[index][1]);
+        UVSprite circleGL52 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 9, 10, ilcColor, index + 1);
+        uvLabel.add(labelGL52);
+        uvSprites.add(circleGL52);
+        root.getChildren().addAll(circleGL52, labelGL52);
+
+        circleGL52.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(4);
+                }
+            }
+        });
+        labelGL52.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(4);
+                }
+            }
+        });
+        index++;
+
+        Label labelLO51 = new Label("0");
+        labelLO51.setFont(Font.font("Arial", 18));
+        labelLO51.setTranslateX(coordonnees[index][0]);
+        labelLO51.setTranslateY(coordonnees[index][1]);
+        UVSprite circleLO51 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, ilcColor, index + 1);
+        uvLabel.add(labelLO51);
+        uvSprites.add(circleLO51);
+        root.getChildren().addAll(circleLO51, labelLO51);
+
+        circleLO51.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(5);
+                }
+            }
+        });
+        labelLO51.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(5);
+                }
+            }
+        });
+        index++;
+
+        Label labelIA54 = new Label("0");
+        labelIA54.setFont(Font.font("Arial", 18));
+        labelIA54.setTranslateX(coordonnees[index][0]);
+        labelIA54.setTranslateY(coordonnees[index][1]);
+        UVSprite circleIA54 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, ilcColor, index + 1);
+        uvLabel.add(labelIA54);
+        uvSprites.add(circleIA54);
+        root.getChildren().addAll(circleIA54, labelIA54);
+
+        circleIA54.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(6);
+                }
+            }
+        });
+        labelIA54.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(6);
+                }
+            }
+        });
+        index++;
+
+        Label labelIN52 = new Label("0");
+        labelIN52.setFont(Font.font("Arial", 18));
+        labelIN52.setTranslateX(coordonnees[index][0]);
+        labelIN52.setTranslateY(coordonnees[index][1]);
+        UVSprite circleIN52 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 9, 10, i2rvColor, index + 1);
+        uvLabel.add(labelIN52);
+        uvSprites.add(circleIN52);
+        root.getChildren().addAll(circleIN52, labelIN52);
+
+        circleIN52.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(7);
+                }
+            }
+        });
+        labelIN52.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(7);
+                }
+            }
+        });
+        index++;
+
+        Label labelVI50 = new Label("0");
+        labelVI50.setFont(Font.font("Arial", 18));
+        labelVI50.setTranslateX(coordonnees[index][0]);
+        labelVI50.setTranslateY(coordonnees[index][1]);
+        UVSprite circleVI50 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 10, 10, i2rvColor, index + 1);
+        uvLabel.add(labelVI50);
+        uvSprites.add(circleVI50);
+        root.getChildren().addAll(circleVI50, labelVI50);
+
+        circleVI50.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(8);
+                }
+            }
+        });
+        labelVI50.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(8);
+                }
+            }
+        });
+        index++;
+
+        Label labelIN54 = new Label("0");
+        labelIN54.setFont(Font.font("Arial", 18));
+        labelIN54.setTranslateX(coordonnees[index][0]);
+        labelIN54.setTranslateY(coordonnees[index][1]);
+        UVSprite circleIN54 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 9, 10, i2rvColor, index + 1);
+        uvLabel.add(labelIN54);
+        uvSprites.add(circleIN54);
+        root.getChildren().addAll(circleIN54, labelIN54);
+
+        circleIN54.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(9);
+                }
+            }
+        });
+        labelIN54.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(9);
+                }
+            }
+        });
+        index++;
+
+        Label labelMT51 = new Label("0");
+        labelMT51.setFont(Font.font("Arial", 18));
+        labelMT51.setTranslateX(coordonnees[index][0]);
+        labelMT51.setTranslateY(coordonnees[index][1]);
+        UVSprite circleMT51 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, i2rvColor, index + 1);
+        uvLabel.add(labelMT51);
+        uvSprites.add(circleMT51);
+        root.getChildren().addAll(circleMT51, labelMT51);
+
+        circleMT51.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(10);
+                }
+            }
+        });
+        labelMT51.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(10);
+                }
+            }
+        });
+        index++;
+
+        Label labelIN55 = new Label("0");
+        labelIN55.setFont(Font.font("Arial", 18));
+        labelIN55.setTranslateX(coordonnees[index][0]);
+        labelIN55.setTranslateY(coordonnees[index][1]);
+        UVSprite circleIN55 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 10, 10, i2rvColor, index + 1);
+        uvLabel.add(labelIN55);
+        uvSprites.add(circleIN55);
+        root.getChildren().addAll(circleIN55, labelIN55);
+
+        circleIN55.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(11);
+                }
+            }
+        });
+        labelIN55.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(11);
+                }
+            }
+        });
+        index++;
+
+        Label labelVI51 = new Label("0");
+        labelVI51.setFont(Font.font("Arial", 18));
+        labelVI51.setTranslateX(coordonnees[index][0]);
+        labelVI51.setTranslateY(coordonnees[index][1]);
+        UVSprite circleVI51 = new UVSprite(coordonnees[index][0] + 4, coordonnees[index][1] + 10, 10, i2rvColor, index + 1);
+        uvLabel.add(labelVI51);
+        uvSprites.add(circleVI51);
+        root.getChildren().addAll(circleVI51, labelVI51);
+
+        circleVI51.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(12);
+                }
+            }
+        });
+        labelVI51.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(12);
+                }
+            }
+        });
+        index++;
+
+        Label labelTR53 = new Label("0");
+        labelTR53.setFont(Font.font("Arial", 18));
+        labelTR53.setTranslateX(coordonnees[index][0]);
+        labelTR53.setTranslateY(coordonnees[index][1]);
+        UVSprite circleTR53 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 9, 10, leimColor, index + 1);
+        uvLabel.add(labelTR53);
+        uvSprites.add(circleTR53);
+        root.getChildren().addAll(circleTR53, labelTR53);
+
+        circleTR53.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(13);
+                }
+            }
+        });
+        labelTR53.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(13);
+                }
+            }
+        });
+        index++;
+
+        Label labelMI52 = new Label("0");
+        labelMI52.setFont(Font.font("Arial", 18));
+        labelMI52.setTranslateX(coordonnees[index][0]);
+        labelMI52.setTranslateY(coordonnees[index][1]);
+        UVSprite circleMI52 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 11, 10, leimColor, index + 1);
+        uvLabel.add(labelMI52);
+        uvSprites.add(circleMI52);
+        root.getChildren().addAll(circleMI52, labelMI52);
+
+        circleMI52.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(14);
+                }
+            }
+        });
+        labelMI52.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(14);
+                }
+            }
+        });
+        index++;
+
+        Label labelSM57 = new Label("0");
+        labelSM57.setFont(Font.font("Arial", 18));
+        labelSM57.setTranslateX(coordonnees[index][0]);
+        labelSM57.setTranslateY(coordonnees[index][1]);
+        UVSprite circleSM57 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, leimColor, index + 1);
+        uvLabel.add(labelSM57);
+        uvSprites.add(circleSM57);
+        root.getChildren().addAll(circleSM57, labelSM57);
+
+        circleSM57.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(15);
+                }
+            }
+        });
+        labelSM57.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(15);
+                }
+            }
+        });
+        index++;
+
+        Label labelLO52 = new Label("0");
+        labelLO52.setFont(Font.font("Arial", 18));
+        labelLO52.setTranslateX(coordonnees[index][0]);
+        labelLO52.setTranslateY(coordonnees[index][1]);
+        UVSprite circleLO52 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, leimColor, index + 1);
+        uvLabel.add(labelLO52);
+        uvSprites.add(circleLO52);
+        root.getChildren().addAll(circleLO52, labelLO52);
+
+        circleLO52.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(16);
+                }
+            }
+        });
+        labelLO52.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(16);
+                }
+            }
+        });
+        index++;
+
+        Label labelLO53 = new Label("0");
+        labelLO53.setFont(Font.font("Arial", 18));
+        labelLO53.setTranslateX(coordonnees[index][0]);
+        labelLO53.setTranslateY(coordonnees[index][1]);
+        UVSprite circleLO53 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 9, 10, leimColor, index + 1);
+        uvLabel.add(labelLO53);
+        uvSprites.add(circleLO53);
+        root.getChildren().addAll(circleLO53, labelLO53);
+
+        circleLO53.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(17);
+                }
+            }
+        });
+        labelLO53.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(17);
+                }
+            }
+        });
+        index++;
+
+        Label labelTR54 = new Label("0");
+        labelTR54.setFont(Font.font("Arial", 18));
+        labelTR54.setTranslateX(coordonnees[index][0]);
+        labelTR54.setTranslateY(coordonnees[index][1]);
+        UVSprite circleTR54 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 9, 10, leimColor, index + 1);
+        uvLabel.add(labelTR54);
+        uvSprites.add(circleTR54);
+        root.getChildren().addAll(circleTR54, labelTR54);
+
+        circleTR54.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(18);
+                }
+            }
+        });
+        labelTR54.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(18);
+                }
+            }
+        });
+        index++;
+
+        Label labelRE52 = new Label("0");
+        labelRE52.setFont(Font.font("Arial", 18));
+        labelRE52.setTranslateX(coordonnees[index][0]);
+        labelRE52.setTranslateY(coordonnees[index][1]);
+        UVSprite circleRE52 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 11, 10, rtColor, index + 1);
+        uvLabel.add(labelRE52);
+        uvSprites.add(circleRE52);
+        root.getChildren().addAll(circleRE52, labelRE52);
+
+        circleRE52.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(19);
+                }
+            }
+        });
+        labelRE52.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(19);
+                }
+            }
+        });
+        index++;
+
+        Label labelRE56 = new Label("0");
+        labelRE56.setFont(Font.font("Arial", 18));
+        labelRE56.setTranslateX(coordonnees[index][0]);
+        labelRE56.setTranslateY(coordonnees[index][1]);
+        UVSprite circleRE56 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, rtColor, index + 1);
+        uvLabel.add(labelRE56);
+        uvSprites.add(circleRE56);
+        root.getChildren().addAll(circleRE56, labelRE56);
+
+        circleRE56.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(20);
+                }
+            }
+        });
+        labelRE56.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(20);
+                }
+            }
+        });
+        index++;
+
+        Label labelRE51 = new Label("0");
+        labelRE51.setFont(Font.font("Arial", 18));
+        labelRE51.setTranslateX(coordonnees[index][0]);
+        labelRE51.setTranslateY(coordonnees[index][1]);
+        UVSprite circleRE51 = new UVSprite(coordonnees[index][0] + 6, coordonnees[index][1] + 10, 10, rtColor, index + 1);
+        uvLabel.add(labelRE51);
+        uvSprites.add(circleRE51);
+        root.getChildren().addAll(circleRE51, labelRE51);
+
+        circleRE51.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(21);
+                }
+            }
+        });
+        labelRE51.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(21);
+                }
+            }
+        });
+        index++;
+
+        Label labelTL53 = new Label("0");
+        labelTL53.setFont(Font.font("Arial", 18));
+        labelTL53.setTranslateX(coordonnees[index][0]);
+        labelTL53.setTranslateY(coordonnees[index][1]);
+        UVSprite circleTL53 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, rtColor, index + 1);
+        uvLabel.add(labelTL53);
+        uvSprites.add(circleTL53);
+        root.getChildren().addAll(circleTL53, labelTL53);
+
+        circleTL53.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(22);
+                }
+            }
+        });
+        labelTL53.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(22);
+                }
+            }
+        });
+        index++;
+
+        Label labelRE53 = new Label("0");
+        labelRE53.setFont(Font.font("Arial", 18));
+        labelRE53.setTranslateX(coordonnees[index][0]);
+        labelRE53.setTranslateY(coordonnees[index][1]);
+        UVSprite circleRE53 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 10, 10, rtColor, index + 1);
+        uvLabel.add(labelRE53);
+        uvSprites.add(circleRE53);
+        root.getChildren().addAll(circleRE53, labelRE53);
+
+        circleRE53.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(23);
+                }
+            }
+        });
+        labelRE53.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(23);
+                }
+            }
+        });
+        index++;
+
+        Label labelRE55 = new Label("0");
+        labelRE55.setFont(Font.font("Arial", 18));
+        labelRE55.setTranslateX(coordonnees[index][0]);
+        labelRE55.setTranslateY(coordonnees[index][1]);
+        UVSprite circleRE55 = new UVSprite(coordonnees[index][0] + 5, coordonnees[index][1] + 12, 10, rtColor, index + 1);
+        uvLabel.add(labelRE55);
+        uvSprites.add(circleRE55);
+        root.getChildren().addAll(circleRE55, labelRE55);
+
+        circleRE55.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(24);
+                }
+            }
+        });
+        labelRE55.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (playerWantToMove) {
+                    movePlayer(24);
+                }
+            }
+        });
+    }
+
+    public void displayPlayerSprites(){
+        /*
+        Création des sprites des joueurs
+         */
+        playerSprites = new ArrayList<>();
+        int tabPion[][] = initCoordPionJoueurs();
+        int tabUV[][] = initCoordUVSprites();
+        int index = 0;
+        Joueur[] joueurs = model.getJoueurs();
+        int x = tabPion[index][0] + tabUV[joueurs[index].getPosition() - 1][0];
+        int y = tabPion[index][1] + tabUV[joueurs[index].getPosition() - 1][1];
+        PlayerSprite pionJoueur1 = new PlayerSprite(x, y, index + 1);
+        root.getChildren().add(pionJoueur1);
+        playerSprites.add(pionJoueur1);
+        index++;
+
+        x = tabPion[index][0] + tabUV[joueurs[index].getPosition() - 1][0];
+        y = tabPion[index][1] + tabUV[joueurs[index].getPosition() - 1][1];
+        PlayerSprite pionJoueur2 = new PlayerSprite(x, y, index + 1);
+        root.getChildren().add(pionJoueur2);
+        playerSprites.add(pionJoueur2);
+        index++;
+
+        if (nombreJoueur >= 3) {
+            x = tabPion[index][0] + tabUV[joueurs[index].getPosition() - 1][0];
+            y = tabPion[index][1] + tabUV[joueurs[index].getPosition() - 1][1];
+            PlayerSprite pionJoueur3 = new PlayerSprite(x, y, index + 1);
+            root.getChildren().add(pionJoueur3);
+            playerSprites.add(pionJoueur3);
+            index++;
+        }
+        if (nombreJoueur == 4) {
+            x = tabPion[index][0] + tabUV[joueurs[index].getPosition() - 1][0];
+            y = tabPion[index][1] + tabUV[joueurs[index].getPosition() - 1][1];
+            PlayerSprite pionJoueur4 = new PlayerSprite(x, y, index + 1);
+            root.getChildren().add(pionJoueur4);
+            playerSprites.add(pionJoueur4);
+            index++;
+        }
+
+        playerSprites.get(activePlayer.getNumero()).setFill(Color.TEAL);
+
+    }
+
+    public void displayTeacherSprites(){
+        /*
+        Création des sprites des professeurs
+         */
+        int index = 0;
+        ArrayList<Professeur> teachers = model.getPionProfesseur();
+        teacherSprites = new ArrayList<>();
+        int teacherOffsetX = 16, teacherOffsetY = 6;
+        int tabUV[][] = initCoordUVSprites();
+
+        int x = teacherOffsetX + tabUV[teachers.get(index).getPosition() - 1][0];
+        int y = teacherOffsetY + tabUV[teachers.get(index).getPosition() - 1][1];
+        TeacherSprite spriteProfIlc = new TeacherSprite(x, y, index, Filiere.ILC);
+        teacherSprites.add(spriteProfIlc);
+        index++;
+
+        x = teacherOffsetX + tabUV[teachers.get(index).getPosition() - 1][0];
+        y = teacherOffsetY + tabUV[teachers.get(index).getPosition() - 1][1];
+        TeacherSprite spriteProfI2rv = new TeacherSprite(x, y, index, Filiere.I2RV);
+        teacherSprites.add(spriteProfI2rv);
+        index++;
+
+        x = teacherOffsetX + tabUV[teachers.get(index).getPosition() - 1][0];
+        y = teacherOffsetY + tabUV[teachers.get(index).getPosition() - 1][1];
+        TeacherSprite spriteProfLeim = new TeacherSprite(x, y, index, Filiere.LEIM);
+        teacherSprites.add(spriteProfLeim);
+        index++;
+
+        x = teacherOffsetX + tabUV[teachers.get(index).getPosition() - 1][0];
+        y = teacherOffsetY + tabUV[teachers.get(index).getPosition() - 1][1];
+        TeacherSprite spriteProfRt = new TeacherSprite(x, y, index, Filiere.RT);
+        teacherSprites.add(spriteProfRt);
+
+        root.getChildren().addAll(spriteProfI2rv, spriteProfIlc, spriteProfLeim, spriteProfRt);
+
+    }
+
+    public void workButtonClicked(){
+        if(lbouton2.getTextFill()!=Color.RED){
+            model.travailler();
+            updateLabelMarqueur();
+        }
+    }
+
+    public void displayActionButtons(){
+        displayActionButtonDeplacement();
+        displayActionButtonPasser();
+        displayActionButtonRendreProjet();
+        displayActionButtonTravail();
+        displayActionButtonTravailGroupe();
+        displayActionButtonAppelProf();
+    }
+
+    public void displayActionButtonDeplacement(){
+        fondbouton1 = new Rectangle();
+        fondbouton1.setWidth(130);
+        fondbouton1.setHeight(50);
+        fondbouton1.setFill(Color.DARKGRAY);
+        fondbouton1.setTranslateX(35);
+        fondbouton1.setTranslateY(100);
+        root.getChildren().add(fondbouton1);
+
+        fondbouton1.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (!playerWantToMove) {
+                    fondbouton1.setFill(Color.LIGHTGREY);
+                }
+            }
+        });
+
+        fondbouton1.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (!playerWantToMove) {
+                    fondbouton1.setFill(Color.DARKGRAY);
+                }
+            }
+        });
+
+        fondbouton1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                //if (action==disponible)
+                if (!playerWantToMove) {
+                    fondbouton1.setFill(Color.LIGHTBLUE);
+                    playerWantToMove = true;
+                    System.out.println("Action déplacement activée!!----------------------------------------------------------");
+                    circleReachableUV(model.deplacementPossible(model.getJoueurActif()));
+
+                } else {
+                    fondbouton1.setFill(Color.LIGHTGREY);
+                    playerWantToMove = false;
+                    System.out.println("Action déplacement désactivée manuellement!!----------------------------------------------------------");
+                    uncircleUV();
+                }
+                //mettre l'action correspondant à l'action
+            }
+        });
+
+        lbouton1 = new Label("Déplacement");
+        lbouton1.setFont(Font.font("Arial", 16));
+        lbouton1.setTextFill(Color.BLACK);
+        lbouton1.setTranslateX(35);
+        lbouton1.setTranslateY(100);
+        root.getChildren().add(lbouton1);
+
+        lbouton1.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (!playerWantToMove) {
+                    fondbouton1.setFill(Color.LIGHTGREY);
+                }
+            }
+        });
+
+        lbouton1.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if (!playerWantToMove) {
+                    fondbouton1.setFill(Color.DARKGRAY);
+                }
+            }
+        });
+
+        lbouton1.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                //if (action==disponible)
+                if (!playerWantToMove) {
+                    fondbouton1.setFill(Color.LIGHTBLUE);
+                    playerWantToMove = true;
+                } else {
+                    fondbouton1.setFill(Color.LIGHTGREY);
+                    playerWantToMove = false;
+                }
+                //mettre l'action correspondant à l'action
+            }
+        });
+    }
+
+    public void displayActionButtonTravail(){
+        fondbouton2 = new Rectangle();
+        fondbouton2.setWidth(130);
+        fondbouton2.setHeight(50);
+        fondbouton2.setFill(Color.DARKGRAY);
+        fondbouton2.setTranslateX(35);
+        fondbouton2.setTranslateY(175);
+        root.getChildren().add(fondbouton2);
+
+        fondbouton2.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton2.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        fondbouton2.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton2.setFill(Color.DARKGRAY);
+            }
+        });
+
+        fondbouton2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                workButtonClicked();
+            }
+        });
+
+        lbouton2 = new Label("Travail");
+        lbouton2.setFont(Font.font("Arial", 16));
+        lbouton2.setTextFill(Color.BLACK);
+        lbouton2.setTranslateX(35);
+        lbouton2.setTranslateY(175);
+        root.getChildren().add(lbouton2);
+
+        lbouton2.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton2.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        lbouton2.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton2.setFill(Color.DARKGRAY);
+            }
+        });
+
+        lbouton2.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                //if (action==disponible)
+                //mettre l'action correspondant à l'action
+            }
+        });
+    }
+
+    public void displayActionButtonAppelProf(){
+        fondbouton3 = new Rectangle();
+        fondbouton3.setWidth(130);
+        fondbouton3.setHeight(50);
+        fondbouton3.setFill(Color.DARKGRAY);
+        fondbouton3.setTranslateX(35);
+        fondbouton3.setTranslateY(250);
+        root.getChildren().add(fondbouton3);
+
+        fondbouton3.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton3.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        fondbouton3.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton3.setFill(Color.DARKGRAY);
+            }
+        });
+
+        fondbouton3.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                //if (action==disponible)
+                //mettre l'action correspondant à l'action
+            }
+        });
+
+        lbouton3 = new Label("Appeler un \nprofesseur");
+        lbouton3.setFont(Font.font("Arial", 16));
+        lbouton3.setTextFill(Color.BLACK);
+        lbouton3.setTranslateX(35);
+        lbouton3.setTranslateY(250);
+        root.getChildren().add(lbouton3);
+
+    }
+
+    public void displayActionButtonRendreProjet(){
+        fondbouton4 = new Rectangle();
+        fondbouton4.setWidth(130);
+        fondbouton4.setHeight(50);
+        fondbouton4.setFill(Color.DARKGRAY);
+        fondbouton4.setTranslateX(35);
+        fondbouton4.setTranslateY(325);
+        root.getChildren().add(fondbouton4);
+
+        fondbouton4.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton4.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        fondbouton4.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton4.setFill(Color.DARKGRAY);
+            }
+        });
+
+        fondbouton4.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                //if (action==disponible)
+                //mettre l'action correspondant à l'action
+            }
+        });
+
+        lbouton4 = new Label("Rendre un \nprojet");
+        lbouton4.setFont(Font.font("Arial", 16));
+        lbouton4.setTextFill(Color.BLACK);
+        lbouton4.setTranslateX(35);
+        lbouton4.setTranslateY(325);
+        root.getChildren().add(lbouton4);
+
+    }
+
+    public void displayActionButtonTravailGroupe(){
+        fondbouton5 = new Rectangle();
+        fondbouton5.setWidth(130);
+        fondbouton5.setHeight(50);
+        fondbouton5.setFill(Color.DARKGRAY);
+        fondbouton5.setTranslateX(35);
+        fondbouton5.setTranslateY(400);
+        root.getChildren().add(fondbouton5);
+
+        fondbouton5.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton5.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        fondbouton5.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton5.setFill(Color.DARKGRAY);
+            }
+        });
+
+        fondbouton5.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                //if (action==disponible)
+                //mettre l'action correspondant à l'action
+            }
+        });
+
+        lbouton5 = new Label("Travail de \ngroupe");
+        lbouton5.setFont(Font.font("Arial", 16));
+        lbouton5.setTextFill(Color.BLACK);
+        lbouton5.setTranslateX(35);
+        lbouton5.setTranslateY(400);
+        root.getChildren().add(lbouton5);
+
+    }
+
+    public void displayActionButtonPasser(){
+        fondbouton6 = new Rectangle();
+        fondbouton6.setWidth(130);
+        fondbouton6.setHeight(50);
+        fondbouton6.setFill(Color.DARKGRAY);
+        fondbouton6.setTranslateX(35);
+        fondbouton6.setTranslateY(475);
+        root.getChildren().add(fondbouton6);
+
+        lbouton6 = new Label("Passer");
+        lbouton6.setFont(Font.font("Arial", 16));
+        lbouton6.setTextFill(Color.BLACK);
+        lbouton6.setTranslateX(35);
+        lbouton6.setTranslateY(475);
+        root.getChildren().add(lbouton6);
+
+        fondbouton6.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton6.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        fondbouton6.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton6.setFill(Color.DARKGRAY);
+            }
+        });
+
+        fondbouton6.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                clickPasserButton();
+            }
+        });
+
+
+        lbouton6.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton6.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        lbouton6.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton6.setFill(Color.DARKGRAY);
+            }
+        });
+
+        lbouton6.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                clickPasserButton();
+            }
+        });
     }
 }

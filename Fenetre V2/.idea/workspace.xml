@@ -63,22 +63,62 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6736">
-              <caret line="1747" column="0" selection-start-line="1747" selection-start-column="0" selection-end-line="1747" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.1024">
+              <caret line="819" column="0" selection-start-line="819" selection-start-column="0" selection-end-line="819" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#14018#14019#0" expanded="true" />
-                <element signature="e#14076#14077#0" expanded="true" />
+                <element signature="method#handle#0;class#20595:21294" expanded="false" />
+                <element signature="method#handle#0;class#21333:22123" expanded="false" />
+                <element signature="method#handle#0;class#22162:23090" expanded="false" />
+                <element signature="class#23130:23321" expanded="false" />
+                <element signature="e#23237#23238#0" expanded="true" />
+                <element signature="e#23306#23307#0" expanded="true" />
                 <element signature="method#initCoordUVSprites#0;class#Main#0" expanded="false" />
                 <element signature="method#initCoordPionJoueurs#0;class#Main#0" expanded="false" />
+                <element signature="method#movePlayer#0;class#Main#0" expanded="false" />
                 <element signature="method#circleReachableUV#0;class#Main#0" expanded="false" />
                 <element signature="method#uncircleUV#0;class#Main#0" expanded="false" />
                 <element signature="method#updatePlayerSpriteColor#0;class#Main#0" expanded="false" />
                 <element signature="method#undoAllActionButtonColor#0;class#Main#0" expanded="false" />
                 <element signature="method#clickPasserButton#0;class#Main#0" expanded="false" />
                 <element signature="method#updateTeacherSprite#0;class#Main#0" expanded="false" />
+                <element signature="method#updateLabelMarqueur#0;class#Main#0" expanded="false" />
+                <element signature="method#initBoard#0;class#Main#0" expanded="false" />
                 <element signature="method#endTurn#0;class#Main#0" expanded="false" />
+                <element signature="method#displayUVSprites#0;class#Main#0" expanded="false" />
+                <element signature="method#displayPlayerSprites#0;class#Main#0" expanded="false" />
+                <element signature="method#displayTeacherSprites#0;class#Main#0" expanded="false" />
+                <element signature="method#workButtonClicked#0;class#Main#0" expanded="false" />
+                <element signature="method#displayActionButtons#0;class#Main#0" expanded="false" />
+                <element signature="method#displayActionButtonDeplacement#0;class#Main#0" expanded="false" />
+                <element signature="method#displayActionButtonTravail#0;class#Main#0" expanded="false" />
+                <element signature="e#60864#60865#0" expanded="true" />
+                <element signature="e#60915#60916#0" expanded="true" />
+                <element signature="method#displayActionButtonAppelProf#0;class#Main#0" expanded="false" />
+                <element signature="method#displayActionButtonRendreProjet#0;class#Main#0" expanded="false" />
+                <element signature="method#displayActionButtonTravailGroupe#0;class#Main#0" expanded="false" />
+                <element signature="method#displayActionButtonPasser#0;class#Main#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UV.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/UV.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="159" column="61" selection-start-line="159" selection-start-column="61" selection-end-line="159" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataReader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/DataReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="110" column="877" selection-start-line="110" selection-start-column="877" selection-end-line="110" selection-end-column="877" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,7 +128,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#887#888#0" expanded="false" />
+                <element signature="e#925#926#0" expanded="false" />
+                <element signature="e#1146#1147#0" expanded="false" />
+                <element signature="e#1180#1181#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -97,11 +143,11 @@
         <entry file="file://$PROJECT_DIR$/src/model/Jeu.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="780" column="30" selection-start-line="780" selection-start-column="30" selection-end-line="780" selection-end-column="30" />
+              <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
               <folding>
+                <element signature="method#Jeu#0;class#Jeu#0" expanded="false" />
                 <element signature="method#augmenterChargeTravail#0;class#Jeu#0" expanded="false" />
                 <element signature="method#augmenterEclosion#0;class#Jeu#0" expanded="false" />
-                <element signature="method#travailler#0;class#Jeu#0" expanded="false" />
                 <element signature="method#travailler#1;class#Jeu#0" expanded="false" />
                 <element signature="method#piocheSemestre#0;class#Jeu#0" expanded="false" />
                 <element signature="method#utiliserCarteBenefique#0;class#Jeu#0" expanded="false" />
@@ -128,6 +174,26 @@
                 <element signature="method#deplacementPossibleEverywhere#0;class#Jeu#0" expanded="false" />
                 <element signature="method#deplacementPossibleByProf#0;class#Jeu#0" expanded="false" />
                 <element signature="method#deplacementPossibleNeighbour#0;class#Jeu#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Graph.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Graph.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="120" column="28" selection-start-line="120" selection-start-column="28" selection-end-line="120" selection-end-column="28" />
+              <folding>
+                <element signature="method#Graph#0;class#Graph#0" expanded="false" />
+                <element signature="method#getUV#0;class#Graph#0" expanded="false" />
+                <element signature="method#getUV#1;class#Graph#0" expanded="false" />
+                <element signature="method#getUVFiliere#0;class#Graph#0" expanded="false" />
+                <element signature="method#travail#0;class#Graph#0" expanded="false" />
+                <element signature="method#travail#1;class#Graph#0" expanded="false" />
+                <element signature="method#uvHasMarqueur#0;class#Graph#0" expanded="false" />
+                <element signature="method#finTour#0;class#Graph#0" expanded="false" />
+                <element signature="method#printAllUV#0;class#Graph#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -192,14 +258,14 @@
         <option value="$PROJECT_DIR$/src/sample/UVSprite.java" />
         <option value="$PROJECT_DIR$/src/model/Joueur.java" />
         <option value="$PROJECT_DIR$/src/sample/PlayerSprites.java" />
-        <option value="$PROJECT_DIR$/src/model/Graph.java" />
-        <option value="$PROJECT_DIR$/src/model/DataReader.java" />
         <option value="$PROJECT_DIR$/src/model/ReserveCarteSemestre.java" />
-        <option value="$PROJECT_DIR$/src/model/UV.java" />
-        <option value="$PROJECT_DIR$/UV.jjq" />
         <option value="$PROJECT_DIR$/src/sample/PlayerSprite.java" />
-        <option value="$PROJECT_DIR$/src/model/Jeu.java" />
         <option value="$PROJECT_DIR$/src/sample/TeacherSprite.java" />
+        <option value="$PROJECT_DIR$/UV.jjq" />
+        <option value="$PROJECT_DIR$/src/model/DataReader.java" />
+        <option value="$PROJECT_DIR$/src/model/Graph.java" />
+        <option value="$PROJECT_DIR$/src/model/Jeu.java" />
+        <option value="$PROJECT_DIR$/src/model/UV.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
       </list>
     </option>
@@ -248,6 +314,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -319,12 +388,13 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -528,11 +598,10 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29709035" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.669219" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1700468" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32771823" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -550,6 +619,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32771823" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -565,7 +635,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -580,17 +650,37 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#14018#14019#0" expanded="true" />
-            <element signature="e#14076#14077#0" expanded="true" />
+            <element signature="method#handle#0;class#20595:21294" expanded="false" />
+            <element signature="method#handle#0;class#21333:22123" expanded="false" />
+            <element signature="method#handle#0;class#22162:23090" expanded="false" />
+            <element signature="class#23130:23321" expanded="false" />
+            <element signature="e#23237#23238#0" expanded="true" />
+            <element signature="e#23306#23307#0" expanded="true" />
             <element signature="method#initCoordUVSprites#0;class#Main#0" expanded="false" />
             <element signature="method#initCoordPionJoueurs#0;class#Main#0" expanded="false" />
+            <element signature="method#movePlayer#0;class#Main#0" expanded="false" />
             <element signature="method#circleReachableUV#0;class#Main#0" expanded="false" />
             <element signature="method#uncircleUV#0;class#Main#0" expanded="false" />
             <element signature="method#updatePlayerSpriteColor#0;class#Main#0" expanded="false" />
             <element signature="method#undoAllActionButtonColor#0;class#Main#0" expanded="false" />
             <element signature="method#clickPasserButton#0;class#Main#0" expanded="false" />
             <element signature="method#updateTeacherSprite#0;class#Main#0" expanded="false" />
+            <element signature="method#updateLabelMarqueur#0;class#Main#0" expanded="false" />
+            <element signature="method#initBoard#0;class#Main#0" expanded="false" />
             <element signature="method#endTurn#0;class#Main#0" expanded="false" />
+            <element signature="method#displayUVSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#displayPlayerSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#displayTeacherSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#workButtonClicked#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtons#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonDeplacement#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonTravail#0;class#Main#0" expanded="false" />
+            <element signature="e#60864#60865#0" expanded="true" />
+            <element signature="e#60915#60916#0" expanded="true" />
+            <element signature="method#displayActionButtonAppelProf#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonRendreProjet#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonTravailGroupe#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonPasser#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -606,19 +696,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
@@ -627,17 +716,37 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#14018#14019#0" expanded="true" />
-            <element signature="e#14076#14077#0" expanded="true" />
+            <element signature="method#handle#0;class#20595:21294" expanded="false" />
+            <element signature="method#handle#0;class#21333:22123" expanded="false" />
+            <element signature="method#handle#0;class#22162:23090" expanded="false" />
+            <element signature="class#23130:23321" expanded="false" />
+            <element signature="e#23237#23238#0" expanded="true" />
+            <element signature="e#23306#23307#0" expanded="true" />
             <element signature="method#initCoordUVSprites#0;class#Main#0" expanded="false" />
             <element signature="method#initCoordPionJoueurs#0;class#Main#0" expanded="false" />
+            <element signature="method#movePlayer#0;class#Main#0" expanded="false" />
             <element signature="method#circleReachableUV#0;class#Main#0" expanded="false" />
             <element signature="method#uncircleUV#0;class#Main#0" expanded="false" />
             <element signature="method#updatePlayerSpriteColor#0;class#Main#0" expanded="false" />
             <element signature="method#undoAllActionButtonColor#0;class#Main#0" expanded="false" />
             <element signature="method#clickPasserButton#0;class#Main#0" expanded="false" />
             <element signature="method#updateTeacherSprite#0;class#Main#0" expanded="false" />
+            <element signature="method#updateLabelMarqueur#0;class#Main#0" expanded="false" />
+            <element signature="method#initBoard#0;class#Main#0" expanded="false" />
             <element signature="method#endTurn#0;class#Main#0" expanded="false" />
+            <element signature="method#displayUVSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#displayPlayerSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#displayTeacherSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#workButtonClicked#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtons#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonDeplacement#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonTravail#0;class#Main#0" expanded="false" />
+            <element signature="e#60864#60865#0" expanded="true" />
+            <element signature="e#60915#60916#0" expanded="true" />
+            <element signature="method#displayActionButtonAppelProf#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonRendreProjet#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonTravailGroupe#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonPasser#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -653,19 +762,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
@@ -674,17 +782,37 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#14018#14019#0" expanded="true" />
-            <element signature="e#14076#14077#0" expanded="true" />
+            <element signature="method#handle#0;class#20595:21294" expanded="false" />
+            <element signature="method#handle#0;class#21333:22123" expanded="false" />
+            <element signature="method#handle#0;class#22162:23090" expanded="false" />
+            <element signature="class#23130:23321" expanded="false" />
+            <element signature="e#23237#23238#0" expanded="true" />
+            <element signature="e#23306#23307#0" expanded="true" />
             <element signature="method#initCoordUVSprites#0;class#Main#0" expanded="false" />
             <element signature="method#initCoordPionJoueurs#0;class#Main#0" expanded="false" />
+            <element signature="method#movePlayer#0;class#Main#0" expanded="false" />
             <element signature="method#circleReachableUV#0;class#Main#0" expanded="false" />
             <element signature="method#uncircleUV#0;class#Main#0" expanded="false" />
             <element signature="method#updatePlayerSpriteColor#0;class#Main#0" expanded="false" />
             <element signature="method#undoAllActionButtonColor#0;class#Main#0" expanded="false" />
             <element signature="method#clickPasserButton#0;class#Main#0" expanded="false" />
             <element signature="method#updateTeacherSprite#0;class#Main#0" expanded="false" />
+            <element signature="method#updateLabelMarqueur#0;class#Main#0" expanded="false" />
+            <element signature="method#initBoard#0;class#Main#0" expanded="false" />
             <element signature="method#endTurn#0;class#Main#0" expanded="false" />
+            <element signature="method#displayUVSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#displayPlayerSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#displayTeacherSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#workButtonClicked#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtons#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonDeplacement#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonTravail#0;class#Main#0" expanded="false" />
+            <element signature="e#60864#60865#0" expanded="true" />
+            <element signature="e#60915#60916#0" expanded="true" />
+            <element signature="method#displayActionButtonAppelProf#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonRendreProjet#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonTravailGroupe#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonPasser#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -700,19 +828,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
@@ -721,17 +848,37 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#14018#14019#0" expanded="true" />
-            <element signature="e#14076#14077#0" expanded="true" />
+            <element signature="method#handle#0;class#20595:21294" expanded="false" />
+            <element signature="method#handle#0;class#21333:22123" expanded="false" />
+            <element signature="method#handle#0;class#22162:23090" expanded="false" />
+            <element signature="class#23130:23321" expanded="false" />
+            <element signature="e#23237#23238#0" expanded="true" />
+            <element signature="e#23306#23307#0" expanded="true" />
             <element signature="method#initCoordUVSprites#0;class#Main#0" expanded="false" />
             <element signature="method#initCoordPionJoueurs#0;class#Main#0" expanded="false" />
+            <element signature="method#movePlayer#0;class#Main#0" expanded="false" />
             <element signature="method#circleReachableUV#0;class#Main#0" expanded="false" />
             <element signature="method#uncircleUV#0;class#Main#0" expanded="false" />
             <element signature="method#updatePlayerSpriteColor#0;class#Main#0" expanded="false" />
             <element signature="method#undoAllActionButtonColor#0;class#Main#0" expanded="false" />
             <element signature="method#clickPasserButton#0;class#Main#0" expanded="false" />
             <element signature="method#updateTeacherSprite#0;class#Main#0" expanded="false" />
+            <element signature="method#updateLabelMarqueur#0;class#Main#0" expanded="false" />
+            <element signature="method#initBoard#0;class#Main#0" expanded="false" />
             <element signature="method#endTurn#0;class#Main#0" expanded="false" />
+            <element signature="method#displayUVSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#displayPlayerSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#displayTeacherSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#workButtonClicked#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtons#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonDeplacement#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonTravail#0;class#Main#0" expanded="false" />
+            <element signature="e#60864#60865#0" expanded="true" />
+            <element signature="e#60915#60916#0" expanded="true" />
+            <element signature="method#displayActionButtonAppelProf#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonRendreProjet#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonTravailGroupe#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonPasser#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -747,19 +894,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
@@ -768,17 +914,37 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#14018#14019#0" expanded="true" />
-            <element signature="e#14076#14077#0" expanded="true" />
+            <element signature="method#handle#0;class#20595:21294" expanded="false" />
+            <element signature="method#handle#0;class#21333:22123" expanded="false" />
+            <element signature="method#handle#0;class#22162:23090" expanded="false" />
+            <element signature="class#23130:23321" expanded="false" />
+            <element signature="e#23237#23238#0" expanded="true" />
+            <element signature="e#23306#23307#0" expanded="true" />
             <element signature="method#initCoordUVSprites#0;class#Main#0" expanded="false" />
             <element signature="method#initCoordPionJoueurs#0;class#Main#0" expanded="false" />
+            <element signature="method#movePlayer#0;class#Main#0" expanded="false" />
             <element signature="method#circleReachableUV#0;class#Main#0" expanded="false" />
             <element signature="method#uncircleUV#0;class#Main#0" expanded="false" />
             <element signature="method#updatePlayerSpriteColor#0;class#Main#0" expanded="false" />
             <element signature="method#undoAllActionButtonColor#0;class#Main#0" expanded="false" />
             <element signature="method#clickPasserButton#0;class#Main#0" expanded="false" />
             <element signature="method#updateTeacherSprite#0;class#Main#0" expanded="false" />
+            <element signature="method#updateLabelMarqueur#0;class#Main#0" expanded="false" />
+            <element signature="method#initBoard#0;class#Main#0" expanded="false" />
             <element signature="method#endTurn#0;class#Main#0" expanded="false" />
+            <element signature="method#displayUVSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#displayPlayerSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#displayTeacherSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#workButtonClicked#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtons#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonDeplacement#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonTravail#0;class#Main#0" expanded="false" />
+            <element signature="e#60864#60865#0" expanded="true" />
+            <element signature="e#60915#60916#0" expanded="true" />
+            <element signature="method#displayActionButtonAppelProf#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonRendreProjet#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonTravailGroupe#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonPasser#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -787,19 +953,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
@@ -808,17 +973,37 @@
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#14018#14019#0" expanded="true" />
-            <element signature="e#14076#14077#0" expanded="true" />
+            <element signature="method#handle#0;class#20595:21294" expanded="false" />
+            <element signature="method#handle#0;class#21333:22123" expanded="false" />
+            <element signature="method#handle#0;class#22162:23090" expanded="false" />
+            <element signature="class#23130:23321" expanded="false" />
+            <element signature="e#23237#23238#0" expanded="true" />
+            <element signature="e#23306#23307#0" expanded="true" />
             <element signature="method#initCoordUVSprites#0;class#Main#0" expanded="false" />
             <element signature="method#initCoordPionJoueurs#0;class#Main#0" expanded="false" />
+            <element signature="method#movePlayer#0;class#Main#0" expanded="false" />
             <element signature="method#circleReachableUV#0;class#Main#0" expanded="false" />
             <element signature="method#uncircleUV#0;class#Main#0" expanded="false" />
             <element signature="method#updatePlayerSpriteColor#0;class#Main#0" expanded="false" />
             <element signature="method#undoAllActionButtonColor#0;class#Main#0" expanded="false" />
             <element signature="method#clickPasserButton#0;class#Main#0" expanded="false" />
             <element signature="method#updateTeacherSprite#0;class#Main#0" expanded="false" />
+            <element signature="method#updateLabelMarqueur#0;class#Main#0" expanded="false" />
+            <element signature="method#initBoard#0;class#Main#0" expanded="false" />
             <element signature="method#endTurn#0;class#Main#0" expanded="false" />
+            <element signature="method#displayUVSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#displayPlayerSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#displayTeacherSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#workButtonClicked#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtons#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonDeplacement#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonTravail#0;class#Main#0" expanded="false" />
+            <element signature="e#60864#60865#0" expanded="true" />
+            <element signature="e#60915#60916#0" expanded="true" />
+            <element signature="method#displayActionButtonAppelProf#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonRendreProjet#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonTravailGroupe#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonPasser#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -827,19 +1012,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/out/production/TEst javafx2/sample/background.jpg">
@@ -848,14 +1032,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20101352">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TEst javafx2.iml">
@@ -883,7 +1067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -891,7 +1074,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,7 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -938,7 +1119,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -972,14 +1152,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/DataReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/CarteSemestre.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -992,31 +1164,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="103" selection-start-line="16" selection-start-column="103" selection-end-line="16" selection-end-column="103" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Graph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="122" column="51" selection-start-line="122" selection-start-column="51" selection-end-line="122" selection-end-column="51" />
-          <folding>
-            <element signature="method#Graph#0;class#Graph#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UV.jjq">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="1019" selection-start-line="2" selection-start-column="1019" selection-end-line="2" selection-end-column="1019" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/UV.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="84" column="17" selection-start-line="84" selection-start-column="17" selection-end-line="84" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1035,7 +1182,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#887#888#0" expanded="false" />
+            <element signature="e#925#926#0" expanded="false" />
+            <element signature="e#1146#1147#0" expanded="false" />
+            <element signature="e#1180#1181#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1051,14 +1204,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/PlayerSprite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UV.jjq">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23665893">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/DataReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="110" column="877" selection-start-line="110" selection-start-column="877" selection-end-line="110" selection-end-column="877" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Jeu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="780" column="30" selection-start-line="780" selection-start-column="30" selection-end-line="780" selection-end-column="30" />
+          <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
           <folding>
+            <element signature="method#Jeu#0;class#Jeu#0" expanded="false" />
             <element signature="method#augmenterChargeTravail#0;class#Jeu#0" expanded="false" />
             <element signature="method#augmenterEclosion#0;class#Jeu#0" expanded="false" />
-            <element signature="method#travailler#0;class#Jeu#0" expanded="false" />
             <element signature="method#travailler#1;class#Jeu#0" expanded="false" />
             <element signature="method#piocheSemestre#0;class#Jeu#0" expanded="false" />
             <element signature="method#utiliserCarteBenefique#0;class#Jeu#0" expanded="false" />
@@ -1089,33 +1268,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/PlayerSprite.java">
+    <entry file="file://$PROJECT_DIR$/src/model/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+          <caret line="120" column="28" selection-start-line="120" selection-start-column="28" selection-end-line="120" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#Graph#0;class#Graph#0" expanded="false" />
+            <element signature="method#getUV#0;class#Graph#0" expanded="false" />
+            <element signature="method#getUV#1;class#Graph#0" expanded="false" />
+            <element signature="method#getUVFiliere#0;class#Graph#0" expanded="false" />
+            <element signature="method#travail#0;class#Graph#0" expanded="false" />
+            <element signature="method#travail#1;class#Graph#0" expanded="false" />
+            <element signature="method#uvHasMarqueur#0;class#Graph#0" expanded="false" />
+            <element signature="method#finTour#0;class#Graph#0" expanded="false" />
+            <element signature="method#printAllUV#0;class#Graph#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/UV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="159" column="61" selection-start-line="159" selection-start-column="61" selection-end-line="159" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6736">
-          <caret line="1747" column="0" selection-start-line="1747" selection-start-column="0" selection-end-line="1747" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.1024">
+          <caret line="819" column="0" selection-start-line="819" selection-start-column="0" selection-end-line="819" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#14018#14019#0" expanded="true" />
-            <element signature="e#14076#14077#0" expanded="true" />
+            <element signature="method#handle#0;class#20595:21294" expanded="false" />
+            <element signature="method#handle#0;class#21333:22123" expanded="false" />
+            <element signature="method#handle#0;class#22162:23090" expanded="false" />
+            <element signature="class#23130:23321" expanded="false" />
+            <element signature="e#23237#23238#0" expanded="true" />
+            <element signature="e#23306#23307#0" expanded="true" />
             <element signature="method#initCoordUVSprites#0;class#Main#0" expanded="false" />
             <element signature="method#initCoordPionJoueurs#0;class#Main#0" expanded="false" />
+            <element signature="method#movePlayer#0;class#Main#0" expanded="false" />
             <element signature="method#circleReachableUV#0;class#Main#0" expanded="false" />
             <element signature="method#uncircleUV#0;class#Main#0" expanded="false" />
             <element signature="method#updatePlayerSpriteColor#0;class#Main#0" expanded="false" />
             <element signature="method#undoAllActionButtonColor#0;class#Main#0" expanded="false" />
             <element signature="method#clickPasserButton#0;class#Main#0" expanded="false" />
             <element signature="method#updateTeacherSprite#0;class#Main#0" expanded="false" />
+            <element signature="method#updateLabelMarqueur#0;class#Main#0" expanded="false" />
+            <element signature="method#initBoard#0;class#Main#0" expanded="false" />
             <element signature="method#endTurn#0;class#Main#0" expanded="false" />
+            <element signature="method#displayUVSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#displayPlayerSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#displayTeacherSprites#0;class#Main#0" expanded="false" />
+            <element signature="method#workButtonClicked#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtons#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonDeplacement#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonTravail#0;class#Main#0" expanded="false" />
+            <element signature="e#60864#60865#0" expanded="true" />
+            <element signature="e#60915#60916#0" expanded="true" />
+            <element signature="method#displayActionButtonAppelProf#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonRendreProjet#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonTravailGroupe#0;class#Main#0" expanded="false" />
+            <element signature="method#displayActionButtonPasser#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>

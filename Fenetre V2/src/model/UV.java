@@ -157,7 +157,7 @@ public class UV
                 temp = "none";
                 break;
         }
-        return (position+" "+nom+" "+temp);
+        return (position+" "+nom+" "+temp+" "+marqueur.size());
     }
 
 

@@ -67,9 +67,9 @@ public class Graph {
         }
         return f;
     }
-    /*Fonction appelé par la classe model.Jeu quand le joueur veux travailler.
-     *Appel alors la fonction removeMarqueur de la classe model.UV.
-     * Si un argument est envoyé alors il s'agit d'une méthode qui enlève tout les marqueurs d'une model.UV.
+    /*Fonction appelé par la classe Jeu quand le joueur veux travailler.
+     *Appel alors la fonction removeMarqueur de la classe V.
+     * Si un argument est envoyé alors il s'agit d'une méthode qui enlève tous les marqueurs d'une UV.
      * Sinon enlève seulement un marqueur
      */
     public Marqueur travail(int position){
@@ -83,7 +83,7 @@ public class Graph {
     }
 
     //Méthode enlevant les marqueur d'une filière donné sur une case donnée.
-    //Enlève tout les maruque de la filière.
+    //Enlève tout les marqueurs de la filière.
     public void travail(int position, Filiere f, CollectionMarqueur reserve){
         for(UV uv: listUV){
             if(uv.getPosition()==position){

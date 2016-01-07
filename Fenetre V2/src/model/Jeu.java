@@ -186,17 +186,18 @@ public class Jeu {
         Marqueur m = new Marqueur();
 
         //Test du role du joueur si surdoué alors tout les marqueurs sont enlevé
-        if (joueurActif.getRole()==Role.surdoue){
+        if (joueurActif.getRole()==Role.surdoue || testRenduProjet(uvTravail.getFiliere())){
             while(uvTravail.getNombreMarqueur()!=0){
                 m = graph.travail(positionPersonnage);
                 reserveMarqueur.setMarqueur(m);
             }
         }else{
             //Sinon on enlève un marqueur.
-            //Partie a potentiellement modifié pour géré le cas ou le projet a été rendu
+            //Partie a potentiellement modifié pour gérer le cas ou le projet a été rendu
             m = graph.travail(positionPersonnage);
             reserveMarqueur.setMarqueur(m);
         }
+        reduireAction();
 
     }
 
