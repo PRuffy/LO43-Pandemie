@@ -32,6 +32,7 @@ public class Main extends Application {
     Group root;
 
     private boolean playerWantToMove;
+    private boolean playerWantToEndHisTurn;
     private ArrayList<UVSprite> uvSprites;
     private ArrayList<Label> uvLabel;
     private ArrayList<PlayerSprite> playerSprites;
@@ -750,12 +751,11 @@ public class Main extends Application {
 
             System.out.println("action déplacement désactivée automatiquement!!----------------------------------------------------------------------");
             fondbouton1.setFill(Color.DARKGRAY);
-            uncircleUV();
-            playerWantToMove=false;
-            if(model.getJoueurActif() != activePlayer) endTurn();
+            if(model.getJoueurActif() != activePlayer) {
+                endTurn();
+            }
             else {
-                updateLabelMarqueur();
-                updateTeacherSprite();
+                resetAllActionButtons();
             }
 
         }
@@ -789,7 +789,9 @@ public class Main extends Application {
         fondbouton6.setFill(Color.DARKGRAY);
 
         // On remet le texte du bouton "passer" à sa valeur par défaut, au cas où le joueur avait déjà cliqué dessus une fois
+        // De même pour le booléen correspondant;
         lbouton6.setText("Passer");
+        playerWantToEndHisTurn=false;
 
         // On remet la valeur de playerWantToMove à 'false' au cas où le joueur avait déjà cliqué sur le bouton de déplacement une fois
         // Pour la même raison, on désactive l'affichage différent pour les UV accessibles
@@ -802,9 +804,11 @@ public class Main extends Application {
     }
 
     private void endTurnButtonClicked(){
+        System.out.println("Bouton de fin de tour activé");
         if(lbouton6.getText()=="Passer"){
             lbouton6.setText("Etes vous \nsur?");
         }else{
+            playerWantToEndHisTurn=true;
             endTurn();
         }
         resetAllActionButtons();
@@ -860,7 +864,10 @@ public class Main extends Application {
     }
 
     public void endTurn(){
-        model.finDeTour();
+        if(playerWantToEndHisTurn){
+            System.out.println("Fin de tour due la la méthode endTurn");
+            model.passer();
+        }
         updatePlayerSpriteColor();
         resetAllActionButtons();
     }

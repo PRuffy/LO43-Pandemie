@@ -620,6 +620,7 @@ public class Jeu {
         joueurActif.setNombreAction(joueurActif.getNombreAction()-1);
 
         if(joueurActif.getNombreAction()==0){
+            System.out.println("Fin de tout due au manque d'action pour le joueur");
             finDeTour();
         }
     }
@@ -627,7 +628,7 @@ public class Jeu {
     //Bloc de fin de tour
     /*Fonction qui remet toutes les valeurs comme a leur état initial et change le joueur Actif*/
     public void finDeTour() {
-
+        if (DEBUG) {System.out.println("------------------------ FIN DE TOUR ------------------------------");}
         //On fait piocher le joueur actif
         piocheSemestre();
 
