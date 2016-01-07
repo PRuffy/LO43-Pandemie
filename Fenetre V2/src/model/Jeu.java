@@ -34,7 +34,7 @@ public class Jeu {
      * int[][] adjacence : permet d'obtenir la liste des voisins
      * 
      */
-    public Jeu(int nombreDeJoueurs, DataReader dat) throws GameOverException {
+    public Jeu(int nombreDeJoueurs, DataReader dat, ArrayList<String> nomsDesJoueurs) throws GameOverException {
         chargeTravail = CHARGE_TRAVAIL[0];
         compteurEclosion = 0;
         nombreProjetRendu = 0;
@@ -80,7 +80,7 @@ public class Jeu {
             //Le role est enlever de l'arrayliste
             random = rand.nextInt(roleDisp.size());
             roleJoueur = roleDisp.remove(random);
-            joueurs[i] = new Joueur(roleJoueur, i);
+            joueurs[i] = new Joueur(roleJoueur, i, nomsDesJoueurs.get(i));
             joueurActif = joueurs[i];
 
             //On pioche des cartes qu'on met dans la main des joueurs

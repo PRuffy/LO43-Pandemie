@@ -27,33 +27,31 @@ import java.util.ArrayList;
 public class Main extends Application {
     private int i=0 ;
     public void setI(int i){this.i = i;}
+
     private DataReader dat;
     private Jeu model;
-    Group root;
+    private Group root;
 
     private boolean playerWantToMove;
     private boolean playerWantToEndHisTurn;
+
     private ArrayList<UVSprite> uvSprites;
     private ArrayList<Label> uvLabel;
     private ArrayList<PlayerSprite> playerSprites;
     private ArrayList<TeacherSprite> teacherSprites;
     private ArrayList<PlayerHandCardSprite> playerHandCardSprites;
     private ArrayList<Label> playerHandCardLabel;
+    private ArrayList<String> playerNames;
+
     private Joueur activePlayer;
     private int nombreJoueur;
 
-    private Rectangle fondbouton1;
-    private Rectangle fondbouton2;
-    private Rectangle fondbouton3;
-    private Rectangle fondbouton4;
-    private Rectangle fondbouton5;
-    private Rectangle fondbouton6;
-    private Label lbouton1;
-    private Label lbouton2;
-    private Label lbouton3;
-    private Label lbouton4;
-    private Label lbouton5;
-    private Label lbouton6;
+    private Rectangle activePlayerInfoRectangle;
+    private Label activePlayerInfoLabel;
+
+    private Rectangle fondbouton1, fondbouton2, fondbouton3, fondbouton4, fondbouton5, fondbouton6;
+    private Label lbouton1, lbouton2, lbouton3, lbouton4, lbouton5, lbouton6;
+    private TextField nom1, nom2, nom3, nom4;
 
     private Color ilcColor = Color.WHEAT;
     private Color i2rvColor = Color.LIGHTBLUE;
@@ -365,36 +363,36 @@ public class Main extends Application {
             grid.getChildren().add(monimage);
 
 
-            Label labelnom1 = new Label("Entrez le nom du Joueur 1 :");
-            labelnom1.setId("Label1");
-            grid.add(labelnom1, 0, 3);
-            labelnom1.setVisible(false);
+            Label labelNom1 = new Label("Entrez le nom du Joueur 1 :");
+            labelNom1.setId("Label1");
+            grid.add(labelNom1, 0, 3);
+            labelNom1.setVisible(false);
 
             TextField nom1 = new TextField();
             grid.add(nom1, 1, 3);
             nom1.setVisible(false);
 
-            Label labelnom2 = new Label("Entrez le nom du Joueur 2 :");
-            grid.add(labelnom2, 0, 4);
-            labelnom2.setId("Label1");
-            labelnom2.setVisible(false);
+            Label labelNom2 = new Label("Entrez le nom du Joueur 2 :");
+            grid.add(labelNom2, 0, 4);
+            labelNom2.setId("Label1");
+            labelNom2.setVisible(false);
 
             TextField nom2 = new TextField();
             grid.add(nom2, 1, 4);
             nom2.setVisible(false);
 
-            Label labelnom3 = new Label("Entrez le nom du Joueur 3 :");
-            grid.add(labelnom3, 0, 5);
-            labelnom3.setVisible(false);
-            labelnom3.setId("Label1");
+            Label labelNom3 = new Label("Entrez le nom du Joueur 3 :");
+            grid.add(labelNom3, 0, 5);
+            labelNom3.setVisible(false);
+            labelNom3.setId("Label1");
             TextField nom3 = new TextField();
             grid.add(nom3, 1, 5);
             nom3.setVisible(false);
 
-            Label labelnom4 = new Label("Entrez le nom du Joueur 4 :");
-            grid.add(labelnom4, 0, 6);
-            labelnom4.setVisible(false);
-            labelnom4.setId("Label1");
+            Label labelNom4 = new Label("Entrez le nom du Joueur 4 :");
+            grid.add(labelNom4, 0, 6);
+            labelNom4.setVisible(false);
+            labelNom4.setId("Label1");
             TextField nom4 = new TextField();
             grid.add(nom4, 1, 6);
             nom4.setVisible(false);
@@ -410,14 +408,15 @@ public class Main extends Application {
                     actiontarget.setId("actiontarget");
                     setI(2);
                     nom1.setVisible(true);
-                    labelnom1.setVisible(true);
+                    nom1.setText("John");
+                    labelNom1.setVisible(true);
                     nom2.setVisible(true);
-                    labelnom2.setVisible(true);
+                    nom2.setText("John");
+                    labelNom2.setVisible(true);
                     choix2.setVisible(false);
                     choix1.setVisible(false);
                     goToGame.setVisible(true);
                     monimage.setVisible(false);
-                    initBoard(2);
                 }
             });
 
@@ -429,16 +428,15 @@ public class Main extends Application {
                     actiontarget.setId("actiontarget");
                     setI(3);
                     nom1.setVisible(true);
-                    labelnom1.setVisible(true);
+                    labelNom1.setVisible(true);
                     nom2.setVisible(true);
-                    labelnom2.setVisible(true);
+                    labelNom2.setVisible(true);
                     nom3.setVisible(true);
-                    labelnom3.setVisible(true);
+                    labelNom3.setVisible(true);
                     choix2.setVisible(false);
                     goToGame.setVisible(true);
                     choix0.setVisible(false);
                     monimage.setVisible(false);
-                    initBoard(3);
                 }
             });
 
@@ -450,19 +448,18 @@ public class Main extends Application {
                     actiontarget.setId("actiontarget");
                     setI(4);
                     nom1.setVisible(true);
-                    labelnom1.setVisible(true);
+                    labelNom1.setVisible(true);
                     nom2.setVisible(true);
-                    labelnom2.setVisible(true);
+                    labelNom2.setVisible(true);
                     nom3.setVisible(true);
-                    labelnom3.setVisible(true);
+                    labelNom3.setVisible(true);
                     nom4.setVisible(true);
-                    labelnom4.setVisible(true);
+                    labelNom4.setVisible(true);
                     goToGame.setVisible(true);
                     choix1.setVisible(false);
                     choix0.setVisible(false);
                     monimage.setVisible(false);
                     choix2.setTranslateY(-50);
-                    initBoard(4);
                 }
             });
             goToGame.setOnAction(new EventHandler<ActionEvent>() {
@@ -470,6 +467,7 @@ public class Main extends Application {
                 @Override
                 public void handle(ActionEvent e) {
                     primaryStage.setScene(scene2);
+                    initBoard(i);
                 }
             });
 
@@ -720,9 +718,14 @@ public class Main extends Application {
 
 
     public void initBoard(int nombreJoueur){
-
+        playerNames = new ArrayList<>();
+        playerNames.add("Player 1");
+        playerNames.add("Player 2");
+        playerNames.add("Player 3");
+        playerNames.add("Player 4");
         this.nombreJoueur = nombreJoueur;
-        try {model = new Jeu(nombreJoueur, dat);}catch(GameOverException e){}
+
+        try {model = new Jeu(nombreJoueur, dat, playerNames);}catch(GameOverException e){}
         activePlayer = model.getJoueurActif();
         model.getGraph().printAllUV();
 
@@ -731,6 +734,8 @@ public class Main extends Application {
         displayPlayerSprites();
         displayTeacherSprites();
         displayHandSemesterCards();
+        displayActivePlayerInfo();
+        updateActivePlayerInfo();
         updateLabelMarqueur();
         updateHandSemesterCardLabel();
     }
@@ -742,6 +747,7 @@ public class Main extends Application {
         }
         updatePlayerSpriteColor();
         updateHandSemesterCardLabel();
+        updateActivePlayerInfo();
         resetAllActionButtons(false);
     }
 
@@ -801,6 +807,10 @@ public class Main extends Application {
                 lbouton4.setTextFill(Color.RED);
             }
         }
+    }
+
+    public void updateActivePlayerInfo(){
+        activePlayerInfoLabel.setText(activePlayer.toString());
     }
 
     public void displayUVSprites(){
@@ -1932,6 +1942,24 @@ public class Main extends Application {
         lcarte5.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {}
         });
+    }
+
+    public void displayActivePlayerInfo(){
+        activePlayerInfoRectangle = new Rectangle();
+        activePlayerInfoRectangle.setWidth(130);
+        activePlayerInfoRectangle.setHeight(50);
+        activePlayerInfoRectangle.setFill(Color.DARKGRAY);
+        activePlayerInfoRectangle.setTranslateX(35);
+        activePlayerInfoRectangle.setTranslateY(20);
+        root.getChildren().add(activePlayerInfoRectangle);
+
+        activePlayerInfoLabel = new Label();
+        activePlayerInfoLabel.setText("");
+        activePlayerInfoLabel.setFont(Font.font("Arial", 16));
+        activePlayerInfoLabel.setTextFill(Color.BLACK);
+        activePlayerInfoLabel.setTranslateX(35);
+        activePlayerInfoLabel.setTranslateY(20);
+        root.getChildren().add(activePlayerInfoLabel);
     }
 
     private Color switchCardColor(CarteSemestre card){

@@ -6,17 +6,19 @@ import java.util.ArrayList;
  * Created by stay on 22/12/15.
  */
 public class Joueur {
+    private String nom;
     private int nombreAction;
     private Role role;
     private Personnage position;
     private ArrayList<CarteSemestre> carteEnMain;
     private int numero;
 
-    public Joueur(Role role, int numero){
+    public Joueur(Role role, int numero, String nom){
         this.role = role;
         this.position = new Personnage(1);
         this.carteEnMain = new ArrayList<>();
         this.numero = numero;
+        this.nom = nom;
     }
 
 
@@ -136,4 +138,24 @@ public class Joueur {
 
         return tempCarte;
     }
+
+    public String toString(){
+        return (nom+"\n"+getRoleText());
+    }
+
+    public String getRoleText(){
+        switch(role){
+            case surdoue : return "surdoué";
+            case lecheBotte : return "lèche-bottes";
+            case chefProjet : return "chef de projet";
+            case decale : return "décalé";
+            case etudiantEtranger : return "étudiant étranger";
+            default : return "";
+        }
+    }
+
+    public void setName(String nom){
+        this.nom=nom;
+    }
+    public String getNom(){return nom;}
 }
