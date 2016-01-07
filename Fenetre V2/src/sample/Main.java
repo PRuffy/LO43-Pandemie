@@ -13,6 +13,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -41,6 +43,8 @@ public class Main extends Application {
     private ArrayList<TeacherSprite> teacherSprites;
     private ArrayList<PlayerHandCardSprite> playerHandCardSprites;
     private ArrayList<Label> playerHandCardLabel;
+    private ArrayList<DeckSprite> deckSprites;
+    private ArrayList<Label> deckLabel;
     private ArrayList<String> playerNames;
 
     private Joueur activePlayer;
@@ -51,7 +55,8 @@ public class Main extends Application {
 
     private Rectangle fondbouton1, fondbouton2, fondbouton3, fondbouton4, fondbouton5, fondbouton6;
     private Label lbouton1, lbouton2, lbouton3, lbouton4, lbouton5, lbouton6;
-    private TextField nom1, nom2, nom3, nom4;
+    private DeckSprite pioche1, pioche2, defausse1, defausse2;
+    private Label lpioche1, lpioche2, ldefausse1, ldefausse2;
 
     private Color ilcColor = Color.WHEAT;
     private Color i2rvColor = Color.LIGHTBLUE;
@@ -204,72 +209,6 @@ public class Main extends Application {
             lcarte3.setTranslateX(330);
             lcarte3.setTranslateY(10);
             root.getChildren().add(lcarte3);
-
-
-
-            Rectangle pioche1 = new Rectangle();
-            pioche1.setWidth(70);
-            pioche1.setHeight(70);
-            pioche1.setFill(Color.DARKGRAY);
-            pioche1.setTranslateX(730);
-            pioche1.setTranslateY(530);
-            root.getChildren().add(pioche1);
-
-            Label lpioche1 = new Label("pioche 1 : 20");
-            lpioche1.setFont(Font.font("Arial", 18));
-            lpioche1.setMaxWidth(70);
-            lpioche1.setWrapText(true);
-            lpioche1.setTranslateX(730);
-            lpioche1.setTranslateY(530);
-            root.getChildren().add(lpioche1);
-
-            Rectangle pioche2 = new Rectangle();
-            pioche2.setWidth(70);
-            pioche2.setHeight(70);
-            pioche2.setFill(Color.DARKGRAY);
-            pioche2.setTranslateX(650);
-            pioche2.setTranslateY(530);
-            root.getChildren().add(pioche2);
-
-            Label lpioche2 = new Label("pioche 2 : 20");
-            lpioche2.setFont(Font.font("Arial", 18));
-            lpioche2.setMaxWidth(70);
-            lpioche2.setWrapText(true);
-            lpioche2.setTranslateX(650);
-            lpioche2.setTranslateY(530);
-            root.getChildren().add(lpioche2);
-
-            Rectangle defausse1 = new Rectangle();
-            defausse1.setWidth(70);
-            defausse1.setHeight(70);
-            defausse1.setFill(Color.DARKGRAY);
-            defausse1.setTranslateX(730);
-            defausse1.setTranslateY(450);
-            root.getChildren().add(defausse1);
-
-            Label ldefausse1 = new Label("pioche 2 : 20");
-            ldefausse1.setFont(Font.font("Arial", 18));
-            ldefausse1.setMaxWidth(70);
-            ldefausse1.setWrapText(true);
-            ldefausse1.setTranslateX(730);
-            ldefausse1.setTranslateY(450);
-            root.getChildren().add(ldefausse1);
-
-            Rectangle defausse2 = new Rectangle();
-            defausse2.setWidth(70);
-            defausse2.setHeight(70);
-            defausse2.setFill(Color.DARKGRAY);
-            defausse2.setTranslateX(650);
-            defausse2.setTranslateY(450);
-            root.getChildren().add(defausse2);
-
-            Label ldefausse2 = new Label("pioche 2 : 20");
-            ldefausse2.setFont(Font.font("Arial", 18));
-            ldefausse2.setMaxWidth(70);
-            ldefausse2.setWrapText(true);
-            ldefausse2.setTranslateX(650);
-            ldefausse2.setTranslateY(450);
-            root.getChildren().add(ldefausse2);
 
             Rectangle Marqueur1 = new Rectangle();
             Marqueur1.setWidth(10);
@@ -578,6 +517,20 @@ public class Main extends Application {
         tab[4][1] = 530;
         return tab;
     }
+    public int[][] initCoordLibraryAndGraveYard(){
+        int tab[][] = new int[4][2];
+
+        tab[0][0] = 650;
+        tab[0][1] = 450;
+        tab[1][0] = 730;
+        tab[1][1] = 450;
+        tab[2][0] = 650;
+        tab[2][1] = 530;
+        tab[3][0] = 730;
+        tab[3][1] = 530;
+
+        return tab;
+    }
 
     public void movePlayer(int positionUV){
         Joueur currentPlayer = model.getJoueurActif();
@@ -719,10 +672,10 @@ public class Main extends Application {
 
     public void initBoard(int nombreJoueur){
         playerNames = new ArrayList<>();
-        playerNames.add("Player 1");
-        playerNames.add("Player 2");
-        playerNames.add("Player 3");
-        playerNames.add("Player 4");
+        playerNames.add(" Player 1");
+        playerNames.add(" Player 2");
+        playerNames.add(" Player 3");
+        playerNames.add(" Player 4");
         this.nombreJoueur = nombreJoueur;
 
         try {model = new Jeu(nombreJoueur, dat, playerNames);}catch(GameOverException e){}
@@ -735,6 +688,7 @@ public class Main extends Application {
         displayTeacherSprites();
         displayHandSemesterCards();
         displayActivePlayerInfo();
+        displayLibraryAndGraveyard();
         updateActivePlayerInfo();
         updateLabelMarqueur();
         updateHandSemesterCardLabel();
@@ -748,6 +702,7 @@ public class Main extends Application {
         updatePlayerSpriteColor();
         updateHandSemesterCardLabel();
         updateActivePlayerInfo();
+        updateLibraryAndGraveyard();
         resetAllActionButtons(false);
     }
 
@@ -811,6 +766,18 @@ public class Main extends Application {
 
     public void updateActivePlayerInfo(){
         activePlayerInfoLabel.setText(activePlayer.toString());
+    }
+
+    public void updateLibraryAndGraveyard(){
+        String tab[] = {"Pioche semestre : ", "Défausse semestre : ", "Pioche travail : ", "Défausse travail : "};
+        int tabValues[] = {model.getCarteSemestre().getSizePioche(), model.getCarteSemestre().getSizeDefausse(), model.getCarteInfection().getSizePioche(), model.getCarteInfection().getSizeDefausse()};
+        int index = 0;
+
+        // OMONDIEUMONDIEUMONDIEUMONDIEUMONDIEUMONDIEUMONDIEUMONDIEU C'EST MOCHEUH!
+        for(Label currentDeckLabel : deckLabel){
+            currentDeckLabel.setText(tab[index]+tabValues[index]);
+            index++;
+        }
     }
 
     public void displayUVSprites(){
@@ -1948,9 +1915,13 @@ public class Main extends Application {
         activePlayerInfoRectangle = new Rectangle();
         activePlayerInfoRectangle.setWidth(130);
         activePlayerInfoRectangle.setHeight(50);
-        activePlayerInfoRectangle.setFill(Color.DARKGRAY);
+        activePlayerInfoRectangle.setFill(Color.IVORY);
         activePlayerInfoRectangle.setTranslateX(35);
         activePlayerInfoRectangle.setTranslateY(20);
+        activePlayerInfoRectangle.setStrokeWidth(3);
+        activePlayerInfoRectangle.setStrokeLineCap(StrokeLineCap.SQUARE);
+        activePlayerInfoRectangle.setStroke(Color.BLACK);
+        activePlayerInfoRectangle.setStrokeType(StrokeType.OUTSIDE);
         root.getChildren().add(activePlayerInfoRectangle);
 
         activePlayerInfoLabel = new Label();
@@ -1960,6 +1931,77 @@ public class Main extends Application {
         activePlayerInfoLabel.setTranslateX(35);
         activePlayerInfoLabel.setTranslateY(20);
         root.getChildren().add(activePlayerInfoLabel);
+    }
+
+    public void displayLibraryAndGraveyard(){
+        deckLabel = new ArrayList<>();
+        deckSprites = new ArrayList<>();
+        int index = 0;
+        int coordDeck[][] = initCoordLibraryAndGraveYard();
+
+        pioche1 = new DeckSprite(index);
+        pioche1.setTranslateX(coordDeck[index][0]);
+        pioche1.setTranslateY(coordDeck[index][1]);
+        deckSprites.add(pioche1);
+        root.getChildren().add(pioche1);
+
+        lpioche1 = new Label("Pioche semestre : " + model.getCarteSemestre().getSizePioche());
+        lpioche1.setFont(Font.font("Arial", 12));
+        lpioche1.setMaxWidth(70);
+        lpioche1.setWrapText(true);
+        lpioche1.setTranslateX(coordDeck[index][0]);
+        lpioche1.setTranslateY(coordDeck[index][1]);
+        deckLabel.add(lpioche1);
+        root.getChildren().add(lpioche1);
+
+        index++;
+
+        defausse1 = new DeckSprite(index);
+        defausse1.setTranslateX(coordDeck[index][0]);
+        defausse1.setTranslateY(coordDeck[index][1]);
+        root.getChildren().add(defausse1);
+
+        ldefausse1 = new Label("Défausse semestre : " + model.getCarteSemestre().getSizeDefausse());
+        ldefausse1.setFont(Font.font("Arial", 12));
+        ldefausse1.setMaxWidth(70);
+        ldefausse1.setWrapText(true);
+        ldefausse1.setTranslateX(coordDeck[index][0]);
+        ldefausse1.setTranslateY(coordDeck[index][1]);
+        deckLabel.add(ldefausse1);
+        root.getChildren().add(ldefausse1);
+
+        index++;
+
+        pioche2 = new DeckSprite(index);
+        pioche2.setTranslateX(coordDeck[index][0]);
+        pioche2.setTranslateY(coordDeck[index][1]);
+        root.getChildren().add(pioche2);
+
+        lpioche2 = new Label("Pioche travail : " + model.getCarteInfection().getSizePioche());
+        lpioche2.setFont(Font.font("Arial", 12));
+        lpioche2.setMaxWidth(70);
+        lpioche2.setWrapText(true);
+        lpioche2.setTranslateX(coordDeck[index][0]);
+        lpioche2.setTranslateY(coordDeck[index][1]);
+        deckLabel.add(lpioche2);
+        root.getChildren().add(lpioche2);
+
+
+        index++;
+
+        defausse2 = new DeckSprite(index);
+        defausse2.setTranslateX(coordDeck[index][0]);
+        defausse2.setTranslateY(coordDeck[index][1]);
+        root.getChildren().add(defausse2);
+
+        ldefausse2 = new Label("Défausse travail : " + model.getCarteInfection().getSizeDefausse());
+        ldefausse2.setFont(Font.font("Arial", 12));
+        ldefausse2.setMaxWidth(70);
+        ldefausse2.setWrapText(true);
+        ldefausse2.setTranslateX(coordDeck[index][0]);
+        ldefausse2.setTranslateY(coordDeck[index][1]);
+        deckLabel.add(ldefausse2);
+        root.getChildren().add(ldefausse2);
     }
 
     private Color switchCardColor(CarteSemestre card){

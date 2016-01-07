@@ -145,17 +145,12 @@ public class Joueur {
 
     public String getRoleText(){
         switch(role){
-            case surdoue : return "surdoué";
-            case lecheBotte : return "lèche-bottes";
-            case chefProjet : return "chef de projet";
-            case decale : return "décalé";
-            case etudiantEtranger : return "étudiant étranger";
+            case surdoue : return " surdoué";
+            case lecheBotte : return " lèche-bottes";
+            case chefProjet : return " chef de projet";
+            case decale : return " décalé";
+            case etudiantEtranger : return " étudiant étranger";
             default : return "";
         }
     }
-
-    public void setName(String nom){
-        this.nom=nom;
-    }
-    public String getNom(){return nom;}
 }

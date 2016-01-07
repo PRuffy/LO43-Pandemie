@@ -47,5 +47,6 @@ public class ReserveCarteSemestre implements ReserveCarte
     public int getSizePioche(){
         return pioche.size();
     }
+    public int getSizeDefausse(){ return defausse.size(); }
 
 }

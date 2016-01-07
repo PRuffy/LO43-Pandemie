@@ -311,10 +311,10 @@ public class Jeu {
     //Enleve une carte infection de la defausse
     public void fermetureUV(){
         //On vérifie que la defause n'est pas vide.
-        if(carteInfections.getDefausseSize()>0){
+        if(carteInfections.getSizeDefausse()>0){
             //Si la defausse contient effectivement une carte on en enlève une aléatoirement
             Random rand = new Random();
-            int numeroCarte = rand.nextInt(carteInfections.getDefausseSize());
+            int numeroCarte = rand.nextInt(carteInfections.getSizeDefausse());
             carteInfections.removeCarte(numeroCarte);
         }
 
@@ -832,4 +832,7 @@ public class Jeu {
     public ArrayList<Professeur> getPionProfesseur(){
         return pionProfesseur;
     }
+
+    public ReserveCarteInfection getCarteInfection(){ return carteInfections; }
+    public ReserveCarteSemestre getCarteSemestre(){ return carteSemestre; }
 }
