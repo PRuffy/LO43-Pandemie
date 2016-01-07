@@ -35,7 +35,6 @@ public class Main extends Application {
     private Jeu model;
     private Group root;
 
-    private boolean playerWantToMove;
     private boolean playerWantToEndHisTurn;
     private boolean playerWantToTrade;
     private CarteSemestre playerSelectedThisCard;
@@ -47,25 +46,19 @@ public class Main extends Application {
     private ArrayList<TeacherSprite> teacherSprites;
     private ArrayList<PlayerHandCardSprite> playerHandCardSprites;
     private ArrayList<Label> playerHandCardLabel;
-    private ArrayList<DeckSprite> deckSprites;
     private ArrayList<Label> deckLabel;
-    private ArrayList<String> playerNames;
     private ArrayList<Rectangle> playerIndicator;
+    private ArrayList<Rectangle> projectIndicator;
 
     private Joueur activePlayer;
     private int nombreJoueur;
 
-    private Rectangle activePlayerInfoRectangle;
     private Label activePlayerInfoLabel;
 
-    private Rectangle fondbouton1, fondbouton2, fondbouton3, fondbouton4, fondbouton5, fondbouton6;
-    private Label lbouton1, lbouton2, lbouton3, lbouton4, lbouton5, lbouton6;
-    private DeckSprite pioche1, pioche2, defausse1, defausse2;
-    private Label lpioche1, lpioche2, ldefausse1, ldefausse2;
+    private Rectangle fondbouton2, fondbouton3, fondbouton4, fondbouton5, fondbouton6;
+    private Label  lbouton2, lbouton3, lbouton4, lbouton5, lbouton6;
     private ProgressBar workBurstProgressBar;
     private Label workAmountLabel;
-    private Rectangle playerIndicatorRectangle1, playerIndicatorRectangle2, playerIndicatorRectangle3, playerIndicatorRectangle4;
-    private Label playerIndicatorLabel1, playerIndicatorLabel2, playerIndicatorLabel3, playerIndicatorLabel4;
 
     private Color ilcColor = Color.WHEAT;
     private Color i2rvColor = Color.LIGHTBLUE;
@@ -109,115 +102,6 @@ public class Main extends Application {
 
             Rectangle fond1 = new Rectangle();
             fond1.setWidth(800);
-
-            Rectangle fond_droit = new Rectangle();
-            fond_droit.setWidth(200);
-            fond_droit.setHeight(600);
-            fond_droit.setFill(Color.GREY);
-            root.getChildren().add(fond_droit);
-
-            Rectangle carte1 = new Rectangle();
-            carte1.setWidth(50);
-            carte1.setHeight(70);
-            carte1.setFill(Color.DARKGRAY);
-            carte1.setTranslateX(210);
-            carte1.setTranslateY(10);
-            root.getChildren().add(carte1);
-
-            carte1.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte1.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            carte1.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte1.setFill(Color.DARKGRAY);
-                }
-            });
-
-            carte1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                }
-            });
-
-            Label lcarte1 = new Label("BD40");
-            lcarte1.setFont(Font.font("Arial", 18));
-            lcarte1.setMaxWidth(50);
-            lcarte1.setWrapText(true);
-            lcarte1.setTranslateX(210);
-            lcarte1.setTranslateY(10);
-            root.getChildren().add(lcarte1);
-
-            Rectangle carte2 = new Rectangle();
-            carte2.setWidth(50);
-            carte2.setHeight(70);
-            carte2.setFill(Color.DARKGRAY);
-            carte2.setTranslateX(270);
-            carte2.setTranslateY(10);
-            root.getChildren().add(carte2);
-
-            carte2.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte2.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            carte2.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte2.setFill(Color.DARKGRAY);
-                }
-            });
-
-            carte2.setOnMousePressed(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    //if (carte)
-                    //mettre l'action correspondant à l'action
-                }
-            });
-
-            Label lcarte2 = new Label("BD40");
-            lcarte2.setFont(Font.font("Arial", 18));
-            lcarte2.setMaxWidth(50);
-            lcarte2.setWrapText(true);
-            lcarte2.setTranslateX(270);
-            lcarte2.setTranslateY(10);
-            root.getChildren().add(lcarte2);
-
-            Rectangle carte3 = new Rectangle();
-            carte3.setWidth(50);
-            carte3.setHeight(70);
-            carte3.setFill(Color.DARKGRAY);
-            carte3.setTranslateX(330);
-            carte3.setTranslateY(10);
-            root.getChildren().add(carte3);
-
-            carte3.setOnMousePressed(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    //if (carte)
-                    //mettre l'action correspondant à l'action
-                }
-            });
-
-            carte3.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte3.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            carte3.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte3.setFill(Color.DARKGRAY);
-                }
-            });
-
-            Label lcarte3 = new Label("BD40");
-            lcarte3.setFont(Font.font("Arial", 18));
-            lcarte3.setMaxWidth(50);
-            lcarte3.setWrapText(true);
-            lcarte3.setTranslateX(330);
-            lcarte3.setTranslateY(10);
-            root.getChildren().add(lcarte3);
 
             Text scenetitle = new Text("Veuillez selectionner le nombre de joueurs"); //Ajouter un titre
             grid.add(scenetitle, 0, 0, 2, 1);
@@ -515,6 +399,20 @@ public class Main extends Application {
 
         return tab;
     }
+    public int[][] initCoordProjectIndicators(){
+        int tab[][] = new int[4][2];
+
+        tab[0][0] = 210;
+        tab[0][1] = 10;
+        tab[1][0] = 245;
+        tab[1][1] = 10;
+        tab[2][0] = 280;
+        tab[2][1] = 10;
+        tab[3][0] = 315;
+        tab[3][1] = 10;
+
+        return tab;
+    }
 
     public void movePlayer(int positionUV){
         Joueur currentPlayer = model.getJoueurActif();
@@ -528,13 +426,11 @@ public class Main extends Application {
             currentPlayerSprite.setX(tabPion[currentPlayer.getNumero()][0] + tabUV[currentPlayer.getPosition()-1][0]);
             currentPlayerSprite.setY(tabPion[currentPlayer.getNumero()][1] + tabUV[currentPlayer.getPosition()-1][1]);
 
-            System.out.println("action déplacement désactivée automatiquement!!----------------------------------------------------------------------");
-            fondbouton1.setFill(Color.DARKGRAY);
-            if(model.getJoueurActif() != activePlayer) {
+           if(model.getJoueurActif() != activePlayer) {
                 endTurn();
             }
             else {
-                resetAllActionButtons(false);
+                updateGeneralDisplay(false);
             }
 
         }
@@ -544,10 +440,28 @@ public class Main extends Application {
         launch(args);
     }
 
-    public void circleReachableUV(ArrayList<Integer> reachableUVPositions){
+    public void circleReachableUV(){
+        ArrayList<Integer> reachableUVPositions = model.deplacementPossible(activePlayer);
         for(Integer currentUVPosition : reachableUVPositions){
             UVSprite correspondingSprite = uvSprites.get(currentUVPosition-1);
             correspondingSprite.setStrokeWidth(2);
+
+            if(!model.deplacementPossibleNeighbour(activePlayer).contains(currentUVPosition)){
+                if(model.deplacementPossibleByProf(activePlayer).contains(currentUVPosition)){
+                    correspondingSprite.setStroke(Color.DARKBLUE);
+                }else{
+                    if(model.deplacementPossibleByCarteSemestre(activePlayer).contains(currentUVPosition)){
+                        correspondingSprite.setStroke(Color.DARKOLIVEGREEN);
+                    }else{
+                        if(model.deplacementPossibleEverywhere(activePlayer).contains(currentUVPosition)) {
+                            correspondingSprite.setStroke(Color.CRIMSON);
+                        }
+                    }
+                }
+
+            }
+
+
         }
     }
 
@@ -558,9 +472,8 @@ public class Main extends Application {
         }
     }
 
-    public void resetAllActionButtons(boolean comeFromEndTurnButtonClicked){
+    public void updateGeneralDisplay(boolean comeFromEndTurnButtonClicked){
         // On remet la couleur par défaut à tous les boutons d'action au cas où l'uin d'eux était sélectionné
-        fondbouton1.setFill(Color.DARKGRAY);
         fondbouton2.setFill(Color.DARKGRAY);
         fondbouton3.setFill(Color.DARKGRAY);
         fondbouton4.setFill(Color.DARKGRAY);
@@ -574,10 +487,9 @@ public class Main extends Application {
             playerWantToEndHisTurn=false;
         }
 
-        // On remet la valeur de playerWantToMove à 'false' au cas où le joueur avait déjà cliqué sur le bouton de déplacement une fois
-        // Pour la même raison, on désactive l'affichage différent pour les UV accessibles
-        playerWantToMove=false;
+        // On réinitialise l'affichage des UV accessibles
         uncircleUV();
+        circleReachableUV();
 
         // On actualise l'affichage des marqueurs, qui va également actualiser la couleur du bouton "travailler"
         updateLabelMarqueur();
@@ -597,6 +509,7 @@ public class Main extends Application {
         playerSelectedThisCard = null;
         updateHandSemesterCardSprite();
         updatePlayerIndicator();
+        updateProjectIndicator();
     }
 
     private void endTurnButtonClicked(){
@@ -606,7 +519,7 @@ public class Main extends Application {
         }else{
             playerWantToEndHisTurn=true;
             endTurn();
-            resetAllActionButtons(true);
+            updateGeneralDisplay(true);
         }
     }
 
@@ -621,22 +534,7 @@ public class Main extends Application {
             endTurn();
         }
         else {
-            resetAllActionButtons(false);
-        }
-    }
-
-    private void moveButtonClicked(){
-        if (!playerWantToMove) {
-            fondbouton1.setFill(Color.LIGHTBLUE);
-            playerWantToMove = true;
-            System.out.println("Action déplacement activée!!----------------------------------------------------------");
-            circleReachableUV(model.deplacementPossible(model.getJoueurActif()));
-
-        } else {
-            fondbouton1.setFill(Color.LIGHTGREY);
-            playerWantToMove = false;
-            System.out.println("Action déplacement désactivée manuellement!!----------------------------------------------------------");
-            uncircleUV();
+            updateGeneralDisplay(false);
         }
     }
 
@@ -650,7 +548,7 @@ public class Main extends Application {
             endTurn();
         }
         else {
-            resetAllActionButtons(false);
+            updateGeneralDisplay(false);
         }
     }
 
@@ -663,7 +561,7 @@ public class Main extends Application {
             endTurn();
         }
         else {
-            resetAllActionButtons(false);
+            updateGeneralDisplay(false);
         }
     }
 
@@ -678,7 +576,7 @@ public class Main extends Application {
                 endTurn();
             }
             else {
-                resetAllActionButtons(false);
+                updateGeneralDisplay(false);
             }
         }
     }
@@ -706,7 +604,7 @@ public class Main extends Application {
 
 
     public void initBoard(int nombreJoueur){
-        playerNames = new ArrayList<>();
+        ArrayList<String> playerNames = new ArrayList<>();
         playerNames.add(" Player 1");
         playerNames.add(" Player 2");
         playerNames.add(" Player 3");
@@ -717,6 +615,7 @@ public class Main extends Application {
         activePlayer = model.getJoueurActif();
         model.getGraph().printAllUV();
 
+        displayActionButtonArea();
         displayActionButtons();
         displayUVSprites();
         displayPlayerSprites();
@@ -725,11 +624,13 @@ public class Main extends Application {
         displayActivePlayerInfo();
         displayLibraryAndGraveyard();
         displayProgressBar();
+        displayProjectIndicator();
         updateActivePlayerInfo();
         updateLabelMarqueur();
         updateHandSemesterCardLabel();
         updatePlayerIndicator();
-        resetAllActionButtons(false);
+        updateGeneralDisplay(false);
+        circleReachableUV();
     }
 
     public void endTurn(){
@@ -737,10 +638,11 @@ public class Main extends Application {
             System.out.println("Fin de tour due la la méthode endTurn");
             model.passer();
         }
+        activePlayer = model.getJoueurActif();
         updatePlayerSpriteColor();
         updateLibraryAndGraveyard();
         updateProgressBar();
-        resetAllActionButtons(false);
+        updateGeneralDisplay(false);
     }
 
 
@@ -819,7 +721,7 @@ public class Main extends Application {
 
     public void updateProgressBar(){
         workAmountLabel.setText("Cartes travail piochée \nchaque tour : " + model.getChargeTravail());
-        workBurstProgressBar.setProgress((8-Double.parseDouble(new Integer(model.getCompteurEclosion()).toString()))/8);
+        workBurstProgressBar.setProgress((8-Double.parseDouble(Integer.toString(model.getCompteurEclosion()).toString()))/8);
     }
 
     public void updateHandSemesterCardSprite() {
@@ -875,6 +777,15 @@ public class Main extends Application {
         }
     }
 
+    public void updateProjectIndicator(){
+        ArrayList<Boolean> list = model.getProjectState();
+        for(Boolean currentProject : list){
+            if(currentProject){
+                projectIndicator.get(list.indexOf(currentProject)).setFill(Color.IVORY);
+            }
+        }
+    }
+
     public void displayUVSprites(){
         int coordonnees[][] = initCoordUVSprites();
         int index = 0;
@@ -892,16 +803,12 @@ public class Main extends Application {
 
         circleBD51.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(1);
-                }
+                movePlayer(1);
             }
         });
         labelBD51.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(1);
-                }
+               movePlayer(1);
             }
         });
         index++;
@@ -917,18 +824,12 @@ public class Main extends Application {
 
         circleGL51.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    System.out.println("plop");
-                    movePlayer(2);
-                }
+                movePlayer(2);
             }
         });
         labelGL51.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    System.out.println("plop");
-                    movePlayer(2);
-                }
+                movePlayer(2);
             }
         });
         index++;
@@ -944,16 +845,12 @@ public class Main extends Application {
 
         circleBD50.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(3);
-                }
+                movePlayer(3);
             }
         });
         labelBD50.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(3);
-                }
+                movePlayer(3);
             }
         });
         index++;
@@ -969,16 +866,12 @@ public class Main extends Application {
 
         circleGL52.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(4);
-                }
+                movePlayer(4);
             }
         });
         labelGL52.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(4);
-                }
+                movePlayer(4);
             }
         });
         index++;
@@ -994,16 +887,12 @@ public class Main extends Application {
 
         circleLO51.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(5);
-                }
+                movePlayer(5);
             }
         });
         labelLO51.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(5);
-                }
+                movePlayer(5);
             }
         });
         index++;
@@ -1019,16 +908,12 @@ public class Main extends Application {
 
         circleIA54.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(6);
-                }
+                movePlayer(6);
             }
         });
         labelIA54.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(6);
-                }
+                movePlayer(6);
             }
         });
         index++;
@@ -1044,16 +929,12 @@ public class Main extends Application {
 
         circleIN52.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(7);
-                }
+                movePlayer(7);
             }
         });
         labelIN52.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(7);
-                }
+                movePlayer(7);
             }
         });
         index++;
@@ -1069,16 +950,12 @@ public class Main extends Application {
 
         circleVI50.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(8);
-                }
+                movePlayer(8);
             }
         });
         labelVI50.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(8);
-                }
+                movePlayer(8);
             }
         });
         index++;
@@ -1094,16 +971,12 @@ public class Main extends Application {
 
         circleIN54.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(9);
-                }
+                movePlayer(9);
             }
         });
         labelIN54.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(9);
-                }
+                movePlayer(9);
             }
         });
         index++;
@@ -1119,16 +992,12 @@ public class Main extends Application {
 
         circleMT51.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(10);
-                }
+                movePlayer(10);
             }
         });
         labelMT51.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(10);
-                }
+                movePlayer(10);
             }
         });
         index++;
@@ -1144,16 +1013,12 @@ public class Main extends Application {
 
         circleIN55.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(11);
-                }
+                movePlayer(11);
             }
         });
         labelIN55.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(11);
-                }
+                movePlayer(11);
             }
         });
         index++;
@@ -1169,16 +1034,12 @@ public class Main extends Application {
 
         circleVI51.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(12);
-                }
+                movePlayer(12);
             }
         });
         labelVI51.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(12);
-                }
+                movePlayer(12);
             }
         });
         index++;
@@ -1194,16 +1055,12 @@ public class Main extends Application {
 
         circleTR53.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(13);
-                }
+                movePlayer(13);
             }
         });
         labelTR53.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(13);
-                }
+                movePlayer(13);
             }
         });
         index++;
@@ -1219,16 +1076,12 @@ public class Main extends Application {
 
         circleMI52.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(14);
-                }
+                movePlayer(14);
             }
         });
         labelMI52.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(14);
-                }
+                movePlayer(14);
             }
         });
         index++;
@@ -1244,16 +1097,12 @@ public class Main extends Application {
 
         circleSM57.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(15);
-                }
+                movePlayer(15);
             }
         });
         labelSM57.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(15);
-                }
+                movePlayer(15);
             }
         });
         index++;
@@ -1269,16 +1118,12 @@ public class Main extends Application {
 
         circleLO52.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(16);
-                }
+                movePlayer(16);
             }
         });
         labelLO52.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(16);
-                }
+                movePlayer(16);
             }
         });
         index++;
@@ -1294,16 +1139,12 @@ public class Main extends Application {
 
         circleLO53.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(17);
-                }
+                movePlayer(17);
             }
         });
         labelLO53.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(17);
-                }
+                movePlayer(17);
             }
         });
         index++;
@@ -1319,16 +1160,12 @@ public class Main extends Application {
 
         circleTR54.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(18);
-                }
+                movePlayer(18);
             }
         });
         labelTR54.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(18);
-                }
+                movePlayer(18);
             }
         });
         index++;
@@ -1344,16 +1181,12 @@ public class Main extends Application {
 
         circleRE52.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(19);
-                }
+                movePlayer(19);
             }
         });
         labelRE52.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(19);
-                }
+                movePlayer(19);
             }
         });
         index++;
@@ -1369,16 +1202,12 @@ public class Main extends Application {
 
         circleRE56.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(20);
-                }
+                movePlayer(20);
             }
         });
         labelRE56.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(20);
-                }
+                movePlayer(20);
             }
         });
         index++;
@@ -1394,16 +1223,12 @@ public class Main extends Application {
 
         circleRE51.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(21);
-                }
+                movePlayer(21);
             }
         });
         labelRE51.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(21);
-                }
+                movePlayer(21);
             }
         });
         index++;
@@ -1419,16 +1244,12 @@ public class Main extends Application {
 
         circleTL53.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(22);
-                }
+                movePlayer(22);
             }
         });
         labelTL53.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(22);
-                }
+                movePlayer(22);
             }
         });
         index++;
@@ -1444,16 +1265,12 @@ public class Main extends Application {
 
         circleRE53.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(23);
-                }
+                movePlayer(23);
             }
         });
         labelRE53.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(23);
-                }
+                movePlayer(23);
             }
         });
         index++;
@@ -1469,16 +1286,12 @@ public class Main extends Application {
 
         circleRE55.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(24);
-                }
+                movePlayer(24);
             }
         });
         labelRE55.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                if (playerWantToMove) {
-                    movePlayer(24);
-                }
+                movePlayer(24);
             }
         });
     }
@@ -1567,69 +1380,11 @@ public class Main extends Application {
     }
 
     public void displayActionButtons(){
-        displayActionButtonDeplacement();
         displayActionButtonPasser();
         displayActionButtonRendreProjet();
         displayActionButtonTravail();
         displayActionButtonTravailGroupe();
         displayActionButtonAppelProf();
-    }
-
-    public void displayActionButtonDeplacement(){
-        fondbouton1 = new Rectangle();
-        fondbouton1.setWidth(130);
-        fondbouton1.setHeight(50);
-        fondbouton1.setFill(Color.DARKGRAY);
-        fondbouton1.setTranslateX(35);
-        fondbouton1.setTranslateY(100);
-        root.getChildren().add(fondbouton1);
-
-        fondbouton1.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                if (!playerWantToMove) {
-                    fondbouton1.setFill(Color.LIGHTGREY);
-                }
-            }
-        });
-
-        fondbouton1.setOnMouseExited(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                if (!playerWantToMove) {
-                    fondbouton1.setFill(Color.DARKGRAY);
-                }
-            }
-        });
-
-        fondbouton1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) { moveButtonClicked(); }
-        });
-
-        lbouton1 = new Label("Déplacement");
-        lbouton1.setFont(Font.font("Arial", 16));
-        lbouton1.setTextFill(Color.BLACK);
-        lbouton1.setTranslateX(35);
-        lbouton1.setTranslateY(100);
-        root.getChildren().add(lbouton1);
-
-        lbouton1.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                if (!playerWantToMove) {
-                    fondbouton1.setFill(Color.LIGHTGREY);
-                }
-            }
-        });
-
-        lbouton1.setOnMouseExited(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                if (!playerWantToMove) {
-                    fondbouton1.setFill(Color.DARKGRAY);
-                }
-            }
-        });
-
-        lbouton1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) { moveButtonClicked(); }
-        });
     }
 
     public void displayActionButtonTravail(){
@@ -2022,7 +1777,7 @@ public class Main extends Application {
         playerWantToTrade = false;
         playerSelectedThisCard = null;
 
-        activePlayerInfoRectangle = new Rectangle();
+        Rectangle activePlayerInfoRectangle = new Rectangle();
         activePlayerInfoRectangle.setWidth(130);
         activePlayerInfoRectangle.setHeight(50);
         activePlayerInfoRectangle.setFill(Color.IVORY);
@@ -2046,7 +1801,7 @@ public class Main extends Application {
         int coordIndicators[][] = initCoordPlayerIndicators();
         playerIndicator = new ArrayList<>();
 
-        playerIndicatorRectangle1 = new Rectangle(25, 25, Color.IVORY);
+        Rectangle playerIndicatorRectangle1 = new Rectangle(25, 25, Color.IVORY);
         playerIndicatorRectangle1.setTranslateX(coordIndicators[index][0]);
         playerIndicatorRectangle1.setTranslateY(coordIndicators[index][1]);
         playerIndicatorRectangle1.setStrokeWidth(3);
@@ -2056,7 +1811,7 @@ public class Main extends Application {
         playerIndicator.add(playerIndicatorRectangle1);
         root.getChildren().add(playerIndicatorRectangle1);
 
-        playerIndicatorLabel1 = new Label(" \nP1");
+        Label playerIndicatorLabel1 = new Label(" \nP1");
         playerIndicatorLabel1.setTranslateX(coordIndicators[index][0]+3);
         playerIndicatorLabel1.setTranslateY(coordIndicators[index][1]-20);
         playerIndicatorLabel1.setFont(Font.font("Arial", 16));
@@ -2072,7 +1827,7 @@ public class Main extends Application {
 
         index++;
 
-        playerIndicatorRectangle2 = new Rectangle(25, 25, Color.IVORY);
+        Rectangle playerIndicatorRectangle2 = new Rectangle(25, 25, Color.IVORY);
         playerIndicatorRectangle2.setTranslateX(coordIndicators[index][0]);
         playerIndicatorRectangle2.setTranslateY(coordIndicators[index][1]);
         playerIndicatorRectangle2.setStrokeWidth(3);
@@ -2098,7 +1853,7 @@ public class Main extends Application {
 
         index++;
 
-        playerIndicatorRectangle3 = new Rectangle(25, 25, Color.IVORY);
+        Rectangle playerIndicatorRectangle3 = new Rectangle(25, 25, Color.IVORY);
         playerIndicatorRectangle3.setTranslateX(coordIndicators[index][0]);
         playerIndicatorRectangle3.setTranslateY(coordIndicators[index][1]);
         playerIndicatorRectangle3.setStrokeWidth(3);
@@ -2108,7 +1863,7 @@ public class Main extends Application {
         playerIndicator.add(playerIndicatorRectangle3);
         root.getChildren().add(playerIndicatorRectangle3);
 
-        playerIndicatorLabel3 = new Label(" \nP3");
+        Label playerIndicatorLabel3 = new Label(" \nP3");
         playerIndicatorLabel3.setTranslateX(coordIndicators[index][0]+3);
         playerIndicatorLabel3.setTranslateY(coordIndicators[index][1]-20);
         playerIndicatorLabel3.setFont(Font.font("Arial", 16));
@@ -2124,7 +1879,7 @@ public class Main extends Application {
 
         index++;
 
-        playerIndicatorRectangle4 = new Rectangle(25, 25, Color.IVORY);
+        Rectangle playerIndicatorRectangle4 = new Rectangle(25, 25, Color.IVORY);
         playerIndicatorRectangle4.setTranslateX(coordIndicators[index][0]);
         playerIndicatorRectangle4.setTranslateY(coordIndicators[index][1]);
         playerIndicatorRectangle4.setStrokeWidth(3);
@@ -2134,7 +1889,7 @@ public class Main extends Application {
         playerIndicator.add(playerIndicatorRectangle4);
         root.getChildren().add(playerIndicatorRectangle4);
 
-        playerIndicatorLabel4 = new Label(" \nP4");
+        Label playerIndicatorLabel4 = new Label(" \nP4");
         playerIndicatorLabel4.setTranslateX(coordIndicators[index][0]+3);
         playerIndicatorLabel4.setTranslateY(coordIndicators[index][1]-20);
         playerIndicatorLabel4.setFont(Font.font("Arial", 16));
@@ -2151,17 +1906,15 @@ public class Main extends Application {
 
     public void displayLibraryAndGraveyard(){
         deckLabel = new ArrayList<>();
-        deckSprites = new ArrayList<>();
         int index = 0;
         int coordDeck[][] = initCoordLibraryAndGraveYard();
 
-        pioche1 = new DeckSprite(index);
+        DeckSprite pioche1 = new DeckSprite(index);
         pioche1.setTranslateX(coordDeck[index][0]);
         pioche1.setTranslateY(coordDeck[index][1]);
-        deckSprites.add(pioche1);
         root.getChildren().add(pioche1);
 
-        lpioche1 = new Label("Pioche semestre : " + model.getCarteSemestre().getSizePioche());
+        Label lpioche1 = new Label("Pioche semestre : " + model.getCarteSemestre().getSizePioche());
         lpioche1.setFont(Font.font("Arial", 12));
         lpioche1.setMaxWidth(66);
         lpioche1.setWrapText(true);
@@ -2172,12 +1925,12 @@ public class Main extends Application {
 
         index++;
 
-        defausse1 = new DeckSprite(index);
+        DeckSprite defausse1 = new DeckSprite(index);
         defausse1.setTranslateX(coordDeck[index][0]);
         defausse1.setTranslateY(coordDeck[index][1]);
         root.getChildren().add(defausse1);
 
-        ldefausse1 = new Label("Défausse semestre : " + model.getCarteSemestre().getSizeDefausse());
+        Label ldefausse1 = new Label("Défausse semestre : " + model.getCarteSemestre().getSizeDefausse());
         ldefausse1.setFont(Font.font("Arial", 12));
         ldefausse1.setMaxWidth(66);
         ldefausse1.setWrapText(true);
@@ -2188,12 +1941,12 @@ public class Main extends Application {
 
         index++;
 
-        pioche2 = new DeckSprite(index);
+        DeckSprite pioche2 = new DeckSprite(index);
         pioche2.setTranslateX(coordDeck[index][0]);
         pioche2.setTranslateY(coordDeck[index][1]);
         root.getChildren().add(pioche2);
 
-        lpioche2 = new Label("Pioche travail : " + model.getCarteInfection().getSizePioche());
+        Label lpioche2 = new Label("Pioche travail : " + model.getCarteInfection().getSizePioche());
         lpioche2.setFont(Font.font("Arial", 12));
         lpioche2.setMaxWidth(66);
         lpioche2.setWrapText(true);
@@ -2205,12 +1958,12 @@ public class Main extends Application {
 
         index++;
 
-        defausse2 = new DeckSprite(index);
+        DeckSprite defausse2 = new DeckSprite(index);
         defausse2.setTranslateX(coordDeck[index][0]);
         defausse2.setTranslateY(coordDeck[index][1]);
         root.getChildren().add(defausse2);
 
-        ldefausse2 = new Label("Défausse travail : " + model.getCarteInfection().getSizeDefausse());
+        Label ldefausse2 = new Label("Défausse travail : " + model.getCarteInfection().getSizeDefausse());
         ldefausse2.setFont(Font.font("Arial", 12));
         ldefausse2.setMaxWidth(66);
         ldefausse2.setWrapText(true);
@@ -2257,6 +2010,66 @@ public class Main extends Application {
         root.getChildren().add(workAmountLabel);
 
 
+    }
+
+    public void displayProjectIndicator(){
+        projectIndicator = new ArrayList<>();
+        int index = 0;
+        int coordIndicators[][] = initCoordProjectIndicators();
+
+        Rectangle playerIndicatorRectangle1 = new Rectangle(25, 25, Color.DARKGRAY);
+        playerIndicatorRectangle1.setTranslateX(coordIndicators[index][0]);
+        playerIndicatorRectangle1.setTranslateY(coordIndicators[index][1]);
+        playerIndicatorRectangle1.setStrokeWidth(3);
+        playerIndicatorRectangle1.setStrokeLineCap(StrokeLineCap.SQUARE);
+        playerIndicatorRectangle1.setStroke(ilcColor);
+        playerIndicatorRectangle1.setStrokeType(StrokeType.OUTSIDE);
+        projectIndicator.add(playerIndicatorRectangle1);
+        root.getChildren().add(playerIndicatorRectangle1);
+
+        index++;
+
+        Rectangle playerIndicatorRectangle2 = new Rectangle(25, 25, Color.DARKGRAY);
+        playerIndicatorRectangle2.setTranslateX(coordIndicators[index][0]);
+        playerIndicatorRectangle2.setTranslateY(coordIndicators[index][1]);
+        playerIndicatorRectangle2.setStrokeWidth(3);
+        playerIndicatorRectangle2.setStrokeLineCap(StrokeLineCap.SQUARE);
+        playerIndicatorRectangle2.setStroke(i2rvColor);
+        playerIndicatorRectangle2.setStrokeType(StrokeType.OUTSIDE);
+        projectIndicator.add(playerIndicatorRectangle2);
+        root.getChildren().add(playerIndicatorRectangle2);
+
+        index++;
+
+        Rectangle playerIndicatorRectangle3 = new Rectangle(25, 25, Color.DARKGRAY);
+        playerIndicatorRectangle3.setTranslateX(coordIndicators[index][0]);
+        playerIndicatorRectangle3.setTranslateY(coordIndicators[index][1]);
+        playerIndicatorRectangle3.setStrokeWidth(3);
+        playerIndicatorRectangle3.setStrokeLineCap(StrokeLineCap.SQUARE);
+        playerIndicatorRectangle3.setStroke(leimColor);
+        playerIndicatorRectangle3.setStrokeType(StrokeType.OUTSIDE);
+        projectIndicator.add(playerIndicatorRectangle3);
+        root.getChildren().add(playerIndicatorRectangle3);
+
+        index++;
+
+        Rectangle playerIndicatorRectangle4 = new Rectangle(25, 25, Color.DARKGRAY);
+        playerIndicatorRectangle4.setTranslateX(coordIndicators[index][0]);
+        playerIndicatorRectangle4.setTranslateY(coordIndicators[index][1]);
+        playerIndicatorRectangle4.setStrokeWidth(3);
+        playerIndicatorRectangle4.setStrokeLineCap(StrokeLineCap.SQUARE);
+        playerIndicatorRectangle4.setStroke(rtColor);
+        playerIndicatorRectangle4.setStrokeType(StrokeType.OUTSIDE);
+        projectIndicator.add(playerIndicatorRectangle4);
+        root.getChildren().add(playerIndicatorRectangle4);
+    }
+
+    public void displayActionButtonArea(){
+        Rectangle fond_droit = new Rectangle();
+        fond_droit.setWidth(200);
+        fond_droit.setHeight(600);
+        fond_droit.setFill(Color.GREY);
+        root.getChildren().add(fond_droit);
     }
 
     private Color switchCardColor(CarteSemestre card){
