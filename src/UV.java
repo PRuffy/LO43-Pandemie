@@ -13,7 +13,7 @@ public class UV
     private Professeur professeur;
     private ArrayList<Personnage> personnages;
     private boolean testEclosion; // Permet de ne pas repasser plusieurs par la même model.UV en cas d'éclosion
-
+    private boolean DEBUG = false;
 
     public UV(){
 
@@ -157,7 +157,8 @@ public class UV
                 temp = "none";
                 break;
         }
-        return (position+" "+nom+" "+temp+" "+marqueur.size());
+        if (DEBUG) return (position+" "+nom+" "+temp+" "+marqueur.size());
+        else return (nom+"\n"+temp);
     }
 
     public void displayVoisin(){

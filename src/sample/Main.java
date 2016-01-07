@@ -37,6 +37,8 @@ public class Main extends Application {
     private ArrayList<Label> uvLabel;
     private ArrayList<PlayerSprite> playerSprites;
     private ArrayList<TeacherSprite> teacherSprites;
+    private ArrayList<PlayerHandCardSprite> playerHandCardSprites;
+    private ArrayList<Label> playerHandCardLabel;
     private Joueur activePlayer;
     private int nombreJoueur;
 
@@ -205,180 +207,7 @@ public class Main extends Application {
             lcarte3.setTranslateY(10);
             root.getChildren().add(lcarte3);
 
-            Rectangle carte4 = new Rectangle();
-            carte4.setWidth(50);
-            carte4.setHeight(70);
-            carte4.setFill(Color.DARKGRAY);
-            carte4.setTranslateX(560);
-            carte4.setTranslateY(530);
-            root.getChildren().add(carte4);
 
-            carte4.setOnMousePressed(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    //if (carte && action == se déplacer avec carte)
-                    //mettre l'action correspondant à l'action
-                }
-            });
-
-            carte4.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte4.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            carte4.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte4.setFill(Color.DARKGRAY);
-                }
-            });
-
-            Label lcarte4 = new Label("BD40");
-            lcarte4.setFont(Font.font("Arial", 18));
-            lcarte4.setMaxWidth(50);
-            lcarte4.setWrapText(true);
-            lcarte4.setTranslateX(560);
-            lcarte4.setTranslateY(530);
-            root.getChildren().add(lcarte4);
-
-            Rectangle carte5 = new Rectangle();
-            carte5.setWidth(50);
-            carte5.setHeight(70);
-            carte5.setFill(Color.DARKGRAY);
-            carte5.setTranslateX(320);
-            carte5.setTranslateY(530);
-            root.getChildren().add(carte5);
-
-            carte5.setOnMousePressed(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    //if (carte && action == se déplacer avec carte)
-                    //mettre l'action correspondant à l'action
-                }
-            });
-
-            carte5.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte5.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            carte5.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte5.setFill(Color.DARKGRAY);
-                }
-            });
-
-            Label lcarte5 = new Label("BD40");
-            lcarte5.setFont(Font.font("Arial", 18));
-            lcarte5.setMaxWidth(50);
-            lcarte5.setWrapText(true);
-            lcarte5.setTranslateX(320);
-            lcarte5.setTranslateY(530);
-            root.getChildren().add(lcarte5);
-
-            Rectangle carte6 = new Rectangle();
-            carte6.setWidth(50);
-            carte6.setHeight(70);
-            carte6.setFill(Color.DARKGRAY);
-            carte6.setTranslateX(380);
-            carte6.setTranslateY(530);
-            root.getChildren().add(carte6);
-
-            carte6.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte6.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            carte6.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte6.setFill(Color.DARKGRAY);
-                }
-            });
-
-            carte6.setOnMousePressed(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    //if (carte && action == se déplacer avec carte)
-                    //mettre l'action correspondant à l'action
-                }
-            });
-
-            Label lcarte6 = new Label("BD40");
-            lcarte6.setFont(Font.font("Arial", 18));
-            lcarte6.setMaxWidth(50);
-            lcarte6.setWrapText(true);
-            lcarte6.setTranslateX(380);
-            lcarte6.setTranslateY(530);
-            root.getChildren().add(lcarte6);
-
-            Rectangle carte7 = new Rectangle();
-            carte7.setWidth(50);
-            carte7.setHeight(70);
-            carte7.setFill(Color.DARKGRAY);
-            carte7.setTranslateX(440);
-            carte7.setTranslateY(530);
-            root.getChildren().add(carte7);
-
-            carte7.setOnMousePressed(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    //if (carte && action == se déplacer avec carte)
-                    //mettre l'action correspondant à l'action
-                }
-            });
-
-            carte7.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte7.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            carte7.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte7.setFill(Color.DARKGRAY);
-                }
-            });
-
-            Label lcarte7 = new Label("BD40");
-            lcarte7.setFont(Font.font("Arial", 18));
-            lcarte7.setMaxWidth(50);
-            lcarte7.setWrapText(true);
-            lcarte7.setTranslateX(440);
-            lcarte7.setTranslateY(530);
-            root.getChildren().add(lcarte7);
-
-            Rectangle carte8 = new Rectangle();
-            carte8.setWidth(50);
-            carte8.setHeight(70);
-            carte8.setFill(Color.DARKGRAY);
-            carte8.setTranslateX(500);
-            carte8.setTranslateY(530);
-            root.getChildren().add(carte8);
-
-            carte8.setOnMousePressed(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    //if (carte && action == se déplacer avec carte)
-                    //mettre l'action correspondant à l'action
-                }
-            });
-
-            carte8.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte8.setFill(Color.LIGHTGREY);
-                }
-            });
-
-            carte8.setOnMouseExited(new EventHandler<MouseEvent>() {
-                public void handle(MouseEvent me) {
-                    carte8.setFill(Color.DARKGRAY);
-                }
-            });
-
-            Label lcarte8 = new Label("BD40");
-            lcarte8.setFont(Font.font("Arial", 18));
-            lcarte8.setMaxWidth(50);
-            lcarte8.setWrapText(true);
-            lcarte8.setTranslateX(500);
-            lcarte8.setTranslateY(530);
-            root.getChildren().add(lcarte8);
 
             Rectangle pioche1 = new Rectangle();
             pioche1.setWidth(70);
@@ -500,12 +329,12 @@ public class Main extends Application {
             Button choix1 = new Button("3");
             HBox hbChoix1 = new HBox(10);
             hbChoix1.getChildren().add(choix1);
-            grid.add(choix1, 1, 1);
+            grid.add(choix1, 1, 2);
 
             Button choix2 = new Button("4");
             HBox hbChoix2 = new HBox(10);
             hbChoix2.getChildren().add(choix2);
-            grid.add(choix2, 1, 2);
+            grid.add(choix2, 1, 3);
 
             Button goToGame = new Button("Valider et Passer au jeu");
             HBox hbGoToGame = new HBox(10);
@@ -736,6 +565,21 @@ public class Main extends Application {
 
         return tab;
     }
+    public int[][] initCoordHandCardsSprites(){
+        int tab[][] = new int[5][2];
+
+        tab[0][0] = 320;
+        tab[0][1] = 530;
+        tab[1][0] = 380;
+        tab[1][1] = 530;
+        tab[2][0] = 440;
+        tab[2][1] = 530;
+        tab[3][0] = 500;
+        tab[3][1] = 530;
+        tab[4][0] = 560;
+        tab[4][1] = 530;
+        return tab;
+    }
 
     public void movePlayer(int positionUV){
         Joueur currentPlayer = model.getJoueurActif();
@@ -755,7 +599,7 @@ public class Main extends Application {
                 endTurn();
             }
             else {
-                resetAllActionButtons();
+                resetAllActionButtons(false);
             }
 
         }
@@ -779,7 +623,7 @@ public class Main extends Application {
         }
     }
 
-    public void resetAllActionButtons(){
+    public void resetAllActionButtons(boolean comeFromEndTurnButtonClicked){
         // On remet la couleur par défaut à tous les boutons d'action au cas où l'uin d'eux était sélectionné
         fondbouton1.setFill(Color.DARKGRAY);
         fondbouton2.setFill(Color.DARKGRAY);
@@ -790,8 +634,10 @@ public class Main extends Application {
 
         // On remet le texte du bouton "passer" à sa valeur par défaut, au cas où le joueur avait déjà cliqué dessus une fois
         // De même pour le booléen correspondant;
-        lbouton6.setText("Passer");
-        playerWantToEndHisTurn=false;
+        if(comeFromEndTurnButtonClicked){
+            lbouton6.setText("Passer");
+            playerWantToEndHisTurn=false;
+        }
 
         // On remet la valeur de playerWantToMove à 'false' au cas où le joueur avait déjà cliqué sur le bouton de déplacement une fois
         // Pour la même raison, on désactive l'affichage différent pour les UV accessibles
@@ -810,16 +656,23 @@ public class Main extends Application {
         }else{
             playerWantToEndHisTurn=true;
             endTurn();
+            resetAllActionButtons(true);
         }
-        resetAllActionButtons();
     }
 
     private void workButtonClicked(){
 
-        resetAllActionButtons();
+
         if(lbouton2.getTextFill()!=Color.RED){
             model.travailler();
             updateLabelMarqueur();
+        }
+
+        if(model.getJoueurActif() != activePlayer) {
+            endTurn();
+        }
+        else {
+            resetAllActionButtons(false);
         }
     }
 
@@ -840,10 +693,16 @@ public class Main extends Application {
 
     private void callTeacherButtonClicked(){
 
-        resetAllActionButtons();
         if(lbouton3.getTextFill()!=Color.RED){
             model.appelerProf();
             updateTeacherSprite();
+        }
+
+        if(model.getJoueurActif() != activePlayer) {
+            endTurn();
+        }
+        else {
+            resetAllActionButtons(false);
         }
     }
 
@@ -852,7 +711,7 @@ public class Main extends Application {
     public void initBoard(int nombreJoueur){
 
         this.nombreJoueur = nombreJoueur;
-        model = new Jeu(nombreJoueur, dat);
+        try {model = new Jeu(nombreJoueur, dat);}catch(GameOverException e){}
         activePlayer = model.getJoueurActif();
         model.getGraph().printAllUV();
 
@@ -860,7 +719,9 @@ public class Main extends Application {
         displayUVSprites();
         displayPlayerSprites();
         displayTeacherSprites();
+        displayHandSemesterCards();
         updateLabelMarqueur();
+        updateHandSemesterCardLabel();
     }
 
     public void endTurn(){
@@ -869,7 +730,8 @@ public class Main extends Application {
             model.passer();
         }
         updatePlayerSpriteColor();
-        resetAllActionButtons();
+        updateHandSemesterCardLabel();
+        resetAllActionButtons(false);
     }
 
 
@@ -911,6 +773,17 @@ public class Main extends Application {
         model.getGraph().printAllUV();
         if(listUV.get(model.getJoueurActif().getPosition()-1).getMarqueurs().size()==0) {lbouton2.setTextFill(Color.RED);}
         else {lbouton2.setTextFill(Color.BLACK);}
+    }
+
+    public void updateHandSemesterCardLabel(){
+        for(Label currentLabel : playerHandCardLabel){
+            currentLabel.setText("");
+            playerHandCardSprites.get(playerHandCardLabel.indexOf(currentLabel)).setFill(Color.DARKGRAY);
+        }
+        for(CarteSemestre currentCard : activePlayer.getHand()){
+            playerHandCardLabel.get(activePlayer.getHand().indexOf(currentCard)).setText(currentCard.getCible().toString());
+            playerHandCardSprites.get(activePlayer.getHand().indexOf(currentCard)).setFill(switchCardColor(currentCard));
+        }
     }
 
     public void displayUVSprites(){
@@ -1897,5 +1770,272 @@ public class Main extends Application {
                 endTurnButtonClicked();
             }
         });
+    }
+
+    public void displayHandSemesterCards(){
+        int tabCoord[][] = initCoordHandCardsSprites();
+        int index = 0;
+        playerHandCardSprites = new ArrayList<>();
+        playerHandCardLabel = new ArrayList<>();
+
+        PlayerHandCardSprite carte1 = new PlayerHandCardSprite(index);
+        carte1.setTranslateX(tabCoord[index][0]);
+        carte1.setTranslateY(tabCoord[index][1]);
+        playerHandCardSprites.add(carte1);
+        root.getChildren().add(carte1);
+
+        carte1.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {}
+        });
+
+        carte1.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte1.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        carte1.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte1.setFill(Color.DARKGRAY);
+            }
+        });
+
+        Label lcarte1 = new Label("");
+        lcarte1.setFont(Font.font("Arial", 18));
+        lcarte1.setMaxWidth(50);
+        lcarte1.setWrapText(true);
+        lcarte1.setTranslateX(tabCoord[index][0]);
+        lcarte1.setTranslateY(tabCoord[index][1]);
+        playerHandCardLabel.add(lcarte1);
+        root.getChildren().add(lcarte1);
+
+        lcarte1.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {}
+        });
+
+        lcarte1.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte1.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        lcarte1.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte1.setFill(Color.DARKGRAY);
+            }
+        });
+
+        index++;
+
+        PlayerHandCardSprite carte2 = new PlayerHandCardSprite(index);
+        carte2.setTranslateX(tabCoord[index][0]);
+        carte2.setTranslateY(tabCoord[index][1]);
+        playerHandCardSprites.add(carte2);
+        root.getChildren().add(carte2);
+
+        carte2.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {}
+        });
+
+        carte2.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte2.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        carte2.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte2.setFill(Color.DARKGRAY);
+            }
+        });
+
+        Label lcarte2 = new Label("");
+        lcarte2.setFont(Font.font("Arial", 18));
+        lcarte2.setMaxWidth(50);
+        lcarte2.setWrapText(true);
+        lcarte2.setTranslateX(tabCoord[index][0]);
+        lcarte2.setTranslateY(tabCoord[index][1]);
+        playerHandCardLabel.add(lcarte2);
+        root.getChildren().add(lcarte2);
+
+        lcarte2.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {}
+        });
+
+        lcarte2.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte1.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        lcarte2.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte1.setFill(Color.DARKGRAY);
+            }
+        });
+
+        index++;
+
+        PlayerHandCardSprite carte3 = new PlayerHandCardSprite(index);
+        carte3.setTranslateX(tabCoord[index][0]);
+        carte3.setTranslateY(tabCoord[index][1]);
+        playerHandCardSprites.add(carte3);
+        root.getChildren().add(carte3);
+
+        carte3.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte3.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        carte3.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte3.setFill(Color.DARKGRAY);
+            }
+        });
+
+        carte3.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {}
+        });
+
+        Label lcarte3 = new Label("");
+        lcarte3.setFont(Font.font("Arial", 18));
+        lcarte3.setMaxWidth(50);
+        lcarte3.setWrapText(true);
+        lcarte3.setTranslateX(tabCoord[index][0]);
+        lcarte3.setTranslateY(tabCoord[index][1]);
+        playerHandCardLabel.add(lcarte3);
+        root.getChildren().add(lcarte3);
+
+        lcarte3.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {}
+        });
+
+        lcarte3.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte1.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        lcarte3.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte1.setFill(Color.DARKGRAY);
+            }
+        });
+
+        index++;
+
+        PlayerHandCardSprite carte4 = new PlayerHandCardSprite(index);
+        carte4.setTranslateX(tabCoord[index][0]);
+        carte4.setTranslateY(tabCoord[index][1]);
+        playerHandCardSprites.add(carte4);
+        root.getChildren().add(carte4);
+
+        carte4.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {}
+        });
+
+        carte4.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte4.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        carte4.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte4.setFill(Color.DARKGRAY);
+            }
+        });
+
+        Label lcarte4 = new Label("");
+        lcarte4.setFont(Font.font("Arial", 18));
+        lcarte4.setMaxWidth(50);
+        lcarte4.setWrapText(true);
+        lcarte4.setTranslateX(tabCoord[index][0]);
+        lcarte4.setTranslateY(tabCoord[index][1]);
+        playerHandCardLabel.add(lcarte4);
+        root.getChildren().add(lcarte4);
+
+        lcarte4.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {}
+        });
+
+        lcarte4.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte1.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        lcarte4.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte1.setFill(Color.DARKGRAY);
+            }
+        });
+
+        index++;
+
+        PlayerHandCardSprite carte5 = new PlayerHandCardSprite(index);
+        carte5.setTranslateX(tabCoord[index][0]);
+        carte5.setTranslateY(tabCoord[index][1]);
+        playerHandCardSprites.add(carte5);
+        root.getChildren().add(carte5);
+
+        carte5.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {}
+        });
+
+        carte5.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte5.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        carte5.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte5.setFill(Color.DARKGRAY);
+            }
+        });
+
+        Label lcarte5 = new Label("");
+        lcarte5.setFont(Font.font("Arial", 18));
+        lcarte5.setMaxWidth(50);
+        lcarte5.setWrapText(true);
+        lcarte5.setTranslateX(tabCoord[index][0]);
+        lcarte5.setTranslateY(tabCoord[index][1]);
+        playerHandCardLabel.add(lcarte5);
+        root.getChildren().add(lcarte5);
+
+        lcarte5.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {}
+        });
+
+        lcarte5.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte1.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        lcarte5.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                carte1.setFill(Color.DARKGRAY);
+            }
+        });
+    }
+
+    private Color switchCardColor(CarteSemestre card){
+        try {
+            switch (card.getFiliere()) {
+                case ILC:
+                    return Color.WHEAT;
+                case I2RV:
+                    return Color.LIGHTBLUE;
+                case RT:
+                    return Color.LIGHTGREEN;
+                case LEIM:
+                    return Color.PINK;
+                default:
+                    throw new WrongTypeException("Erreur de type de filière dans la méthode switchCardColor de la classe Main du package sample");
+            }
+    }catch(WrongTypeException e){return Color.TRANSPARENT;}
     }
 }
