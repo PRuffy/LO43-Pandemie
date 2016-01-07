@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,6 +14,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -27,33 +30,42 @@ import java.util.ArrayList;
 public class Main extends Application {
     private int i=0 ;
     public void setI(int i){this.i = i;}
+
     private DataReader dat;
     private Jeu model;
-    Group root;
+    private Group root;
 
     private boolean playerWantToMove;
     private boolean playerWantToEndHisTurn;
+    private boolean playerWantToTrade;
+    private CarteSemestre playerSelectedThisCard;
+
+
     private ArrayList<UVSprite> uvSprites;
     private ArrayList<Label> uvLabel;
     private ArrayList<PlayerSprite> playerSprites;
     private ArrayList<TeacherSprite> teacherSprites;
     private ArrayList<PlayerHandCardSprite> playerHandCardSprites;
     private ArrayList<Label> playerHandCardLabel;
+    private ArrayList<DeckSprite> deckSprites;
+    private ArrayList<Label> deckLabel;
+    private ArrayList<String> playerNames;
+    private ArrayList<Rectangle> playerIndicator;
+
     private Joueur activePlayer;
     private int nombreJoueur;
 
-    private Rectangle fondbouton1;
-    private Rectangle fondbouton2;
-    private Rectangle fondbouton3;
-    private Rectangle fondbouton4;
-    private Rectangle fondbouton5;
-    private Rectangle fondbouton6;
-    private Label lbouton1;
-    private Label lbouton2;
-    private Label lbouton3;
-    private Label lbouton4;
-    private Label lbouton5;
-    private Label lbouton6;
+    private Rectangle activePlayerInfoRectangle;
+    private Label activePlayerInfoLabel;
+
+    private Rectangle fondbouton1, fondbouton2, fondbouton3, fondbouton4, fondbouton5, fondbouton6;
+    private Label lbouton1, lbouton2, lbouton3, lbouton4, lbouton5, lbouton6;
+    private DeckSprite pioche1, pioche2, defausse1, defausse2;
+    private Label lpioche1, lpioche2, ldefausse1, ldefausse2;
+    private ProgressBar workBurstProgressBar;
+    private Label workAmountLabel;
+    private Rectangle playerIndicatorRectangle1, playerIndicatorRectangle2, playerIndicatorRectangle3, playerIndicatorRectangle4;
+    private Label playerIndicatorLabel1, playerIndicatorLabel2, playerIndicatorLabel3, playerIndicatorLabel4;
 
     private Color ilcColor = Color.WHEAT;
     private Color i2rvColor = Color.LIGHTBLUE;
@@ -207,111 +219,6 @@ public class Main extends Application {
             lcarte3.setTranslateY(10);
             root.getChildren().add(lcarte3);
 
-
-
-            Rectangle pioche1 = new Rectangle();
-            pioche1.setWidth(70);
-            pioche1.setHeight(70);
-            pioche1.setFill(Color.DARKGRAY);
-            pioche1.setTranslateX(730);
-            pioche1.setTranslateY(530);
-            root.getChildren().add(pioche1);
-
-            Label lpioche1 = new Label("pioche 1 : 20");
-            lpioche1.setFont(Font.font("Arial", 18));
-            lpioche1.setMaxWidth(70);
-            lpioche1.setWrapText(true);
-            lpioche1.setTranslateX(730);
-            lpioche1.setTranslateY(530);
-            root.getChildren().add(lpioche1);
-
-            Rectangle pioche2 = new Rectangle();
-            pioche2.setWidth(70);
-            pioche2.setHeight(70);
-            pioche2.setFill(Color.DARKGRAY);
-            pioche2.setTranslateX(650);
-            pioche2.setTranslateY(530);
-            root.getChildren().add(pioche2);
-
-            Label lpioche2 = new Label("pioche 2 : 20");
-            lpioche2.setFont(Font.font("Arial", 18));
-            lpioche2.setMaxWidth(70);
-            lpioche2.setWrapText(true);
-            lpioche2.setTranslateX(650);
-            lpioche2.setTranslateY(530);
-            root.getChildren().add(lpioche2);
-
-            Rectangle defausse1 = new Rectangle();
-            defausse1.setWidth(70);
-            defausse1.setHeight(70);
-            defausse1.setFill(Color.DARKGRAY);
-            defausse1.setTranslateX(730);
-            defausse1.setTranslateY(450);
-            root.getChildren().add(defausse1);
-
-            Label ldefausse1 = new Label("pioche 2 : 20");
-            ldefausse1.setFont(Font.font("Arial", 18));
-            ldefausse1.setMaxWidth(70);
-            ldefausse1.setWrapText(true);
-            ldefausse1.setTranslateX(730);
-            ldefausse1.setTranslateY(450);
-            root.getChildren().add(ldefausse1);
-
-            Rectangle defausse2 = new Rectangle();
-            defausse2.setWidth(70);
-            defausse2.setHeight(70);
-            defausse2.setFill(Color.DARKGRAY);
-            defausse2.setTranslateX(650);
-            defausse2.setTranslateY(450);
-            root.getChildren().add(defausse2);
-
-            Label ldefausse2 = new Label("pioche 2 : 20");
-            ldefausse2.setFont(Font.font("Arial", 18));
-            ldefausse2.setMaxWidth(70);
-            ldefausse2.setWrapText(true);
-            ldefausse2.setTranslateX(650);
-            ldefausse2.setTranslateY(450);
-            root.getChildren().add(ldefausse2);
-
-            Rectangle Marqueur1 = new Rectangle();
-            Marqueur1.setWidth(10);
-            Marqueur1.setHeight(10);
-            Marqueur1.setFill(Color.GOLD);
-            //if 1
-        /*Marqueur1.setTranslateX(543);
-        Marqueur1.setTranslateY(60);*/
-            //if 2
-        /*Marqueur1.setTranslateX(603);
-        Marqueur1.setTranslateY(28);*/
-            //if 3
-        /*Marqueur1.setTranslateX(663);
-        Marqueur1.setTranslateY(60);*/
-            //if 4
-            Marqueur1.setTranslateX(723);
-            Marqueur1.setTranslateY(28);
-            root.getChildren().add(Marqueur1);
-
-            Rectangle Marqueur2 = new Rectangle();
-            Marqueur2.setWidth(10);
-            Marqueur2.setHeight(10);
-            Marqueur2.setFill(Color.GOLD);
-            //if 1
-        /*Marqueur2.setTranslateX(237);
-        Marqueur2.setTranslateY(393);*/
-            //if 2
-        /*Marqueur2.setTranslateX(288);
-        Marqueur2.setTranslateY(436);*/
-            //if 3
-        /*Marqueur2.setTranslateX(237);
-        Marqueur2.setTranslateY(479);*/
-            //if 4
-        /*Marqueur2.setTranslateX(288);
-        Marqueur2.setTranslateY(522);*/
-            //if 5
-            Marqueur2.setTranslateX(237);
-            Marqueur2.setTranslateY(565);
-            root.getChildren().add(Marqueur2);
-
             Text scenetitle = new Text("Veuillez selectionner le nombre de joueurs"); //Ajouter un titre
             grid.add(scenetitle, 0, 0, 2, 1);
             scenetitle.setId("welcome-text");
@@ -365,36 +272,36 @@ public class Main extends Application {
             grid.getChildren().add(monimage);
 
 
-            Label labelnom1 = new Label("Entrez le nom du Joueur 1 :");
-            labelnom1.setId("Label1");
-            grid.add(labelnom1, 0, 3);
-            labelnom1.setVisible(false);
+            Label labelNom1 = new Label("Entrez le nom du Joueur 1 :");
+            labelNom1.setId("Label1");
+            grid.add(labelNom1, 0, 3);
+            labelNom1.setVisible(false);
 
             TextField nom1 = new TextField();
             grid.add(nom1, 1, 3);
             nom1.setVisible(false);
 
-            Label labelnom2 = new Label("Entrez le nom du Joueur 2 :");
-            grid.add(labelnom2, 0, 4);
-            labelnom2.setId("Label1");
-            labelnom2.setVisible(false);
+            Label labelNom2 = new Label("Entrez le nom du Joueur 2 :");
+            grid.add(labelNom2, 0, 4);
+            labelNom2.setId("Label1");
+            labelNom2.setVisible(false);
 
             TextField nom2 = new TextField();
             grid.add(nom2, 1, 4);
             nom2.setVisible(false);
 
-            Label labelnom3 = new Label("Entrez le nom du Joueur 3 :");
-            grid.add(labelnom3, 0, 5);
-            labelnom3.setVisible(false);
-            labelnom3.setId("Label1");
+            Label labelNom3 = new Label("Entrez le nom du Joueur 3 :");
+            grid.add(labelNom3, 0, 5);
+            labelNom3.setVisible(false);
+            labelNom3.setId("Label1");
             TextField nom3 = new TextField();
             grid.add(nom3, 1, 5);
             nom3.setVisible(false);
 
-            Label labelnom4 = new Label("Entrez le nom du Joueur 4 :");
-            grid.add(labelnom4, 0, 6);
-            labelnom4.setVisible(false);
-            labelnom4.setId("Label1");
+            Label labelNom4 = new Label("Entrez le nom du Joueur 4 :");
+            grid.add(labelNom4, 0, 6);
+            labelNom4.setVisible(false);
+            labelNom4.setId("Label1");
             TextField nom4 = new TextField();
             grid.add(nom4, 1, 6);
             nom4.setVisible(false);
@@ -410,14 +317,15 @@ public class Main extends Application {
                     actiontarget.setId("actiontarget");
                     setI(2);
                     nom1.setVisible(true);
-                    labelnom1.setVisible(true);
+                    nom1.setText("John");
+                    labelNom1.setVisible(true);
                     nom2.setVisible(true);
-                    labelnom2.setVisible(true);
+                    nom2.setText("John");
+                    labelNom2.setVisible(true);
                     choix2.setVisible(false);
                     choix1.setVisible(false);
                     goToGame.setVisible(true);
                     monimage.setVisible(false);
-                    initBoard(2);
                 }
             });
 
@@ -429,16 +337,15 @@ public class Main extends Application {
                     actiontarget.setId("actiontarget");
                     setI(3);
                     nom1.setVisible(true);
-                    labelnom1.setVisible(true);
+                    labelNom1.setVisible(true);
                     nom2.setVisible(true);
-                    labelnom2.setVisible(true);
+                    labelNom2.setVisible(true);
                     nom3.setVisible(true);
-                    labelnom3.setVisible(true);
+                    labelNom3.setVisible(true);
                     choix2.setVisible(false);
                     goToGame.setVisible(true);
                     choix0.setVisible(false);
                     monimage.setVisible(false);
-                    initBoard(3);
                 }
             });
 
@@ -450,19 +357,18 @@ public class Main extends Application {
                     actiontarget.setId("actiontarget");
                     setI(4);
                     nom1.setVisible(true);
-                    labelnom1.setVisible(true);
+                    labelNom1.setVisible(true);
                     nom2.setVisible(true);
-                    labelnom2.setVisible(true);
+                    labelNom2.setVisible(true);
                     nom3.setVisible(true);
-                    labelnom3.setVisible(true);
+                    labelNom3.setVisible(true);
                     nom4.setVisible(true);
-                    labelnom4.setVisible(true);
+                    labelNom4.setVisible(true);
                     goToGame.setVisible(true);
                     choix1.setVisible(false);
                     choix0.setVisible(false);
                     monimage.setVisible(false);
                     choix2.setTranslateY(-50);
-                    initBoard(4);
                 }
             });
             goToGame.setOnAction(new EventHandler<ActionEvent>() {
@@ -470,6 +376,7 @@ public class Main extends Application {
                 @Override
                 public void handle(ActionEvent e) {
                     primaryStage.setScene(scene2);
+                    initBoard(i);
                 }
             });
 
@@ -580,6 +487,34 @@ public class Main extends Application {
         tab[4][1] = 530;
         return tab;
     }
+    public int[][] initCoordLibraryAndGraveYard(){
+        int tab[][] = new int[4][2];
+
+        tab[0][0] = 646;
+        tab[0][1] = 450;
+        tab[1][0] = 726;
+        tab[1][1] = 450;
+        tab[2][0] = 646;
+        tab[2][1] = 530;
+        tab[3][0] = 726;
+        tab[3][1] = 530;
+
+        return tab;
+    }
+    public int[][] initCoordPlayerIndicators(){
+        int tab[][] = new int[4][2];
+
+        tab[0][0] = 35;
+        tab[0][1] = 550;
+        tab[1][0] = 70;
+        tab[1][1] = 550;
+        tab[2][0] = 105;
+        tab[2][1] = 550;
+        tab[3][0] = 140;
+        tab[3][1] = 550;
+
+        return tab;
+    }
 
     public void movePlayer(int positionUV){
         Joueur currentPlayer = model.getJoueurActif();
@@ -647,6 +582,13 @@ public class Main extends Application {
         // On actualise l'affichage des marqueurs, qui va également actualiser la couleur du bouton "travailler"
         updateLabelMarqueur();
         updateTeacherSprite();
+        updateActivePlayerInfo();
+        updateHandSemesterCardLabel();
+
+        playerWantToTrade = false;
+        playerSelectedThisCard = null;
+        updateHandSemesterCardSprite();
+        updatePlayerIndicator();
     }
 
     private void endTurnButtonClicked(){
@@ -717,12 +659,53 @@ public class Main extends Application {
         }
     }
 
+    private void playerIndicatorClicked(Rectangle clickedObject){
+        if(playerWantToTrade && playerSelectedThisCard != null){
+            playerWantToTrade = false;
+
+            model.donnerCarte(model.getJoueurs()[playerIndicator.indexOf(clickedObject)], playerSelectedThisCard);
+            playerSelectedThisCard = null;
+
+            if(model.getJoueurActif() != activePlayer) {
+                endTurn();
+            }
+            else {
+                resetAllActionButtons(false);
+            }
+        }
+    }
+
+    private void groupWorkButtonClicked(){
+        if (!playerWantToTrade) {
+            fondbouton5.setFill(Color.LIGHTBLUE);
+            playerWantToTrade = true;
+
+        } else {
+            fondbouton5.setFill(Color.LIGHTGREY);
+            playerWantToTrade = false;
+        }
+        updateHandSemesterCardSprite();
+    }
+
+    private void cardInHandClicked(PlayerHandCardSprite clickedObject){
+        if(playerWantToTrade){
+            playerSelectedThisCard = activePlayer.getHand().get(clickedObject.getNumero());
+            updatePlayerIndicator();
+            updateHandSemesterCardSprite(clickedObject);
+        }
+    }
+
 
 
     public void initBoard(int nombreJoueur){
-
+        playerNames = new ArrayList<>();
+        playerNames.add(" Player 1");
+        playerNames.add(" Player 2");
+        playerNames.add(" Player 3");
+        playerNames.add(" Player 4");
         this.nombreJoueur = nombreJoueur;
-        try {model = new Jeu(nombreJoueur, dat);}catch(GameOverException e){}
+
+        try {model = new Jeu(nombreJoueur, dat, playerNames);}catch(GameOverException e){}
         activePlayer = model.getJoueurActif();
         model.getGraph().printAllUV();
 
@@ -731,8 +714,13 @@ public class Main extends Application {
         displayPlayerSprites();
         displayTeacherSprites();
         displayHandSemesterCards();
+        displayActivePlayerInfo();
+        displayLibraryAndGraveyard();
+        displayProgressBar();
+        updateActivePlayerInfo();
         updateLabelMarqueur();
         updateHandSemesterCardLabel();
+        updatePlayerIndicator();
     }
 
     public void endTurn(){
@@ -741,7 +729,8 @@ public class Main extends Application {
             model.passer();
         }
         updatePlayerSpriteColor();
-        updateHandSemesterCardLabel();
+        updateLibraryAndGraveyard();
+        updateProgressBar();
         resetAllActionButtons(false);
     }
 
@@ -799,6 +788,80 @@ public class Main extends Application {
                 lbouton4.setTextFill(Color.BLACK);
             }else{
                 lbouton4.setTextFill(Color.RED);
+            }
+        }
+    }
+
+    public void updateActivePlayerInfo(){
+        activePlayerInfoLabel.setText(activePlayer.toString());
+    }
+
+    public void updateLibraryAndGraveyard(){
+        String tab[] = {"Pioche semestre : ", "Défausse semestre : ", "Pioche travail : ", "Défausse travail : "};
+        int tabValues[] = {model.getCarteSemestre().getSizePioche(), model.getCarteSemestre().getSizeDefausse(), model.getCarteInfection().getSizePioche(), model.getCarteInfection().getSizeDefausse()};
+        int index = 0;
+
+        // OMONDIEUMONDIEUMONDIEUMONDIEUMONDIEUMONDIEUMONDIEUMONDIEU C'EST MOCHEUH!
+        for(Label currentDeckLabel : deckLabel){
+            currentDeckLabel.setText(tab[index]+tabValues[index]);
+            index++;
+        }
+    }
+
+    public void updateProgressBar(){
+        workAmountLabel.setText("Cartes travail piochée \nchaque tour : " + model.getChargeTravail());
+        workBurstProgressBar.setProgress((8-Double.parseDouble(new Integer(model.getCompteurEclosion()).toString()))/8);
+    }
+
+    public void updateHandSemesterCardSprite() {
+        if (playerWantToTrade && playerSelectedThisCard == null) {
+            for (PlayerHandCardSprite current : playerHandCardSprites) {
+                if(current.getFill()!=Color.DARKGRAY){
+                    current.setStroke(Color.YELLOW);
+                    current.setStrokeWidth(3);
+                }
+            }
+        }else{
+            for (PlayerHandCardSprite current : playerHandCardSprites) {
+                current.setStroke(Color.BLACK);
+                current.setStrokeWidth(1);
+            }
+        }
+    }
+
+    public void updateHandSemesterCardSprite(PlayerHandCardSprite clickedObject) {
+        for (PlayerHandCardSprite current : playerHandCardSprites) {
+            if(current.getFill()!=Color.DARKGRAY && current==clickedObject){
+                current.setStroke(Color.YELLOW);
+                current.setStrokeWidth(3);
+            }else{
+                current.setStroke(Color.BLACK);
+                current.setStrokeWidth(1);
+            }
+        }
+
+    }
+
+    public void updatePlayerIndicator(){
+        int index = 0;
+        if(playerWantToTrade && playerSelectedThisCard != null){
+            for (Rectangle current : playerIndicator) {
+                if(model.getJoueurs()[index]!=activePlayer){
+                    current.setStroke(Color.YELLOW);
+                }else{
+                    current.setFill(Color.LIGHTGRAY);
+                }
+                index++;
+            }
+        }else{
+            for (Rectangle current : playerIndicator) {
+                current.setStroke(Color.BLACK);
+                if(model.getJoueurs()[index]!=activePlayer){
+                    current.setFill(Color.IVORY);
+                }else{
+                    current.setFill(Color.LIGHTGRAY);
+                }
+                index++;
             }
         }
     }
@@ -1723,21 +1786,18 @@ public class Main extends Application {
 
         fondbouton5.setOnMouseEntered(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                fondbouton5.setFill(Color.LIGHTGREY);
+                if(!playerWantToTrade) fondbouton5.setFill(Color.LIGHTGREY);
             }
         });
 
         fondbouton5.setOnMouseExited(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                fondbouton5.setFill(Color.DARKGRAY);
+                if(!playerWantToTrade) fondbouton5.setFill(Color.DARKGRAY);
             }
         });
 
         fondbouton5.setOnMousePressed(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                //if (action==disponible)
-                //mettre l'action correspondant à l'action
-            }
+            public void handle(MouseEvent me) { groupWorkButtonClicked();  }
         });
 
         lbouton5 = new Label("Travail de \ngroupe");
@@ -1746,6 +1806,22 @@ public class Main extends Application {
         lbouton5.setTranslateX(35);
         lbouton5.setTranslateY(400);
         root.getChildren().add(lbouton5);
+
+        lbouton5.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if(!playerWantToTrade) fondbouton5.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        lbouton5.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                if(!playerWantToTrade) fondbouton5.setFill(Color.DARKGRAY);
+            }
+        });
+
+        lbouton5.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) { groupWorkButtonClicked();  }
+        });
 
     }
 
@@ -1816,7 +1892,7 @@ public class Main extends Application {
         root.getChildren().add(carte1);
 
         carte1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {}
+            public void handle(MouseEvent me) {cardInHandClicked(carte1);}
         });
 
         Label lcarte1 = new Label("");
@@ -1829,7 +1905,7 @@ public class Main extends Application {
         root.getChildren().add(lcarte1);
 
         lcarte1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {}
+            public void handle(MouseEvent me) {cardInHandClicked(carte1);}
         });
 
         index++;
@@ -1841,7 +1917,7 @@ public class Main extends Application {
         root.getChildren().add(carte2);
 
         carte2.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {}
+            public void handle(MouseEvent me) {cardInHandClicked(carte2);}
         });
 
         Label lcarte2 = new Label("");
@@ -1854,7 +1930,7 @@ public class Main extends Application {
         root.getChildren().add(lcarte2);
 
         lcarte2.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {}
+            public void handle(MouseEvent me) {cardInHandClicked(carte2);}
         });
 
         index++;
@@ -1866,8 +1942,7 @@ public class Main extends Application {
         root.getChildren().add(carte3);
 
         carte3.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-            }
+            public void handle(MouseEvent me) {cardInHandClicked(carte3);}
         });
 
         Label lcarte3 = new Label("");
@@ -1880,7 +1955,7 @@ public class Main extends Application {
         root.getChildren().add(lcarte3);
 
         lcarte3.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {}
+            public void handle(MouseEvent me) {cardInHandClicked(carte3);}
         });
 
         index++;
@@ -1892,7 +1967,7 @@ public class Main extends Application {
         root.getChildren().add(carte4);
 
         carte4.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {}
+            public void handle(MouseEvent me) {cardInHandClicked(carte4);}
         });
 
         Label lcarte4 = new Label("");
@@ -1905,7 +1980,7 @@ public class Main extends Application {
         root.getChildren().add(lcarte4);
 
         lcarte4.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {}
+            public void handle(MouseEvent me) {cardInHandClicked(carte4);}
         });
 
         index++;
@@ -1917,7 +1992,7 @@ public class Main extends Application {
         root.getChildren().add(carte5);
 
         carte5.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {}
+            public void handle(MouseEvent me) {cardInHandClicked(carte5);}
         });
 
         Label lcarte5 = new Label("");
@@ -1930,8 +2005,249 @@ public class Main extends Application {
         root.getChildren().add(lcarte5);
 
         lcarte5.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {}
+            public void handle(MouseEvent me) {cardInHandClicked(carte5);}
         });
+    }
+
+    public void displayActivePlayerInfo(){
+        playerWantToTrade = false;
+        playerSelectedThisCard = null;
+
+        activePlayerInfoRectangle = new Rectangle();
+        activePlayerInfoRectangle.setWidth(130);
+        activePlayerInfoRectangle.setHeight(50);
+        activePlayerInfoRectangle.setFill(Color.IVORY);
+        activePlayerInfoRectangle.setTranslateX(35);
+        activePlayerInfoRectangle.setTranslateY(20);
+        activePlayerInfoRectangle.setStrokeWidth(3);
+        activePlayerInfoRectangle.setStrokeLineCap(StrokeLineCap.SQUARE);
+        activePlayerInfoRectangle.setStroke(Color.BLACK);
+        activePlayerInfoRectangle.setStrokeType(StrokeType.OUTSIDE);
+        root.getChildren().add(activePlayerInfoRectangle);
+
+        activePlayerInfoLabel = new Label();
+        activePlayerInfoLabel.setText("");
+        activePlayerInfoLabel.setFont(Font.font("Arial", 16));
+        activePlayerInfoLabel.setTextFill(Color.BLACK);
+        activePlayerInfoLabel.setTranslateX(35);
+        activePlayerInfoLabel.setTranslateY(20);
+        root.getChildren().add(activePlayerInfoLabel);
+
+        int index = 0;
+        int coordIndicators[][] = initCoordPlayerIndicators();
+        playerIndicator = new ArrayList<>();
+
+        playerIndicatorRectangle1 = new Rectangle(25, 25, Color.IVORY);
+        playerIndicatorRectangle1.setTranslateX(coordIndicators[index][0]);
+        playerIndicatorRectangle1.setTranslateY(coordIndicators[index][1]);
+        playerIndicatorRectangle1.setStrokeWidth(3);
+        playerIndicatorRectangle1.setStrokeLineCap(StrokeLineCap.SQUARE);
+        playerIndicatorRectangle1.setStroke(Color.BLACK);
+        playerIndicatorRectangle1.setStrokeType(StrokeType.OUTSIDE);
+        playerIndicator.add(playerIndicatorRectangle1);
+        root.getChildren().add(playerIndicatorRectangle1);
+
+        playerIndicatorLabel1 = new Label(" \nP1");
+        playerIndicatorLabel1.setTranslateX(coordIndicators[index][0]+3);
+        playerIndicatorLabel1.setTranslateY(coordIndicators[index][1]-20);
+        playerIndicatorLabel1.setFont(Font.font("Arial", 16));
+        playerIndicatorLabel1.setTextFill(Color.BLACK);
+        root.getChildren().add(playerIndicatorLabel1);
+
+        playerIndicatorRectangle1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) { playerIndicatorClicked(playerIndicatorRectangle1); }
+        });
+        playerIndicatorLabel1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) { playerIndicatorClicked(playerIndicatorRectangle1); }
+        });
+
+        index++;
+
+        playerIndicatorRectangle2 = new Rectangle(25, 25, Color.IVORY);
+        playerIndicatorRectangle2.setTranslateX(coordIndicators[index][0]);
+        playerIndicatorRectangle2.setTranslateY(coordIndicators[index][1]);
+        playerIndicatorRectangle2.setStrokeWidth(3);
+        playerIndicatorRectangle2.setStrokeLineCap(StrokeLineCap.SQUARE);
+        playerIndicatorRectangle2.setStroke(Color.BLACK);
+        playerIndicatorRectangle2.setStrokeType(StrokeType.OUTSIDE);
+        playerIndicator.add(playerIndicatorRectangle2);
+        root.getChildren().add(playerIndicatorRectangle2);
+
+        Label playerIndicatorLabel2 = new Label(" \nP2");
+        playerIndicatorLabel2.setTranslateX(coordIndicators[index][0]+3);
+        playerIndicatorLabel2.setTranslateY(coordIndicators[index][1]-20);
+        playerIndicatorLabel2.setFont(Font.font("Arial", 16));
+        playerIndicatorLabel2.setTextFill(Color.BLACK);
+        root.getChildren().add(playerIndicatorLabel2);
+
+        playerIndicatorRectangle2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) { playerIndicatorClicked(playerIndicatorRectangle2); }
+        });
+        playerIndicatorLabel2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) { playerIndicatorClicked(playerIndicatorRectangle2); }
+        });
+
+        index++;
+
+        playerIndicatorRectangle3 = new Rectangle(25, 25, Color.IVORY);
+        playerIndicatorRectangle3.setTranslateX(coordIndicators[index][0]);
+        playerIndicatorRectangle3.setTranslateY(coordIndicators[index][1]);
+        playerIndicatorRectangle3.setStrokeWidth(3);
+        playerIndicatorRectangle3.setStrokeLineCap(StrokeLineCap.SQUARE);
+        playerIndicatorRectangle3.setStroke(Color.BLACK);
+        playerIndicatorRectangle3.setStrokeType(StrokeType.OUTSIDE);
+        playerIndicator.add(playerIndicatorRectangle3);
+        root.getChildren().add(playerIndicatorRectangle3);
+
+        playerIndicatorLabel3 = new Label(" \nP3");
+        playerIndicatorLabel3.setTranslateX(coordIndicators[index][0]+3);
+        playerIndicatorLabel3.setTranslateY(coordIndicators[index][1]-20);
+        playerIndicatorLabel3.setFont(Font.font("Arial", 16));
+        playerIndicatorLabel3.setTextFill(Color.BLACK);
+        root.getChildren().add(playerIndicatorLabel3);
+
+        playerIndicatorRectangle3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) { playerIndicatorClicked(playerIndicatorRectangle3); }
+        });
+        playerIndicatorLabel3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) { playerIndicatorClicked(playerIndicatorRectangle3); }
+        });
+
+        index++;
+
+        playerIndicatorRectangle4 = new Rectangle(25, 25, Color.IVORY);
+        playerIndicatorRectangle4.setTranslateX(coordIndicators[index][0]);
+        playerIndicatorRectangle4.setTranslateY(coordIndicators[index][1]);
+        playerIndicatorRectangle4.setStrokeWidth(3);
+        playerIndicatorRectangle4.setStrokeLineCap(StrokeLineCap.SQUARE);
+        playerIndicatorRectangle4.setStroke(Color.BLACK);
+        playerIndicatorRectangle4.setStrokeType(StrokeType.OUTSIDE);
+        playerIndicator.add(playerIndicatorRectangle4);
+        root.getChildren().add(playerIndicatorRectangle4);
+
+        playerIndicatorLabel4 = new Label(" \nP4");
+        playerIndicatorLabel4.setTranslateX(coordIndicators[index][0]+3);
+        playerIndicatorLabel4.setTranslateY(coordIndicators[index][1]-20);
+        playerIndicatorLabel4.setFont(Font.font("Arial", 16));
+        playerIndicatorLabel4.setTextFill(Color.BLACK);
+        root.getChildren().add(playerIndicatorLabel4);
+
+        playerIndicatorRectangle4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) { playerIndicatorClicked(playerIndicatorRectangle4); }
+        });
+        playerIndicatorLabel4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) { playerIndicatorClicked(playerIndicatorRectangle4); }
+        });
+    }
+
+    public void displayLibraryAndGraveyard(){
+        deckLabel = new ArrayList<>();
+        deckSprites = new ArrayList<>();
+        int index = 0;
+        int coordDeck[][] = initCoordLibraryAndGraveYard();
+
+        pioche1 = new DeckSprite(index);
+        pioche1.setTranslateX(coordDeck[index][0]);
+        pioche1.setTranslateY(coordDeck[index][1]);
+        deckSprites.add(pioche1);
+        root.getChildren().add(pioche1);
+
+        lpioche1 = new Label("Pioche semestre : " + model.getCarteSemestre().getSizePioche());
+        lpioche1.setFont(Font.font("Arial", 12));
+        lpioche1.setMaxWidth(66);
+        lpioche1.setWrapText(true);
+        lpioche1.setTranslateX(coordDeck[index][0]+4);
+        lpioche1.setTranslateY(coordDeck[index][1]);
+        deckLabel.add(lpioche1);
+        root.getChildren().add(lpioche1);
+
+        index++;
+
+        defausse1 = new DeckSprite(index);
+        defausse1.setTranslateX(coordDeck[index][0]);
+        defausse1.setTranslateY(coordDeck[index][1]);
+        root.getChildren().add(defausse1);
+
+        ldefausse1 = new Label("Défausse semestre : " + model.getCarteSemestre().getSizeDefausse());
+        ldefausse1.setFont(Font.font("Arial", 12));
+        ldefausse1.setMaxWidth(66);
+        ldefausse1.setWrapText(true);
+        ldefausse1.setTranslateX(coordDeck[index][0]+4);
+        ldefausse1.setTranslateY(coordDeck[index][1]);
+        deckLabel.add(ldefausse1);
+        root.getChildren().add(ldefausse1);
+
+        index++;
+
+        pioche2 = new DeckSprite(index);
+        pioche2.setTranslateX(coordDeck[index][0]);
+        pioche2.setTranslateY(coordDeck[index][1]);
+        root.getChildren().add(pioche2);
+
+        lpioche2 = new Label("Pioche travail : " + model.getCarteInfection().getSizePioche());
+        lpioche2.setFont(Font.font("Arial", 12));
+        lpioche2.setMaxWidth(66);
+        lpioche2.setWrapText(true);
+        lpioche2.setTranslateX(coordDeck[index][0]+4);
+        lpioche2.setTranslateY(coordDeck[index][1]);
+        deckLabel.add(lpioche2);
+        root.getChildren().add(lpioche2);
+
+
+        index++;
+
+        defausse2 = new DeckSprite(index);
+        defausse2.setTranslateX(coordDeck[index][0]);
+        defausse2.setTranslateY(coordDeck[index][1]);
+        root.getChildren().add(defausse2);
+
+        ldefausse2 = new Label("Défausse travail : " + model.getCarteInfection().getSizeDefausse());
+        ldefausse2.setFont(Font.font("Arial", 12));
+        ldefausse2.setMaxWidth(66);
+        ldefausse2.setWrapText(true);
+        ldefausse2.setTranslateX(coordDeck[index][0]+4);
+        ldefausse2.setTranslateY(coordDeck[index][1]);
+        deckLabel.add(ldefausse2);
+        root.getChildren().add(ldefausse2);
+    }
+
+    public void displayProgressBar(){
+
+        Rectangle progressBarArea = new Rectangle();
+        progressBarArea.setTranslateX(419);
+        progressBarArea.setTranslateY(20);
+        progressBarArea.setWidth(308);
+        progressBarArea.setHeight(40);
+        progressBarArea.setFill(Color.IVORY);
+        progressBarArea.setStrokeWidth(3);
+        progressBarArea.setStrokeLineCap(StrokeLineCap.SQUARE);
+        progressBarArea.setStroke(Color.BLACK);
+        progressBarArea.setStrokeType(StrokeType.OUTSIDE);
+        root.getChildren().add(progressBarArea);
+
+        workBurstProgressBar = new ProgressBar((8-model.getCompteurEclosion())/8);
+        workBurstProgressBar.setTranslateX(623);
+        workBurstProgressBar.setTranslateY(35);
+        workBurstProgressBar.setPrefWidth(100);
+
+        Label workBurstLabel = new Label("Surcharge : ");
+        workBurstLabel.setFont(Font.font("Arial", 12));
+        workBurstLabel.setMaxWidth(100);
+        workBurstLabel.setTranslateX(623);
+        workBurstLabel.setTranslateY(20);
+        root.getChildren().add(workBurstProgressBar);
+        root.getChildren().add(workBurstLabel);
+
+
+        workAmountLabel = new Label("Cartes travail piochée \nchaque tour : " + model.getChargeTravail());
+        workAmountLabel.setFont(Font.font("Arial", 12));
+        workAmountLabel.setMaxWidth(195);
+        workAmountLabel.setTranslateX(423);
+        workAmountLabel.setTranslateY(20);
+        workAmountLabel.setWrapText(true);
+        root.getChildren().add(workAmountLabel);
+
+
     }
 
     private Color switchCardColor(CarteSemestre card){

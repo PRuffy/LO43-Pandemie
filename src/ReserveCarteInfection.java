@@ -33,7 +33,8 @@ public class ReserveCarteInfection implements ReserveCarte
 
     }
 
-    public int getDefausseSize(){
+    public int getSizePioche(){ return pioche.size(); }
+    public int getSizeDefausse(){
         return defausse.size();
     }
 

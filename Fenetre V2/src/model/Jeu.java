@@ -835,4 +835,6 @@ public class Jeu {
 
     public ReserveCarteInfection getCarteInfection(){ return carteInfections; }
     public ReserveCarteSemestre getCarteSemestre(){ return carteSemestre; }
+    public int getChargeTravail(){ return chargeTravail; }
+    public int getCompteurEclosion(){ return compteurEclosion; }
 }

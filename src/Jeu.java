@@ -34,7 +34,7 @@ public class Jeu {
      * int[][] adjacence : permet d'obtenir la liste des voisins
      * 
      */
-    public Jeu(int nombreDeJoueurs, DataReader dat) throws GameOverException {
+    public Jeu(int nombreDeJoueurs, DataReader dat, ArrayList<String> nomsDesJoueurs) throws GameOverException {
         chargeTravail = CHARGE_TRAVAIL[0];
         compteurEclosion = 0;
         nombreProjetRendu = 0;
@@ -80,7 +80,7 @@ public class Jeu {
             //Le role est enlever de l'arrayliste
             random = rand.nextInt(roleDisp.size());
             roleJoueur = roleDisp.remove(random);
-            joueurs[i] = new Joueur(roleJoueur, i);
+            joueurs[i] = new Joueur(roleJoueur, i, nomsDesJoueurs.get(i));
             joueurActif = joueurs[i];
 
             //On pioche des cartes qu'on met dans la main des joueurs
@@ -311,10 +311,10 @@ public class Jeu {
     //Enleve une carte infection de la defausse
     public void fermetureUV(){
         //On vérifie que la defause n'est pas vide.
-        if(carteInfections.getDefausseSize()>0){
+        if(carteInfections.getSizeDefausse()>0){
             //Si la defausse contient effectivement une carte on en enlève une aléatoirement
             Random rand = new Random();
-            int numeroCarte = rand.nextInt(carteInfections.getDefausseSize());
+            int numeroCarte = rand.nextInt(carteInfections.getSizeDefausse());
             carteInfections.removeCarte(numeroCarte);
         }
 
@@ -832,4 +832,9 @@ public class Jeu {
     public ArrayList<Professeur> getPionProfesseur(){
         return pionProfesseur;
     }
+
+    public ReserveCarteInfection getCarteInfection(){ return carteInfections; }
+    public ReserveCarteSemestre getCarteSemestre(){ return carteSemestre; }
+    public int getChargeTravail(){ return chargeTravail; }
+    public int getCompteurEclosion(){ return compteurEclosion; }
 }
