@@ -120,7 +120,8 @@ public class Graph {
 
     public void printAllUV(){
         for(UV current : listUV){
-            System.out.println(current.toString());
+            //System.out.println(current.toString());
+            current.displayVoisin();
         }
     }
 }

@@ -1,4 +1,4 @@
-import java.lang.reflect.Type;
+package model;
 
 /**
  * Created by Guillaume on 12/12/2015.
@@ -12,7 +12,7 @@ public class CarteSemestre implements Carte
     public CarteSemestre(){}
     public CarteSemestre(TypeCarteSemestre type, UV cible, Filiere filiere){
         this.type=type;
-        if(type==TypeCarteSemestre.TP) {
+        if(type== TypeCarteSemestre.TP) {
             this.cible = cible;
             this.filiere = filiere;
         }else{

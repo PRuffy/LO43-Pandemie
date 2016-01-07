@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -23,10 +25,12 @@ public class Jeu {
     private static final int MAX_ECLOSION = 8;
     private static final int [] CHARGE_TRAVAIL = new int[]{2,2,3,3,4};
 
+    private boolean DEBUG = true;
+
 
     /*constructeur de jeu. Prends les parametre suivant :
      * int nombre de joueur : Permet d'avoir le nombre de joueur désiré. Les différents rôles seront choisis aléatoirement
-     * string listUV : Donnée après la lecture du document UV.txt, permet de générer les UV
+     * string listUV : Donnée après la lecture du document model.UV.txt, permet de générer les model.UV
      * int[][] adjacence : permet d'obtenir la liste des voisins
      * 
      */
@@ -45,7 +49,7 @@ public class Jeu {
         graph = new Graph(dat);
         carteSemestre = new ReserveCarteSemestre(graph);
         carteInfections = new ReserveCarteInfection(graph);
-        cartesBenefiques = new ArrayList<CarteSemestre>();
+        cartesBenefiques = new ArrayList<>();
 
         //Creation des professeur
         pionProfesseur = new ArrayList<Professeur>();
@@ -76,7 +80,7 @@ public class Jeu {
             //Le role est enlever de l'arrayliste
             random = rand.nextInt(roleDisp.size());
             roleJoueur = roleDisp.remove(random);
-            joueurs[i] = new Joueur(roleJoueur);
+            joueurs[i] = new Joueur(roleJoueur, i);
             joueurActif = joueurs[i];
 
             //On pioche des cartes qu'on met dans la main des joueurs
@@ -139,7 +143,7 @@ public class Jeu {
 
 
 
-    //Augmente le nombre de marqueur sur une UV donnée
+    //Augmente le nombre de marqueur sur une model.UV donnée
     public void augmenterChargeTravail(CarteInfection carte){
         Filiere filiere = carte.getFiliere();
         UV cible = carte.getCible();
@@ -182,17 +186,18 @@ public class Jeu {
         Marqueur m = new Marqueur();
 
         //Test du role du joueur si surdoué alors tout les marqueurs sont enlevé
-        if (joueurActif.getRole()==Role.surdoue){
+        if (joueurActif.getRole()==Role.surdoue || testRenduProjet(uvTravail.getFiliere())){
             while(uvTravail.getNombreMarqueur()!=0){
                 m = graph.travail(positionPersonnage);
                 reserveMarqueur.setMarqueur(m);
             }
         }else{
             //Sinon on enlève un marqueur.
-            //Partie a potentiellement modifié pour géré le cas ou le projet a été rendu
+            //Partie a potentiellement modifié pour gérer le cas ou le projet a été rendu
             m = graph.travail(positionPersonnage);
             reserveMarqueur.setMarqueur(m);
         }
+        reduireAction();
 
     }
 
@@ -223,7 +228,7 @@ public class Jeu {
                 //Si ce n'est pas le cas on met la carte dans la main du joueur
                 //sinon on la défausse
                 if (tempCarte.getType() == TypeCarteSemestre.TP) {
-                    if (joueurActif.getMainComplete()) {
+                    if (joueurActif.isMainComplete()) {
                         carteSemestre.defausserCarte(tempCarte);
                     } else {
                         try{
@@ -307,7 +312,7 @@ public class Jeu {
             }
 
             if(eclos){
-                // on créé une liste des UV touchées par l'éclosion, qui sera remplie par les appels multiples de makeEclosion
+                // on créé une liste des model.UV touchées par l'éclosion, qui sera remplie par les appels multiples de makeEclosion
                 ArrayList<UV> dejaVisite = new ArrayList<>();
 
                 try {
@@ -317,7 +322,7 @@ public class Jeu {
                 //on fait un appel de makeEclosion, càd on lance les ajouts de marqueurs
                 makeEclosion(carte.getCible(), carte.getFiliere(), dejaVisite);
 
-                // On reprends la liste des UV touchées et on remet leurs booléen d'éclosion à false
+                // On reprends la liste des model.UV touchées et on remet leurs booléen d'éclosion à false
                 for(UV cible : dejaVisite){
                     cible.setEclosion(false);
                 }
@@ -333,11 +338,11 @@ public class Jeu {
     }
 
     /*
-        Méthode récursive gérant l'ajout de marqueurs du aux éclosions sur les UV et leurs voisins (en cas de chaine d'éclosion);7
-        makeEclosion prend, en paramètre, une UV cible, la filière du marqueur à ajouter et la liste des UV déjà touchées par cette chaine d'éclosion
+        Méthode récursive gérant l'ajout de marqueurs du aux éclosions sur les model.UV et leurs voisins (en cas de chaine d'éclosion);7
+        makeEclosion prend, en paramètre, une model.UV cible, la filière du marqueur à ajouter et la liste des model.UV déjà touchées par cette chaine d'éclosion
      */
     private void makeEclosion(UV cible, Filiere filiere, ArrayList<UV> dejaVisite){
-        //Si l'UV cible n'a pas encore été touchée dans cette chaine
+        //Si l'model.UV cible n'a pas encore été touchée dans cette chaine
         if(!dejaVisite.contains(cible)){
             try{
                 //On ajoute l'uv a la liste déjà visiter
@@ -386,7 +391,7 @@ public class Jeu {
      */
     public void donnerCarte(Joueur secondJoueur, CarteSemestre carteTransferer){
         if(joueurActif.getRole()==Role.etudiantEtranger || joueurActif.getPosition() == secondJoueur.getPosition()){
-            if(!secondJoueur.getMainComplete()){
+            if(!secondJoueur.isMainComplete()){
                 try{
                     secondJoueur.ajoutCarte(carteTransferer);
                     joueurActif.retraitCarte(carteTransferer);
@@ -404,10 +409,10 @@ public class Jeu {
      * N'effectue pas de test vis a vis de la position atteignable.
      * Peut déplacer le joueur Actif comme un autre joueur
      */
-    public void deplacer(Joueur joueurCible,int positionArriver){
-        joueurCible.setPosition(positionArriver);
+    public void deplacer(Joueur joueurCible, int positionArrivee){
+        joueurCible.setPosition(positionArrivee);
         if(joueurCible.getRole()==Role.surdoue){
-            verifierMarqueurDest(joueurCible, positionArriver);
+            verifierMarqueurDest(joueurCible, positionArrivee);
         }
         reduireAction();
     }
@@ -437,48 +442,59 @@ public class Jeu {
         }
 
     }
+
     //Fonction vérfiant la liste des déplacement possible pour un joueur donné
     public ArrayList<Integer> deplacementPossible(Joueur joueurCible){
         ArrayList<Integer> ciblePossible = new ArrayList<>();
 
         //Si le joueur a la carte de sa position actuelle il pourra aller partout.
         int posJoueur = joueurCible.getPosition();
-        UV uvJoueur = null;
-        uvJoueur = graph.getUV(posJoueur);
+        UV uvJoueur = graph.getUV(posJoueur);
 
-        //Le joueur a la carte de la position ou il se trouve et peux se déplacer n'importe ou
-        if(joueurCible.hasCarte(uvJoueur)){
-            for(int i = 0; i<graph.getListSize();i++){
-                if(i!=posJoueur){
-                    ciblePossible.add(i);
-                }
-            }
-        }else{
+        if(DEBUG) {
+            System.out.print(posJoueur);
+            System.out.print(uvJoueur);
+        }
+
+
             //Sinon vérifier sa position, ajouter les voisin, ajouter les carte présente en main et les autre proffesseur si présence de l'un d'eux
             //On check la position d'un prof
-            for(Professeur p : pionProfesseur){
-                if(p.getPosition()==posJoueur){
-                    for(Professeur p1 : pionProfesseur){
-                        if(p1.getPosition()!=p.getPosition()){
-                            ciblePossible.add(p1.getPosition());
-                        }
+        for(Professeur p : pionProfesseur){
+            if(p.getPosition()==posJoueur){
+                for(Professeur p1 : pionProfesseur){
+                    if(p1.getPosition()!=p.getPosition()){
+                        if(DEBUG) System.out.println(" because prof : "+p1.getPosition());
+                        ciblePossible.add(p1.getPosition());
                     }
                 }
             }
+        }
 
-            for(UV uv : uvJoueur.getVoisins()){
-                if(!ciblePossible.contains(uv.getPosition())){
-                    ciblePossible.add(uv.getPosition());
-                }
+        for(UV uv : uvJoueur.getVoisins()){
+            if(!ciblePossible.contains(uv.getPosition())){
+                if(DEBUG) System.out.println(" because neighbour : "+uv.getPosition());
+                ciblePossible.add(uv.getPosition());
             }
+        }
 
-            CarteSemestre [] carteJoueur = joueurCible.getHand();
-            for(CarteSemestre carte : carteJoueur){
-                if(!ciblePossible.contains(carte.getCible().getPosition())){
-                    ciblePossible.add(carte.getCible().getPosition());
+        //Le joueur a la carte de la position ou il se trouve et peux se déplacer n'importe ou
+        if(joueurCible.hasCarte(uvJoueur)) {
+            for (int i = 0; i < graph.getListSize(); i++) {
+                if (i != posJoueur) {
+                    if (DEBUG) System.out.println(" has carte of his position: " + i);
+                    ciblePossible.add(i + 1);
                 }
             }
         }
+
+        ArrayList<CarteSemestre> carteJoueur = joueurCible.getHand();
+        for(CarteSemestre carte : carteJoueur){
+            if(!ciblePossible.contains(carte.getCible().getPosition())){
+                if(DEBUG) System.out.println(" has carte : "+carte.getCible().getPosition());
+                ciblePossible.add(carte.getCible().getPosition());
+            }
+        }
+
 
 
 
@@ -500,9 +516,6 @@ public class Jeu {
         return joueurPossible;
     }
 
-
-
-
     /*Fonction ammenant le prof de la filière sur l'UV où se trouve l'élève*/
     public void appelerProf(){
         int temPositionJoueur = joueurActif.getPosition();
@@ -516,6 +529,7 @@ public class Jeu {
         reduireAction();
     }
 
+    //Méthode permettant au Joueur 'lèche-botte' de déplacer les professeurs
     public void deplacerProf(Professeur p, int position){
         if(joueurActif.getRole()==Role.lecheBotte){
             ArrayList<UV> listUV = graph.getListUV();
@@ -529,6 +543,7 @@ public class Jeu {
         }
 
     }
+
     /*Fonction permettant de rendre un projet. Dépense des cartes.
      *Ne fonctionne que si un professeur se trouve sur la même case que le joueurActif
      *Vas tenter de rendre le projet correspondant a la filière ou se trouve le proffesseur*/
@@ -569,14 +584,12 @@ public class Jeu {
 
     /*Fonction comparant la coordonée du joueur actif avec celle des différents professeur*/
     public boolean presenceProf(){
-        boolean test;
-        for(Professeur p : pionProfesseur){
-            if(p.getPosition()==joueurActif.getPosition()){
+        boolean test = false;
+        for(Professeur p : pionProfesseur) {
+            if (p.getPosition() == joueurActif.getPosition()) {
                 test = true;
             }
         }
-        test = false;
-
         return test;
     }
 
@@ -601,6 +614,7 @@ public class Jeu {
         }
 
     }
+
     /*Méthode réduisant le nombre d'action des joueurs dès qu'ils en font une. Appel fin de tour si le nombre tombe à 0*/
     public void reduireAction(){
         joueurActif.setNombreAction(joueurActif.getNombreAction()-1);
@@ -609,9 +623,6 @@ public class Jeu {
             finDeTour();
         }
     }
-
-
-
 
     //Bloc de fin de tour
     /*Fonction qui remet toutes les valeurs comme a leur état initial et change le joueur Actif*/
@@ -628,7 +639,7 @@ public class Jeu {
         }
 
 
-        //appel de la méthode finTour de graph qui s'occupe de reset les valeurs de base des UV (par ex: eclosion)
+        //appel de la méthode finTour de graph qui s'occupe de reset les valeurs de base des model.UV (par ex: eclosion)
         graph.finTour();
 
         //On remet le nombre d'action a 4 en prévision du prochain tour du joueur.
@@ -668,10 +679,10 @@ public class Jeu {
                     // On choisis la case cible aléatoirement dans le tableau des voisins
                     uvCible = r.nextInt(nombreVoisin);
                 }while(!uv.correctDestinationProf(filiereProf, uvCible));
-                UV uvDest = graph.getUV(uvCible);
+                UV uvDest = graph.getUV(uv.getVoisins().get(uvCible).getPosition());
                 uv.setProfesseur(null);
                 uvDest.setProfesseur(p);
-                p.setPosition(uvCible);
+                p.setPosition(uvDest.getPosition());
 
 
             }
@@ -692,4 +703,81 @@ public class Jeu {
 
     }
 
+    public Graph getGraph(){
+        return graph;
+    }
+    public Joueur getJoueurActif(){return joueurActif;}
+
+    public ArrayList<Integer> deplacementPossibleByCarteSemestre(Joueur joueurCible){
+        ArrayList<Integer> ciblePossible = new ArrayList<>();
+        ArrayList<CarteSemestre> carteJoueur = joueurCible.getHand();
+        // Pour chaque carte de leur mains, les joueurs peuvent accéder aux UVs correspondantes
+        for(CarteSemestre carte : carteJoueur){
+
+            //Attention, ici encore il y avait un test (voir ci après)
+            //if(!ciblePossible.contains(carte.getCible().getPosition())) {
+                if (DEBUG) System.out.println(" has carte : " + carte.getCible().getPosition());
+                ciblePossible.add(carte.getCible().getPosition());
+            //}
+        }
+        return ciblePossible;
+    }
+
+    public ArrayList<Integer> deplacementPossibleEverywhere(Joueur joueurCible){
+        ArrayList<Integer> ciblePossible = new ArrayList<>();
+
+        //Si le joueur a la carte de sa position actuelle il pourra aller partout.
+        int posJoueur = joueurCible.getPosition();
+        UV uvJoueur =  graph.getUV(posJoueur);
+
+        //Le joueur a la carte de la position ou il se trouve et peux se déplacer n'importe ou
+        if(joueurCible.hasCarte(uvJoueur)){
+            for(UV current : graph.getListUV()){
+                if(current.getPosition()!=posJoueur){
+                    if(DEBUG) System.out.println(" has carte of his position : "+current.getPosition());
+                    ciblePossible.add(current.getPosition());
+                }
+            }
+        }
+        return ciblePossible;
+    }
+
+    public ArrayList<Integer> deplacementPossibleByProf(Joueur joueurCible){
+        ArrayList<Integer> ciblePossible = new ArrayList<>();
+        int posJoueur = joueurCible.getPosition();
+        for(Professeur p : pionProfesseur){
+            if(p.getPosition()==posJoueur){
+                for(Professeur currentProf : pionProfesseur){
+                    if(currentProf.getPosition()!=p.getPosition()){
+                        if(DEBUG) System.out.println(" because prof : "+currentProf.getPosition());
+                        ciblePossible.add(currentProf.getPosition());
+                    }
+                }
+            }
+
+        }
+
+        return ciblePossible;
+    }
+
+    public ArrayList<Integer> deplacementPossibleNeighbour(Joueur joueurCible){
+        ArrayList<Integer> ciblePossible = new ArrayList<>();
+        int posJoueur = joueurCible.getPosition();
+        UV uvJoueur = graph.getUV(posJoueur);
+        //On ajoute chaque voisin dans l'ArrayList
+        for(UV uv : uvJoueur.getVoisins()){
+            // if(!ciblePossible.contains(uv.getPosition()))
+            if(DEBUG) System.out.println(" because neighbour : "+ uv.getPosition());
+            ciblePossible.add(uv.getPosition());
+        }
+        return ciblePossible;
+    }
+
+    public Joueur[] getJoueurs(){
+        return joueurs;
+    }
+
+    public ArrayList<Professeur> getPionProfesseur(){
+        return pionProfesseur;
+    }
 }

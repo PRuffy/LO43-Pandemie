@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 
 public class CollectionMarqueur {
@@ -26,7 +28,7 @@ public class CollectionMarqueur {
         }
     }
 
-    /*Cette fonction remet des marqueur qui sont sur des UV dans leur collection respective*/
+    /*Cette fonction remet des marqueur qui sont sur des model.UV dans leur collection respective*/
     public void setMarqueur(Marqueur m){
         switch (m.getFiliere()){
             case I2RV:
@@ -44,7 +46,7 @@ public class CollectionMarqueur {
             default:
         }
     }
-    /*Cette fonction enlève 1 marqueur de la collection pour aller le déposé sur l'UV appelante
+    /*Cette fonction enlève 1 marqueur de la collection pour aller le déposé sur l'model.UV appelante
      *Si la collection est vide alors on appele une fonction qui met fin à la partie (Défaite) */
     public Marqueur getMarqueur(Filiere f) throws GameOverException{
         Marqueur m = new Marqueur();

@@ -1,3 +1,5 @@
+package model;
+
 /**
  * Created by stay on 14/12/15.
  */

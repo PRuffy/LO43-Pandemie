@@ -1,3 +1,7 @@
+package model;
+
+import java.util.ArrayList;
+
 /**
  * Created by stay on 22/12/15.
  */
@@ -5,28 +9,19 @@ public class Joueur {
     private int nombreAction;
     private Role role;
     private Personnage position;
-    private CarteSemestre carteEnMain[];
+    private ArrayList<CarteSemestre> carteEnMain;
+    private int numero;
 
-    public Joueur(Role role){
+    public Joueur(Role role, int numero){
         this.role = role;
         this.position = new Personnage(1);
-        this.carteEnMain = new CarteSemestre [6];
-    }
-
-
-    //constructeur par recopie
-    public Joueur(Joueur clone){
-        this.role=clone.role;
-        this.position=clone.position;
-        this.carteEnMain= new CarteSemestre[6];
-        for(int index=0; index<6; index++){
-            this.carteEnMain[index]=clone.carteEnMain[index];
-        }
+        this.carteEnMain = new ArrayList<>();
+        this.numero = numero;
     }
 
 
     //Accesseurs
-    public CarteSemestre[] getHand(){
+    public ArrayList<CarteSemestre> getHand(){
         return carteEnMain;
     }
     public int getNombreAction(){
@@ -41,8 +36,8 @@ public class Joueur {
     public int getPosition(){
         return position.getPosition();
     }
-    public boolean getMainComplete(){
-        if (carteEnMain[5]!=null){
+    public boolean isMainComplete(){
+        if (carteEnMain.size()==6){
             return true;
         }else{
             return false;
@@ -51,6 +46,7 @@ public class Joueur {
     public Role getRole(){
         return this.role;
     }
+    public int getNumero(){return numero;}
 
 
     public boolean verifierCarte(Filiere f){
@@ -61,14 +57,9 @@ public class Joueur {
             }
         }
 
-        if(nombreCarteFiliere > 3 ){
+        if(nombreCarteFiliere > 3 || (role == Role.surdoue && nombreCarteFiliere > 2)){
             return true;
         }else{
-            if(role == Role.surdoue){
-                if(nombreCarteFiliere > 2){
-                    return true;
-                }
-            }
             return false;
         }
     }
@@ -83,31 +74,19 @@ public class Joueur {
     }
     /*
      ajoutCarte sert à rajouter une carte tp dans la main du joueur. deux exceptions peuvent etre renvoyées :
-        - NotEnoughSlotsException si le joueur n'a pas assez de place dans sa main
-        - WrongTypeException si la carte n'est pas une carte TP
-     */
+        - model.NotEnoughSlotsException si le joueur n'a pas assez de place dans sa main
+        - model.WrongTypeException si la carte n'est pas une carte TP
+    */
     public void ajoutCarte(CarteSemestre carte) throws NotEnoughSlotsException, WrongTypeException{
         try {
             //On vérifie le type de la carte passée en paramètre
             if (carte.getType() != TypeCarteSemestre.TP)
                 throw new WrongTypeException("Un joueur ne peut avoir que des cartes TP en main");
+            if (isMainComplete())
+                throw new NotEnoughSlotsException("Un joueur ne peut avoir que 6 cartes en main");
 
+            carteEnMain.add(carte);
 
-            int index = 0;
-            boolean found = false;
-
-            // on parcours le tableau à la recherche d'un emplacement vide pour la nouvelle carte
-            while (index < 6 && !found) {
-                if (carteEnMain[index] == null) {
-                    carteEnMain[index] = carte;
-                    found = true;
-                }
-                ++index;
-            }
-            // Si aucun emplacement libre n'a été trouvé dans la main du joueur
-            if (!found) {
-                throw new NotEnoughSlotsException("Il n'y a plus de place dans la main de ce joueur");
-            }
         }
         catch(NotEnoughSlotsException e){}
         catch(WrongTypeException e){}
@@ -117,7 +96,7 @@ public class Joueur {
     /*
      retraitCarte sert à enlever une carte donnée de la main du joueur. deux exceptions peuvent etre renvoyées :
         - NotSuchCardException si le joueur n'a pas cette carte en main
-        - WrongTypeException si la carte n'est pas une carte TP
+        - model.WrongTypeException si la carte n'est pas une carte TP
      */
     public CarteSemestre retraitCarte(CarteSemestre carte) throws NoSuchCardException, WrongTypeException{
         try{
@@ -128,17 +107,9 @@ public class Joueur {
             int index = 0;
             CarteSemestre tempCarte = null;
 
-            // on parcours le tableau à la recherche de la carte
-            while (index < 6 && tempCarte==null) {
-                if (carteEnMain[index].equals(carte)) {
-                    tempCarte = new CarteSemestre(carte);
-
-                    for(int i = index; i < 5; i++){
-                        carteEnMain[i]=carteEnMain[i+1];
-                    }
-                    carteEnMain[5]=null;
-                }
-                ++index;
+            if(carteEnMain.contains(carte)){
+                tempCarte = carteEnMain.get(carteEnMain.indexOf(carte));
+                carteEnMain.remove(carte);
             }
             // Si la carte n'a pas été trouvé dans la main (ou si la main est vide)
             if (tempCarte!=null) {
@@ -154,19 +125,13 @@ public class Joueur {
     //Effectue une opération similaire a la fonction précédente. Cependant enlève une carte queconque de la main du joueur
     //Ayant la filière voulu
     public CarteSemestre retraitCarte(Filiere f){
-        int index = 0;
-        CarteSemestre tempCarte = null;
+        CarteSemestre tempCarte=null;
 
-        while(index < 6 && tempCarte == null){
-            if(carteEnMain[index].getFiliere()==f){
-                tempCarte = carteEnMain[index];
-                //On avance les cartes dans le tableau pour ne garder que les derniere case null
-                for(int i = index; i < 5; i++){
-                    carteEnMain[i]=carteEnMain[i+1];
-                }
-                carteEnMain[5]=null;
+        for(CarteSemestre current : carteEnMain){
+            if(current.getFiliere()==f && tempCarte==null){
+                tempCarte = current;
+                carteEnMain.remove(current);
             }
-            index++;
         }
 
         return tempCarte;

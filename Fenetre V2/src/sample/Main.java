@@ -5,7 +5,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -714,7 +713,6 @@ public class Main extends Application {
 
         return tab;
     }
-
     public int[][] initCoordPionJoueurs(){
         int tab[][] = new int[nombreJoueur][2];
 
@@ -755,7 +753,10 @@ public class Main extends Application {
             uncircleUV();
             playerWantToMove=false;
             if(model.getJoueurActif() != activePlayer) endTurn();
-            else updateLabelMarqueur();
+            else {
+                updateLabelMarqueur();
+                updateTeacherSprite();
+            }
 
         }
     }
@@ -778,15 +779,8 @@ public class Main extends Application {
         }
     }
 
-    public void updatePlayerSpriteColor(){
-        for(PlayerSprite currentPlayerSprite : playerSprites){
-            currentPlayerSprite.setFill(Color.ORANGE);
-        }
-        activePlayer = model.getJoueurActif();
-        playerSprites.get(activePlayer.getNumero()).setFill(Color.TEAL);
-    }
-
-    public void undoAllActionButtonColor(){
+    public void resetAllActionButtons(){
+        // On remet la couleur par défaut à tous les boutons d'action au cas où l'uin d'eux était sélectionné
         fondbouton1.setFill(Color.DARKGRAY);
         fondbouton2.setFill(Color.DARKGRAY);
         fondbouton3.setFill(Color.DARKGRAY);
@@ -794,42 +788,62 @@ public class Main extends Application {
         fondbouton5.setFill(Color.DARKGRAY);
         fondbouton6.setFill(Color.DARKGRAY);
 
+        // On remet le texte du bouton "passer" à sa valeur par défaut, au cas où le joueur avait déjà cliqué dessus une fois
+        lbouton6.setText("Passer");
+
+        // On remet la valeur de playerWantToMove à 'false' au cas où le joueur avait déjà cliqué sur le bouton de déplacement une fois
+        // Pour la même raison, on désactive l'affichage différent pour les UV accessibles
         playerWantToMove=false;
         uncircleUV();
+
+        // On actualise l'affichage des marqueurs, qui va également actualiser la couleur du bouton "travailler"
+        updateLabelMarqueur();
+        updateTeacherSprite();
     }
 
-    public void clickPasserButton(){
+    private void endTurnButtonClicked(){
         if(lbouton6.getText()=="Passer"){
             lbouton6.setText("Etes vous \nsur?");
         }else{
             endTurn();
         }
+        resetAllActionButtons();
     }
 
-    public void updateTeacherSprite(){
-        ArrayList<Professeur> teachers = model.getPionProfesseur();
-        int tabUV[][] = initCoordUVSprites();
-        for(TeacherSprite currentTeacherSprite : teacherSprites){
-            Professeur currentTeacher = teachers.get(currentTeacherSprite.getNumero());
+    private void workButtonClicked(){
 
-            currentTeacherSprite.setX(17 + tabUV[currentTeacher.getPosition()-1][0]);
-            currentTeacherSprite.setY(6 + tabUV[currentTeacher.getPosition()-1][1]);
+        resetAllActionButtons();
+        if(lbouton2.getTextFill()!=Color.RED){
+            model.travailler();
+            updateLabelMarqueur();
         }
     }
 
-    public void updateLabelMarqueur(){
-        System.out.println("Mise à jour affichage marqueurs");
-        int index = 0;
-        ArrayList<UV> listUV = model.getGraph().getListUV();
-        for(Label currentUVLabel : uvLabel){
-            currentUVLabel.setText(Integer.toString(listUV.get(index).getMarqueurs().size()));
-            index++;
-        }
+    private void moveButtonClicked(){
+        if (!playerWantToMove) {
+            fondbouton1.setFill(Color.LIGHTBLUE);
+            playerWantToMove = true;
+            System.out.println("Action déplacement activée!!----------------------------------------------------------");
+            circleReachableUV(model.deplacementPossible(model.getJoueurActif()));
 
-        model.getGraph().printAllUV();
-        if(listUV.get(model.getJoueurActif().getPosition()-1).getMarqueurs().size()==0) {lbouton2.setTextFill(Color.RED);}
-        else {lbouton2.setTextFill(Color.BLACK);}
+        } else {
+            fondbouton1.setFill(Color.LIGHTGREY);
+            playerWantToMove = false;
+            System.out.println("Action déplacement désactivée manuellement!!----------------------------------------------------------");
+            uncircleUV();
+        }
     }
+
+    private void callTeacherButtonClicked(){
+
+        resetAllActionButtons();
+        if(lbouton3.getTextFill()!=Color.RED){
+            model.appelerProf();
+            updateTeacherSprite();
+        }
+    }
+
+
 
     public void initBoard(int nombreJoueur){
 
@@ -848,10 +862,48 @@ public class Main extends Application {
     public void endTurn(){
         model.finDeTour();
         updatePlayerSpriteColor();
-        updateTeacherSprite();
-        lbouton6.setText("Passer");
-        undoAllActionButtonColor();
-        updateLabelMarqueur();
+        resetAllActionButtons();
+    }
+
+
+
+    public void updatePlayerSpriteColor(){
+        for(PlayerSprite currentPlayerSprite : playerSprites){
+            currentPlayerSprite.setFill(Color.ORANGE);
+        }
+        activePlayer = model.getJoueurActif();
+        playerSprites.get(activePlayer.getNumero()).setFill(Color.TEAL);
+    }
+
+    public void updateTeacherSprite(){
+        ArrayList<Professeur> teachers = model.getPionProfesseur();
+        int tabUV[][] = initCoordUVSprites();
+        ArrayList<UV> listUV = model.getGraph().getListUV();
+
+        for(TeacherSprite currentTeacherSprite : teacherSprites){
+            Professeur currentTeacher = teachers.get(currentTeacherSprite.getNumero());
+
+            currentTeacherSprite.setX(17 + tabUV[currentTeacher.getPosition()-1][0]);
+            currentTeacherSprite.setY(6 + tabUV[currentTeacher.getPosition()-1][1]);
+        }
+
+
+        if(model.presenceProf()) {lbouton3.setTextFill(Color.RED);}
+        else {lbouton3.setTextFill(Color.BLACK);}
+    }
+
+    public void updateLabelMarqueur(){
+        System.out.println("Mise à jour affichage marqueurs");
+        int index = 0;
+        ArrayList<UV> listUV = model.getGraph().getListUV();
+        for(Label currentUVLabel : uvLabel){
+            currentUVLabel.setText(Integer.toString(listUV.get(index).getMarqueurs().size()));
+            index++;
+        }
+
+        model.getGraph().printAllUV();
+        if(listUV.get(model.getJoueurActif().getPosition()-1).getMarqueurs().size()==0) {lbouton2.setTextFill(Color.RED);}
+        else {lbouton2.setTextFill(Color.BLACK);}
     }
 
     public void displayUVSprites(){
@@ -1541,13 +1593,8 @@ public class Main extends Application {
 
         root.getChildren().addAll(spriteProfI2rv, spriteProfIlc, spriteProfLeim, spriteProfRt);
 
-    }
+        updateTeacherSprite();
 
-    public void workButtonClicked(){
-        if(lbouton2.getTextFill()!=Color.RED){
-            model.travailler();
-            updateLabelMarqueur();
-        }
     }
 
     public void displayActionButtons(){
@@ -1585,22 +1632,7 @@ public class Main extends Application {
         });
 
         fondbouton1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                //if (action==disponible)
-                if (!playerWantToMove) {
-                    fondbouton1.setFill(Color.LIGHTBLUE);
-                    playerWantToMove = true;
-                    System.out.println("Action déplacement activée!!----------------------------------------------------------");
-                    circleReachableUV(model.deplacementPossible(model.getJoueurActif()));
-
-                } else {
-                    fondbouton1.setFill(Color.LIGHTGREY);
-                    playerWantToMove = false;
-                    System.out.println("Action déplacement désactivée manuellement!!----------------------------------------------------------");
-                    uncircleUV();
-                }
-                //mettre l'action correspondant à l'action
-            }
+            public void handle(MouseEvent me) { moveButtonClicked(); }
         });
 
         lbouton1 = new Label("Déplacement");
@@ -1626,18 +1658,8 @@ public class Main extends Application {
             }
         });
 
-        lbouton1.setOnMousePressed(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                //if (action==disponible)
-                if (!playerWantToMove) {
-                    fondbouton1.setFill(Color.LIGHTBLUE);
-                    playerWantToMove = true;
-                } else {
-                    fondbouton1.setFill(Color.LIGHTGREY);
-                    playerWantToMove = false;
-                }
-                //mettre l'action correspondant à l'action
-            }
+        lbouton1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) { moveButtonClicked(); }
         });
     }
 
@@ -1688,10 +1710,7 @@ public class Main extends Application {
         });
 
         lbouton2.setOnMousePressed(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                //if (action==disponible)
-                //mettre l'action correspondant à l'action
-            }
+            public void handle(MouseEvent me) { workButtonClicked(); }
         });
     }
 
@@ -1716,11 +1735,8 @@ public class Main extends Application {
             }
         });
 
-        fondbouton3.setOnMousePressed(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                //if (action==disponible)
-                //mettre l'action correspondant à l'action
-            }
+        fondbouton3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) { callTeacherButtonClicked(); }
         });
 
         lbouton3 = new Label("Appeler un \nprofesseur");
@@ -1729,6 +1745,22 @@ public class Main extends Application {
         lbouton3.setTranslateX(35);
         lbouton3.setTranslateY(250);
         root.getChildren().add(lbouton3);
+
+        lbouton3.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton3.setFill(Color.LIGHTGREY);
+            }
+        });
+
+        lbouton3.setOnMouseExited(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                fondbouton3.setFill(Color.DARKGRAY);
+            }
+        });
+
+        lbouton3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) { callTeacherButtonClicked(); }
+        });
 
     }
 
@@ -1836,7 +1868,7 @@ public class Main extends Application {
 
         fondbouton6.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                clickPasserButton();
+                endTurnButtonClicked();
             }
         });
 
@@ -1855,7 +1887,7 @@ public class Main extends Application {
 
         lbouton6.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                clickPasserButton();
+                endTurnButtonClicked();
             }
         });
     }

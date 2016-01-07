@@ -1,4 +1,4 @@
-import javax.swing.*;
+package model;
 
 /**
  * Created by Guillaume on 12/12/2015.

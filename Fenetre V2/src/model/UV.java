@@ -160,5 +160,13 @@ public class UV
         return (position+" "+nom+" "+temp+" "+marqueur.size());
     }
 
+    public void displayVoisin(){
+        System.out.println(this);
+
+        for(UV currentVoisin : voisins){
+            System.out.println("\t| " + currentVoisin.toString());
+        }
+
+    }
 
 }

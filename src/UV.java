@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 
 public class UV
@@ -10,7 +12,7 @@ public class UV
     private ArrayList<UV> voisins;
     private Professeur professeur;
     private ArrayList<Personnage> personnages;
-    private boolean testEclosion; // Permet de ne pas repasser plusieurs par la même UV en cas d'éclosion
+    private boolean testEclosion; // Permet de ne pas repasser plusieurs par la même model.UV en cas d'éclosion
 
 
     public UV(){
@@ -28,7 +30,7 @@ public class UV
         personnages=new ArrayList<>();
     }
 
-    /*Accesseurs aux différents variable de UV*/
+    /*Accesseurs aux différents variable de model.UV*/
     public int getPosition(){
         return position;
     }
@@ -136,5 +138,35 @@ public class UV
         return m;
     }
 
+    public String toString(){
+        String temp;
+        switch (filiere){
+            case ILC:
+                temp = "ILC";
+                break;
+            case I2RV:
+                temp = "I2RV";
+                break;
+            case RT:
+                temp = "RT";
+                break;
+            case LEIM:
+                temp = "LEIM";
+                break;
+            default:
+                temp = "none";
+                break;
+        }
+        return (position+" "+nom+" "+temp+" "+marqueur.size());
+    }
+
+    public void displayVoisin(){
+        System.out.println(this);
+
+        for(UV currentVoisin : voisins){
+            System.out.println("\t| " + currentVoisin.toString());
+        }
+
+    }
 
 }

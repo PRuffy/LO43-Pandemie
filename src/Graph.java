@@ -1,12 +1,14 @@
+package model;
+
 import java.util.ArrayList;
 
 public class Graph {
     private ArrayList<UV> listUV;
     private boolean eclosionLancer;
 
-    //public Graph(String[] nomUV, Filiere[] filiereUV, int[][] adjacenceUV){
+    //public model.Graph(String[] nomUV, model.Filiere[] filiereUV, int[][] adjacenceUV){
     public Graph(DataReader dat){
-        listUV = new ArrayList<UV>(dat.getUv());
+        listUV = dat.getUv();
 
         //Mise a jour des liste des voisins
         UV tempUV1 = null;
@@ -15,11 +17,11 @@ public class Graph {
             for(int j = i; j<24;j++){
                 if(dat.getAdjacence()[i][j]==1){
                     for(UV uv:listUV){
-                        if(uv.getPosition()==i){
+                        if(uv.getPosition()==i+1){
                             tempUV1 = uv;
                         }
 
-                        if(uv.getPosition()==j){
+                        if(uv.getPosition()==j+1){
                             tempUV2 = uv;
                         }
                     }
@@ -37,13 +39,23 @@ public class Graph {
         return listUV.size();
     }
     public UV getUV(int position){
-        UV uvPos = new UV();
+        UV uvWanted = new UV();
         for (UV uv: listUV){
             if (uv.getPosition()==position){
-                uvPos = uv;
+                uvWanted = uv;
             }
         }
-        return uvPos;
+        return uvWanted;
+    }
+
+    public UV getUV(String name){
+        UV uvWanted = new UV();
+        for (UV uv: listUV){
+            if (uv.getNom()==name){
+                uvWanted = uv;
+            }
+        }
+        return uvWanted;
     }
 
     public Filiere getUVFiliere(int position){
@@ -56,8 +68,8 @@ public class Graph {
         return f;
     }
     /*Fonction appelé par la classe Jeu quand le joueur veux travailler.
-     *Appel alors la fonction removeMarqueur de la classe UV.
-     * Si un argument est envoyé alors il s'agit d'une méthode qui enlève tout les marqueurs d'une UV.
+     *Appel alors la fonction removeMarqueur de la classe V.
+     * Si un argument est envoyé alors il s'agit d'une méthode qui enlève tous les marqueurs d'une UV.
      * Sinon enlève seulement un marqueur
      */
     public Marqueur travail(int position){
@@ -71,7 +83,7 @@ public class Graph {
     }
 
     //Méthode enlevant les marqueur d'une filière donné sur une case donnée.
-    //Enlève tout les maruque de la filière.
+    //Enlève tout les marqueurs de la filière.
     public void travail(int position, Filiere f, CollectionMarqueur reserve){
         for(UV uv: listUV){
             if(uv.getPosition()==position){
@@ -103,6 +115,13 @@ public class Graph {
         eclosionLancer = false;
         for (UV uv : listUV){
             uv.setEclosion(false);
+        }
+    }
+
+    public void printAllUV(){
+        for(UV current : listUV){
+            //System.out.println(current.toString());
+            current.displayVoisin();
         }
     }
 }

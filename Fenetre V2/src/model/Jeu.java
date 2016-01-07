@@ -529,6 +529,7 @@ public class Jeu {
         reduireAction();
     }
 
+    //Méthode permettant au Joueur 'lèche-botte' de déplacer les professeurs
     public void deplacerProf(Professeur p, int position){
         if(joueurActif.getRole()==Role.lecheBotte){
             ArrayList<UV> listUV = graph.getListUV();
@@ -583,14 +584,12 @@ public class Jeu {
 
     /*Fonction comparant la coordonée du joueur actif avec celle des différents professeur*/
     public boolean presenceProf(){
-        boolean test;
-        for(Professeur p : pionProfesseur){
-            if(p.getPosition()==joueurActif.getPosition()){
+        boolean test = false;
+        for(Professeur p : pionProfesseur) {
+            if (p.getPosition() == joueurActif.getPosition()) {
                 test = true;
             }
         }
-        test = false;
-
         return test;
     }
 
