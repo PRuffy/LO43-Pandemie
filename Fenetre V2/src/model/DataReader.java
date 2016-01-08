@@ -18,7 +18,14 @@ public class DataReader {
     private String fileName;
     private ArrayList<UV> uv;
     private int adjacence[][];
+    private int[][] coordUVSprite;
+    private int[][] coordHandCardsSprites;
+    private int[][] coordLibraryAndGraveyard;
+    private int[][] coordPlayerIndicator;
+    private int[][] coordProjectIndicator;
+
     private boolean successfulLoad;
+
     private boolean DEBUG = true;
     private boolean GENERATE_NEW_FILE = false;
 
@@ -86,6 +93,76 @@ public class DataReader {
                 indexRow++;
                 if(DEBUG){System.out.print("\n");}
             }
+
+            coordUVSprite = new int[24][2];
+            String rawCUS = properties.getProperty("coordUVSprites");
+            indexRow = 0;
+            for (String row : rawCUS.split(rowSeparator)) {
+                indexColumn = 0;
+                for (String point : row.split(columnSeparator)) {
+                    coordUVSprite[indexRow][indexColumn] = Integer.parseInt(point);
+                    if(DEBUG){System.out.print(Integer.parseInt(point)+" ");}
+                    indexColumn++;
+                }
+                indexRow++;
+                if(DEBUG){System.out.print("\n");}
+            }
+
+            coordHandCardsSprites= new int[5][2];
+            String rawCHCS = properties.getProperty("coordHandCardsSprites");
+            indexRow = 0;
+            for (String row : rawCHCS.split(rowSeparator)) {
+                indexColumn = 0;
+                for (String point : row.split(columnSeparator)) {
+                    coordHandCardsSprites[indexRow][indexColumn] = Integer.parseInt(point);
+                    if(DEBUG){System.out.print(Integer.parseInt(point)+" ");}
+                    indexColumn++;
+                }
+                indexRow++;
+                if(DEBUG){System.out.print("\n");}
+            }
+
+            coordLibraryAndGraveyard = new int[4][2];
+            String rawCLAG = properties.getProperty("coordLibraryAndGraveyard");
+            indexRow = 0;
+            for (String row : rawCLAG.split(rowSeparator)) {
+                indexColumn = 0;
+                for (String point : row.split(columnSeparator)) {
+                    coordLibraryAndGraveyard[indexRow][indexColumn] = Integer.parseInt(point);
+                    if(DEBUG){System.out.print(Integer.parseInt(point)+" ");}
+                    indexColumn++;
+                }
+                indexRow++;
+                if(DEBUG){System.out.print("\n");}
+            }
+
+            coordPlayerIndicator = new int[4][2];
+            String rawCPlI = properties.getProperty("coordPlayerIndicator");
+            indexRow = 0;
+            for (String row : rawCPlI.split(rowSeparator)) {
+                indexColumn = 0;
+                for (String point : row.split(columnSeparator)) {
+                    coordPlayerIndicator[indexRow][indexColumn] = Integer.parseInt(point);
+                    if(DEBUG){System.out.print(Integer.parseInt(point)+" ");}
+                    indexColumn++;
+                }
+                indexRow++;
+                if(DEBUG){System.out.print("\n");}
+            }
+
+            coordProjectIndicator = new int[24][2];
+            String rawCPrI = properties.getProperty("coordProjectIndicator");
+            indexRow = 0;
+            for (String row : rawCPrI.split(rowSeparator)) {
+                indexColumn = 0;
+                for (String point : row.split(columnSeparator)) {
+                    coordProjectIndicator[indexRow][indexColumn] = Integer.parseInt(point);
+                    if(DEBUG){System.out.print(Integer.parseInt(point)+" ");}
+                    indexColumn++;
+                }
+                indexRow++;
+                if(DEBUG){System.out.print("\n");}
+            }
         }catch(WrongTypeException e){
                 System.out.println("Erreur de lecture de fichier : une filière n'a pas été reconnue");
                 return false;
@@ -111,6 +188,11 @@ public class DataReader {
         properties.setProperty("Adjacence", "0;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;0;0;0;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;0;0;0;1;1;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;;0;0;0;0;0;1;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;0;0;0;0;0;0;0;1;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;;0;0;0;0;0;0;0;0;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;1;0;0;0;;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;1;0;0;0;0;0;0;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;1;1;0;0;0;0;0;0;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;1;0;0;0;0;0;0;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;1;0;0;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;1;1;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;1;0;0;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0");
         properties.setProperty("rowSeparator", ";;");
         properties.setProperty("columnSeparator", ";");
+        properties.setProperty("coordUVSprites", "345;372;;390;325;;459;380;;443;343;;434;442;;409;380;;300;160;;350;192;;317;105;;400;150;;325;252;;410;225;;565;319;;682;375;;612;278;;727;270;;669;300;;619;360;;675;165;;625;192;;600;135;;739;175;;666;110;;711;126");
+        properties.setProperty("coordHandCardsSprites", "320;530;;380;530;;440;530;;500;530;;560;530");
+        properties.setProperty("coordLibraryAndGraveyard", "646;450;;726;450;;646;530;;726;530");
+        properties.setProperty("coordPlayerIndicator", "35;550;;70;550;;105;550;;140;550");
+        properties.setProperty("coordProjectIndicator", "210;10;;245;10;;280;10;;315;10");
 
         OutputStream output = null;
         File file = new File(fileName);
@@ -154,6 +236,20 @@ public class DataReader {
     /*
         Accesseur basiques
      */
+
+    public int[][] getCoordHandCardsSprites() {
+        return coordHandCardsSprites;
+    }
+    public int[][] getCoordLibraryAndGraveyard() {
+        return coordLibraryAndGraveyard;
+    }
+    public int[][] getCoordPlayerIndicator() {
+        return coordPlayerIndicator;
+    }
+    public int[][] getCoordProjectIndicator() {
+        return coordProjectIndicator;
+    }
+    public int[][] getCoordUVSprite(){ return coordUVSprite;}
     public ArrayList<UV> getUv() {
         return uv;
     }

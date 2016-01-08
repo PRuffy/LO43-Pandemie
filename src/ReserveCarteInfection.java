@@ -12,8 +12,8 @@ public class ReserveCarteInfection implements ReserveCarte
     private ArrayList<CarteInfection> defausse;
 
     public ReserveCarteInfection(Graph graph){
-        pioche=new ArrayList<CarteInfection>();
-        defausse=new ArrayList<CarteInfection>();
+        pioche=new ArrayList<>();
+        defausse=new ArrayList<>();
 
         for(int i = 0; i < 24; i++){
             pioche.add(new CarteInfection(graph.getUV(i+1), graph.getUVFiliere(i+1)));
@@ -24,9 +24,14 @@ public class ReserveCarteInfection implements ReserveCarte
     }
 
     public CarteInfection piocherCarte(){
-        CarteInfection temp = new CarteInfection(pioche.get(0));
-        pioche.remove(0);
-        return temp;
+        if (pioche.size()>0) {
+            CarteInfection temp = new CarteInfection(pioche.get(0));
+            pioche.remove(0);
+            return temp;
+        }else{
+            return null;
+        }
+
     }
     public void defausserCarte(CarteInfection carte){
         defausse.add(carte);

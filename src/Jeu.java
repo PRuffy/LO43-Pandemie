@@ -12,11 +12,15 @@ public class Jeu {
     private ReserveCarteSemestre carteSemestre;
     private ReserveCarteInfection carteInfections;
     private ArrayList<Professeur> pionProfesseur;
+
     private boolean projetI2RV;
     private boolean projetILC;
     private boolean projetLEIM;
     private boolean projetRT;
     private boolean antipioche;
+    private boolean victoire;
+    private boolean defaite;
+
     private int chargeTravail;
     private int compteurEclosion;
     private int nombreProjetRendu;
@@ -434,7 +438,6 @@ public class Jeu {
                     reduireAction();
                 }catch(WrongTypeException e){}
                 catch(NotEnoughSlotsException e){}
-                catch(NoSuchCardException e){}
             }
         }
 
@@ -446,6 +449,20 @@ public class Jeu {
      * Peut déplacer le joueur Actif comme un autre joueur
      */
     public void deplacer(Joueur joueurCible, int positionArrivee){
+
+        if(!deplacementPossibleNeighbour(joueurCible).contains(positionArrivee) && !deplacementPossibleByProf(joueurCible).contains(positionArrivee)){
+            if(deplacementPossibleByCarteSemestre(joueurCible).contains(positionArrivee)){
+                //for(CarteSemestre currentCard : joueurCible.getHand()){
+                for(int index = 0; index<joueurCible.getHand().size(); index++ ){
+                    CarteSemestre currentCard = joueurCible.getHand().get(index);
+                    if(currentCard.getCible().getPosition() == positionArrivee){
+                        carteSemestre.defausserCarte(joueurCible.retraitCarte(positionArrivee));
+                    }else{
+                        carteSemestre.defausserCarte(joueurCible.retraitCarte(joueurCible.getPosition()));
+                    }
+                }
+            }
+        }
         getGraph().getUV(joueurCible.getPosition()).removePersonnage(joueurCible.getPersonnage());
         joueurCible.setPosition(positionArrivee);
         getGraph().getUV(positionArrivee).addPersonnage(joueurCible.getPersonnage());
@@ -493,9 +510,7 @@ public class Jeu {
             System.out.print(posJoueur);
             System.out.print(uvJoueur);
         }
-
-
-            //Sinon vérifier sa position, ajouter les voisin, ajouter les carte présente en main et les autre proffesseur si présence de l'un d'eux
+            //Sinon vérifier sa position, ajouter les voisin, ajouter les carte présente en main et les autre professeur si présence de l'un d'eux
             //On check la position d'un prof
         for(Professeur p : pionProfesseur){
             if(p.getPosition()==posJoueur){
@@ -597,6 +612,7 @@ public class Jeu {
             if(!testRenduProjet(f)){
                 if(joueurActif.verifierCarte(f)){
 
+                    validerProjet(f);
                     if(joueurActif.getRole()==Role.decale){
                         for(int i =0; i < 3 ; i++){
                             carteSemestre.defausserCarte(joueurActif.retraitCarte(f));
@@ -638,6 +654,19 @@ public class Jeu {
         return false;
     }
 
+    private void validerProjet(Filiere f){
+        switch (f){
+            case ILC : projetILC = true;
+                break;
+            case I2RV : projetI2RV = true;
+                break;
+            case LEIM : projetLEIM = true;
+                break;
+            case RT : projetRT = true;
+                break;
+            default : break;
+        }
+    }
 
     /*Fonction comparant la coordonée du joueur actif avec celle des différents professeur*/
     public boolean presenceProf(){
@@ -752,13 +781,13 @@ public class Jeu {
     /*Méthode déclanchant la fin du jeu lors d'une défaite*/
     //Doit bloquer les éléments graphique ainsi qu'annoncer la défaite
     public void defaitePartie(){
-
+        if(!victoire) defaite = true;
     }
 
     /*Méthode déclanchant la fin de la partie lors d'une victoire*/
     //Doit bloquer les éléments graphique ainsi qu'annoncer la victoire
     public void victoirePartie(){
-
+        if(!defaite) victoire = true;
     }
 
     public Graph getGraph(){
@@ -843,4 +872,15 @@ public class Jeu {
     public ReserveCarteSemestre getCarteSemestre(){ return carteSemestre; }
     public int getChargeTravail(){ return chargeTravail; }
     public int getCompteurEclosion(){ return compteurEclosion; }
+    public ArrayList<Boolean> getProjectState(){
+        ArrayList<Boolean> list = new ArrayList<>();
+        list.add(projetILC);
+        list.add(projetI2RV);
+        list.add(projetLEIM);
+        list.add(projetRT);
+        return list;
+    }
+
+    public boolean getVictoire(){return victoire;}
+    public boolean getDefaite(){return defaite;}
 }

@@ -69,7 +69,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        dat = new DataReader("UV.jjq");
+        dat = new DataReader("UV2.jjq");
         if(dat.hasSuccessfullyLoaded()) {
 
             primaryStage.setTitle("Bienvenue sur Pandémie.");  //titre
@@ -281,59 +281,6 @@ public class Main extends Application {
     }
 
     // initCoordUVSprites renvoie un tableau d'int[i][j] contenant les coordonnées des UV classées sur i, j=0 correspond à x et 1 à y
-    public int[][] initCoordUVSprites(){
-        int tab[][] = new int[24][2];
-        tab[0][0] = 345;
-        tab[0][1] = 372;
-        tab[1][0] = 390;
-        tab[1][1] = 325;
-        tab[2][0] = 459;
-        tab[2][1] = 380;
-        tab[3][0] = 443;
-        tab[3][1] = 343;
-        tab[4][0] = 434;
-        tab[4][1] = 442;
-        tab[5][0] = 409;
-        tab[5][1] = 380;
-        tab[6][0] = 300;
-        tab[6][1] = 160;
-        tab[7][0] = 350;
-        tab[7][1] = 192;
-        tab[8][0] = 317;
-        tab[8][1] = 105;
-        tab[9][0] = 400;
-        tab[9][1] = 150;
-        tab[10][0] = 325;
-        tab[10][1] = 252;
-        tab[11][0] = 410;
-        tab[11][1] = 225;
-        tab[12][0] = 565;
-        tab[12][1] = 319;
-        tab[13][0] = 682;
-        tab[13][1] = 375;
-        tab[14][0] = 612;
-        tab[14][1] = 278;
-        tab[15][0] = 727;
-        tab[15][1] = 270;
-        tab[16][0] = 669;
-        tab[16][1] = 300;
-        tab[17][0] = 619;
-        tab[17][1] = 360;
-        tab[18][0] = 675;
-        tab[18][1] = 165;
-        tab[19][0] = 625;
-        tab[19][1] = 192;
-        tab[20][0] = 600;
-        tab[20][1] = 135;
-        tab[21][0] = 739;
-        tab[21][1] = 175;
-        tab[22][0] = 666;
-        tab[22][1] = 110;
-        tab[23][0] = 711;
-        tab[23][1] = 126;
-
-        return tab;
-    }
     public int[][] initCoordPionJoueurs(){
         int tab[][] = new int[nombreJoueur][2];
 
@@ -356,70 +303,13 @@ public class Main extends Application {
 
         return tab;
     }
-    public int[][] initCoordHandCardsSprites(){
-        int tab[][] = new int[5][2];
-
-        tab[0][0] = 320;
-        tab[0][1] = 530;
-        tab[1][0] = 380;
-        tab[1][1] = 530;
-        tab[2][0] = 440;
-        tab[2][1] = 530;
-        tab[3][0] = 500;
-        tab[3][1] = 530;
-        tab[4][0] = 560;
-        tab[4][1] = 530;
-        return tab;
-    }
-    public int[][] initCoordLibraryAndGraveYard(){
-        int tab[][] = new int[4][2];
-
-        tab[0][0] = 646;
-        tab[0][1] = 450;
-        tab[1][0] = 726;
-        tab[1][1] = 450;
-        tab[2][0] = 646;
-        tab[2][1] = 530;
-        tab[3][0] = 726;
-        tab[3][1] = 530;
-
-        return tab;
-    }
-    public int[][] initCoordPlayerIndicators(){
-        int tab[][] = new int[4][2];
-
-        tab[0][0] = 35;
-        tab[0][1] = 550;
-        tab[1][0] = 70;
-        tab[1][1] = 550;
-        tab[2][0] = 105;
-        tab[2][1] = 550;
-        tab[3][0] = 140;
-        tab[3][1] = 550;
-
-        return tab;
-    }
-    public int[][] initCoordProjectIndicators(){
-        int tab[][] = new int[4][2];
-
-        tab[0][0] = 210;
-        tab[0][1] = 10;
-        tab[1][0] = 245;
-        tab[1][1] = 10;
-        tab[2][0] = 280;
-        tab[2][1] = 10;
-        tab[3][0] = 315;
-        tab[3][1] = 10;
-
-        return tab;
-    }
 
     public void movePlayer(int positionUV){
         Joueur currentPlayer = model.getJoueurActif();
         System.out.println(model.getGraph().getUV(positionUV));
         if(model.deplacementPossible(currentPlayer).contains(model.getGraph().getUV(positionUV).getPosition())){
             PlayerSprite currentPlayerSprite = playerSprites.get(currentPlayer.getNumero());
-            int tabUV[][] = initCoordUVSprites();
+            int tabUV[][] = dat.getCoordUVSprite();
             int tabPion[][] = initCoordPionJoueurs();
 
             model.deplacer(currentPlayer, model.getGraph().getUV(positionUV).getPosition());
@@ -657,7 +547,7 @@ public class Main extends Application {
 
     public void updateTeacherSprite(){
         ArrayList<Professeur> teachers = model.getPionProfesseur();
-        int tabUV[][] = initCoordUVSprites();
+        int tabUV[][] = dat.getCoordUVSprite();
         ArrayList<UV> listUV = model.getGraph().getListUV();
 
         for(TeacherSprite currentTeacherSprite : teacherSprites){
@@ -787,7 +677,7 @@ public class Main extends Application {
     }
 
     public void displayUVSprites(){
-        int coordonnees[][] = initCoordUVSprites();
+        int coordonnees[][] = dat.getCoordUVSprite();
         int index = 0;
         uvSprites = new ArrayList<>();
         uvLabel = new ArrayList<>();
@@ -1302,7 +1192,7 @@ public class Main extends Application {
          */
         playerSprites = new ArrayList<>();
         int tabPion[][] = initCoordPionJoueurs();
-        int tabUV[][] = initCoordUVSprites();
+        int tabUV[][] = dat.getCoordUVSprite();
         int index = 0;
         Joueur[] joueurs = model.getJoueurs();
         int x = tabPion[index][0] + tabUV[joueurs[index].getPosition() - 1][0];
@@ -1348,7 +1238,7 @@ public class Main extends Application {
         ArrayList<Professeur> teachers = model.getPionProfesseur();
         teacherSprites = new ArrayList<>();
         int teacherOffsetX = 16, teacherOffsetY = 6;
-        int tabUV[][] = initCoordUVSprites();
+        int tabUV[][] = dat.getCoordUVSprite();
 
         int x = teacherOffsetX + tabUV[teachers.get(index).getPosition() - 1][0];
         int y = teacherOffsetY + tabUV[teachers.get(index).getPosition() - 1][1];
@@ -1644,7 +1534,7 @@ public class Main extends Application {
     }
 
     public void displayHandSemesterCards(){
-        int tabCoord[][] = initCoordHandCardsSprites();
+        int tabCoord[][] = dat.getCoordHandCardsSprites();
         int index = 0;
         playerHandCardSprites = new ArrayList<>();
         playerHandCardLabel = new ArrayList<>();
@@ -1798,7 +1688,7 @@ public class Main extends Application {
         root.getChildren().add(activePlayerInfoLabel);
 
         int index = 0;
-        int coordIndicators[][] = initCoordPlayerIndicators();
+        int coordIndicators[][] = dat.getCoordPlayerIndicator();
         playerIndicator = new ArrayList<>();
 
         Rectangle playerIndicatorRectangle1 = new Rectangle(25, 25, Color.IVORY);
@@ -1907,7 +1797,7 @@ public class Main extends Application {
     public void displayLibraryAndGraveyard(){
         deckLabel = new ArrayList<>();
         int index = 0;
-        int coordDeck[][] = initCoordLibraryAndGraveYard();
+        int coordDeck[][] = dat.getCoordLibraryAndGraveyard();
 
         DeckSprite pioche1 = new DeckSprite(index);
         pioche1.setTranslateX(coordDeck[index][0]);
@@ -2015,7 +1905,7 @@ public class Main extends Application {
     public void displayProjectIndicator(){
         projectIndicator = new ArrayList<>();
         int index = 0;
-        int coordIndicators[][] = initCoordProjectIndicators();
+        int coordIndicators[][] = dat.getCoordProjectIndicator();
 
         Rectangle playerIndicatorRectangle1 = new Rectangle(25, 25, Color.DARKGRAY);
         playerIndicatorRectangle1.setTranslateX(coordIndicators[index][0]);

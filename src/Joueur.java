@@ -39,7 +39,7 @@ public class Joueur {
         return position.getPosition();
     }
     public boolean isMainComplete(){
-        if (carteEnMain.size()==6){
+        if (carteEnMain.size()==5){
             return true;
         }else{
             return false;
@@ -100,13 +100,11 @@ public class Joueur {
         - NotSuchCardException si le joueur n'a pas cette carte en main
         - model.WrongTypeException si la carte n'est pas une carte TP
      */
-    public CarteSemestre retraitCarte(CarteSemestre carte) throws NoSuchCardException, WrongTypeException{
+    public CarteSemestre retraitCarte(CarteSemestre carte){
         try{
             if (carte.getType() != TypeCarteSemestre.TP)
                 throw new WrongTypeException("Un joueur ne peut avoir que des cartes TP en main");
 
-
-            int index = 0;
             CarteSemestre tempCarte = null;
 
             if(carteEnMain.contains(carte)){
@@ -124,12 +122,34 @@ public class Joueur {
         catch(Exception e){return null;}
     }
 
+    public CarteSemestre retraitCarte(int positionCible){
+        try{
+            CarteSemestre tempCarte = null;
+
+            for(CarteSemestre currentCard : carteEnMain){
+                if(currentCard.getCible().getPosition() == positionCible){
+                    tempCarte = currentCard;
+                }
+            }
+            // Si la carte n'a pas été trouvé dans la main (ou si la main est vide)
+            if (tempCarte!=null) {
+                carteEnMain.remove(tempCarte);
+                return tempCarte;
+            }else{
+                throw new NoSuchCardException("Cette carte ne se trouve pas dans la main de ce joueur");
+            }
+        }
+        catch(NoSuchCardException e){return null;}
+        catch(Exception e){return null;}
+    }
+
     //Effectue une opération similaire a la fonction précédente. Cependant enlève une carte queconque de la main du joueur
     //Ayant la filière voulu
     public CarteSemestre retraitCarte(Filiere f){
         CarteSemestre tempCarte=null;
 
-        for(CarteSemestre current : carteEnMain){
+        for(int index = 0; index <carteEnMain.size(); index++){
+            CarteSemestre current = carteEnMain.get(index);
             if(current.getFiliere()==f && tempCarte==null){
                 tempCarte = current;
                 carteEnMain.remove(current);
